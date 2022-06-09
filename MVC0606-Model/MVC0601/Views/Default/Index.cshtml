@@ -43,7 +43,8 @@
         <td>
             @*@Html.ActionLink("Edit", "Edit", new { id=item.fStuId }) |
             @Html.ActionLink("Details", "Details", new { id=item.fStuId }) |*@
-            @Html.ActionLink("刪除", "Delete", new { id=item.fStuId })
+            @Html.ActionLink("退學", "Delete", new { id=item.fStuId }, new {@class = "btn btn-danger" , onclick = "return confirm('請問您是否要退學嗎?')" })
+            //<a href="#" class="btn btn-danger" onclick="return confirm('請問您是否要退學嗎?')">content</a>
         </td>
     </tr>
 }

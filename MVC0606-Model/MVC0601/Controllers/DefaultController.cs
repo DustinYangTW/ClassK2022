@@ -23,10 +23,30 @@ namespace MVC0601.Controllers
         [HttpPost]
         public ActionResult Create(tStudent tStudent)
         {
+            
+            dbSutdent.tStudent.Add(tStudent);
+            dbSutdent.SaveChanges();
 
-            return View();
+            return RedirectToAction("Index");
         }
 
+        public ActionResult Delete(string id)
+        {
+            //SQL
+            //delete from tStudent where fStuId = '88888'
+
+            //var student = from s in dbSutdent.tStudent
+            //              where s.fStuId == id
+            //              select s;
+
+            var student = dbSutdent.tStudent.Where(s => s.fStuId == id).FirstOrDefault();
+            if (student != null)
+            {
+                dbSutdent.tStudent.Remove(student);
+                dbSutdent.SaveChanges();
+            }
+            return View();
+        }
 
     }
     
