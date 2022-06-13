@@ -37,3 +37,14 @@ create table ProductType(
 
 
 --Foreign key constraint
+
+create table Classes(
+	StuNo char(4),
+	CourseID char(5),
+	ProfessorID char(4),
+	ClassTime datetime not null,
+	Classroom varchar(8) not null,
+	foreign key(StuNo) references Student(StuID) on delete no action on update no action,
+	foreign key(CourseID) references Course(CourseID) on delete cascade on update cascade,
+	foreign key(ProfessorID) references Professors(ProfessorsID) on delete cascade on update no action
+)
