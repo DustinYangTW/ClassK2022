@@ -1,5 +1,5 @@
 --Contraints(±ø¥ó¬ù§ô)
---primary key Constraints
+primary key Constraints
 create table Orders(
 	OrderID char(8) primary key,
 	OrderData datetime not null,
@@ -28,5 +28,12 @@ create table Custimers(
 )
 
 --check Constraint
+create table ProductType(
+	ProductTypeID char(2) primary key,
+	ProductTypeName nvarchar(50) not null,
+	ProductTypeValue int not null default 0 constraint CK_ProductTypeValueNoLessThenZero check(ProductTypeValue>=0)
+)
+
+
 
 --Foreign key constraint
