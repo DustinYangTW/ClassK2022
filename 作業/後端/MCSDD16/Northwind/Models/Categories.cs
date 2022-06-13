@@ -14,6 +14,7 @@ namespace Northwind.Models
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
 
+    [MetadataType(typeof(MetaCategories))]
     public partial class Categories
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,19 +23,9 @@ namespace Northwind.Models
             this.Products = new HashSet<Products>();
         }
 
-        [DisplayName("種類ID")]
-        [Required(ErrorMessage = "種類ID為必填欄位")]
-        [RegularExpression("[0-9]{,5}", ErrorMessage = "種類ID格式錯誤，請查明公開聲明書")]
         public int CategoryID { get; set; }
-        [DisplayName("種類名稱")]
-        [Required(ErrorMessage = "種類名稱為必填欄位")]
-        [RegularExpression("[^-,，!@]", ErrorMessage = "不得輸入-、,，!@等非文字字元")]
         public string CategoryName { get; set; }
-        [DisplayName("種類說明")]
-        [Required(ErrorMessage = "種類說明為必填欄位")]
         public string Description { get; set; }
-        [DisplayName("產品圖片")]
-        [Required(ErrorMessage = "種類圖片為必填欄位")]
         public byte[] Picture { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

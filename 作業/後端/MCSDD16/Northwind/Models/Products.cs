@@ -11,7 +11,10 @@ namespace Northwind.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
+    [MetadataType(typeof(MetaProducts))]
     public partial class Products
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,7 +22,7 @@ namespace Northwind.Models
         {
             this.Order_Details = new HashSet<Order_Details>();
         }
-    
+
         public int ProductID { get; set; }
         public string ProductName { get; set; }
         public Nullable<int> SupplierID { get; set; }
