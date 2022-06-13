@@ -145,6 +145,12 @@
           <AssociatedConnUserName />
           <FullPath>21DDL-3.sql</FullPath>
         </FileNode>
+        <FileNode Name="22DDl-4.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local):True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>22DDl-4.sql</FullPath>
+        </FileNode>
         <FileNode Name="HW01.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local):True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>(local)</AssociatedConnSrvName>
@@ -156,6 +162,12 @@
           <AssociatedConnSrvName>(local)</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>HW06.sql</FullPath>
+        </FileNode>
+        <FileNode Name="HW07.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local):True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>HW07.sql</FullPath>
         </FileNode>
       </Items>
     </LogicalFolder>
