@@ -60,4 +60,43 @@ namespace Northwind.Models
         [DefaultValue(false)]
         public bool Discontinued { get; set; }
     }
+
+    public class MetaCustomers
+    {
+        [DisplayName("客戶ID")]
+        [StringLength(5, ErrorMessage = "格式錯誤，最多5個字")]
+        [Required(ErrorMessage = "客戶ID為必填欄位")]
+        public string CustomerID { get; set; }
+        [DisplayName("所在公司名稱")]
+        [Required(ErrorMessage = "所在公司名稱為必填欄位")]
+        [StringLength(40, ErrorMessage = "格式錯誤，最多40個字")]
+        public string CompanyName { get; set; }
+        [DisplayName("客戶名稱")]
+        [StringLength(30, ErrorMessage = "格式錯誤，最多30個字")]
+        public string ContactName { get; set; }
+        [DisplayName("客戶稱謂")]
+        [StringLength(30, ErrorMessage = "格式錯誤，最多30個字")]
+        public string ContactTitle { get; set; }
+        [DisplayName("所在地址")]
+        [StringLength(60, ErrorMessage = "格式錯誤，最多60個字")]
+        public string Address { get; set; }
+        [DisplayName("所在城市")]
+        [StringLength(15, ErrorMessage = "格式錯誤，最多15個字")]
+        public string City { get; set; }
+        [DisplayName("所在地區")]
+        [StringLength(15, ErrorMessage = "格式錯誤，最多15個字")]
+        public string Region { get; set; }
+        [DisplayName("郵遞區號")]
+        [StringLength(10, ErrorMessage = "格式錯誤，最多10個字")]
+        public string PostalCode { get; set; }
+        [DisplayName("所在國家")]
+        [StringLength(15, ErrorMessage = "格式錯誤，最多15個字")]
+        public string Country { get; set; }
+        [DisplayName("電話號碼")]
+        [StringLength(24, ErrorMessage = "格式錯誤，最多24個字")]
+        public string Phone { get; set; }
+        [DisplayName("傳真")]
+        [StringLength(24, ErrorMessage = "格式錯誤，最多24個字")]
+        public string Fax { get; set; }
+    }
 }
