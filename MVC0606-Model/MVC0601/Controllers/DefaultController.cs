@@ -44,6 +44,7 @@ namespace MVC0601.Controllers
             {
                 dbSutdent.tStudent.Remove(student);
                 dbSutdent.SaveChanges();
+
             }
             return View();
         }
