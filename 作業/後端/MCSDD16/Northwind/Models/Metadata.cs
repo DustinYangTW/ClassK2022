@@ -9,6 +9,7 @@ namespace Northwind.Models
 {
     public class MetaCategories
     {
+        [Key]
         [DisplayName("種類ID")]
         public int CategoryID { get; set; }
         [DisplayName("類別名稱")]
@@ -22,6 +23,7 @@ namespace Northwind.Models
     }  
     public class MetaProducts
     {
+        [Key]
         [DisplayName("產品ID")]
         public int ProductID { get; set; }
 
@@ -63,9 +65,10 @@ namespace Northwind.Models
 
     public class MetaCustomers
     {
+        [Key]
         [DisplayName("客戶ID")]
-        [StringLength(5, ErrorMessage = "格式錯誤，最多5個字")]
         [Required(ErrorMessage = "客戶ID為必填欄位")]
+        [RegularExpression("[A-Z]{5}", ErrorMessage = "格式錯誤，只能填寫大寫英文，並需填寫5個字")]
         public string CustomerID { get; set; }
         [DisplayName("所在公司名稱")]
         [Required(ErrorMessage = "所在公司名稱為必填欄位")]
