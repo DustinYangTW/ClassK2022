@@ -26,3 +26,4 @@ declare @StuBirthday table (
 	birthday datetime
 )
 insert into @StuBirthday values('¥ô§Ú¦æ','2022-6/14')
+

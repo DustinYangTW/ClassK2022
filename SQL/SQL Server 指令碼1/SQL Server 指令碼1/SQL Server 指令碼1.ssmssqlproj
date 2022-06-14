@@ -163,6 +163,18 @@
           <AssociatedConnUserName />
           <FullPath>25T-SQL.sql</FullPath>
         </FileNode>
+        <FileNode Name="26T-SQL IF.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local):True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>26T-SQL IF.sql</FullPath>
+        </FileNode>
+        <FileNode Name="27T-SQL-3.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local):True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>27T-SQL-3.sql</FullPath>
+        </FileNode>
         <FileNode Name="HW01.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local):True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>(local)</AssociatedConnSrvName>

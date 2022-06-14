@@ -6,7 +6,7 @@ begin
 end
 else
 	print '不成立'
-
+go
 declare @height int
 set @height = 150
 
@@ -16,3 +16,4 @@ else if @height >=90
 	print '半票'
 else 
 	print '免費'
+go
