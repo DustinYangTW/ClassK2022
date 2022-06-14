@@ -19,7 +19,7 @@
             success: function (data) {
                 console.log(data);
                 for (var i = 0; i < data.length; i++) {
-                    item += "<h2>" + data[i].Name + "</h2>";
+                    item = "<h2>" + data[i].Name + "</h2>";
                     item += "<h4>" + data[i].Tel + "</h4>";
                     //<a href="https://www.google.com.tw/maps/search/${data[i].Address}" target="_blank"> </a>
                     item += `<a href="https://www.google.com.tw/maps/search/${data[i].Address}" target="_blank">${data[i].Address}</a></br>`;
