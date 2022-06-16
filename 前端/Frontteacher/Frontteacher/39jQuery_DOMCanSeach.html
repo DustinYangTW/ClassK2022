@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div>
+        <select onchange="change()">
+            <!--<option>高雄市</option>
+            <option>苗栗縣</option>
+            <option>臺中市</option>
+            <option>新竹縣</option>-->
+        </select>
+    </div>
+    <div id="container">
+
+    </div>
+
+    <script src="Scripts/jquery-3.6.0.min.js"></script>
+    <script>
+        change();
+        var city = [];
+        function change() {
+            var item = "";
+
+            var citytype = "";
+
+            $.ajax({
+                type: 'get',
+                url: 'https://data.coa.gov.tw/Service/OpenData/ODwsv/ODwsvAttractions.aspx',
+                success: function (data) {
+
+                    console.log(city.length);
+
+                    if (city.length == 0) {
+                        for (var i = 0; i < data.length; i++) {
+                            if ($.inArray(data[i].City, city) == -1) {
+                                city.push(data[i].City)
+                            }
+                        }
+                        console.log(city);
+
+                        for (var i = 0; i < city.length; i++) {
+                            var cityadd = `<option>${city[i]}</option>`;
+                            $('select').append(cityadd)
+                        }
+                    }
+
+
+
+                    /*function change() {}*/
+                    var selectcity = $("select").find("option:selected").text();
+                    console.log(selectcity);
+                    $('#container').html("");
+                    for (var i = 0; i < data.length; i++) {
+                        if (data[i].City == selectcity) {
+                            item = "<h1>" + data[i].City + "</h1>";
+                            item += `<table ><tr><td><h1>${data[i].Name}</h1></td><td><a href="https://www.google.com.tw/maps/search/${data[i].Address}" target='_blank'>${data[i].Address}</a><br /></td></tr></table>`;
+
+                            item += `<table border="1px"><tr><td><img src="${data[i].Photo}" width="300px"/></td><td>${data[i].Introduction}</td></tr></table><hr />`;
+                            //item += "<p>" + data[i].Introduction + "</p>" +"<hr />";
+                            $('#container').append(item);
+                        }
+
+
+                    }
+
+
+                },
+                error: function () {
+                    console.log('error');
+                }
+
+
+            })
+        }
+
+    </script>
+</body>
+</html>
