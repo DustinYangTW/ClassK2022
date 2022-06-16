@@ -9,20 +9,23 @@
             margin: auto;
         }
 
+
             #container > div {
                 /*border: 2px groove #808080;*/
-                box-shadow:0px 0px 20px black;
+                box-shadow: 0px 0px 20px black;
                 border-radius: 10px;
                 margin: 10px;
                 padding: 15px;
             }
-            #container > div >p{
-                margin:10px;
-                padding:10px;
-            }
-            #container > img{
-                width:inherit;
-                margin:auto;
+
+                #container > div > p {
+                    margin: 10px;
+                    padding: 10px;
+                }
+
+            #container > img {
+                width: inherit;
+                margin: auto;
             }
 
         .displayCenter {
@@ -57,11 +60,11 @@
 
                     item =
                         `<div class="displayCenter" title = "${data[i].Introduction}">
-                             <h2> ${data[i].Name}</h2>
-                             <img src='${data[i].Photo}'/>
-                             <h4>電話 : ${data[i].Tel}</h4>
-                             <p>地址 :  <a href='https://www.google.com.tw/maps/search/${data[i].Address}' target="_blank">${data[i].Address}</a></br></p>     
-                        </div>`;
+                                     <h1> ${data[i].Name}</h1>
+                                     <img src='${data[i].Photo}'/>
+                                     <h4>電話 : ${data[i].Tel}</h4>
+                                     <p>地址 :  <a href='https://www.google.com.tw/maps/search/${data[i].Address}' target="_blank">${data[i].Address}</a></br></p>
+                                </div>`;
 
 
                     $('#container').append(item);
@@ -71,6 +74,30 @@
                 alert('error');
             }
         });
+
+        function setStyke1() {
+            $('#container > div >h1').css({
+                'box - shadow': '0px 0px 20px black',
+                'padding': '15px',
+                'text - align': 'center',
+                'background - color': 'green',
+                'color': 'white'
+            });
+            setInterval(setStyke2, 1000);
+        }
+
+        function setStyke2() {
+            $('#container > div :first-child').css({
+                'box - shadow': '0px 0px 20px black',
+                'padding': '15px',
+                'text - align': 'center',
+                'background - color': 'blue',
+                'color': 'red'
+            });
+            setInterval(setStyke1, 1000);
+        }
+        
+        setStyke1();
     </script>
 </body>
 </html>
