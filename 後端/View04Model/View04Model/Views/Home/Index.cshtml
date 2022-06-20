@@ -10,7 +10,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <title>公司員工資料管理</title>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 
 </head>
@@ -18,7 +18,7 @@
     <div class="container">
         <h1 class="text-center well">公司員工資料管理</h1>
         <p>
-            @Html.ActionLink("Create New", "Create")
+            @Html.ActionLink("新增員工資料", "Create")
         </p>
         <div class="row">
             <div class="col-xs-3">
@@ -31,7 +31,12 @@
                 </ul>
             </div>
             <div class="col-xs-9">
-                <p class="alert alert-info text-center">員工資料</p>
+                <p class="alert alert-info text-center">@(ViewBag.deptName)的員工資料</p>
+                @if (Model.employee.Count == 0)
+                {
+                    <h3 class="text-danger text-center">該部門目前尚未有員工資料</h3>
+                }
+                else {
                 <table class="table text-center table-hover">
                     <tr>
                         <td>工號</td>
@@ -39,7 +44,8 @@
                         <td>電話</td>
                         <td>刪除</td>
                     </tr>
-                    @foreach (var item in Model.employee) { 
+                    @foreach (var item in Model.employee)
+                    {
                         <tr>
                             <td>
                                 @item.fEmpId
@@ -56,6 +62,7 @@
                         </tr>
                     }
                 </table>
+                }
             </div>
         </div>
     </div>

@@ -20,8 +20,22 @@ namespace View04Model.Controllers
                 employee = db.tEmployee.Where(m => m.fDepId == depId).ToList()
             };
 
+            ViewBag.deptName =db.tDepartment.Where(m => m.fDepId == depId).FirstOrDefault().fDepName;
             //var employee = db.tEmployee.ToList();
             return View(vmep);
+        }
+
+        public ActionResult Create()
+        {
+            ViewBag.dept = db.tDepartment.ToList();
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Create(tEmployee emp)
+        {
+            db.tEmployee.Add(emp);
+            db.SaveChanges();
+            return RedirectToAction("Index", new {depId =emp.fDepId});
         }
     }
 }
