@@ -2,6 +2,9 @@
 
 @{
     Layout = null;
+
+    var depId = Request.QueryString["depId"];
+    var selecte = "";
 }
 
 <!DOCTYPE html>
@@ -52,7 +55,8 @@
                         <select id="select" class="form-control" name="fDepId">
                             @foreach (var item in ViewBag.dept)
                             {
-                            <option value="@item.fDepId">@item.fDepName</option>
+                            selecte = item.fDepId == Convert.ToInt32(depId)? "selected":"";
+                            <option value="@item.fDepId" @selecte>@item.fDepName</option>
                             }
                         </select>
                         @*@Html.EditorFor(model => model.fDepId, new { htmlAttributes = new { @class = "form-control" } })

@@ -21,6 +21,7 @@ namespace View04Model.Controllers
             };
 
             ViewBag.deptName =db.tDepartment.Where(m => m.fDepId == depId).FirstOrDefault().fDepName;
+            ViewBag.depID = depId;
             //var employee = db.tEmployee.ToList();
             return View(vmep);
         }
@@ -36,6 +37,13 @@ namespace View04Model.Controllers
             db.tEmployee.Add(emp);
             db.SaveChanges();
             return RedirectToAction("Index", new {depId =emp.fDepId});
+        }
+
+        public ActionResult Delete(string id)
+        {
+            
+
+            return View();
         }
     }
 }
