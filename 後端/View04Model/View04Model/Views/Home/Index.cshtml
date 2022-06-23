@@ -58,7 +58,8 @@
                                     @item.fPhone
                                 </td>
                                 <td>
-                                    <a href="Delete/item.fEmpId" class="btn btn-danger btn-sm">刪除</a>
+                                    @*<a href="Delete/item.fEmpId" class="btn btn-danger btn-sm" onclick="return confirm('您確定要刪除 @(item.fName) 嗎?')">刪除</a>*@
+                                    @Html.ActionLink("刪除", "Delete", new {id = item.fEmpId }, new {@class="btn btn-danger btn-sm", onclick="return confirm('您確定要刪除 "+item.fName+" 嗎?')" })
                                 </td>
                             </tr>
                         }

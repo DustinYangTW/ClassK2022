@@ -41,9 +41,11 @@ namespace View04Model.Controllers
 
         public ActionResult Delete(string id)
         {
-            
+            var emp = db.tEmployee.Where(m => m.fEmpId == id).FirstOrDefault();
+            db.tEmployee.Remove(emp);
+            db.SaveChanges();
 
-            return View();
+            return RedirectToAction("Index", new { depId = emp.fDepId });
         }
     }
 }
