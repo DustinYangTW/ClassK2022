@@ -64,7 +64,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="40jQuery_DOM.html" />
+    <Content Include="40jQuery_DOM - 複製.html" />
+    <Content Include="41jQuery_Animate.html" />
     <Content Include="39jQuery_DOMCanSeach.html" />
     <Content Include="39jQuery_DOM.html" />
     <Content Include="jQuery.html" />
