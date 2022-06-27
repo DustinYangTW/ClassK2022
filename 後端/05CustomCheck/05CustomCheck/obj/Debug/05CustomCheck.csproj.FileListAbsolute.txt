@@ -1,0 +1,2 @@
+D:\Git2\後端\05CustomCheck\05CustomCheck\obj\Debug\05CustomCheck.csproj.AssemblyReference.cache
+D:\Git2\後端\05CustomCheck\05CustomCheck\obj\Debug\05CustomCheck.csproj.CoreCompileInputs.cache
