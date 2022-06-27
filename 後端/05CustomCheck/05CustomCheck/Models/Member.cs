@@ -17,11 +17,16 @@ namespace _05CustomCheck.Models
         public string Name { get; set; }
 
         [Required(ErrorMessage = "身份證字號為必填欄位")]
-        [RegularExpression("[A-Z[12][0-9]{8}", ErrorMessage = "身份證字號資料錯誤")]
-        [ChechIDName]
+        [RegularExpression("[A-Z][1-2][0-9]{8}", ErrorMessage = "身份證字號資料錯誤")]
+        [ChechIDName(ErrorMessage = "不合法的身分字號")]
         public string IDNumber { get; set; }//身份證字號
         public class ChechIDName : ValidationAttribute
         {
+            //建構子
+            public ChechIDName()
+            {
+                ErrorMessage = "你不要亂填";
+            }
             public override bool IsValid(object value)
             {
                 int sum = 0;
