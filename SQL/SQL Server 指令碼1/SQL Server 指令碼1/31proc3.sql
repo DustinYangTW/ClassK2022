@@ -30,18 +30,11 @@ declare @in_columns nvarchar(max)
 ---主查詢的變數處理好了
 --
 declare @select_columns nvarchar(max)=''
-	select @select_columns+=',isnull(['+cast(o.Month as varchar)+'],0) as ['+cast(o.Month as varchar)+']'
+	select @select_columns+=',isnull(['+cast(o.Month as varchar)+'],0) as ['+cast(o.Month as varchar)+'月]'
 	from 
 	(select distinct month(OrderDate) as [Month] from Orders where year(OrderDate)=@yy) as o
 	order by [Month]
 	print @select_columns
-
-declare @in_columns_month nvarchar(max)
-	select @in_columns_month=isnull(@in_columns_month+',['+cast(o.Month as varchar)+'月]','['+cast(o.Month as varchar)+']')
-	from 
-	(select distinct month(OrderDate) as [Month] from Orders where year(OrderDate)=@yy)as o
-	order by [Month]
-	print @in_columns_month
 
 	--'+cast(@yy as varchar)+'
 declare @sql nvarchar(max)
@@ -58,7 +51,7 @@ group by od.ProductID,p.ProductName,year(o.OrderDate),month(o.OrderDate)) as x
 pivot
 (
 	sum(x.Total)
-	for '+@in_columns+' in
+	for x.month in
 	('+@in_columns+')
 )as pvt
 order by pvt.ProductID'
