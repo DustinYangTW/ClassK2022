@@ -33,6 +33,21 @@
             flex-direction: column;
             align-items: center;
         }
+        #switcher span{
+            border:1px solid;
+            font-size:1.5rem;
+            padding:3px;
+            cursor:pointer;
+        }
+        .small{
+            font-size:0.5rem;
+        }
+        .midd{
+            font-size:1rem;
+        }
+        .big{
+            font-size:2rem;
+        }
     </style>
 </head>
 <body>
@@ -40,10 +55,24 @@
     <div id="container">
         <h1>全球農業旅遊休閒園區</h1>
         輸入城市查詢 :   <input type="text" id="textCity"/>    <input type="button" id="button1" value="查詢" onclick="textbox()" />
+                                                         <div id="switcher">
+                                                             <span id="large">大</span>
+                                                             <span id="default">中</span>
+                                                             <span id="small">小</span>
+                                                         </div>
     </div>
 
     <script src="Scripts/jquery-3.6.0.min.js"></script>
     <script>
+        $('#large').click(function () {
+            $('#TravelData').removeClass().addClass('big')
+        });
+        $('#default').click(function () {
+            $('#TravelData').removeClass().addClass('midd')
+        });
+        $('#small').click(function () {
+            $('#TravelData').removeClass().addClass('small')
+        });
 
         $("#container>h1:first-child").hide().fadeIn(2000);
 
