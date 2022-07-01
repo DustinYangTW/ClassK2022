@@ -36,6 +36,12 @@ declare @select_columns nvarchar(max)=''
 	order by [Month]
 	print @select_columns
 
+declare @in_columns_month nvarchar(max)
+	select @in_columns_month=isnull(@in_columns_month+',['+cast(o.Month as varchar)+'ды]','['+cast(o.Month as varchar)+']')
+	from 
+	(select distinct month(OrderDate) as [Month] from Orders where year(OrderDate)=@yy)as o
+	order by [Month]
+	print @in_columns_month
 
 	--'+cast(@yy as varchar)+'
 declare @sql nvarchar(max)
@@ -52,7 +58,7 @@ group by od.ProductID,p.ProductName,year(o.OrderDate),month(o.OrderDate)) as x
 pivot
 (
 	sum(x.Total)
-	for x.Month in
+	for '+@in_columns+' in
 	('+@in_columns+')
 )as pvt
 order by pvt.ProductID'
@@ -61,4 +67,4 @@ exec(@sql)
 
 end
 
-exec Sum_for_Salse_Pivot 1998
+exec Sum_for_Salse_Pivot 1997
