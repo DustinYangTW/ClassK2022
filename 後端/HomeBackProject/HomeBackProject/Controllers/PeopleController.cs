@@ -27,6 +27,10 @@ namespace HomeBackProject.Controllers
         [HttpPost]
         public ActionResult Create(PeopleData peopleData)
         {
+            AccountData accountData = new AccountData();
+            accountData.EmailAccount = peopleData.EMail;
+            accountData.PassWord = peopleData.PeopleID;
+            actiondbController.Create(db, db.AccountDatas, accountData);
             return actiondbController.Create(db,db.PeopleDatas, peopleData);
         }
     }
