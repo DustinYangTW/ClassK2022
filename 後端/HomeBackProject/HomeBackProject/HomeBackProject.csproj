@@ -43,7 +43,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -89,6 +97,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Models\HomeWebData.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>HomeWebData.Context.cs</LastGenOutput>
+      <DependentUpon>HomeWebData.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\HomeWebData.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HomeWebData.edmx</DependentUpon>
+      <LastGenOutput>HomeWebData.cs</LastGenOutput>
+    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -97,10 +115,89 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AccountData.cs">
+      <DependentUpon>HomeWebData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADTypeData.cs">
+      <DependentUpon>HomeWebData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CarTypeData.cs">
+      <DependentUpon>HomeWebData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CityTypeData.cs">
+      <DependentUpon>HomeWebData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FactoryadjacentTypeData.cs">
+      <DependentUpon>HomeWebData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FactoryData.cs">
+      <DependentUpon>HomeWebData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HomeadjacentTypeData.cs">
+      <DependentUpon>HomeWebData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HomeData.cs">
+      <DependentUpon>HomeWebData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HomeTypeData.cs">
+      <DependentUpon>HomeWebData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HomeWebData.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HomeWebData.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HomeWebData.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HomeWebData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HomeWebData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HomeWebData.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PeopleData.cs">
+      <DependentUpon>HomeWebData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PeopleRankData.cs">
+      <DependentUpon>HomeWebData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProgramData.cs">
+      <DependentUpon>HomeWebData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SaleTypeData.cs">
+      <DependentUpon>HomeWebData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>HomeWebData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>HomeWebData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>HomeWebData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TerritoryadjacentTypeData.cs">
+      <DependentUpon>HomeWebData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TerritoryData.cs">
+      <DependentUpon>HomeWebData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TerritoryTypeData.cs">
+      <DependentUpon>HomeWebData.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
+    <EntityDeploy Include="Models\HomeWebData.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>HomeWebData.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\HomeWebData.edmx.diagram">
+      <DependentUpon>HomeWebData.edmx</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -111,8 +208,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
     <Folder Include="Views\Actiondb\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
