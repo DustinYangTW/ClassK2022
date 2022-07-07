@@ -21,8 +21,11 @@ namespace WebAPI.Controllers
         }
 
         // GET api/values/5
-        public string Get(int id)
+        public string Get(string id)
         {
+            var customers = db.Customers.Find(id);
+            //只能是主鍵才可以用
+            //customers = db.Customers.Where(c=>c.CustomerID == id).FirstOrDefault();
             return "value";
         }
 
