@@ -69,7 +69,6 @@ D:\Git2\後端\HomeBackProject\HomeBackProject\bin\System.Web.Webpages.Razor.xml
 D:\Git2\後端\HomeBackProject\HomeBackProject\bin\System.Web.Helpers.xml
 D:\Git2\後端\HomeBackProject\HomeBackProject\bin\System.Web.Mvc.xml
 D:\Git2\後端\HomeBackProject\HomeBackProject\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\Git2\後端\HomeBackProject\HomeBackProject\bin\zh-Hant\EntityFramework.resources.dll
 D:\Git2\後端\HomeBackProject\HomeBackProject\bin\zh-Hant\System.Web.Razor.resources.dll
 D:\Git2\後端\HomeBackProject\HomeBackProject\bin\zh-Hant\System.Web.Webpages.resources.dll
 D:\Git2\後端\HomeBackProject\HomeBackProject\bin\zh-Hant\System.Web.Webpages.Deployment.resources.dll
