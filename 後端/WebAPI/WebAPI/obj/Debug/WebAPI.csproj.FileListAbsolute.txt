@@ -98,3 +98,4 @@ D:\Git2\後端\WebAPI\WebAPI\bin\EntityFramework.SqlServer.dll
 D:\Git2\後端\WebAPI\WebAPI\bin\EntityFramework.xml
 D:\Git2\後端\WebAPI\WebAPI\bin\EntityFramework.SqlServer.xml
 D:\Git2\後端\WebAPI\WebAPI\bin\zh-Hant\EntityFramework.resources.dll
+D:\Git2\後端\WebAPI\WebAPI\bin\zh-Hant\EntityFramework.SqlServer.resources.dll

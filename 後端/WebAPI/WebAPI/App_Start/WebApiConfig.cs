@@ -9,7 +9,7 @@ namespace WebAPI
     {
         public static void Register(HttpConfiguration config)
         {
-            // Web API 設定和服務
+            // Web API 設定和服務(轉Json)
             GlobalConfiguration.Configuration.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
             // Web API 路由
             config.MapHttpAttributeRoutes();
