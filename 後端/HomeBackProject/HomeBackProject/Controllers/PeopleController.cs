@@ -29,9 +29,10 @@ namespace HomeBackProject.Controllers
         {
             AccountData accountData = new AccountData();
             accountData.EmailAccount = peopleData.EMail;
-            accountData.PassWord = peopleData.PeopleID;
-
+            accountData.PassWord = peopleData.IdebtityNumber;
             actiondbController.Create(db, db.AccountDatas, accountData);
+            var countPeopleDatas = db.PeopleDatas.Count()+1;
+            peopleData.PeopleID = "A" + countPeopleDatas.ToString().PadLeft(9,'0');  //自動加編號A000000000，新增一筆自動+1
             return actiondbController.Create(db,db.PeopleDatas, peopleData);
         }
     }
