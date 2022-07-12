@@ -9,3 +9,9 @@ D:\Git2\後端\WebAPI\WinFormApp\obj\Debug\WinFormApp.csproj.GenerateResource.ca
 D:\Git2\後端\WebAPI\WinFormApp\obj\Debug\WinFormApp.csproj.CoreCompileInputs.cache
 D:\Git2\後端\WebAPI\WinFormApp\obj\Debug\WinFormApp.exe
 D:\Git2\後端\WebAPI\WinFormApp\obj\Debug\WinFormApp.pdb
+D:\Git2\後端\WebAPI\WinFormApp\bin\Debug\Newtonsoft.Json.dll
+D:\Git2\後端\WebAPI\WinFormApp\bin\Debug\System.Net.Http.Formatting.dll
+D:\Git2\後端\WebAPI\WinFormApp\bin\Debug\Newtonsoft.Json.xml
+D:\Git2\後端\WebAPI\WinFormApp\bin\Debug\System.Net.Http.Formatting.xml
+D:\Git2\後端\WebAPI\WinFormApp\bin\Debug\zh-Hant\System.Net.Http.Formatting.resources.dll
+D:\Git2\後端\WebAPI\WinFormApp\obj\Debug\WinFormApp.csproj.CopyComplete
