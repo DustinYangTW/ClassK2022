@@ -1,0 +1,11 @@
+D:\Git2\後端\WebAPI\WinFormApp\bin\Debug\WinFormApp.exe.config
+D:\Git2\後端\WebAPI\WinFormApp\bin\Debug\WinFormApp.exe
+D:\Git2\後端\WebAPI\WinFormApp\bin\Debug\WinFormApp.pdb
+D:\Git2\後端\WebAPI\WinFormApp\obj\Debug\WinFormApp.csproj.AssemblyReference.cache
+D:\Git2\後端\WebAPI\WinFormApp\obj\Debug\WinFormApp.csproj.SuggestedBindingRedirects.cache
+D:\Git2\後端\WebAPI\WinFormApp\obj\Debug\WinFormApp.Form1.resources
+D:\Git2\後端\WebAPI\WinFormApp\obj\Debug\WinFormApp.Properties.Resources.resources
+D:\Git2\後端\WebAPI\WinFormApp\obj\Debug\WinFormApp.csproj.GenerateResource.cache
+D:\Git2\後端\WebAPI\WinFormApp\obj\Debug\WinFormApp.csproj.CoreCompileInputs.cache
+D:\Git2\後端\WebAPI\WinFormApp\obj\Debug\WinFormApp.exe
+D:\Git2\後端\WebAPI\WinFormApp\obj\Debug\WinFormApp.pdb

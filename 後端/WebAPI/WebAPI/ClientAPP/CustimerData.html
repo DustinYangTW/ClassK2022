@@ -1,34 +1,82 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8" />
     <title></title>
+
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
     <div class="container">
-        <table id="table1" class="table table-bordered">
+        <h2 class="text-center mt-4 mb-3">Customer Data List</h2>
+        <div class="form-group row">
+            <label class="col-2">請輸入CustomerID</label>
+            <div class="col-8">
+                <input id="txtCustomerID" type="text" class="form-control" />
+            </div>
+            <div class="col-2">
+                <button class="btn btn-primary btn-block" id="btnSearch">查詢</button>
+            </div>
+        </div>
+        <table id="table1" class="table text-dark table-hover shadow-lg border border-info">
         </table>
     </div>
+
     <script src="../Scripts/jquery-3.4.1.min.js"></script>
     <script>
-        var item = "<tr class='bg-dark text-white text-center'><th>CustomerID</th><th>CompanyName</th><th>ContactName</th><th>ContactTitle</th><th>Address</th><th>City</th><th>Country</th></tr>";
-        $('#table1').empty();
-        //data.length;ContactName
-        $.ajax({
-            type: 'get',
-            url: 'http://localhost:53860/api/Values',
-            success: function (data) {
-                for (let d of data) {
-                    item += `<tr><td>${d.CustomerID}</td><td>${d.CompanyName}</td><td>${d.ContactName}</td><td>${d.ContactTitle}</td><td>${d.Address}</td><td>${d.City}</td><td>${d.Country}</td></tr>`;
+        let item = "";
+        GetList();
+        function GetList() {
+            $('#table1').empty();
+            item = "<thead><tr class='bg-dark text-white text-center'><th>CustomerID</th><th>CompanyName</th><th>ContactName</th><th>ContactTitle</th><th>Address</th><th>City</th><th>Country</th></tr></thead>";
+            $.ajax({
+                type: 'get',
+                url: 'http://localhost:53860/api/Values',
+                success: function (data) {
+                    console.log(data);
+                    item += "<tbody>";
+                    //for....of....
+                    for (let d of data) {
+                        item += `<tr><td>${d.CustomerID}</td><td>${d.CompanyName}</td><td>${d.ContactName}</td><td>${d.ContactTitle}</td><td>${d.Address}</td><td>${d.City}</td><td>${d.Country}</td></tr>`;
+                    }
+                    item += "</tbody>";
+                    $('#table1').append(item);
                 }
-                $('#table1').append(item);
+            });
+        }
+        //var btnSearch = document.getElementById("btnSearch");
+        //btnSearch.addEventListener('click', function () { })
+
+        $('#btnSearch').click(function () {
+            if ($('#txtCustomerID').val() == "") {
+                GetList();
+            }
+            else {
+                $('#table1').empty();
+                item = "<thead><tr class='bg-dark text-white text-center'><th>CustomerID</th><th>CompanyName</th><th>ContactName</th><th>ContactTitle</th><th>Address</th><th>City</th><th>Country</th></tr></thead>";
+                //console.log('http://localhost:53860/api/Values/' + $('#txtCustomerID').val());
+                $.ajax({
+                    type: 'get',
+                    url: 'http://localhost:53860/api/Values/' + $('#txtCustomerID').val(),
+                    success: function (d) {
+                        console.log(d);
+                        if (d == null) {
+                            $('#table1').append("<h2 class='alert alert-danger text-center'>查無任何資料</h2>");
+                        }
+                        else {
+                            item += "<tbody>";
+                            item += `<tr><td>${d.CustomerID}</td><td>${d.CompanyName}</td><td>${d.ContactName}</td><td>${d.ContactTitle}</td><td>${d.Address}</td><td>${d.City}</td><td>${d.Country}</td></tr>`;
+
+                            item += "</tbody>";
+                            $('#table1').append(item);
+                        }
+                    }
+                });
             }
         });
 
-
-        $('table1');
     </script>
 </body>
 </html>
