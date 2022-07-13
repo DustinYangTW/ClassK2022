@@ -21,7 +21,7 @@ namespace MetaDataHomeBackProject.Models
         public string PassWord { get; set; }
     }
 
-    public class ADTypeData
+    public class MetaADTypeData
     {
         [Key]
         [DisplayName("廣告代號")]
