@@ -31,4 +31,15 @@ namespace MetaDataHomeBackProject.Models
         [StringLength(30, ErrorMessage = "最長只能輸入30個字")]
         public string ADName { get; set; }
     }
+
+    public class MetaCarTypeData
+    {
+        [Key]
+        [DisplayName("車位代號")]
+        public byte CarTypeID { get; set; }
+        [DisplayName("車位名稱")]
+        [Required]
+        [StringLength(20, ErrorMessage = "最長只能輸入20個字")]
+        public string CarTypeName { get; set; }
+    }
 }
