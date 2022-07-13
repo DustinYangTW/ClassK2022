@@ -172,6 +172,7 @@
     <Compile Include="Models\HomeTypeData.cs">
       <DependentUpon>HomeData.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\MetaData.cs" />
     <Compile Include="Models\PeopleData.cs">
       <DependentUpon>HomeData.tt</DependentUpon>
     </Compile>

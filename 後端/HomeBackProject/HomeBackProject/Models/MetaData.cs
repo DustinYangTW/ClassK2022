@@ -7,13 +7,13 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MetaDataHomeBackProject.Models
 {
-    public class MeataAccountData
+    public class MeataAccountDatas
     {
         [Key]
         [DisplayName("使用者帳號")]
         [Required]
         [EmailAddress(ErrorMessage = "電子郵件格錯誤")]
-        [StringLength(64)]
+        [StringLength(64, ErrorMessage = "最長只能輸入64個字")]
         public string EmailAccount { get; set; }
         [DisplayName("使用者帳號")]
         [Required]
