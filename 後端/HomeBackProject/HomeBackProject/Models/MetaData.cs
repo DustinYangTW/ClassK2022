@@ -20,4 +20,15 @@ namespace MetaDataHomeBackProject.Models
         [RegularExpression("[A-Za-z0-9]{7,20}", ErrorMessage = "密碼格是錯誤，只能輸入英文跟數字")]
         public string PassWord { get; set; }
     }
+
+    public class ADTypeData
+    {
+        [Key]
+        [DisplayName("廣告代號")]
+        public short ADID { get; set; }
+        [DisplayName("廣告名稱")]
+        [Required]
+        [StringLength(30, ErrorMessage = "最長只能輸入30個字")]
+        public string ADName { get; set; }
+    }
 }
