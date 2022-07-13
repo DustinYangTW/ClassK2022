@@ -42,4 +42,16 @@ namespace MetaDataHomeBackProject.Models
         [StringLength(20, ErrorMessage = "最長只能輸入20個字")]
         public string CarTypeName { get; set; }
     }
+
+    public class MetaCityTypeData
+    {
+        [Key]
+        [DisplayName("縣市代號")]
+        [RegularExpression("[A-Z]{1}", ErrorMessage = "輸入錯誤，請查詢後再輸入")]
+        public string CityIDTW { get; set; }
+        [DisplayName("縣市名稱")]
+        [Required]
+        [StringLength(5, ErrorMessage = "最長只能輸入5個字")]
+        public string CityTW { get; set; }
+    }
 }
