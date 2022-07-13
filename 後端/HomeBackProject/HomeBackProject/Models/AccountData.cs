@@ -9,9 +9,13 @@
 
 namespace HomeBackProject.Models
 {
+    using MetaDataHomeBackProject.Models;
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
+    [MetadataType(typeof(MeataAccountDatas))]
     public partial class AccountData
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
