@@ -55,5 +55,17 @@ namespace MetaDataHomeBackProject.Models
         public string CityTW { get; set; }
     }
 
-
+    public class MetaFactoryadjacentTypeData
+    {
+        [Key]
+        [DisplayName("工廠鄰近物")]
+        public byte FactoryAdjacentStateID { get; set; }
+        [DisplayName("鄰近物名稱")]
+        [Required]
+        [StringLength(30, ErrorMessage = "最長只能輸入30個字")]
+        public string FactoryAdjacentName { get; set; }
+        [DisplayName("工廠ID")]
+        [Required]
+        public string FactoryID { get; set; }
+    }
 }
