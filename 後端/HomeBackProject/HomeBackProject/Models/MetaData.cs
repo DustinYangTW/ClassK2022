@@ -54,4 +54,6 @@ namespace MetaDataHomeBackProject.Models
         [StringLength(5, ErrorMessage = "最長只能輸入5個字")]
         public string CityTW { get; set; }
     }
+
+
 }

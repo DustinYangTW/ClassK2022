@@ -15,7 +15,7 @@ namespace HomeBackProject.Models
     using System.ComponentModel.DataAnnotations;
     using MetaDataHomeBackProject.Models;
 
-    [MetadataType(typeof(MetaCarTypeData))]
+    [MetadataType(typeof(MetaCityTypeData))]
     public partial class CityTypeData
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
