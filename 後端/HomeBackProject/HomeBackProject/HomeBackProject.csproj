@@ -113,24 +113,87 @@
     <Content Include="Models\HomeData.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>HomeData.Context.cs</LastGenOutput>
+      <DependentUpon>HomeData.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\HomeData.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HomeData.edmx</DependentUpon>
+      <LastGenOutput>HomeData1.cs</LastGenOutput>
     </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ActiondbControllerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountData.cs">
+      <DependentUpon>HomeData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADTypeData.cs">
+      <DependentUpon>HomeData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CarTypeData.cs">
+      <DependentUpon>HomeData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CityTypeData.cs">
+      <DependentUpon>HomeData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FactoryadjacentTypeData.cs">
+      <DependentUpon>HomeData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FactoryData.cs">
+      <DependentUpon>HomeData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HomeadjacentTypeData.cs">
+      <DependentUpon>HomeData.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HomeData.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>HomeData.Context.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\HomeData.cs">
+      <DependentUpon>HomeData.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\HomeData.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>HomeData.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HomeData1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HomeData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HomeTypeData.cs">
+      <DependentUpon>HomeData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PeopleData.cs">
+      <DependentUpon>HomeData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PeopleRankData.cs">
+      <DependentUpon>HomeData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProgramData.cs">
+      <DependentUpon>HomeData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SaleTypeData.cs">
+      <DependentUpon>HomeData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>HomeData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TerritoryadjacentTypeData.cs">
+      <DependentUpon>HomeData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TerritoryData.cs">
+      <DependentUpon>HomeData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TerritoryTypeData.cs">
+      <DependentUpon>HomeData.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -140,9 +203,9 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>HomeData.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Models\HomeData.edmx.diagram">
+    <Content Include="Models\HomeData.edmx.diagram">
       <DependentUpon>HomeData.edmx</DependentUpon>
-    </None>
+    </Content>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -153,7 +216,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
+    <Folder Include="Views\ActiondbController\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
