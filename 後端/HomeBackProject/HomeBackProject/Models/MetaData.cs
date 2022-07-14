@@ -94,4 +94,15 @@ namespace MetaDataHomeBackProject.Models
         [StringLength(20, ErrorMessage = "最長只能輸入20個字")]
         public string PeopleRank { get; set; }
     }
+
+    public class MetaProgramData
+    {
+        [Key]
+        [DisplayName("會員方案代號")]
+        public short ProgramSerialID { get; set; }
+        [DisplayName("會員方案名稱")]
+        [Required]
+        [StringLength(30, ErrorMessage = "最長只能輸入30個字")]
+        public string ProgramName { get; set; }
+    }
 }
