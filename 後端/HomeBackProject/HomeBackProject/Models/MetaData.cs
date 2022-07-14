@@ -83,4 +83,15 @@ namespace MetaDataHomeBackProject.Models
         public string HomeID { get; set; }
 
     }
+
+    public class MetaPeopleRankData
+    {
+        [Key]
+        [DisplayName("會員身分代號")]
+        public byte HomeTSaleStateID { get; set; }
+        [DisplayName("會員身分")]
+        [Required]
+        [StringLength(20, ErrorMessage = "最長只能輸入20個字")]
+        public string PeopleRank { get; set; }
+    }
 }
