@@ -11,7 +11,12 @@ namespace HomeBackProject.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+    using MetaDataHomeBackProject.Models;
+
+    [MetadataType(typeof(MetaHomeadjacentTypeData))]
+
     public partial class HomeadjacentTypeData
     {
         public byte HomeAdjacentStateID { get; set; }

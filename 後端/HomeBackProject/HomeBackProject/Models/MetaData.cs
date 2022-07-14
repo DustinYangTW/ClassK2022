@@ -68,4 +68,19 @@ namespace MetaDataHomeBackProject.Models
         [Required]
         public string FactoryID { get; set; }
     }
+
+    public class MetaHomeadjacentTypeData
+    {
+        [Key]
+        [DisplayName("房屋鄰近物")]
+        public byte HomeAdjacentStateID { get; set; }
+        [DisplayName("鄰近物名稱")]
+        [Required]
+        [StringLength(30, ErrorMessage = "最長只能輸入30個字")]
+        public string HomeAdjacentName { get; set; }
+        [DisplayName("房屋ID")]
+        [Required]
+        public string HomeID { get; set; }
+
+    }
 }
