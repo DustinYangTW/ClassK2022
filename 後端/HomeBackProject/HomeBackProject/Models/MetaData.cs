@@ -131,5 +131,15 @@ namespace MetaDataHomeBackProject.Models
         public string SaleState { get; set; }
     }
 
+    public class MetaTerritoryTypeData
+    {
+        [Key]
+        [DisplayName("土地類型代號")]
+        public byte TerritorySerialID { get; set; }
+        [DisplayName("土地類型")]
+        [Required]
+        [StringLength(10, ErrorMessage = "最長只能輸入10個字")]
+        public string TerritoryTypeSelect { get; set; }
+    }
 
 }
