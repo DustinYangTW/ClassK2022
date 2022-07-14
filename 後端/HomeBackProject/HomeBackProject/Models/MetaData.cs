@@ -58,7 +58,7 @@ namespace MetaDataHomeBackProject.Models
     public class MetaFactoryadjacentTypeData
     {
         [Key]
-        [DisplayName("工廠鄰近物")]
+        [DisplayName("工廠鄰近物ID")]
         public byte FactoryAdjacentStateID { get; set; }
         [DisplayName("鄰近物名稱")]
         [Required]
@@ -72,7 +72,7 @@ namespace MetaDataHomeBackProject.Models
     public class MetaHomeadjacentTypeData
     {
         [Key]
-        [DisplayName("房屋鄰近物")]
+        [DisplayName("房屋鄰近物ID")]
         public byte HomeAdjacentStateID { get; set; }
         [DisplayName("鄰近物名稱")]
         [Required]
@@ -82,6 +82,20 @@ namespace MetaDataHomeBackProject.Models
         [Required]
         public string HomeID { get; set; }
 
+    }
+
+    public class MetaTerritoryadjacentTypeData
+    {
+        [Key]
+        [DisplayName("工廠鄰近物ID")]
+        public byte TerritoryAdjacentStateID { get; set; }
+        [DisplayName("鄰近物名稱")]
+        [Required]
+        [StringLength(30, ErrorMessage = "最長只能輸入30個字")]
+        public string TerritoryAdjacentName { get; set; }
+        [DisplayName("工廠ID")]
+        [Required]
+        public string TerritoryID { get; set; }
     }
 
     public class MetaPeopleRankData
@@ -116,4 +130,6 @@ namespace MetaDataHomeBackProject.Models
         [StringLength(5, ErrorMessage = "最長只能輸入5個字")]
         public string SaleState { get; set; }
     }
+
+
 }
