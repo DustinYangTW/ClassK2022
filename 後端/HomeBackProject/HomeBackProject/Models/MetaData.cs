@@ -105,4 +105,15 @@ namespace MetaDataHomeBackProject.Models
         [StringLength(30, ErrorMessage = "最長只能輸入30個字")]
         public string ProgramName { get; set; }
     }
+
+    public class MetaSaleTypeData
+    {
+        [Key]
+        [DisplayName("銷售狀態代號")]
+        public byte SaleStateID { get; set; }
+        [DisplayName("銷售狀態")]
+        [Required]
+        [StringLength(5, ErrorMessage = "最長只能輸入5個字")]
+        public string SaleState { get; set; }
+    }
 }
