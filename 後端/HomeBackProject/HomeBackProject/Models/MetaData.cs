@@ -17,7 +17,7 @@ namespace MetaDataHomeBackProject.Models
         public string EmailAccount { get; set; }
         [DisplayName("使用者帳號")]
         [Required(ErrorMessage = "必填欄位")]
-        [RegularExpression("[A-Za-z0-9]{7,20}", ErrorMessage = "密碼格是錯誤，只能輸入英文跟數字")]
+        [RegularExpression("[A-Za-z0-9]{7,20}", ErrorMessage = "密碼格式錯誤，只能輸入英文跟數字")]
         public string PassWord { get; set; }
     }
 
@@ -142,12 +142,11 @@ namespace MetaDataHomeBackProject.Models
         public string TerritoryTypeSelect { get; set; }
     }
 
-
     public class MetaPeopleData
     {
         [Key]
         [DisplayName("會員代號")]
-        [RegularExpression("[A][0-9]{9}", ErrorMessage = "編號格是錯誤")]
+        [RegularExpression("[A][0-9]{9}", ErrorMessage = "編號格式錯誤")]
         public string PeopleID { get; set; }
         [DisplayName("姓名")]
         [Required(ErrorMessage = "必填欄位")]
@@ -229,5 +228,29 @@ namespace MetaDataHomeBackProject.Models
                 return false;
             }
         }
+    }
+
+    public class MetaFactoryData
+    {
+        [Key]
+        [DisplayName("廠房編號")]
+        [RegularExpression("[F][0-9]{9}", ErrorMessage = "編號格式錯誤")]
+        public string FactoryID { get; set; }
+        public string FactoryName { get; set; }
+        public decimal FactoryMoney { get; set; }
+        public decimal FactorySquareMeters { get; set; }
+        public Nullable<decimal> FactoryMetersMoney { get; set; }
+        public string FactoryCity { get; set; }
+        public string FactoryTown { get; set; }
+        public string FactoryStreet { get; set; }
+        public Nullable<byte> FactoryFloor { get; set; }
+        public Nullable<byte> FactoryHighFloor { get; set; }
+        public byte FactoryAges { get; set; }
+        public bool FactorySaleAndLease { get; set; }
+        public string FactoryFeatures { get; set; }
+        public byte FactorySaleType { get; set; }
+        public string FactoryTerritory { get; set; }
+        public string FactoryPeopleID { get; set; }
+        public Nullable<short> FactoryADLevel { get; set; }
     }
 }
