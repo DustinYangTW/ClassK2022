@@ -367,4 +367,51 @@ namespace MetaDataHomeBackProject.Models
         public Nullable<short> HomeADLevel { get; set; }
 
     }
+
+    public class MetaTerritoryData
+    {
+        [Key]
+        [DisplayName("土地編號")]
+        [RegularExpression("[T][0-9]{9}", ErrorMessage = "編號格式錯誤")]
+        public string TerritoryID { get; set; }
+        [DisplayName("土地案名")]
+        [Required(ErrorMessage = "必填欄位")]
+        [StringLength(30, ErrorMessage = "最長只能輸入30個字")]
+        public string TerritoryName { get; set; }
+        [DisplayName("售價(萬)")]
+        [Required(ErrorMessage = "必填欄位")]
+        public decimal TerritoryMoney { get; set; }
+        [DisplayName("總坪數")]
+        [Required(ErrorMessage = "必填欄位")]
+        public decimal TerritorySquareMeters { get; set; }
+        [DisplayName("單坪售價")]
+        public Nullable<decimal> TerritoryMetersMoney { get; set; }
+        [DisplayName("縣市")]
+        [Required(ErrorMessage = "必填欄位")]
+        public string TerritoryCity { get; set; }
+        [DisplayName("鄉鎮")]
+        [Required(ErrorMessage = "必填欄位")]
+        public string TerritoryTown { get; set; }
+        [DisplayName("街道路")]
+        [Required(ErrorMessage = "必填欄位")]
+        [StringLength(10, ErrorMessage = "最長只能輸入10個字")]
+        public string TerritoryStreet { get; set; }
+        [DisplayName("售/租")]
+        [Required(ErrorMessage = "必填欄位")]
+        public bool TerritorySaleAndLease { get; set; }
+        [DisplayName("土地特色")]
+        [StringLength(1000, ErrorMessage = "最長只能輸入1000個字")]
+        public string TerritoryFeatures { get; set; }
+        [DisplayName("銷售狀態")]
+        [Required(ErrorMessage = "必填欄位")]
+        public byte TerritorySaleType { get; set; }
+        [DisplayName("土地類型")]
+        [Required(ErrorMessage = "必填欄位")]
+        public byte TerritoryType { get; set; }
+        [DisplayName("會員編號")]
+        [Required(ErrorMessage = "必填欄位")]
+        public string TerritoryPeopleID { get; set; }
+        [DisplayName("廣告等級")]
+        public Nullable<short> TerritoryADLevel { get; set; }
+    }
 }
