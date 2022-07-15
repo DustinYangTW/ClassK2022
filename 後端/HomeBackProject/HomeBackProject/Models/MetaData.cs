@@ -259,8 +259,10 @@ namespace MetaDataHomeBackProject.Models
         [StringLength(10, ErrorMessage = "最長只能輸入10個字")]
         public string FactoryStreet { get; set; }
         [DisplayName("樓層")]
+        [RegularExpression("[0-9]{,4}", ErrorMessage = "格式錯誤")]
         public Nullable<byte> FactoryFloor { get; set; }
         [DisplayName("總樓層")]
+        [RegularExpression("[0-9]{,4}", ErrorMessage = "格式錯誤")]
         public Nullable<byte> FactoryHighFloor { get; set; }
         [DisplayName("屋齡")]
         [Required(ErrorMessage = "必填欄位")]
@@ -282,5 +284,87 @@ namespace MetaDataHomeBackProject.Models
         public string FactoryPeopleID { get; set; }
         [DisplayName("廣告等級")]
         public Nullable<short> FactoryADLevel { get; set; }
+    }
+
+
+    public class MetaHomeData
+    {
+        [Key]
+        [DisplayName("房屋編號")]
+        [RegularExpression("[H][0-9]{9}", ErrorMessage = "編號格式錯誤")]
+        public string HomeID { get; set; }
+        [DisplayName("房屋案名")]
+        [Required(ErrorMessage = "必填欄位")]
+        [StringLength(30, ErrorMessage = "最長只能輸入30個字")]
+        public string HomeName { get; set; }
+        [DisplayName("售價(萬)")]
+        [Required(ErrorMessage = "必填欄位")]
+        public decimal HomeMoney { get; set; }
+        [DisplayName("總坪數")]
+        [Required(ErrorMessage = "必填欄位")]
+        public decimal HomeSquareMeters { get; set; }
+        [DisplayName("單坪售價")]
+        public Nullable<decimal> HomeMetersMoney { get; set; }
+        [DisplayName("縣市")]
+        [Required(ErrorMessage = "必填欄位")]
+        public string HomeCity { get; set; }
+        [DisplayName("鄉鎮")]
+        [Required(ErrorMessage = "必填欄位")]
+        public string HomeTown { get; set; }
+        [DisplayName("街道路")]
+        [Required(ErrorMessage = "必填欄位")]
+        [StringLength(10, ErrorMessage = "最長只能輸入10個字")]
+        public string HomeStreet { get; set; }
+        [DisplayName("樓層")]
+        [RegularExpression("[0-9]{,4}", ErrorMessage = "格式錯誤")]
+        public Nullable<byte> HomeFloor { get; set; }
+        [DisplayName("總樓層")]
+        [RegularExpression("[0-9]{,4}", ErrorMessage = "格式錯誤")]
+        public Nullable<byte> HomeHighFloor { get; set; }
+        [DisplayName("售/租")]
+        [Required(ErrorMessage = "必填欄位")]
+        public bool HomeSaleAndLease { get; set; }
+        [DisplayName("屋齡")]
+        [Required(ErrorMessage = "必填欄位")]
+        [RegularExpression("[0-9]{,4}", ErrorMessage = "格式錯誤")]
+
+        public byte HomeAges { get; set; }
+        [DisplayName("房")]
+        [Required(ErrorMessage = "必填欄位")]
+        [RegularExpression("[0-9]{,4}", ErrorMessage = "格式錯誤")]
+        public byte HomeRoom { get; set; }
+        [DisplayName("廳")]
+        [Required(ErrorMessage = "必填欄位")]
+        [RegularExpression("[0-9]{,4}", ErrorMessage = "格式錯誤")]
+        public byte HomeHall { get; set; }
+        [DisplayName("衛浴")]
+        [Required(ErrorMessage = "必填欄位")]
+        [RegularExpression("[0-9]{,4}", ErrorMessage = "格式錯誤")]
+        public byte HomeBathroom { get; set; }
+        [DisplayName("陽台")]
+        [RegularExpression("[0-9]{,4}", ErrorMessage = "格式錯誤")]
+        public byte HomeBalcony { get; set; }
+        [DisplayName("廠房特色")]
+        [StringLength(1000, ErrorMessage = "最長只能輸入1000個字")]
+        public string HomeFeatures { get; set; }
+        [DisplayName("管理費")]
+        [Required(ErrorMessage = "必填欄位")]
+        [RegularExpression("[0-9]{,7}", ErrorMessage = "格式錯誤")]
+        public Nullable<decimal> HomeManageTip { get; set; }
+        [DisplayName("車位類型")]
+        [Required(ErrorMessage = "必填欄位")]
+        public byte HomeCarID { get; set; }
+        [DisplayName("銷售狀態")]
+        [Required(ErrorMessage = "必填欄位")]
+        public byte HomeSaleType { get; set; }
+        [DisplayName("房屋類型")]
+        [Required(ErrorMessage = "必填欄位")]
+        public byte HomeType { get; set; }
+        [DisplayName("會員編號")]
+        [Required(ErrorMessage = "必填欄位")]
+        public string HomePeopleID { get; set; }
+        [DisplayName("廣告等級")]
+        public Nullable<short> HomeADLevel { get; set; }
+
     }
 }
