@@ -236,21 +236,51 @@ namespace MetaDataHomeBackProject.Models
         [DisplayName("廠房編號")]
         [RegularExpression("[F][0-9]{9}", ErrorMessage = "編號格式錯誤")]
         public string FactoryID { get; set; }
+        [DisplayName("廠房案名")]
+        [Required(ErrorMessage = "必填欄位")]
+        [StringLength(30, ErrorMessage = "最長只能輸入30個字")]
         public string FactoryName { get; set; }
+        [DisplayName("售價(萬)")]
+        [Required(ErrorMessage = "必填欄位")]
         public decimal FactoryMoney { get; set; }
+        [DisplayName("總坪數")]
+        [Required(ErrorMessage = "必填欄位")]
         public decimal FactorySquareMeters { get; set; }
+        [DisplayName("單坪售價")]
         public Nullable<decimal> FactoryMetersMoney { get; set; }
+        [DisplayName("縣市")]
+        [Required(ErrorMessage = "必填欄位")]
         public string FactoryCity { get; set; }
+        [DisplayName("鄉鎮")]
+        [Required(ErrorMessage = "必填欄位")]
         public string FactoryTown { get; set; }
+        [DisplayName("街道路")]
+        [Required(ErrorMessage = "必填欄位")]
+        [StringLength(10, ErrorMessage = "最長只能輸入10個字")]
         public string FactoryStreet { get; set; }
+        [DisplayName("樓層")]
         public Nullable<byte> FactoryFloor { get; set; }
+        [DisplayName("總樓層")]
         public Nullable<byte> FactoryHighFloor { get; set; }
+        [DisplayName("屋齡")]
+        [Required(ErrorMessage = "必填欄位")]
         public byte FactoryAges { get; set; }
+        [DisplayName("售/租")]
+        [Required(ErrorMessage = "必填欄位")]
         public bool FactorySaleAndLease { get; set; }
+        [DisplayName("廠房特色")]
+        [StringLength(1000, ErrorMessage = "最長只能輸入1000個字")]
         public string FactoryFeatures { get; set; }
+        [DisplayName("銷售狀態")]
+        [Required(ErrorMessage = "必填欄位")]
         public byte FactorySaleType { get; set; }
+        [DisplayName("土地類型")]
+        [Required(ErrorMessage = "必填欄位")]
         public string FactoryTerritory { get; set; }
+        [DisplayName("會員編號")]
+        [Required(ErrorMessage = "必填欄位")]
         public string FactoryPeopleID { get; set; }
+        [DisplayName("廣告等級")]
         public Nullable<short> FactoryADLevel { get; set; }
     }
 }
