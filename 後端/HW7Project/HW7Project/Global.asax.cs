@@ -13,7 +13,7 @@ namespace HW7Project
     {
         protected void Application_Start()
         {
-            Database.SetInitializer<HW7ProjectContext>(new DBInitializer());
+            //Database.SetInitializer<HW7ProjectContext>(new DBInitializer());
 
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
