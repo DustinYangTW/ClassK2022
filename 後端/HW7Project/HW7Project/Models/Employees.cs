@@ -19,7 +19,7 @@ namespace HW7Project.Models
         [DisplayName("建立時間")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString ="{0:yyyy/MM/dd}",ApplyFormatInEditMode =true)]
-        public DateTime CreateDate { get; set; }
+        public DateTime CreatedDate { get; set; }
         [Required(ErrorMessage = "請填寫帳號")]
         [StringLength(20, ErrorMessage = "不能超過20個字")]
         [DisplayName("員工帳號")]
