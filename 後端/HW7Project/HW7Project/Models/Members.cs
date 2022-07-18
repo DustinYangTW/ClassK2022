@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-
+using System.Security.Cryptography;
 
 namespace HW7Project.Models
 {
@@ -31,11 +31,36 @@ namespace HW7Project.Models
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         public DateTime CreatedDate { get; set; }
 
+        string password;//定義一個password的field
+
         //做雜湊
         [Required(ErrorMessage = "必填欄位")]
         [DataType(DataType.Password)]
         [DisplayName("會員密碼")]
-        public string PassWord { get; set; }
+        public string PassWord
+        {
+            get
+            {
+                return password;
+            }
+            set
+            {
+                byte[] hashValue;
+                string result = "";
 
+                System.Text.UnicodeEncoding ue = new System.Text.UnicodeEncoding();
+                byte[] pwBytes = ue.GetBytes(value);
+                SHA256 shHash = SHA256.Create();
+
+                hashValue = shHash.ComputeHash(pwBytes);
+
+                foreach(byte b in hashValue)
+                {
+                    result += b.ToString();
+                }
+
+                password = result;
+            }
+        }
     }
 }

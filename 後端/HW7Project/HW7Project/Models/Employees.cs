@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Security.Cryptography;
 
 namespace HW7Project.Models
 {
@@ -24,11 +25,32 @@ namespace HW7Project.Models
         [StringLength(20, ErrorMessage = "不能超過20個字")]
         [DisplayName("員工帳號")]
         public string Account { get; set; }
+
+
+        string password;//定義一個password的field
+
         [Required(ErrorMessage = "請填寫密碼")]
-        [MinLength(8,ErrorMessage ="密碼最少要8碼")]
-        [MaxLength(20,ErrorMessage ="密碼最多20碼")]
         [DataType(DataType.Password)]
         [DisplayName("員工密碼")]
-        public string Password { get; set; }
+        public string Password { 
+            get { return password; } 
+            set {
+                byte[] hashValue;
+                string result = "";
+
+                System.Text.UnicodeEncoding ue = new System.Text.UnicodeEncoding();
+                byte[] pwBytes = ue.GetBytes(value);
+                SHA256 shHash = SHA256.Create();
+
+                hashValue = shHash.ComputeHash(pwBytes);
+
+                foreach (byte b in hashValue)
+                {
+                    result += b.ToString();
+                }
+
+                password = result;
+            } 
+        }
     }
 }
