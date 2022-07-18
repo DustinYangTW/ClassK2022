@@ -15,7 +15,7 @@ namespace HW7Project.Models
         public int ShipID { get; set; }
         [DisplayName("送貨方式")]
         [Required(ErrorMessage = "必填欄位")]
-        [StringLength(20,ErrorMessage ="最多輸入20個字")]
+        [StringLength(50,ErrorMessage ="最多輸入50個字")]
         public string ShipVia { get; set; }
     }
 }

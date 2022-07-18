@@ -17,12 +17,6 @@ namespace HW7Project.Models
         [Required(ErrorMessage = "請填寫帳號")]
         [StringLength(20, ErrorMessage = "不能超過20個字")]
         public string Account { get; set; }
-        [Required(ErrorMessage = "必填欄位")]
-        [MinLength(8, ErrorMessage = "密碼最少要8碼")]
-        [MaxLength(20, ErrorMessage = "密碼最多20碼")]
-        [DataType(DataType.Password)]
-        [DisplayName("會員密碼")]
-        public string PassWord { get; set; }
         [DisplayName("會員名字")]
         [Required(ErrorMessage = "必填欄位")]
         [StringLength(20, ErrorMessage = "最多輸入20個字")]
@@ -37,6 +31,11 @@ namespace HW7Project.Models
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         public DateTime CreatedDate { get; set; }
 
+        //做雜湊
+        [Required(ErrorMessage = "必填欄位")]
+        [DataType(DataType.Password)]
+        [DisplayName("會員密碼")]
+        public string PassWord { get; set; }
 
     }
 }
