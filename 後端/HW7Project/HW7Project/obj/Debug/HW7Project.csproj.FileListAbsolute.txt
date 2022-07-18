@@ -76,3 +76,7 @@ D:\Git2\後端\HW7Project\HW7Project\obj\Debug\HW7Project.csproj.CoreCompileInpu
 D:\Git2\後端\HW7Project\HW7Project\obj\Debug\HW7Project.csproj.CopyComplete
 D:\Git2\後端\HW7Project\HW7Project\obj\Debug\HW7Project.dll
 D:\Git2\後端\HW7Project\HW7Project\obj\Debug\HW7Project.pdb
+D:\Git2\後端\HW7Project\HW7Project\bin\EntityFramework.dll
+D:\Git2\後端\HW7Project\HW7Project\bin\EntityFramework.SqlServer.dll
+D:\Git2\後端\HW7Project\HW7Project\bin\EntityFramework.xml
+D:\Git2\後端\HW7Project\HW7Project\bin\EntityFramework.SqlServer.xml

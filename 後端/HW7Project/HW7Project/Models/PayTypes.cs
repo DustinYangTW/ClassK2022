@@ -15,6 +15,6 @@ namespace HW7Project.Models
         [DisplayName("付款名稱")]
         [Required(ErrorMessage = "必填欄位")]
         [StringLength(20,ErrorMessage ="只能輸入20個數字")]
-        public string PyaTypeName { get; set; }
+        public string PayTypeName { get; set; }
     }
 }
