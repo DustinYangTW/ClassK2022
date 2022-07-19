@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace HW7Project.Controllers
 {
-    public class IndexController : Controller
+    public class HomeManagerController : Controller
     {
         // GET: Index
         public ActionResult Index()
