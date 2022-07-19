@@ -11,6 +11,10 @@ namespace HW7Project.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            if (Session["user"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
     }

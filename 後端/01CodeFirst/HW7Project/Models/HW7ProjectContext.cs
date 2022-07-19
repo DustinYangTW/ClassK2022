@@ -20,5 +20,6 @@ namespace HW7Project.Models
         public DbSet<Products> Products { get; set; }
         public DbSet<Shippers> Shippers { get; set; }
 
+        public System.Data.Entity.DbSet<HW7Project.Models.VMMember> VMMembers { get; set; }
     }
 }
