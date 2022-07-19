@@ -198,6 +198,7 @@
       <DependentUpon>HomeData.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\VMCreatePeople.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
