@@ -20,7 +20,6 @@ namespace HW7Project.Controllers
         public ActionResult Logout()
         {
 
-
             return RedirectToAction("Index","Home");
         }
     }
