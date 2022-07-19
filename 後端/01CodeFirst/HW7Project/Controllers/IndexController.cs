@@ -12,6 +12,16 @@ namespace HW7Project.Controllers
         public ActionResult Index()
         {
             return View();
+        }        
+        public ActionResult Login()
+        {
+            return View();
+        }      
+        public ActionResult Logout()
+        {
+
+
+            return RedirectToAction("Index","Home");
         }
     }
 }
