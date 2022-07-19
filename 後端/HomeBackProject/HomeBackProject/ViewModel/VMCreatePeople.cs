@@ -10,7 +10,7 @@ namespace HomeBackProject.ViewModel
 {
     public class VMCreatePeople
     {
-        [DisplayName("使用者帳號")]
+        [DisplayName("電子信箱(帳號)")]
         [Required(ErrorMessage = "必填欄位")]
         [EmailAddress(ErrorMessage = "電子郵件格錯誤")]
         [StringLength(64, ErrorMessage = "最長只能輸入64個字")]
@@ -24,7 +24,7 @@ namespace HomeBackProject.ViewModel
         [Required(ErrorMessage = "必填欄位")]
         [StringLength(55, ErrorMessage = "最長只能輸入55個字")]
         public string PeopleName { get; set; }
-
+        [DisplayName("身份證字號")]
         [Required(ErrorMessage = "必填欄位")]
         [RegularExpression("[A-Z][1-2][0-9]{8}", ErrorMessage = "身份證字號資料錯誤")]
         [MetaPeopleData.ChechIDName(ErrorMessage = "不合法的身分字號")]
