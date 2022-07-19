@@ -15,6 +15,7 @@ namespace HW7Project.Controllers
         private HW7ProjectContext db = new HW7ProjectContext();
 
         // GET: Employees
+        [LoginCkeck]
         public ActionResult Index()
         {
             return View(db.Employees.ToList());

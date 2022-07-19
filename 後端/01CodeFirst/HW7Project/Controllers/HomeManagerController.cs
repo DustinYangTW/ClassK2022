@@ -10,6 +10,7 @@ namespace HW7Project.Controllers
     public class HomeManagerController : Controller
     {
         HW7ProjectContext db = new HW7ProjectContext();
+        [LoginCkeck]
         public ActionResult Index()
         {
             return View();
