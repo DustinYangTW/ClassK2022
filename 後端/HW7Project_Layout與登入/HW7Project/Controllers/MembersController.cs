@@ -81,7 +81,7 @@ namespace HW7Project.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MemberID,MemberName,MemberPhotoFile,MemberBirthday,CreatedDate,Account,Password")] Members members)
+        public ActionResult Edit([Bind(Include = "MemberID,MemberName,MemberBirthday")] Members members)
         {
             if (ModelState.IsValid)
             {
