@@ -82,7 +82,6 @@ D:\Git2\後端\HomeBackProject\HomeBackProject\bin\zh-Hant\System.Web.Webpages.r
 D:\Git2\後端\HomeBackProject\HomeBackProject\bin\zh-Hant\System.Web.Webpages.Deployment.resources.dll
 D:\Git2\後端\HomeBackProject\HomeBackProject\bin\zh-Hant\System.Web.Webpages.Razor.resources.dll
 D:\Git2\後端\HomeBackProject\HomeBackProject\bin\zh-Hant\System.Web.Helpers.resources.dll
-D:\Git2\後端\HomeBackProject\HomeBackProject\bin\zh-Hant\System.Web.Mvc.resources.dll
 D:\Git2\後端\HomeBackProject\HomeBackProject\bin\zh-Hant\System.Net.Http.Formatting.resources.dll
 D:\Git2\後端\HomeBackProject\HomeBackProject\bin\zh-Hant\System.Web.Http.resources.dll
 D:\Git2\後端\HomeBackProject\HomeBackProject\bin\zh-Hant\System.Web.Http.WebHost.resources.dll
@@ -92,3 +91,4 @@ D:\Git2\後端\HomeBackProject\HomeBackProject\obj\Debug\HomeBackProject.csproj.
 D:\Git2\後端\HomeBackProject\HomeBackProject\obj\Debug\HomeBackProject.dll
 D:\Git2\後端\HomeBackProject\HomeBackProject\obj\Debug\HomeBackProject.pdb
 D:\Git2\後端\HomeBackProject\HomeBackProject\bin\zh-Hant\EntityFramework.resources.dll
+D:\Git2\後端\HomeBackProject\HomeBackProject\bin\zh-Hant\EntityFramework.SqlServer.resources.dll
