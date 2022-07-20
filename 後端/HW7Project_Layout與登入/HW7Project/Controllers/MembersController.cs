@@ -10,7 +10,7 @@ using HW7Project.Models;
 
 namespace HW7Project.Controllers
 {
-    [LoginCheck]
+    //[LoginCheck]
     public class MembersController : Controller
     {
         private HW7ProjectContext db = new HW7ProjectContext();
