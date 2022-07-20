@@ -11,12 +11,7 @@ namespace HomeBackProject.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-    using MetaDataHomeBackProject.Models;
-
-    [MetadataType(typeof(MetaFactoryData))]
-
+    
     public partial class FactoryData
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -39,7 +34,7 @@ namespace HomeBackProject.Models
         public bool FactorySaleAndLease { get; set; }
         public string FactoryFeatures { get; set; }
         public byte FactorySaleType { get; set; }
-        public string FactoryTerritory { get; set; }
+        public byte FactoryType { get; set; }
         public string FactoryPeopleID { get; set; }
         public Nullable<short> FactoryADLevel { get; set; }
     
@@ -49,5 +44,6 @@ namespace HomeBackProject.Models
         public virtual ICollection<FactoryadjacentTypeData> FactoryadjacentTypeData { get; set; }
         public virtual PeopleData PeopleData { get; set; }
         public virtual SaleTypeData SaleTypeData { get; set; }
+        public virtual TerritoryTypeData TerritoryTypeData { get; set; }
     }
 }

@@ -4,13 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="76a11d1899e74c5cb2103b8629b23b51" Name="Diagram1">
+      <Diagram DiagramId="b6ffe384f34f429e842236e9b616d75e" Name="Diagram1">
         <EntityTypeShape EntityType="HomeDataModel.AccountData" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
         <EntityTypeShape EntityType="HomeDataModel.ADTypeData" Width="1.5" PointX="3" PointY="17.25" IsExpanded="true" />
         <EntityTypeShape EntityType="HomeDataModel.CarTypeData" Width="1.5" PointX="3.75" PointY="25.5" IsExpanded="true" />
         <EntityTypeShape EntityType="HomeDataModel.CityTypeData" Width="1.5" PointX="0.75" PointY="11.375" IsExpanded="true" />
         <EntityTypeShape EntityType="HomeDataModel.FactoryadjacentTypeData" Width="1.5" PointX="5.25" PointY="16.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="HomeDataModel.FactoryData" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomeDataModel.FactoryData" Width="1.5" PointX="3" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="HomeDataModel.HomeadjacentTypeData" Width="1.5" PointX="8.25" PointY="11.5" IsExpanded="true" />
         <EntityTypeShape EntityType="HomeDataModel.HomeData" Width="1.5" PointX="6" PointY="9.125" IsExpanded="true" />
         <EntityTypeShape EntityType="HomeDataModel.HomeTypeData" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
@@ -18,9 +18,9 @@
         <EntityTypeShape EntityType="HomeDataModel.PeopleRankData" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
         <EntityTypeShape EntityType="HomeDataModel.ProgramData" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
         <EntityTypeShape EntityType="HomeDataModel.SaleTypeData" Width="1.5" PointX="3" PointY="19.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="HomeDataModel.sysdiagrams" Width="1.5" PointX="8.75" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="HomeDataModel.TerritoryadjacentTypeData" Width="1.5" PointX="7.5" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="HomeDataModel.TerritoryData" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomeDataModel.sysdiagrams" Width="1.5" PointX="8.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomeDataModel.TerritoryadjacentTypeData" Width="1.5" PointX="11.125" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomeDataModel.TerritoryData" Width="1.5" PointX="6.5" PointY="3.375" IsExpanded="true" />
         <EntityTypeShape EntityType="HomeDataModel.TerritoryTypeData" Width="1.5" PointX="3" PointY="22.625" IsExpanded="true" />
         <AssociationConnector Association="HomeDataModel.FK_PeopleData_AccountData" ManuallyRouted="false" />
         <AssociationConnector Association="HomeDataModel.FK_FactoryData_ADTypeData" ManuallyRouted="false" />
@@ -34,6 +34,7 @@
         <AssociationConnector Association="HomeDataModel.FK_FactoryadjacentTypeData_FactoryData" ManuallyRouted="false" />
         <AssociationConnector Association="HomeDataModel.FK_FactoryData_PeopleData" ManuallyRouted="false" />
         <AssociationConnector Association="HomeDataModel.FK_FactoryData_SaleTypeData" ManuallyRouted="false" />
+        <AssociationConnector Association="HomeDataModel.FK_FactoryData_TerritoryTypeData" ManuallyRouted="false" />
         <AssociationConnector Association="HomeDataModel.FK_HomeadjacentTypeData_HomeData" ManuallyRouted="false" />
         <AssociationConnector Association="HomeDataModel.FK_HomeData_HomeTypeData" ManuallyRouted="false" />
         <AssociationConnector Association="HomeDataModel.FK_HomeData_PeopleData" ManuallyRouted="false" />
