@@ -24,6 +24,14 @@ namespace HomeBackProject.ViewModel
 
         public string PassWord { get; set; }
 
+        [DisplayName("確認密碼")]
+        [Required(ErrorMessage = "請再填寫一次密碼")]
+        [DataType(DataType.Password)]
+        [MinLength(8, ErrorMessage = "密碼最少8碼")]
+        [MaxLength(20, ErrorMessage = "密碼最多20碼")]
+        [Compare("Password", ErrorMessage = "兩次輸入不同")]
+        public string ConfirmPassword { get; set; }
+
         [DisplayName("姓名")]
         [Required(ErrorMessage = "必填欄位")]
         [StringLength(55, ErrorMessage = "最長只能輸入55個字")]
