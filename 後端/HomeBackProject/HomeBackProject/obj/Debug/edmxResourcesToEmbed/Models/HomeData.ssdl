@@ -5,7 +5,7 @@
       <PropertyRef Name="EmailAccount" />
     </Key>
     <Property Name="EmailAccount" Type="nvarchar" MaxLength="64" Nullable="false" />
-    <Property Name="PassWord" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="PassWord" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="ADTypeData">
     <Key>
@@ -54,7 +54,7 @@
     <Property Name="FactorySaleAndLease" Type="bit" Nullable="false" />
     <Property Name="FactoryFeatures" Type="nvarchar" MaxLength="1000" />
     <Property Name="FactorySaleType" Type="tinyint" Nullable="false" />
-    <Property Name="FactoryTerritory" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="FactoryType" Type="tinyint" Nullable="false" />
     <Property Name="FactoryPeopleID" Type="nchar" MaxLength="10" Nullable="false" />
     <Property Name="FactoryADLevel" Type="smallint" />
   </EntityType>
@@ -247,6 +247,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_FactoryData_TerritoryTypeData">
+    <End Role="TerritoryTypeData" Type="Self.TerritoryTypeData" Multiplicity="1" />
+    <End Role="FactoryData" Type="Self.FactoryData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TerritoryTypeData">
+        <PropertyRef Name="TerritorySerialID" />
+      </Principal>
+      <Dependent Role="FactoryData">
+        <PropertyRef Name="FactoryType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_HomeadjacentTypeData_HomeData">
     <End Role="HomeData" Type="Self.HomeData" Multiplicity="1" />
     <End Role="HomeadjacentTypeData" Type="Self.HomeadjacentTypeData" Multiplicity="*" />
@@ -332,7 +344,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_PeopleData_AccountData">
-    <End Role="AccountData" Type="Self.AccountData" Multiplicity="1" />
+    <End Role="AccountData" Type="Self.AccountData" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="PeopleData" Type="Self.PeopleData" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="AccountData">
@@ -487,6 +501,10 @@
     </AssociationSet>
     <AssociationSet Name="FK_FactoryData_SaleTypeData" Association="Self.FK_FactoryData_SaleTypeData">
       <End Role="SaleTypeData" EntitySet="SaleTypeData" />
+      <End Role="FactoryData" EntitySet="FactoryData" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FactoryData_TerritoryTypeData" Association="Self.FK_FactoryData_TerritoryTypeData">
+      <End Role="TerritoryTypeData" EntitySet="TerritoryTypeData" />
       <End Role="FactoryData" EntitySet="FactoryData" />
     </AssociationSet>
     <AssociationSet Name="FK_HomeadjacentTypeData_HomeData" Association="Self.FK_HomeadjacentTypeData_HomeData">

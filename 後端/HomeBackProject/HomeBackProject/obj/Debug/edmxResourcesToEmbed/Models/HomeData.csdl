@@ -5,7 +5,7 @@
       <PropertyRef Name="EmailAccount" />
     </Key>
     <Property Name="EmailAccount" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="PassWord" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PassWord" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="PeopleData" Relationship="Self.FK_PeopleData_AccountData" FromRole="AccountData" ToRole="PeopleData" />
   </EntityType>
   <EntityType Name="ADTypeData">
@@ -64,7 +64,7 @@
     <Property Name="FactorySaleAndLease" Type="Boolean" Nullable="false" />
     <Property Name="FactoryFeatures" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
     <Property Name="FactorySaleType" Type="Byte" Nullable="false" />
-    <Property Name="FactoryTerritory" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="FactoryType" Type="Byte" Nullable="false" />
     <Property Name="FactoryPeopleID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
     <Property Name="FactoryADLevel" Type="Int16" />
     <NavigationProperty Name="ADTypeData" Relationship="Self.FK_FactoryData_ADTypeData" FromRole="FactoryData" ToRole="ADTypeData" />
@@ -72,6 +72,7 @@
     <NavigationProperty Name="FactoryadjacentTypeData" Relationship="Self.FK_FactoryadjacentTypeData_FactoryData" FromRole="FactoryData" ToRole="FactoryadjacentTypeData" />
     <NavigationProperty Name="PeopleData" Relationship="Self.FK_FactoryData_PeopleData" FromRole="FactoryData" ToRole="PeopleData" />
     <NavigationProperty Name="SaleTypeData" Relationship="Self.FK_FactoryData_SaleTypeData" FromRole="FactoryData" ToRole="SaleTypeData" />
+    <NavigationProperty Name="TerritoryTypeData" Relationship="Self.FK_FactoryData_TerritoryTypeData" FromRole="FactoryData" ToRole="TerritoryTypeData" />
   </EntityType>
   <EntityType Name="HomeadjacentTypeData">
     <Key>
@@ -229,10 +230,13 @@
     </Key>
     <Property Name="TerritorySerialID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="TerritoryTypeSelect" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="FactoryData" Relationship="Self.FK_FactoryData_TerritoryTypeData" FromRole="TerritoryTypeData" ToRole="FactoryData" />
     <NavigationProperty Name="TerritoryData" Relationship="Self.FK_TerritoryData_TerritoryTypeData1" FromRole="TerritoryTypeData" ToRole="TerritoryData" />
   </EntityType>
   <Association Name="FK_PeopleData_AccountData">
-    <End Role="AccountData" Type="Self.AccountData" Multiplicity="1" />
+    <End Role="AccountData" Type="Self.AccountData" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="PeopleData" Type="Self.PeopleData" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="AccountData">
@@ -372,6 +376,18 @@
       </Principal>
       <Dependent Role="FactoryData">
         <PropertyRef Name="FactorySaleType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FactoryData_TerritoryTypeData">
+    <End Role="TerritoryTypeData" Type="Self.TerritoryTypeData" Multiplicity="1" />
+    <End Role="FactoryData" Type="Self.FactoryData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TerritoryTypeData">
+        <PropertyRef Name="TerritorySerialID" />
+      </Principal>
+      <Dependent Role="FactoryData">
+        <PropertyRef Name="FactoryType" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -559,6 +575,10 @@
     </AssociationSet>
     <AssociationSet Name="FK_FactoryData_SaleTypeData" Association="Self.FK_FactoryData_SaleTypeData">
       <End Role="SaleTypeData" EntitySet="SaleTypeData" />
+      <End Role="FactoryData" EntitySet="FactoryData" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FactoryData_TerritoryTypeData" Association="Self.FK_FactoryData_TerritoryTypeData">
+      <End Role="TerritoryTypeData" EntitySet="TerritoryTypeData" />
       <End Role="FactoryData" EntitySet="FactoryData" />
     </AssociationSet>
     <AssociationSet Name="FK_HomeadjacentTypeData_HomeData" Association="Self.FK_HomeadjacentTypeData_HomeData">

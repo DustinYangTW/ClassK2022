@@ -98,6 +98,17 @@ namespace MetaDataHomeBackProject.Models
         public string TerritoryID { get; set; }
     }
 
+    public class MetaHomeTypeData
+    {
+        [Key]
+        [DisplayName("房屋類型代碼")]
+        public byte HomeTypeID { get; set; }
+        [DisplayName("房屋類型")]
+        [Required(ErrorMessage = "必填欄位")]
+        [StringLength(20, ErrorMessage = "最長只能輸入20個字")]
+        public string HomeTypeName { get; set; }
+    }
+
     public class MetaPeopleRankData
     {
         [Key]
@@ -278,7 +289,7 @@ namespace MetaDataHomeBackProject.Models
         public byte FactorySaleType { get; set; }
         [DisplayName("土地類型")]
         [Required(ErrorMessage = "必填欄位")]
-        public string FactoryTerritory { get; set; }
+        public string FactoryType { get; set; }
         [DisplayName("會員編號")]
         [Required(ErrorMessage = "必填欄位")]
         public string FactoryPeopleID { get; set; }

@@ -59,7 +59,7 @@
           <ScalarProperty Name="FactorySaleAndLease" ColumnName="FactorySaleAndLease" />
           <ScalarProperty Name="FactoryFeatures" ColumnName="FactoryFeatures" />
           <ScalarProperty Name="FactorySaleType" ColumnName="FactorySaleType" />
-          <ScalarProperty Name="FactoryTerritory" ColumnName="FactoryTerritory" />
+          <ScalarProperty Name="FactoryType" ColumnName="FactoryType" />
           <ScalarProperty Name="FactoryPeopleID" ColumnName="FactoryPeopleID" />
           <ScalarProperty Name="FactoryADLevel" ColumnName="FactoryADLevel" />
         </MappingFragment>

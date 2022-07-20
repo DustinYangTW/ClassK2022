@@ -91,3 +91,4 @@ D:\Git2\後端\HomeBackProject\HomeBackProject\obj\Debug\HomeBackProject.csproj.
 D:\Git2\後端\HomeBackProject\HomeBackProject\obj\Debug\HomeBackProject.csproj.CopyComplete
 D:\Git2\後端\HomeBackProject\HomeBackProject\obj\Debug\HomeBackProject.dll
 D:\Git2\後端\HomeBackProject\HomeBackProject\obj\Debug\HomeBackProject.pdb
+D:\Git2\後端\HomeBackProject\HomeBackProject\bin\zh-Hant\EntityFramework.resources.dll
