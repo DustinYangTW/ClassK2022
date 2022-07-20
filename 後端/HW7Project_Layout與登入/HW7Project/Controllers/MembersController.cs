@@ -104,7 +104,7 @@ namespace HW7Project.Controllers
             {
                 return HttpNotFound();
             }
-            return View(members);
+            return PartialView(members);
         }
 
         // POST: Members/Delete/5
