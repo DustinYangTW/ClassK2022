@@ -60,10 +60,12 @@ namespace HomeBackProject.Controllers
                 accountData.EmailAccount = peopleData.EMail;
                 accountData.PassWord = peopleData.IdebtityNumber;
                 actiondbController.Create(db, db.AccountData, accountData);
+
                 var countPeopleDatas = db.PeopleData.Count() + 1;
                 peopleData.PeopleID = "A" + countPeopleDatas.ToString().PadLeft(9, '0');  //自動加編號A000000000，新增一筆自動+1
+                actiondbController.Create(db, db.PeopleData, peopleData);
 
-                return actiondbController.Create(db, db.PeopleData, peopleData);
+                return View();
             }
 
             ViewBag.EMail = new SelectList(db.AccountData, "EmailAccount", "PassWord", peopleData.EMail);
