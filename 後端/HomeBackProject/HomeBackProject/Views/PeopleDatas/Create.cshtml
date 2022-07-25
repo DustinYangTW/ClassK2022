@@ -18,14 +18,14 @@
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
     <div class="form-group">
-        @Html.LabelFor(model => model.EmailAccount, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.EMail, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.EmailAccount, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.EmailAccount, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.EMail, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.EMail, "", new { @class = "text-danger" })
         </div>
     </div>
 
-    <div class="form-group">
+    @*<div class="form-group">
         @Html.LabelFor(model => model.PassWord, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.PassWord, new { htmlAttributes = new { @class = "form-control" } })
@@ -39,7 +39,7 @@
             @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
         </div>
-    </div>
+    </div>*@
 
     <div class="form-group">
         @Html.LabelFor(model => model.PeopleName, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -97,9 +97,9 @@
         <div>
             <div class="col-md-10">
                 縣市 :
-                <select class="form-control" name="CityIDTW" id="selectCounty" onchange="mainIdex()">
+                <select class="form-control" name="County" id="selectCounty" onchange="mainIdex()">
                     <option disabled style="display: none" selected value>請選擇</option>
-                    @foreach (var item in ViewBag.County)
+                    @foreach (var item in ViewBag.countyID)
                     {
                         <option value="@item.CityIDTW">@item.CityTW</option>
                     }
@@ -117,7 +117,7 @@
         <div>
             鄉鎮 :
             <div class="col-md-10">
-                <select class="form-control" name="" id="selectCity">
+                <select class="form-control" name="Town" id="selectCity">
                     <option disabled style="display: none" selected value>請先選擇城市</option>
                 </select>
             </div>
@@ -149,7 +149,7 @@
         <div>
             會員身分 :
             <div class="col-md-10">
-                <select class="form-control" name="HomeTSaleStateID">
+                <select class="form-control" name="SaleStateID">
                     <option disabled style="display: none" selected value>請選擇</option>
                     @foreach (var peopleRankData in ViewBag.SaleStateID)
                     {

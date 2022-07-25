@@ -14,23 +14,24 @@ namespace HomeBackProject.ViewModel
         [Required(ErrorMessage = "必填欄位")]
         [EmailAddress(ErrorMessage = "電子郵件格錯誤")]
         [StringLength(64, ErrorMessage = "最長只能輸入64個字")]
-        public string EmailAccount { get; set; }
-        [DisplayName("使用者密碼")]
-        [Required(ErrorMessage = "必填欄位")]
-        [RegularExpression("[A-Za-z0-9]{7,20}", ErrorMessage = "密碼格式錯誤，只能輸入英文跟數字")]
-        [MinLength(8, ErrorMessage = "密碼最少要8碼")]
-        [MaxLength(20, ErrorMessage = "密碼最多20碼")]
-        [DataType(DataType.Password)]
+        public string EMail { get; set; }
+        //public string EmailAccount { get; set; }
+        //[DisplayName("使用者密碼")]
+        //[Required(ErrorMessage = "必填欄位")]
+        //[RegularExpression("[A-Za-z0-9]{7,20}", ErrorMessage = "密碼格式錯誤，只能輸入英文跟數字")]
+        //[MinLength(8, ErrorMessage = "密碼最少要8碼")]
+        //[MaxLength(20, ErrorMessage = "密碼最多20碼")]
+        //[DataType(DataType.Password)]
 
-        public string PassWord { get; set; }
+        //public string PassWord { get; set; }
 
-        [DisplayName("確認密碼")]
-        [Required(ErrorMessage = "請再填寫一次密碼")]
-        [DataType(DataType.Password)]
-        [MinLength(8, ErrorMessage = "密碼最少8碼")]
-        [MaxLength(20, ErrorMessage = "密碼最多20碼")]
-        [Compare("Password", ErrorMessage = "兩次輸入不同")]
-        public string ConfirmPassword { get; set; }
+        //[DisplayName("確認密碼")]
+        //[Required(ErrorMessage = "請再填寫一次密碼")]
+        //[DataType(DataType.Password)]
+        //[MinLength(8, ErrorMessage = "密碼最少8碼")]
+        //[MaxLength(20, ErrorMessage = "密碼最多20碼")]
+        //[Compare("Password", ErrorMessage = "兩次輸入不同")]
+        //public string ConfirmPassword { get; set; }
 
         [DisplayName("姓名")]
         [Required(ErrorMessage = "必填欄位")]

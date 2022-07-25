@@ -42,10 +42,10 @@ namespace HomeBackProject.Controllers
         public ActionResult Create()
         {
             ViewBag.EMail = new SelectList(db.AccountData, "EmailAccount", "PassWord");
-           // ViewBag.County = new SelectList(db.CityTypeData, "CityIDTW", "CityTW");
+            //ViewBag.County = new SelectList(db.CityTypeData, "CityIDTW", "CityTW");
             ViewBag.SaleStateID = new SelectList(db.PeopleRankData, "HomeTSaleStateID", "PeopleRank");
             ViewBag.SchemeName = new SelectList(db.ProgramData, "ProgramSerialID", "ProgramName");
-            ViewBag.County = db.CityTypeData.ToList();
+            ViewBag.countyID = db.CityTypeData.ToList();
             ViewBag.SaleStateID = db.PeopleRankData.ToList();
             return View();
         }
@@ -55,26 +55,26 @@ namespace HomeBackProject.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
+        //public ActionResult Create([Bind(Include = "PeopleName,IdebtityNumber,Birthday,Gender,PhoneNumber,EMail,County,Town,RoadAndNumber,CompanyName,SaleStateID")] PeopleData peopleData)
         public ActionResult Create([Bind(Include = "PeopleID,PeopleName,IdebtityNumber,Birthday,Gender,PhoneNumber,EMail,County,Town,RoadAndNumber,CompanyName,PeopleAge,PeopleCash,AuthorizationTime,SaleStateID,SchemeName")] PeopleData peopleData)
         {
-            if (ModelState.IsValid)
-            {
-                accountData.EmailAccount = peopleData.EMail;
-                accountData.PassWord = peopleData.IdebtityNumber;
-                actiondbController.Create(db, db.AccountData, accountData);
 
-                var countPeopleDatas = db.PeopleData.Count() + 1;
-                peopleData.PeopleID = "A" + countPeopleDatas.ToString().PadLeft(9, '0');  //自動加編號A000000000，新增一筆自動+1
-                actiondbController.Create(db, db.PeopleData, peopleData);
+            accountData.EmailAccount = peopleData.EMail;
+            accountData.PassWord = peopleData.IdebtityNumber;
+            actiondbController.Create(db, db.AccountData, accountData);
 
-                return View();
-            }
+            var countPeopleDatas = db.PeopleData.Count() + 1;
+            peopleData.PeopleID = "A" + countPeopleDatas.ToString().PadLeft(9, '0');  //自動加編號A000000000，新增一筆自動+1
+            peopleData.County = peopleData.County;
+            peopleData.Town = peopleData.Town;
+            return actiondbController.Create(db, db.PeopleData, peopleData);
 
-            ViewBag.EMail = new SelectList(db.AccountData, "EmailAccount", "PassWord", peopleData.EMail);
-            ViewBag.County = new SelectList(db.CityTypeData, "CityIDTW", "CityTW", peopleData.County);
-            ViewBag.SaleStateID = new SelectList(db.PeopleRankData, "HomeTSaleStateID", "PeopleRank", peopleData.SaleStateID);
-            ViewBag.SchemeName = new SelectList(db.ProgramData, "ProgramSerialID", "ProgramName", peopleData.SchemeName);
-            return View(peopleData);
+
+            //ViewBag.EMail = new SelectList(db.AccountData, "EmailAccount", "PassWord", peopleData.EMail);
+            //ViewBag.County = new SelectList(db.CityTypeData, "CityIDTW", "CityTW", peopleData.County);
+            //ViewBag.SaleStateID = new SelectList(db.PeopleRankData, "HomeTSaleStateID", "PeopleRank", peopleData.SaleStateID);
+            //ViewBag.SchemeName = new SelectList(db.ProgramData, "ProgramSerialID", "ProgramName", peopleData.SchemeName);
+            //return View(peopleData);
         }
 
         // GET: PeopleDatas/Edit/5
@@ -142,13 +142,13 @@ namespace HomeBackProject.Controllers
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        //protected override void Dispose(bool disposing)
+        //{
+        //    if (disposing)
+        //    {
+        //        db.Dispose();
+        //    }
+        //    base.Dispose(disposing);
+        //}
     }
 }
