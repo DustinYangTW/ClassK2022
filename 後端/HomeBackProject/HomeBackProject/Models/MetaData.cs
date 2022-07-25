@@ -17,7 +17,7 @@ namespace MetaDataHomeBackProject.Models
         public string EmailAccount { get; set; }
         [DisplayName("使用者密碼")]
         [Required(ErrorMessage = "必填欄位")]
-       // [RegularExpression("[A-Za-z0-9]{7,20}", ErrorMessage = "密碼格式錯誤，只能輸入英文跟數字")]
+        // [RegularExpression("[A-Za-z0-9]{7,20}", ErrorMessage = "密碼格式錯誤，只能輸入英文跟數字")]
         public string PassWord { get; set; }
     }
 
@@ -426,4 +426,22 @@ namespace MetaDataHomeBackProject.Models
         [DisplayName("廣告等級")]
         public Nullable<short> TerritoryADLevel { get; set; }
     }
+
+
+
+    public class CheckDropDownList : ValidationAttribute
+    {
+        public CheckDropDownList()
+        {
+            ErrorMessage = "必填欄位";
+        }
+        public override bool IsValid(object value)
+        {
+            string dropDownList = value.ToString();
+            if (dropDownList == "false") { return false; }
+            
+            return true;
+        }
+    }
+
 }

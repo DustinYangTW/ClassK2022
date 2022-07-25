@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MetaDataHomeBackProject.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -46,7 +47,7 @@ namespace HomeBackProject.ViewModel
         [Required(ErrorMessage = "必填欄位")]
         public System.DateTime Birthday { get; set; }
         [DisplayName("性別")]
-        [Required(ErrorMessage = "必填欄位")]
+        //[CheckDropDownList(ErrorMessage = "必填欄位")]
         public bool Gender { get; set; }
         [DisplayName("手機號碼")]
         [Required(ErrorMessage = "必填欄位")]
@@ -55,9 +56,11 @@ namespace HomeBackProject.ViewModel
 
         [DisplayName("縣市")]
         [Required(ErrorMessage = "必填欄位")]
+        //[CheckDropDownList(ErrorMessage = "必填欄位")]
         public string County { get; set; }
         [DisplayName("鄉鎮")]
         [Required(ErrorMessage = "必填欄位")]
+        //[CheckDropDownList(ErrorMessage = "必填欄位")]
         public string Town { get; set; }
         [DisplayName("道路與號碼")]
         [Required(ErrorMessage = "必填欄位")]
@@ -69,6 +72,7 @@ namespace HomeBackProject.ViewModel
 
         [DisplayName("會員身分")]
         [Required(ErrorMessage = "必填欄位")]
+        //[CheckDropDownList(ErrorMessage = "必填欄位")]
         public byte SaleStateID { get; set; }
 
 

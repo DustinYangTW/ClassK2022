@@ -69,7 +69,7 @@
                 <div class="col-md-10">
                     性別 :
                     <select class="form-control" name="Gender">
-                        <option disabled style="display: none" selected value>請選擇</option>
+                        <option disabled style="display: none" selected value="請選擇">請選擇</option>
                         <option value="1">男</option>
                         <option value="0">女</option>
                     </select>
@@ -98,7 +98,7 @@
                 <div class="col-md-10">
                     縣市 :
                     <select class="form-control" name="County" id="selectCounty" onchange="mainIdex()">
-                        <option disabled style="display: none" selected value>請選擇</option>
+                        <option disabled style="display: none" selected value="請選擇">請選擇</option>
                         @foreach (var item in ViewBag.countyID)
                         {
                             <option value="@item.CityIDTW">@item.CityTW</option>
@@ -119,7 +119,7 @@
                 鄉鎮 :
                 <div class="col-md-10">
                     <select class="form-control" name="Town" id="selectCity">
-                        <option disabled style="display: none" selected value>請先選擇城市</option>
+                        <option disabled style="display: none" selected value="請選擇">請先選擇縣市</option>
                     </select>
                     @Html.ValidationMessageFor(model => model.Town, "", new { @class = "text-danger" })
                 </div>
@@ -152,7 +152,7 @@
                 會員身分 :
                 <div class="col-md-10">
                     <select class="form-control" name="SaleStateID">
-                        <option disabled style="display: none" selected value>請選擇</option>
+                        <option disabled style="display: none" selected value="請選擇">請選擇</option>
                         @foreach (var peopleRankData in ViewBag.SaleStateID)
                         {
                             if (@peopleRankData.PeopleRank != "管理員")
