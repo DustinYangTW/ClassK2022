@@ -104,10 +104,10 @@
                 </div>
             </div>
             @*@Html.LabelFor(model => model.Town, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Town, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Town, "", new { @class = "text-danger" })
-            </div>*@
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Town, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Town, "", new { @class = "text-danger" })
+                </div>*@
         </div>
 
         <div class="form-group">
@@ -127,11 +127,26 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.SaleStateID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div>
+                會員身分 :
+                <div class="col-md-10">
+                    <select class="form-control" name="HomeTSaleStateID">
+                        <option disabled style="display: none" selected value>請選擇</option>
+                        @foreach (var peopleRankData in ViewBag.SaleStateID)
+                        {
+                            if (@peopleRankData.PeopleRank != "管理員")
+                            {
+                                <option value="@peopleRankData.HomeTSaleStateID">@peopleRankData.PeopleRank</option>
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+            @*@Html.LabelFor(model => model.SaleStateID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.SaleStateID, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.SaleStateID, "", new { @class = "text-danger" })
-            </div>
+            </div>*@
         </div>
 
         <div class="form-group">

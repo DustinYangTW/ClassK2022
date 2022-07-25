@@ -46,6 +46,7 @@ namespace HomeBackProject.Controllers
             ViewBag.SaleStateID = new SelectList(db.PeopleRankData, "HomeTSaleStateID", "PeopleRank");
             ViewBag.SchemeName = new SelectList(db.ProgramData, "ProgramSerialID", "ProgramName");
             ViewBag.County = db.CityTypeData.ToList();
+            ViewBag.SaleStateID = db.PeopleRankData.ToList();
             return View();
         }
 
