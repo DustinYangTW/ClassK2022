@@ -42,9 +42,10 @@ namespace HomeBackProject.Controllers
         public ActionResult Create()
         {
             ViewBag.EMail = new SelectList(db.AccountData, "EmailAccount", "PassWord");
-            ViewBag.County = new SelectList(db.CityTypeData, "CityIDTW", "CityTW");
+           // ViewBag.County = new SelectList(db.CityTypeData, "CityIDTW", "CityTW");
             ViewBag.SaleStateID = new SelectList(db.PeopleRankData, "HomeTSaleStateID", "PeopleRank");
             ViewBag.SchemeName = new SelectList(db.ProgramData, "ProgramSerialID", "ProgramName");
+            ViewBag.County = db.CityTypeData.ToList();
             return View();
         }
 
