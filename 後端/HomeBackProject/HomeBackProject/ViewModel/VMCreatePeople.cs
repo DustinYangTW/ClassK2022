@@ -10,7 +10,6 @@ namespace HomeBackProject.ViewModel
 {
     public class VMCreatePeople
     {
-        [Key]
         [DisplayName("電子信箱(帳號)")]
         [Required(ErrorMessage = "必填欄位")]
         [EmailAddress(ErrorMessage = "電子郵件格錯誤")]
