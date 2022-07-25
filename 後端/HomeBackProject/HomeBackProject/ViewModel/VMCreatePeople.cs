@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
-using MetaDataHomeBackProject.Models;
+using static MetaDataHomeBackProject.Models.MetaPeopleData;
 
 namespace HomeBackProject.ViewModel
 {
@@ -39,8 +39,8 @@ namespace HomeBackProject.ViewModel
         public string PeopleName { get; set; }
         [DisplayName("身份證字號")]
         [Required(ErrorMessage = "必填欄位")]
-        [RegularExpression("[A-Z][1-2][0-9]{8}", ErrorMessage = "身份證字號資料錯誤")]
-        [MetaPeopleData.ChechIDName(ErrorMessage = "不合法的身分字號")]
+        [RegularExpression("[A-Z][1-2][0-9]{8}", ErrorMessage = "身份證字號第一碼要大寫")]
+        [ChechIDName(ErrorMessage = "不合法的身分字號")]
         public string IdebtityNumber { get; set; }
         [DisplayName("生日")]
         [Required(ErrorMessage = "必填欄位")]
@@ -70,5 +70,7 @@ namespace HomeBackProject.ViewModel
         [DisplayName("會員身分")]
         [Required(ErrorMessage = "必填欄位")]
         public byte SaleStateID { get; set; }
+
+
     }
 }

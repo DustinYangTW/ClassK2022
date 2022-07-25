@@ -56,25 +56,32 @@ namespace HomeBackProject.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         //public ActionResult Create([Bind(Include = "PeopleName,IdebtityNumber,Birthday,Gender,PhoneNumber,EMail,County,Town,RoadAndNumber,CompanyName,SaleStateID")] PeopleData peopleData)
-        public ActionResult Create([Bind(Include = "PeopleID,PeopleName,IdebtityNumber,Birthday,Gender,PhoneNumber,EMail,County,Town,RoadAndNumber,CompanyName,PeopleAge,PeopleCash,AuthorizationTime,SaleStateID,SchemeName")] PeopleData peopleData)
+        //public ActionResult Create([Bind(Include = "PeopleID,PeopleName,IdebtityNumber,Birthday,Gender,PhoneNumber,EMail,County,Town,RoadAndNumber,CompanyName,PeopleAge,PeopleCash,AuthorizationTime,SaleStateID,SchemeName")] PeopleData peopleData)
+        public ActionResult Create(PeopleData peopleData)
         {
+            if (ModelState.IsValid)
+            {
+                accountData.EmailAccount = peopleData.EMail;
+                accountData.PassWord = peopleData.IdebtityNumber;
+                actiondbController.Create(db, db.AccountData, accountData);
 
-            accountData.EmailAccount = peopleData.EMail;
-            accountData.PassWord = peopleData.IdebtityNumber;
-            actiondbController.Create(db, db.AccountData, accountData);
+                var countPeopleDatas = db.PeopleData.Count() + 1;
+                peopleData.PeopleID = "A" + countPeopleDatas.ToString().PadLeft(9, '0');  //自動加編號A000000000，新增一筆自動+1
+                peopleData.County = peopleData.County;
+                peopleData.Town = peopleData.Town;
+                return actiondbController.Create(db, db.PeopleData, peopleData);
+            }
+            else
+            {
 
-            var countPeopleDatas = db.PeopleData.Count() + 1;
-            peopleData.PeopleID = "A" + countPeopleDatas.ToString().PadLeft(9, '0');  //自動加編號A000000000，新增一筆自動+1
-            peopleData.County = peopleData.County;
-            peopleData.Town = peopleData.Town;
-            return actiondbController.Create(db, db.PeopleData, peopleData);
-
-
-            //ViewBag.EMail = new SelectList(db.AccountData, "EmailAccount", "PassWord", peopleData.EMail);
-            //ViewBag.County = new SelectList(db.CityTypeData, "CityIDTW", "CityTW", peopleData.County);
-            //ViewBag.SaleStateID = new SelectList(db.PeopleRankData, "HomeTSaleStateID", "PeopleRank", peopleData.SaleStateID);
-            //ViewBag.SchemeName = new SelectList(db.ProgramData, "ProgramSerialID", "ProgramName", peopleData.SchemeName);
-            //return View(peopleData);
+                ViewBag.EMail = new SelectList(db.AccountData, "EmailAccount", "PassWord", peopleData.EMail);
+                ViewBag.County = new SelectList(db.CityTypeData, "CityIDTW", "CityTW", peopleData.County);
+                ViewBag.SaleStateID = new SelectList(db.PeopleRankData, "HomeTSaleStateID", "PeopleRank", peopleData.SaleStateID);
+                ViewBag.SchemeName = new SelectList(db.ProgramData, "ProgramSerialID", "ProgramName", peopleData.SchemeName);
+                ViewBag.countyID = db.CityTypeData.ToList();
+                ViewBag.SaleStateID = db.PeopleRankData.ToList();
+                return View(peopleData);
+            }
         }
 
         // GET: PeopleDatas/Edit/5
