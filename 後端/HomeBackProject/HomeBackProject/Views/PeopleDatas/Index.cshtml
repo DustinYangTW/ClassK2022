@@ -1,17 +1,20 @@
 ﻿@model IEnumerable<HomeBackProject.Models.PeopleData>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "會員管理";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>會員管理</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("新增會員", "Create")
 </p>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PeopleID)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.PeopleName)
         </th>
@@ -28,28 +31,19 @@
             @Html.DisplayNameFor(model => model.PhoneNumber)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.CityTypeData.CityTW)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Town)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.RoadAndNumber)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.CompanyName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PeopleAge)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.PeopleCash)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.AuthorizationTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AccountData.PassWord)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CityTypeData.CityTW)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.PeopleRankData.PeopleRank)
@@ -62,6 +56,9 @@
 
 @foreach (var item in Model) {
     <tr>
+        <th>
+            @Html.DisplayFor(model => item.PeopleID)
+        </th>
         <td>
             @Html.DisplayFor(modelItem => item.PeopleName)
         </td>
@@ -78,16 +75,13 @@
             @Html.DisplayFor(modelItem => item.PhoneNumber)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.CityTypeData.CityTW)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Town)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.RoadAndNumber)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.CompanyName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PeopleAge)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.PeopleCash)
@@ -96,21 +90,14 @@
             @Html.DisplayFor(modelItem => item.AuthorizationTime)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.AccountData.PassWord)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CityTypeData.CityTW)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.PeopleRankData.PeopleRank)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ProgramData.ProgramName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PeopleID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PeopleID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PeopleID })
+            @Html.ActionLink("Edit", "Edit", new { id = item.PeopleID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.PeopleID })
         </td>
     </tr>
 }

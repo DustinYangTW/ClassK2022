@@ -170,6 +170,8 @@ namespace MetaDataHomeBackProject.Models
         public string IdebtityNumber { get; set; }
         [DisplayName("生日")]
         [Required(ErrorMessage = "必填欄位")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         public System.DateTime Birthday { get; set; }
         [DisplayName("性別")]
         [Required(ErrorMessage = "必填欄位")]
@@ -197,6 +199,7 @@ namespace MetaDataHomeBackProject.Models
         [StringLength(20, ErrorMessage = "最長只能輸入20個字")]
         public string CompanyName { get; set; }
         [DisplayName("年齡")]
+        [DisplayFormat(DataFormatString = "{0:0}", ApplyFormatInEditMode = true)]
         public Nullable<decimal> PeopleAge { get; set; }
         [DisplayName("點數")]
         public Nullable<decimal> PeopleCash { get; set; }
