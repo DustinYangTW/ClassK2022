@@ -63,22 +63,16 @@ namespace HomeBackProject.Controllers
             //checkOption.Add(peopleData.Town);
             //checkOption.Add(peopleData.SaleStateID);
 
-            //foreach(var check in checkOption)
-            //{
-            var EmailCheck = db.AccountData.Where(email => email.EmailAccount == peopleData.EMail).FirstOrDefaultAsync();
+            //var EmailCheck = db.AccountData.Where(email => email.EmailAccount == peopleData.EMail).FirstOrDefaultAsync();
+            var EmailCheck = db.AccountData.Find(peopleData.EMail);
+            //驗證是否有重複Email
             if(EmailCheck != null) {
-                ViewBag.checkErrorEmailCheck = "電子信箱以重複";
                 ViewBag.countyID = db.CityTypeData.ToList();
                 ViewBag.SaleStateID = db.PeopleRankData.ToList();
+                ViewBag.checkErrorEmailCheck = "電子信箱已重複";
                 return View(peopleData);
             }
-            if (peopleData.Gender == false)
-            {
-                ViewBag.countyID = db.CityTypeData.ToList();
-                ViewBag.SaleStateID = db.PeopleRankData.ToList();
-                ViewBag.checkErrorGender = "必填欄位";
-                return View(peopleData);
-            }
+
             if (peopleData.SaleStateID == 0)
             {
                 ViewBag.countyID = db.CityTypeData.ToList();
@@ -88,10 +82,7 @@ namespace HomeBackProject.Controllers
             }
 
 
-            if (peopleData.County == "請選擇")
-            {
 
-            }
             if (ModelState.IsValid)
             {
                 accountData.EmailAccount = peopleData.EMail;
@@ -100,8 +91,7 @@ namespace HomeBackProject.Controllers
 
                 var countPeopleDatas = db.PeopleData.Count() + 1;
                 peopleData.PeopleID = "A" + countPeopleDatas.ToString().PadLeft(9, '0');  //自動加編號A000000000，新增一筆自動+1
-                peopleData.County = peopleData.County;
-                peopleData.Town = peopleData.Town;
+                peopleData.PeopleCash = 0; 
                 return actiondbController.Create(db, db.PeopleData, peopleData);
             }
             else

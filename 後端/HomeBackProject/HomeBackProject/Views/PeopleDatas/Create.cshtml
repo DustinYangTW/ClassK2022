@@ -68,11 +68,11 @@
         <div class="form-group">
             <div>
                 <div class="col-md-10">
-                    性別 :
+                    性別
                     <select class="form-control" name="Gender">
                         <option disabled style="display: none" selected value="請選擇">請選擇</option>
-                        <option value="1">男</option>
-                        <option value="0">女</option>
+                        <option value="true">男</option>
+                        <option value="false">女</option>
                     </select>
                 </div>
                 <sapn class="text-danger">@ViewBag.checkErrorGender</sapn>
@@ -97,7 +97,7 @@
         <div class="form-group">
             <div>
                 <div class="col-md-10">
-                    縣市 :
+                    縣市
                     <select class="form-control" name="County" id="selectCounty" onchange="mainIdex()">
                         <option disabled style="display: none" selected value="請選擇">請選擇</option>
                         @foreach (var item in ViewBag.countyID)
@@ -117,7 +117,7 @@
 
         <div class="form-group">
             <div>
-                鄉鎮 :
+                鄉鎮
                 <div class="col-md-10">
                     <select class="form-control" name="Town" id="selectCity">
                         <option disabled style="display: none" selected value="請選擇">請先選擇縣市</option>
@@ -150,7 +150,7 @@
 
         <div class="form-group">
             <div>
-                會員身分 :
+                會員身分
                 <div class="col-md-10">
                     <select class="form-control" name="SaleStateID">
                         <option disabled style="display: none" selected value="請選擇">請選擇</option>
