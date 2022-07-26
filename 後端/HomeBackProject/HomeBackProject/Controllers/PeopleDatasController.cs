@@ -1,4 +1,6 @@
 ﻿using HomeBackProject.Models;
+using System.Collections;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
@@ -55,6 +57,41 @@ namespace HomeBackProject.Controllers
         //public ActionResult Create([Bind(Include = "PeopleID,PeopleName,IdebtityNumber,Birthday,Gender,PhoneNumber,EMail,County,Town,RoadAndNumber,CompanyName,PeopleAge,PeopleCash,AuthorizationTime,SaleStateID,SchemeName")] PeopleData peopleData)
         public ActionResult Create(PeopleData peopleData)
         {
+            //ArrayList checkOption = new ArrayList();
+            //checkOption.Add(peopleData.Gender);
+            //checkOption.Add(peopleData.County);
+            //checkOption.Add(peopleData.Town);
+            //checkOption.Add(peopleData.SaleStateID);
+
+            //foreach(var check in checkOption)
+            //{
+            var EmailCheck = db.AccountData.Where(email => email.EmailAccount == peopleData.EMail).FirstOrDefaultAsync();
+            if(EmailCheck != null) {
+                ViewBag.checkErrorEmailCheck = "電子信箱以重複";
+                ViewBag.countyID = db.CityTypeData.ToList();
+                ViewBag.SaleStateID = db.PeopleRankData.ToList();
+                return View(peopleData);
+            }
+            if (peopleData.Gender == false)
+            {
+                ViewBag.countyID = db.CityTypeData.ToList();
+                ViewBag.SaleStateID = db.PeopleRankData.ToList();
+                ViewBag.checkErrorGender = "必填欄位";
+                return View(peopleData);
+            }
+            if (peopleData.SaleStateID == 0)
+            {
+                ViewBag.countyID = db.CityTypeData.ToList();
+                ViewBag.SaleStateID = db.PeopleRankData.ToList();
+                ViewBag.checkErrorSaleStateID = "必填欄位";
+                return View(peopleData);
+            }
+
+
+            if (peopleData.County == "請選擇")
+            {
+
+            }
             if (ModelState.IsValid)
             {
                 accountData.EmailAccount = peopleData.EMail;
@@ -69,11 +106,6 @@ namespace HomeBackProject.Controllers
             }
             else
             {
-
-                ViewBag.EMail = new SelectList(db.AccountData, "EmailAccount", "PassWord", peopleData.EMail);
-                ViewBag.County = new SelectList(db.CityTypeData, "CityIDTW", "CityTW", peopleData.County);
-                ViewBag.SaleStateID = new SelectList(db.PeopleRankData, "HomeTSaleStateID", "PeopleRank", peopleData.SaleStateID);
-                ViewBag.SchemeName = new SelectList(db.ProgramData, "ProgramSerialID", "ProgramName", peopleData.SchemeName);
                 ViewBag.countyID = db.CityTypeData.ToList();
                 ViewBag.SaleStateID = db.PeopleRankData.ToList();
                 return View(peopleData);

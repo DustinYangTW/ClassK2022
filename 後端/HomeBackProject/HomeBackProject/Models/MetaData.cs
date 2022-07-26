@@ -178,7 +178,7 @@ namespace MetaDataHomeBackProject.Models
         [Required(ErrorMessage = "必填欄位")]
         [RegularExpression("[0][9][0-9]{8}", ErrorMessage = "電話號碼輸入錯誤")]
         public string PhoneNumber { get; set; }
-        [DisplayName("E-mail")]
+        [DisplayName("電子信箱")]
         [Required(ErrorMessage = "必填欄位")]
         [EmailAddress(ErrorMessage = "電子郵件格式錯誤")]
         [StringLength(64, ErrorMessage = "最長只能輸入64個字")]

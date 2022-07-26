@@ -47,7 +47,7 @@ namespace HomeBackProject.ViewModel
         [Required(ErrorMessage = "必填欄位")]
         public System.DateTime Birthday { get; set; }
         [DisplayName("性別")]
-        //[CheckDropDownList(ErrorMessage = "必填欄位")]
+        [CheckDropDownList(ErrorMessage = "必填欄位")]
         public bool Gender { get; set; }
         [DisplayName("手機號碼")]
         [Required(ErrorMessage = "必填欄位")]
