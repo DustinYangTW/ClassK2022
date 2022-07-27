@@ -10,7 +10,7 @@ namespace HomeBackProject.Controllers
     {
         void LoginState(HttpContext context)
         {
-            if (context.Session["user"] == null)
+            if (context.Session["userID"] == null)
             {
                 context.Response.Redirect("/Home/Index");
             }

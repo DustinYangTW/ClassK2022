@@ -22,29 +22,34 @@
                     </li>
                     <li class="nav-item">
                         @Html.ActionLink("房屋案件查詢", "Index", "HomeDatas", new { area = "" }, new { @class = "nav-link" })
-                    </li>               
-                    <li class="nav-item">
-                        @Html.ActionLink("登出", "Logout", "LogInOut", new { area = "" }, new { @class = "nav-link" })
                     </li>
+                    @*<li class="nav-item">
+                        @Html.ActionLink("登出", "Logout", "LogInOut", new { area = "" }, new { @class = "nav-link" })
+                    </li>*@
                     @*<li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Link
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
-                        </li>*@
+                <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Link
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+            </li>*@
                     <li class="nav-item">
                         <a class="nav-link" href="~/PeopleDatas/Index">會員資料</a>
                     </li>
                 </ul>
-                <form class="d-flex" style="width:340px">
+
+                <div class="d-flex text-center justify-content-center align-items-center">
+                    <div class="me-2">您好! @Session["userNmae"]</div>
+                    @Html.ActionLink("登出", "Logout", "LogInOut", new { area = "" }, new { @class = "ms-2 btn btn-warning text-black" })
+                </div>
+                @*<form class="d-flex" style="width:340px">
                     <input class="form-control me-2" type="search" placeholder="搜尋" aria-label="Search">
                     <button class="btn btn-outline-dark btn-sm" type="submit">搜尋</button>
-                </form>
+                </form>*@
             </div>
         </div>
     </nav>

@@ -39,12 +39,12 @@ namespace HomeBackProject.Controllers
             var userID = db.PeopleData.Where(userIDFind => userIDFind.EMail == vMLogin.EmailAccount).FirstOrDefault();
 
             Session["userID"] = userID.PeopleID;
-            Session["user"] = user;
+            Session["userNmae"] = userID.PeopleName;
             return RedirectToAction("Index");
         }
         public ActionResult Logout()
         {
-            Session["user"] = null;
+            Session[""] = null;
             return RedirectToAction("Index", "Home");
         }
     }
