@@ -1,0 +1,159 @@
+﻿@model IEnumerable<HomeBackProject.Models.HomeData>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_LogInOut.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.HomeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HomeMoney)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HomeSquareMeters)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HomeMetersMoney)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HomeTown)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HomeStreet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HomeFloor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HomeHighFloor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HomeSaleAndLease)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HomeAges)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HomeRoom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HomeHall)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HomeBathroom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HomeBalcony)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HomeFeatures)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HomeManageTip)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ADTypeData.ADName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CarTypeData.CarTypeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CityTypeData.CityTW)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HomeTypeData.HomeTypeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PeopleData.PeopleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SaleTypeData.SaleState)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.HomeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HomeMoney)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HomeSquareMeters)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HomeMetersMoney)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HomeTown)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HomeStreet)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HomeFloor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HomeHighFloor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HomeSaleAndLease)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HomeAges)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HomeRoom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HomeHall)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HomeBathroom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HomeBalcony)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HomeFeatures)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HomeManageTip)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ADTypeData.ADName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CarTypeData.CarTypeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CityTypeData.CityTW)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HomeTypeData.HomeTypeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PeopleData.PeopleName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SaleTypeData.SaleState)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id=item.HomeID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.HomeID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -23,16 +23,22 @@ namespace HomeBackProject.Controllers
             return View();
         }
 
+
         [HttpPost]
         public ActionResult Login(VMLogin vMLogin)
         {
             //selece * from Employee where account=@account and password=@password
-            var user = db.AccountData.Where(m => m.EmailAccount == vMLogin.EmailAccount && m.PassWord == vMLogin.PassWord).FirstOrDefault();
+            var user = db.AccountData.Where(userEmailFind => userEmailFind.EmailAccount == vMLogin.EmailAccount && userEmailFind.PassWord == vMLogin.PassWord).FirstOrDefault();
+
+
             if (user == null)
             {
                 ViewBag.ErrMsg = "帳號或密碼有錯誤";
                 return View(vMLogin);
             }
+            var userID = db.PeopleData.Where(userIDFind => userIDFind.EMail == vMLogin.EmailAccount).FirstOrDefault();
+
+            Session["userID"] = userID.PeopleID;
             Session["user"] = user;
             return RedirectToAction("Index");
         }

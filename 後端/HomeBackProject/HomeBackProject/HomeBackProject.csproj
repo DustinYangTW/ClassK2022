@@ -185,6 +185,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ActiondbController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HomeDatasController.cs" />
     <Compile Include="Controllers\LogInOutController.cs" />
     <Compile Include="Controllers\LoginCkeck.cs" />
     <Compile Include="Controllers\PeopleDatasController.cs" />
@@ -285,6 +286,11 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\LogInOut\Index.cshtml" />
     <Content Include="Views\LogInOut\Login.cshtml" />
+    <Content Include="Views\HomeDatas\Create.cshtml" />
+    <Content Include="Views\HomeDatas\Delete.cshtml" />
+    <Content Include="Views\HomeDatas\Details.cshtml" />
+    <Content Include="Views\HomeDatas\Edit.cshtml" />
+    <Content Include="Views\HomeDatas\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

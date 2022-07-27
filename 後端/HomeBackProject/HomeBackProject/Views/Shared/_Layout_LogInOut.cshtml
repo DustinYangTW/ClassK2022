@@ -11,15 +11,18 @@
 <body>
     <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-info">
         <div class="container-fluid">
-            <a class="navbar-brand" href="~/LogInOut/Index">黃金屋網</a>
+            <a class="navbar-brand" href="~/Home/Index">黃金屋網</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarScroll">
                 <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="~/HomeManager/Index">首頁</a>
+                        <a class="nav-link active" aria-current="page" href="~/Home/Index">首頁</a>
                     </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("房屋案件查詢", "Index", "HomeDatas", new { area = "" }, new { @class = "nav-link" })
+                    </li>               
                     <li class="nav-item">
                         @Html.ActionLink("登出", "Logout", "LogInOut", new { area = "" }, new { @class = "nav-link" })
                     </li>

@@ -1,0 +1,201 @@
+﻿@model HomeBackProject.Models.HomeData
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout_LogInOut.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>HomeData</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.HomeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HomeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HomeMoney)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HomeMoney)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HomeSquareMeters)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HomeSquareMeters)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HomeMetersMoney)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HomeMetersMoney)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HomeTown)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HomeTown)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HomeStreet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HomeStreet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HomeFloor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HomeFloor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HomeHighFloor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HomeHighFloor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HomeSaleAndLease)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HomeSaleAndLease)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HomeAges)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HomeAges)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HomeRoom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HomeRoom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HomeHall)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HomeHall)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HomeBathroom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HomeBathroom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HomeBalcony)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HomeBalcony)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HomeFeatures)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HomeFeatures)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HomeManageTip)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HomeManageTip)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ADTypeData.ADName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ADTypeData.ADName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CarTypeData.CarTypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CarTypeData.CarTypeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CityTypeData.CityTW)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CityTypeData.CityTW)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HomeTypeData.HomeTypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HomeTypeData.HomeTypeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PeopleData.PeopleName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PeopleData.PeopleName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SaleTypeData.SaleState)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SaleTypeData.SaleState)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
