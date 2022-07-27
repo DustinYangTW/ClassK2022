@@ -274,10 +274,10 @@ namespace MetaDataHomeBackProject.Models
         [StringLength(10, ErrorMessage = "最長只能輸入10個字")]
         public string FactoryStreet { get; set; }
         [DisplayName("樓層")]
-        [RegularExpression("[0-9]{,4}", ErrorMessage = "格式錯誤")]
+        [RegularExpression("[0-9]{0,4}", ErrorMessage = "格式錯誤")]
         public Nullable<byte> FactoryFloor { get; set; }
         [DisplayName("總樓層")]
-        [RegularExpression("[0-9]{,4}", ErrorMessage = "格式錯誤")]
+        [RegularExpression("[0-9]{0,4}", ErrorMessage = "格式錯誤")]
         public Nullable<byte> FactoryHighFloor { get; set; }
         [DisplayName("屋齡")]
         [Required(ErrorMessage = "必填欄位")]
@@ -318,7 +318,7 @@ namespace MetaDataHomeBackProject.Models
         [DisplayName("總坪數")]
         [Required(ErrorMessage = "必填欄位")]
         public decimal HomeSquareMeters { get; set; }
-        [DisplayName("單坪售價")]
+        [DisplayName("單坪售價(萬)")]
         public Nullable<decimal> HomeMetersMoney { get; set; }
         [DisplayName("縣市")]
         [Required(ErrorMessage = "必填欄位")]
@@ -331,40 +331,40 @@ namespace MetaDataHomeBackProject.Models
         [StringLength(10, ErrorMessage = "最長只能輸入10個字")]
         public string HomeStreet { get; set; }
         [DisplayName("樓層")]
-        [RegularExpression("[0-9]{,4}", ErrorMessage = "格式錯誤")]
+        [RegularExpression("[0-9]{0,4}", ErrorMessage = "格式錯誤")]
         public Nullable<byte> HomeFloor { get; set; }
         [DisplayName("總樓層")]
-        [RegularExpression("[0-9]{,4}", ErrorMessage = "格式錯誤")]
+        [RegularExpression("[0-9]{0,4}", ErrorMessage = "格式錯誤")]
         public Nullable<byte> HomeHighFloor { get; set; }
         [DisplayName("售/租")]
         [Required(ErrorMessage = "必填欄位")]
         public bool HomeSaleAndLease { get; set; }
         [DisplayName("屋齡")]
         [Required(ErrorMessage = "必填欄位")]
-        [RegularExpression("[0-9]{,4}", ErrorMessage = "格式錯誤")]
+        [RegularExpression("[0-9]{0,4}", ErrorMessage = "格式錯誤")]
 
         public byte HomeAges { get; set; }
         [DisplayName("房")]
         [Required(ErrorMessage = "必填欄位")]
-        [RegularExpression("[0-9]{,4}", ErrorMessage = "格式錯誤")]
+        [RegularExpression("[0-9]{0,7}", ErrorMessage = "格式錯誤")]
         public byte HomeRoom { get; set; }
         [DisplayName("廳")]
         [Required(ErrorMessage = "必填欄位")]
-        [RegularExpression("[0-9]{,4}", ErrorMessage = "格式錯誤")]
+        [RegularExpression("[0-9]{0,7}", ErrorMessage = "格式錯誤")]
         public byte HomeHall { get; set; }
         [DisplayName("衛浴")]
         [Required(ErrorMessage = "必填欄位")]
-        [RegularExpression("[0-9]{,4}", ErrorMessage = "格式錯誤")]
+        [RegularExpression("[0-9]{0,7}", ErrorMessage = "格式錯誤")]
         public byte HomeBathroom { get; set; }
         [DisplayName("陽台")]
-        [RegularExpression("[0-9]{,4}", ErrorMessage = "格式錯誤")]
+        [RegularExpression("[0-9]{0,7}", ErrorMessage = "格式錯誤")]
         public byte HomeBalcony { get; set; }
         [DisplayName("廠房特色")]
         [StringLength(1000, ErrorMessage = "最長只能輸入1000個字")]
         public string HomeFeatures { get; set; }
         [DisplayName("管理費")]
         [Required(ErrorMessage = "必填欄位")]
-        [RegularExpression("[0-9]{,7}", ErrorMessage = "格式錯誤")]
+        [RegularExpression("[0-9]{0,7}", ErrorMessage = "格式錯誤")]
         public Nullable<decimal> HomeManageTip { get; set; }
         [DisplayName("車位類型")]
         [Required(ErrorMessage = "必填欄位")]
