@@ -4,11 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace HomeBackProject.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: Home
+        // GET: HomeManager
         public ActionResult Index()
         {
             return View();

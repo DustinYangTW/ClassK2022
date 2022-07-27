@@ -186,6 +186,7 @@
     <Compile Include="Controllers\ActiondbController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HomeManagerController.cs" />
+    <Compile Include="Controllers\LoginCkeck.cs" />
     <Compile Include="Controllers\PeopleDatasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -259,6 +260,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\VMCreatePeople.cs" />
+    <Compile Include="ViewModel\VMLogin.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -281,6 +283,8 @@
     <Content Include="Views\PeopleDatas\Edit.cshtml" />
     <Content Include="Views\PeopleDatas\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\HomeManager\Index.cshtml" />
+    <Content Include="Views\HomeManager\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -290,7 +294,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\HomeManager\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -17,7 +17,7 @@ namespace MetaDataHomeBackProject.Models
         public string EmailAccount { get; set; }
         [DisplayName("使用者密碼")]
         [Required(ErrorMessage = "必填欄位")]
-        // [RegularExpression("[A-Za-z0-9]{7,20}", ErrorMessage = "密碼格式錯誤，只能輸入英文跟數字")]
+        [RegularExpression("[A-Za-z0-9]{7,20}", ErrorMessage = "密碼格式錯誤，只能輸入英文跟數字")]
         public string PassWord { get; set; }
     }
 
