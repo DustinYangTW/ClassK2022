@@ -8,7 +8,7 @@ using HomeBackProject.ViewModel;
 
 namespace HomeBackProject.Controllers
 {
-    public class HomeManagerController : Controller
+    public class LogInOutController : Controller
     {
         HomeDataEntities db = new HomeDataEntities();
 

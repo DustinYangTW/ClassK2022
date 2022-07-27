@@ -185,7 +185,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ActiondbController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\HomeManagerController.cs" />
+    <Compile Include="Controllers\LogInOutController.cs" />
     <Compile Include="Controllers\LoginCkeck.cs" />
     <Compile Include="Controllers\PeopleDatasController.cs" />
     <Compile Include="Global.asax.cs">
@@ -276,15 +276,15 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
-    <Content Include="Views\Shared\_Layout_Manager.cshtml" />
+    <Content Include="Views\Shared\_Layout_LogInOut.cshtml" />
     <Content Include="Views\PeopleDatas\Create.cshtml" />
     <Content Include="Views\PeopleDatas\Delete.cshtml" />
     <Content Include="Views\PeopleDatas\Details.cshtml" />
     <Content Include="Views\PeopleDatas\Edit.cshtml" />
     <Content Include="Views\PeopleDatas\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\HomeManager\Index.cshtml" />
-    <Content Include="Views\HomeManager\Login.cshtml" />
+    <Content Include="Views\LogInOut\Index.cshtml" />
+    <Content Include="Views\LogInOut\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
