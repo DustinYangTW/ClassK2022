@@ -27,7 +27,7 @@
                 </div>
             </div>
         </div>*@
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-light">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-info">
         <div class="container-fluid">
             <a class="navbar-brand" href="~/PeopleDatas/Index">黃金屋網</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,18 +57,19 @@
                         <a class="nav-link" href="~/PeopleDatas/Create">加入會員</a>
                     </li>
                 </ul>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                <form class="d-flex" style="width:340px">
+                    <input class="form-control me-2" type="search" placeholder="搜尋" aria-label="Search">
+                    <button class="btn btn-outline-dark btn-sm" type="submit">搜尋</button>
                 </form>
             </div>
         </div>
     </nav>
 
-    <div class="container-fluid body-content">
+    <div class="container-fluid body-content mt-5 ">
         @RenderBody()
-        <hr />
+
         <footer>
+            <hr />
             <p>&copy; @DateTime.Now.Year - 黃金屋網</p>
         </footer>
     </div>
