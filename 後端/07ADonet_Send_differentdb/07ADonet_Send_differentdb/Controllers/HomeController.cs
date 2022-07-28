@@ -18,7 +18,7 @@ namespace _07ADonet_Send_differentdb.Controllers
         {
             SqlDataAdapter adapter = new SqlDataAdapter("select * from 學生", conn);
             DataSet ds = new DataSet();
-            adapter.Fill(ds);
+            adapter.Fill(ds,"Studnent");
 
             return View();
         }
