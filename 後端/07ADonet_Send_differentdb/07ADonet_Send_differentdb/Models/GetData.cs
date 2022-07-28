@@ -18,7 +18,7 @@ namespace _07ADonet_Send_differentdb.Models
         public DataTable querySql(string sql)
         {
             adapter.SelectCommand.CommandText = sql;
-            adapter.Fill(ds);
+            adapter.Fill(ds, "Studnent");
             dt = ds.Tables[0];
 
             return dt;
