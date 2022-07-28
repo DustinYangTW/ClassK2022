@@ -28,6 +28,17 @@ namespace _07ADonet_Send_differentdb.Models
             adapter.Fill(ds);
             dt = ds.Tables[0];
             return dt;
+        }   
+        public DataTable querySql(string sql, CommandType cmt,string id,string name)
+        {
+            adapter.SelectCommand.Parameters.AddWithValue("@id", id);
+            adapter.SelectCommand.Parameters.AddWithValue("@name", name);
+
+            adapter.SelectCommand.CommandType = cmt;
+            adapter.SelectCommand.CommandText = sql;
+            adapter.Fill(ds);
+            dt = ds.Tables[0];
+            return dt;
         }
 
 

@@ -23,7 +23,7 @@ namespace _07ADonet_Send_differentdb.Controllers
             
             string sql = "select * from 學生 where 學號 = @id and 姓名= @name";
 
-            var dt = gd.querySql(sql,System.Data.CommandType.Text);
+            var dt = gd.querySql(sql,System.Data.CommandType.Text,id,name);
             if(dt.Rows.Count == 0)
             {
                 ViewBag.Msg = "帳號或密碼有誤";
