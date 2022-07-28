@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Data;
 
 namespace _07ADonet_Send_differentdb.Controllers
 {
@@ -16,6 +17,9 @@ namespace _07ADonet_Send_differentdb.Controllers
         public ActionResult Index()
         {
             SqlDataAdapter adapter = new SqlDataAdapter("select * from 學生", conn);
+            DataSet ds = new DataSet();
+            adapter.Fill(ds);
+
             return View();
         }
     }
