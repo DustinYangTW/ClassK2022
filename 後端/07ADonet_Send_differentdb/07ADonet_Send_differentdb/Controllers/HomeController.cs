@@ -12,20 +12,14 @@ namespace _07ADonet_Send_differentdb.Controllers
 {
     public class HomeController : Controller
     {
-        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["aaa"].ConnectionString);
-        
+        GetData GD = new GetData();
         public ActionResult Index()
         {
-            SqlDataAdapter adapter = new SqlDataAdapter("select * from 學生", conn);
-            DataSet ds = new DataSet();
-            adapter.Fill(ds,"Studnent");
-
-            DataTable dt = new DataTable();
-            dt = ds.Tables["Studnent"];
-
-            ViewBag.DataSource = dt;
-
-            return View(dt);
+            return View(GD.querySql("select * from 學生"));
+        }    
+        public ActionResult Employee()
+        {
+            return View(GD.querySql("select * from 員工"));
         }
     }
 }
