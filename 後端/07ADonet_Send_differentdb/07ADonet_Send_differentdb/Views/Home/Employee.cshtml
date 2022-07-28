@@ -1,0 +1,13 @@
+﻿@using System.Data;
+@model System.Data.DataTable
+
+@{
+    ViewBag.Title = "Employee";
+}
+
+<h2>Employee</h2>
+
+@foreach (DataRow row in Model.Rows)
+{
+    <h3>@row["姓名"]</h3>
+}
