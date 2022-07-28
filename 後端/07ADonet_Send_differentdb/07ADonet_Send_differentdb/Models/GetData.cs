@@ -15,12 +15,28 @@ namespace _07ADonet_Send_differentdb.Models
         DataSet ds = new DataSet();
         DataTable dt = new DataTable();
 
+        /// <summary>
+        /// 傳入table，或者是有沒有預存程序CommandType.text
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <param name="cmt"></param>
+        /// <returns></returns>
         public DataTable querySql(string sql, CommandType cmt)
         {
             adapter.SelectCommand.CommandType = cmt;
             adapter.SelectCommand.CommandText = sql;
             adapter.Fill(ds);
             dt = ds.Tables[0];
+            return dt;
+        }
+
+
+        public DataTable querySql(string sql, CommandType cmt,string dtName)
+        {
+            adapter.SelectCommand.CommandType = cmt;
+            adapter.SelectCommand.CommandText = sql;
+            adapter.Fill(ds, dtName);
+            dt = ds.Tables[dtName];
             return dt;
         }      
     }

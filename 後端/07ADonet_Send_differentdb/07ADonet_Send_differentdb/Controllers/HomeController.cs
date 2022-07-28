@@ -15,7 +15,7 @@ namespace _07ADonet_Send_differentdb.Controllers
         GetData GD = new GetData();
         public ActionResult Index()
         {
-            return View(GD.querySql("select * from 學生",CommandType.Text));
+            return View(GD.querySql("select * from 學生",CommandType.Text,"學生"));
         }    
         public ActionResult Employee()
         {
