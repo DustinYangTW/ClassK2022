@@ -20,7 +20,12 @@ namespace _07ADonet_Send_differentdb.Controllers
             DataSet ds = new DataSet();
             adapter.Fill(ds,"Studnent");
 
-            return View();
+            DataTable dt = new DataTable();
+            dt = ds.Tables["Studnent"];
+
+            ViewBag.DataSource = dt;
+
+            return View(dt);
         }
     }
 }

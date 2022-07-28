@@ -1,7 +1,15 @@
-﻿
+﻿@using System.Data;
+@model System.Data.DataTable
+
+
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
+
+@foreach (DataRow row in Model.Rows)
+{
+    <h3>@row["姓名"]</h3>
+}
 
