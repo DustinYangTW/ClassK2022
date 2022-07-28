@@ -18,10 +18,19 @@ namespace _07ADonet_Send_differentdb.Models
         public DataTable querySql(string sql)
         {
             adapter.SelectCommand.CommandText = sql;
-            adapter.Fill(ds, "Studnent");
+            adapter.Fill(ds);
             dt = ds.Tables[0];
-
+            return dt;
+        }      
+        public DataTable querySqlBySP(string sqName)
+        {
+            adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+            adapter.SelectCommand.CommandText = sqName;
+            adapter.Fill(ds);
+            dt = ds.Tables[0];
             return dt;
         }
+
+
     }
 }

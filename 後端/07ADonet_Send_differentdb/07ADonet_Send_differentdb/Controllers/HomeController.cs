@@ -19,7 +19,7 @@ namespace _07ADonet_Send_differentdb.Controllers
         }    
         public ActionResult Employee()
         {
-            return View(GD.querySql("select * from 員工"));
+            return View(GD.querySqlBySP("getCoursePivot"));
         }
     }
 }
