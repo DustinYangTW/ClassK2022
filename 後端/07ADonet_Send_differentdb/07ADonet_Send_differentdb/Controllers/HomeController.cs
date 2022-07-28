@@ -15,11 +15,11 @@ namespace _07ADonet_Send_differentdb.Controllers
         GetData GD = new GetData();
         public ActionResult Index()
         {
-            return View(GD.querySql("select * from 學生"));
+            return View(GD.querySql("select * from 學生",CommandType.Text));
         }    
         public ActionResult Employee()
         {
-            return View(GD.querySqlBySP("getCoursePivot"));
+            return View(GD.querySql("getCoursePivot",CommandType.StoredProcedure));
         }
     }
 }

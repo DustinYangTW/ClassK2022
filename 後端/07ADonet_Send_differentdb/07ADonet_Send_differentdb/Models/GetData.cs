@@ -15,22 +15,13 @@ namespace _07ADonet_Send_differentdb.Models
         DataSet ds = new DataSet();
         DataTable dt = new DataTable();
 
-        public DataTable querySql(string sql)
+        public DataTable querySql(string sql, CommandType cmt)
         {
+            adapter.SelectCommand.CommandType = cmt;
             adapter.SelectCommand.CommandText = sql;
             adapter.Fill(ds);
             dt = ds.Tables[0];
             return dt;
         }      
-        public DataTable querySqlBySP(string sqName)
-        {
-            adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-            adapter.SelectCommand.CommandText = sqName;
-            adapter.Fill(ds);
-            dt = ds.Tables[0];
-            return dt;
-        }
-
-
     }
 }
