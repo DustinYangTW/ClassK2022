@@ -42,10 +42,6 @@ namespace HomeBackProject.Controllers
         // GET: PeopleDatas/Create
         public ActionResult Create()
         {
-            //ViewBag.EMail = new SelectList(db.AccountData, "EmailAccount", "PassWord");
-            ////ViewBag.County = new SelectList(db.CityTypeData, "CityIDTW", "CityTW");
-            //ViewBag.SaleStateID = new SelectList(db.PeopleRankData, "HomeTSaleStateID", "PeopleRank");
-            //ViewBag.SchemeName = new SelectList(db.ProgramData, "ProgramSerialID", "ProgramName");
             ViewBag.countyID = db.CityTypeData.ToList();
             ViewBag.SaleStateID = db.PeopleRankData.ToList();
             return View();
@@ -57,8 +53,6 @@ namespace HomeBackProject.Controllers
         //[LoginCkeck]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //public ActionResult Create([Bind(Include = "PeopleName,IdebtityNumber,Birthday,Gender,PhoneNumber,EMail,County,Town,RoadAndNumber,CompanyName,SaleStateID")] PeopleData peopleData)
-        //public ActionResult Create([Bind(Include = "PeopleID,PeopleName,IdebtityNumber,Birthday,Gender,PhoneNumber,EMail,County,Town,RoadAndNumber,CompanyName,PeopleAge,PeopleCash,AuthorizationTime,SaleStateID,SchemeName")] PeopleData peopleData)
         public ActionResult Create(PeopleData peopleData)
         {
             //ArrayList checkOption = new ArrayList();
@@ -84,9 +78,6 @@ namespace HomeBackProject.Controllers
                 ViewBag.checkErrorSaleStateID = "必填欄位";
                 return View(peopleData);
             }
-
-
-
             if (ModelState.IsValid)
             {
                 accountData.EmailAccount = peopleData.EMail;

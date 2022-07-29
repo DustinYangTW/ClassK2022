@@ -28,6 +28,16 @@ namespace HomeBackProject.Controllers
                 db.SaveChanges();
             }
             return RedirectToAction("Index");
+        }     
+
+        public ActionResult Edit<T>(DbContext db, DbSet dbSet, T item)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(item).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
         }
     }
 }
