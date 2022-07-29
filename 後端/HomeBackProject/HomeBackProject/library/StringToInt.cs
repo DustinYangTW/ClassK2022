@@ -19,7 +19,7 @@ namespace HomeBackProject.library
         {
             int id = Int32.Parse(idIn.Substring(2)) + 1;
 
-            string CheckID = "A" + id.ToString().PadLeft(9, '0');
+            string CheckID = data + id.ToString().PadLeft(9, '0');
 
             return CheckID;
         }
