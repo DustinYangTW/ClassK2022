@@ -45,12 +45,14 @@ namespace HomeBackProject.Controllers
         [LoginCkeck]
         public ActionResult Create()
         {
-            ViewBag.HomeADLevel = new SelectList(db.ADTypeData, "ADID", "ADName");
-            ViewBag.HomeCarID = new SelectList(db.CarTypeData, "CarTypeID", "CarTypeName");
-            ViewBag.HomeCity = new SelectList(db.CityTypeData, "CityIDTW", "CityTW");
-            ViewBag.HomeType = new SelectList(db.HomeTypeData, "HomeTypeID", "HomeTypeName");
-            ViewBag.HomePeopleID = new SelectList(db.PeopleData, "PeopleID", "PeopleID");
-            ViewBag.HomeSaleType = new SelectList(db.SaleTypeData, "SaleStateID", "SaleState");
+            //ViewBag.HomeADLevel = new SelectList(db.ADTypeData, "ADID", "ADName");
+            //ViewBag.HomeCity = new SelectList(db.CityTypeData, "CityIDTW", "CityTW");
+            //ViewBag.HomeType = new SelectList(db.HomeTypeData, "HomeTypeID", "HomeTypeName");
+            //ViewBag.HomePeopleID = new SelectList(db.PeopleData, "PeopleID", "PeopleID");
+            ViewBag.HomeSaleType = db.SaleTypeData.ToList();
+            ViewBag.HomeCarID = db.CarTypeData.ToList();
+            ViewBag.countyID = db.CityTypeData.ToList();
+            ViewBag.homeTypeData = db.HomeTypeData.ToList();
             return View();
         }
 
@@ -69,12 +71,16 @@ namespace HomeBackProject.Controllers
                 return actiondbController.Create(db, db.PeopleData, homeData);
             }
 
-            ViewBag.HomeADLevel = new SelectList(db.ADTypeData, "ADID", "ADName", homeData.HomeADLevel);
-            ViewBag.HomeCarID = new SelectList(db.CarTypeData, "CarTypeID", "CarTypeName", homeData.HomeCarID);
-            ViewBag.HomeCity = new SelectList(db.CityTypeData, "CityIDTW", "CityTW", homeData.HomeCity);
-            ViewBag.HomeType = new SelectList(db.HomeTypeData, "HomeTypeID", "HomeTypeName", homeData.HomeType);
-            ViewBag.HomePeopleID = new SelectList(db.PeopleData, "PeopleID", "PeopleID", homeData.HomePeopleID);
-            ViewBag.HomeSaleType = new SelectList(db.SaleTypeData, "SaleStateID", "SaleState", homeData.HomeSaleType);
+            //ViewBag.HomeADLevel = new SelectList(db.ADTypeData, "ADID", "ADName", homeData.HomeADLevel);
+            //ViewBag.HomeCarID = new SelectList(db.CarTypeData, "CarTypeID", "CarTypeName", homeData.HomeCarID);
+            //ViewBag.HomeCity = new SelectList(db.CityTypeData, "CityIDTW", "CityTW", homeData.HomeCity);
+            //ViewBag.HomeType = new SelectList(db.HomeTypeData, "HomeTypeID", "HomeTypeName", homeData.HomeType);
+            //ViewBag.HomePeopleID = new SelectList(db.PeopleData, "PeopleID", "PeopleID", homeData.HomePeopleID);
+            //ViewBag.HomeSaleType = new SelectList(db.SaleTypeData, "SaleStateID", "SaleState", homeData.HomeSaleType);
+            ViewBag.HomeSaleType = db.SaleTypeData.ToList();
+            ViewBag.HomeCarID = db.CarTypeData.ToList();
+            ViewBag.countyID = db.CityTypeData.ToList();
+            ViewBag.homeTypeData = db.HomeTypeData.ToList();
             return View(homeData);
         }
 

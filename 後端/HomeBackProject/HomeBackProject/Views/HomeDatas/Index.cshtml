@@ -7,9 +7,9 @@
 
 <h2>房屋案件</h2>
 
-<p>
-    @Html.ActionLink("建立新房屋案件", "Create")
-</p>
+<div class="d-flex justify-content-end">
+    @Html.ActionLink("建立新房屋案件", "Create", new { }, new { @class = "btn btn-primary me-4" })
+</div>
 <table class="table text-center">
     <tr>
         <th>
@@ -47,9 +47,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.HomeRoom)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HomeFeatures)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.HomeManageTip)
@@ -96,22 +93,32 @@
                     @Html.DisplayFor(modelItem => item.HomeStreet)
                 </td>
                 <td>
+                    @if (item.HomeFloor != null) {
                     @Html.DisplayFor(modelItem => item.HomeFloor)
+                    }
+                    else
+                    {
+                        <p>整棟</p>
+                    }
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.HomeHighFloor)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.HomeSaleAndLease)
+                    @if (item.HomeSaleAndLease == true)
+                    {
+                        <p>售</p>
+                    }
+                    else
+                    {
+                        <p>租</p>
+                    }
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.HomeAges)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.HomeRoom)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.HomeFeatures)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.HomeManageTip)

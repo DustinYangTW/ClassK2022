@@ -8,21 +8,14 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>HomeData</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.HomeID, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.HomeID, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.HomeID, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.HomeName, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -49,19 +42,43 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.HomeCity, "HomeCity", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("HomeCity", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.HomeCity, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <div>
+                    <div class="col-md-10">
+                        縣市
+                        <select class="form-control" name="HomeCity" id="selectCounty" onchange="mainIdex()">
+                            <option disabled style="display: none" selected value="請選擇">請選擇</option>
+                            @foreach (var item in ViewBag.countyID)
+                            {
+                                <option value="@item.CityIDTW">@item.CityTW</option>
+                            }
+                        </select>
+                        @Html.ValidationMessageFor(model => model.HomeCity, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                @*@Html.LabelFor(model => model.HomeCity, "HomeCity", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("HomeCity", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.HomeCity, "", new { @class = "text-danger" })
+                    </div>*@
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.HomeTown, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.HomeTown, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.HomeTown, "", new { @class = "text-danger" })
+            <div>
+                鄉鎮
+                <div class="col-md-10">
+                    <select class="form-control" name="HomeTown" id="selectCity">
+                        <option disabled style="display: none" selected value="請選擇">請先選擇縣市</option>
+                    </select>
+                    @Html.ValidationMessageFor(model => model.HomeTown, "", new { @class = "text-danger" })
+                </div>
             </div>
+            @*@Html.LabelFor(model => model.HomeTown, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.HomeTown, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.HomeTown, "", new { @class = "text-danger" })
+                </div>*@
         </div>
 
         <div class="form-group">
@@ -73,7 +90,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.HomeFloor, htmlAttributes: new { @class = "control-label col-md-2" })
+            出售樓層(非必填)
             <div class="col-md-10">
                 @Html.EditorFor(model => model.HomeFloor, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.HomeFloor, "", new { @class = "text-danger" })
@@ -89,13 +106,24 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.HomeSaleAndLease, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.HomeSaleAndLease)
-                    @Html.ValidationMessageFor(model => model.HomeSaleAndLease, "", new { @class = "text-danger" })
+            <div>
+                <div class="col-md-10">
+                    售/租
+                    <select class="form-control" name="Gender">
+                        <option disabled style="display: none" selected value="請選擇">請選擇</option>
+                        <option value="true">售</option>
+                        <option value="false">租</option>
+                    </select>
                 </div>
+                @*<sapn class="text-danger">@ViewBag.checkErrorGender</sapn>*@
             </div>
+            @*@Html.LabelFor(model => model.HomeSaleAndLease, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.HomeSaleAndLease)
+                        @Html.ValidationMessageFor(model => model.HomeSaleAndLease, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
         </div>
 
         <div class="form-group">
@@ -107,34 +135,103 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.HomeRoom, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.HomeRoom, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.HomeRoom, "", new { @class = "text-danger" })
+            <div>
+                <div class="col-md-10">
+                    房
+                    <select class="form-control" name="HomeRoom">
+                        <option disabled style="display: none" selected value="請選擇">請選擇</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                    </select>
+                </div>
+                @*<sapn class="text-danger">@ViewBag.checkErrorGender</sapn>*@
+            </div>
+            @*@Html.LabelFor(model => model.HomeRoom, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.HomeRoom, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.HomeRoom, "", new { @class = "text-danger" })
+                </div>*@
+        </div>
+
+        <div class="form-group">
+            <div>
+                <div class="col-md-10">
+                    廳
+                    <select class="form-control" name="HomeHall">
+                        <option disabled style="display: none" selected value="請選擇">請選擇</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                    </select>
+                </div>
+                @*@Html.LabelFor(model => model.HomeHall, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.HomeHall, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.HomeHall, "", new { @class = "text-danger" })
+                    </div>*@
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.HomeHall, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.HomeHall, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.HomeHall, "", new { @class = "text-danger" })
+            <div>
+                <div class="col-md-10">
+                    衛浴
+                    <select class="form-control" name="HomeBathroom">
+                        <option disabled style="display: none" selected value="請選擇">請選擇</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                    </select>
+                </div>
+                @*@Html.LabelFor(model => model.HomeBathroom, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.HomeBathroom, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.HomeBathroom, "", new { @class = "text-danger" })
+                    </div>*@
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.HomeBathroom, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.HomeBathroom, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.HomeBathroom, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.HomeBalcony, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.HomeBalcony, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.HomeBalcony, "", new { @class = "text-danger" })
+            <div>
+                <div class="col-md-10">
+                    陽台
+                    <select class="form-control" name="HomeBalcony">
+                        <option disabled style="display: none" selected value="請選擇">請選擇</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                    </select>
+                </div>
+                @*@Html.LabelFor(model => model.HomeBalcony, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.HomeBalcony, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.HomeBalcony, "", new { @class = "text-danger" })
+                    </div>*@
             </div>
         </div>
 
@@ -155,49 +252,72 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.HomeCarID, "HomeCarID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div>
+                <div class="col-md-10">
+                    車位選擇
+                    <select class="form-control" name="HomeCarID">
+                        <option disabled style="display: none" selected value="請選擇">請選擇</option>
+                        @foreach (var item in ViewBag.HomeCarID)
+                        {
+                            <option value="@item.CarTypeID">@item.CarTypeName</option>
+                        }
+                    </select>
+                    @Html.ValidationMessageFor(model => model.HomeCarID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            @*車位選擇
             <div class="col-md-10">
                 @Html.DropDownList("HomeCarID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.HomeCarID, "", new { @class = "text-danger" })
-            </div>
+            </div>*@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.HomeSaleType, "HomeSaleType", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div>
+                <div class="col-md-10">
+                    銷售狀態
+                    <select class="form-control" name="HomeSaleType">
+                        <option disabled style="display: none" selected value="請選擇">請選擇</option>
+                        @foreach (var item in ViewBag.HomeSaleType)
+                        {
+                            <option value="@item.SaleStateID">@item.SaleState</option>
+                        }
+                    </select>
+                    @Html.ValidationMessageFor(model => model.HomeSaleType, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            @*銷售狀態
             <div class="col-md-10">
                 @Html.DropDownList("HomeSaleType", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.HomeSaleType, "", new { @class = "text-danger" })
-            </div>
+            </div>*@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.HomeType, "HomeType", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("HomeType", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.HomeType, "", new { @class = "text-danger" })
+            <div>
+                <div class="col-md-10">
+                    房屋類型
+                    <select class="form-control" name="HomeType">
+                        <option disabled style="display: none" selected value="請選擇">請選擇</option>
+                        @foreach (var item in ViewBag.homeTypeData)
+                        {
+                            <option value="@item.HomeTypeID">@item.HomeTypeName</option>
+                        }
+                    </select>
+                    @Html.ValidationMessageFor(model => model.HomeType, "", new { @class = "text-danger" })
+                </div>
             </div>
+            @*房屋類型
+                <div class="col-md-10">
+                    @Html.DropDownList("HomeType", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.HomeType, "", new { @class = "text-danger" })
+                </div>*@
         </div>
+    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.HomePeopleID, "HomePeopleID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Session["userID"]
-                @Html.ValidationMessageFor(model => model.HomePeopleID, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.HomeADLevel, "HomeADLevel", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("HomeADLevel", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.HomeADLevel, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
         </div>
     </div>
 }
@@ -209,3 +329,4 @@
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/js/FindCityOpenData.js"></script>

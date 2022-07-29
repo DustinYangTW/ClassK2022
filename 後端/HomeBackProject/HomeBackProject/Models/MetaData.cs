@@ -357,14 +357,15 @@ namespace MetaDataHomeBackProject.Models
         [RegularExpression("[0-9]{0,7}", ErrorMessage = "格式錯誤")]
         public byte HomeBathroom { get; set; }
         [DisplayName("陽台")]
-        [RegularExpression("[0-9]{0,7}", ErrorMessage = "格式錯誤")]
+        [StringLength(7, ErrorMessage = "最長只能輸入7個數字")]
+        [RegularExpression("^[0-9]*$", ErrorMessage = "格式錯誤")]
         public byte HomeBalcony { get; set; }
         [DisplayName("廠房特色")]
         [StringLength(1000, ErrorMessage = "最長只能輸入1000個字")]
         public string HomeFeatures { get; set; }
         [DisplayName("管理費")]
-        [Required(ErrorMessage = "必填欄位")]
-        [RegularExpression("[0-9]{0,7}", ErrorMessage = "格式錯誤")]
+        [StringLength(7, ErrorMessage = "最長只能輸入7個數字")]
+        [RegularExpression("^[0-9]*$", ErrorMessage = "格式錯誤")]
         public Nullable<decimal> HomeManageTip { get; set; }
         [DisplayName("車位類型")]
         [Required(ErrorMessage = "必填欄位")]
