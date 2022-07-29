@@ -15,6 +15,7 @@ namespace HomeBackProject.Controllers
         private HomeDataEntities db = new HomeDataEntities();
 
         // GET: HomeDatas
+        [LoginCkeck]
         public ActionResult Index()
         {
             var homeData = db.HomeData.Include(h => h.ADTypeData).Include(h => h.CarTypeData).Include(h => h.CityTypeData).Include(h => h.HomeTypeData).Include(h => h.PeopleData).Include(h => h.SaleTypeData);
@@ -22,6 +23,7 @@ namespace HomeBackProject.Controllers
         }
 
         // GET: HomeDatas/Details/5
+        [LoginCkeck]
         public ActionResult Details(string id)
         {
             if (id == null)
@@ -37,6 +39,7 @@ namespace HomeBackProject.Controllers
         }
 
         // GET: HomeDatas/Create
+        [LoginCkeck]
         public ActionResult Create()
         {
             ViewBag.HomeADLevel = new SelectList(db.ADTypeData, "ADID", "ADName");
@@ -95,6 +98,7 @@ namespace HomeBackProject.Controllers
         // POST: HomeDatas/Edit/5
         // 若要避免過量張貼攻擊，請啟用您要繫結的特定屬性。
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
+        [LoginCkeck]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "HomeID,HomeName,HomeMoney,HomeSquareMeters,HomeMetersMoney,HomeCity,HomeTown,HomeStreet,HomeFloor,HomeHighFloor,HomeSaleAndLease,HomeAges,HomeRoom,HomeHall,HomeBathroom,HomeBalcony,HomeFeatures,HomeManageTip,HomeCarID,HomeSaleType,HomeType,HomePeopleID,HomeADLevel")] HomeData homeData)
@@ -115,6 +119,7 @@ namespace HomeBackProject.Controllers
         }
 
         // GET: HomeDatas/Delete/5
+        [LoginCkeck]
         public ActionResult Delete(string id)
         {
             if (id == null)
