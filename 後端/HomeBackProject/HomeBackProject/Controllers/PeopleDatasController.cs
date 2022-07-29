@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
+using HomeBackProject.library;
 
 namespace HomeBackProject.Controllers
 {
@@ -13,6 +14,7 @@ namespace HomeBackProject.Controllers
         private HomeDataEntities db = new HomeDataEntities();
         private ActiondbController actiondbController = new ActiondbController();
         private AccountData accountData = new AccountData();
+        private ChangIDAuto changIDAuto = new ChangIDAuto();
 
         // GET: PeopleDatas
         [LoginCkeck]
@@ -40,10 +42,10 @@ namespace HomeBackProject.Controllers
         // GET: PeopleDatas/Create
         public ActionResult Create()
         {
-            ViewBag.EMail = new SelectList(db.AccountData, "EmailAccount", "PassWord");
-            //ViewBag.County = new SelectList(db.CityTypeData, "CityIDTW", "CityTW");
-            ViewBag.SaleStateID = new SelectList(db.PeopleRankData, "HomeTSaleStateID", "PeopleRank");
-            ViewBag.SchemeName = new SelectList(db.ProgramData, "ProgramSerialID", "ProgramName");
+            //ViewBag.EMail = new SelectList(db.AccountData, "EmailAccount", "PassWord");
+            ////ViewBag.County = new SelectList(db.CityTypeData, "CityIDTW", "CityTW");
+            //ViewBag.SaleStateID = new SelectList(db.PeopleRankData, "HomeTSaleStateID", "PeopleRank");
+            //ViewBag.SchemeName = new SelectList(db.ProgramData, "ProgramSerialID", "ProgramName");
             ViewBag.countyID = db.CityTypeData.ToList();
             ViewBag.SaleStateID = db.PeopleRankData.ToList();
             return View();
@@ -91,8 +93,10 @@ namespace HomeBackProject.Controllers
                 accountData.PassWord = peopleData.IdebtityNumber;
                 actiondbController.Create(db, db.AccountData, accountData);
 
-                var countPeopleDatas = db.PeopleData.Count() + 1;
-                peopleData.PeopleID = "A" + countPeopleDatas.ToString().PadLeft(9, '0');  //自動加編號A000000000，新增一筆自動+1
+
+                var PeopleCountID = db.PeopleData.OrderByDescending(m => m.PeopleID).FirstOrDefault();
+
+                peopleData.PeopleID = changIDAuto.changIDNumber(PeopleCountID.PeopleID, "A");  //自動加編號A000000000，新增一筆自動+1
                 peopleData.PeopleCash = 0; 
                 return actiondbController.Create(db, db.PeopleData, peopleData);
             }

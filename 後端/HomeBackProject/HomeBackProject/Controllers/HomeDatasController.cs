@@ -13,6 +13,7 @@ namespace HomeBackProject.Controllers
     public class HomeDatasController : Controller
     {
         private HomeDataEntities db = new HomeDataEntities();
+        private ActiondbController actiondbController = new ActiondbController();
 
         // GET: HomeDatas
         [LoginCkeck]
@@ -60,9 +61,10 @@ namespace HomeBackProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.HomeData.Add(homeData);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                var countHomeDatas = db.HomeData.Count() + 1;
+                homeData.HomeID = "A" + countHomeDatas.ToString().PadLeft(9, '0');  //自動加編號A000000000，新增一筆自動+1
+              
+                return actiondbController.Create(db, db.PeopleData, homeData);
             }
 
             ViewBag.HomeADLevel = new SelectList(db.ADTypeData, "ADID", "ADName", homeData.HomeADLevel);
