@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using HomeBackProject.library;
 using HomeBackProject.Models;
 
 namespace HomeBackProject.Controllers
@@ -14,6 +15,7 @@ namespace HomeBackProject.Controllers
     {
         private HomeDataEntities db = new HomeDataEntities();
         private ActiondbController actiondbController = new ActiondbController();
+        private ChangIDAuto changIDAuto = new ChangIDAuto();
 
         // GET: HomeDatas
         [LoginCkeck]
@@ -55,15 +57,15 @@ namespace HomeBackProject.Controllers
         // POST: HomeDatas/Create
         // 若要避免過量張貼攻擊，請啟用您要繫結的特定屬性。
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
+        [LoginCkeck]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(HomeData homeData)
         {
             if (ModelState.IsValid)
             {
-                var countHomeDatas = db.HomeData.Count() + 1;
-                homeData.HomeID = "A" + countHomeDatas.ToString().PadLeft(9, '0');  //自動加編號A000000000，新增一筆自動+1
-              
+                var countHomeDatas = db.HomeData.OrderByDescending(m => m.HomeID).FirstOrDefault();
+                homeData.HomeID = changIDAuto.changIDNumber(countHomeDatas.HomeID, "H");  //自動加編號H000000000，新增一筆自動+1
                 return actiondbController.Create(db, db.PeopleData, homeData);
             }
 
