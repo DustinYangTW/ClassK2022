@@ -49,6 +49,21 @@ namespace _07ADonet_Send_differentdb.Models
             adapter.Fill(ds, dtName);
             dt = ds.Tables[dtName];
             return dt;
-        }      
+        }
+
+
+
+        public DataTable querySql(string sql, CommandType cmt, List<SqlParameter> para)
+        {
+            foreach (SqlParameter p in para)
+            {
+                adapter.SelectCommand.Parameters.Add(p);
+            }
+            adapter.SelectCommand.CommandType = cmt;
+            adapter.SelectCommand.CommandText = sql;
+            adapter.Fill(ds);
+            dt = ds.Tables[0];
+            return dt;
+        }
     }
 }
