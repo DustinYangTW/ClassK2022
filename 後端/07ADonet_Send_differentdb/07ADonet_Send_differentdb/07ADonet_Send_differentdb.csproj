@@ -112,6 +112,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LogInController.cs" />
     <Compile Include="Global.asax.cs">
@@ -142,6 +143,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>School.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\SetData.cs" />
     <Compile Include="Models\View_1.cs">
       <DependentUpon>School.tt</DependentUpon>
     </Compile>
@@ -192,6 +194,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Employee.cshtml" />
     <Content Include="Views\LogIn\LogIn.cshtml" />
+    <Content Include="Views\Course\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
