@@ -1,6 +1,7 @@
 ﻿using HomeBackProject.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -24,6 +25,6 @@ namespace HomeBackProject.library
             string CheckID = data + id.ToString().PadLeft(9, '0');
 
             return CheckID;
-        }
+        }     
     }
 }

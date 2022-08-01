@@ -110,7 +110,6 @@
                 <div class="col-md-10">
                     售/租
                     <select class="form-control" name="Gender">
-                        <option disabled style="display: none" selected value="請選擇">請選擇</option>
                         <option value="true">售</option>
                         <option value="false">租</option>
                     </select>
@@ -139,7 +138,6 @@
                 <div class="col-md-10">
                     房
                     <select class="form-control" name="HomeRoom">
-                        <option disabled style="display: none" selected value="請選擇">請選擇</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -165,7 +163,6 @@
                 <div class="col-md-10">
                     廳
                     <select class="form-control" name="HomeHall">
-                        <option disabled style="display: none" selected value="請選擇">請選擇</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -190,7 +187,6 @@
                 <div class="col-md-10">
                     衛浴
                     <select class="form-control" name="HomeBathroom">
-                        <option disabled style="display: none" selected value="請選擇">請選擇</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -215,7 +211,7 @@
                 <div class="col-md-10">
                     陽台
                     <select class="form-control" name="HomeBalcony">
-                        <option disabled style="display: none" selected value="請選擇">請選擇</option>
+                        <option value="0">0</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -238,17 +234,19 @@
         <div class="form-group">
             @Html.LabelFor(model => model.HomeFeatures, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.HomeFeatures, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.HomeFeatures, "", new { @class = "text-danger" })
+                <textarea id="HomeFeatures" name="HomeFeatures" rows="5" cols="40" class = "form-control"></textarea>
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.HomeManageTip, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
+                <input type="text" name="HomeManageTip" id="HomeManageTip" value="0" class = "form-control"/>
+            </div>    
+            @*<div class="col-md-10">
                 @Html.EditorFor(model => model.HomeManageTip, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.HomeManageTip, "", new { @class = "text-danger" })
-            </div>
+                @Html.ValidationMessageFor(model => model.HomeManageTip, "", new { @class = "text-danger"})
+            </div>*@
         </div>
 
         <div class="form-group">
@@ -256,7 +254,6 @@
                 <div class="col-md-10">
                     車位選擇
                     <select class="form-control" name="HomeCarID">
-                        <option disabled style="display: none" selected value="請選擇">請選擇</option>
                         @foreach (var item in ViewBag.HomeCarID)
                         {
                             <option value="@item.CarTypeID">@item.CarTypeName</option>
@@ -277,7 +274,6 @@
                 <div class="col-md-10">
                     銷售狀態
                     <select class="form-control" name="HomeSaleType">
-                        <option disabled style="display: none" selected value="請選擇">請選擇</option>
                         @foreach (var item in ViewBag.HomeSaleType)
                         {
                             <option value="@item.SaleStateID">@item.SaleState</option>

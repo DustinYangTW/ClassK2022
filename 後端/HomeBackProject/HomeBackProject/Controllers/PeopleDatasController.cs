@@ -84,11 +84,11 @@ namespace HomeBackProject.Controllers
                 accountData.PassWord = peopleData.IdebtityNumber;
                 actiondbController.Create(db, db.AccountData, accountData);
 
-
-                var PeopleCountID = db.PeopleData.OrderByDescending(m => m.PeopleID).FirstOrDefault();
-
+                var PeopleCountID = db.PeopleData.OrderByDescending(m => m.PeopleID).FirstOrDefault();//存入最後一筆的資料
                 peopleData.PeopleID = changIDAuto.changIDNumber(PeopleCountID.PeopleID, "A");  //自動加編號A000000000，新增一筆自動+1
+
                 peopleData.PeopleCash = 0; 
+
                 return actiondbController.Create(db, db.PeopleData, peopleData);
             }
             else
