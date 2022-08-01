@@ -18,14 +18,11 @@
             <div class="collapse navbar-collapse" id="navbarScroll">
                 <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
                     <li class="nav-item">
-                        <a class="nav-link active fs-4" aria-current="page" href="~/Home/Index">首頁</a>
+                        <a class="nav-link active" aria-current="page" href="~/Home/Index">首頁</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-4" href="~/Create/PeopleDatas">加入會員</a>
+                        <a class="nav-link" href="~/PeopleDatas/Create">加入會員</a>
                     </li>           
-                    <li class="nav-item">
-                        <a class="nav-link fs-4" href="~/LogInOut/Login">登入</a>
-                    </li>
                     @*<li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Link
@@ -42,9 +39,8 @@
                         <!--<a class="nav-link fs-4" href="~/PeopleDatas/Create">加入會員</a>
                     </li>-->
                 </ul>
-                <form class="d-flex" style="width:340px">
-                    <input class="form-control me-2" type="search" placeholder="搜尋" aria-label="Search">
-                    <button class="btn btn-outline-dark btn-sm" type="submit">搜尋</button>
+                <form class="d-flex">
+                    <a class="nav-link ms-2 btn btn-warning text-black" href="~/LogInOut/Login">登入</a>
                 </form>
             </div>
         </div>

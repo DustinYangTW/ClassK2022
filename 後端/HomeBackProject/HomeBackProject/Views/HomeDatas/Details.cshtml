@@ -44,6 +44,14 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.CityTypeData.CityTW)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CityTypeData.CityTW)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.HomeTown)
         </dt>
 
@@ -137,7 +145,6 @@
 
         <dd>
             @string.Format("{0:C0}", @Model.HomeManageTip)
-            @Html.DisplayFor(model => model.HomeManageTip)
         </dd>
 
         <dt>
@@ -156,13 +163,7 @@
             @Html.DisplayFor(model => model.CarTypeData.CarTypeName)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CityTypeData.CityTW)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CityTypeData.CityTW)
-        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.HomeTypeData.HomeTypeName)
@@ -173,24 +174,17 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.PeopleData.PeopleName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PeopleData.PeopleName)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.SaleTypeData.SaleState)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.SaleTypeData.SaleState)
         </dd>
-
+        
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.HomeID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<div>
+    @Html.ActionLink("編輯", "Edit", new { id = Model.HomeID }, new {@class= "btn btn-primary" }) 
+    @Html.ActionLink("刪除", "Delete", new { id = Model.HomeID }, new {@class="btn btn-danger ms-3"}) 
+    @Html.ActionLink("回到上一頁", "Index", new { }, new {@class = "btn btn-warning ms-3"}) 
+</div>
