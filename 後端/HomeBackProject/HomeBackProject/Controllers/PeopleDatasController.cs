@@ -64,7 +64,8 @@ namespace HomeBackProject.Controllers
             //var EmailCheck = db.AccountData.Where(email => email.EmailAccount == peopleData.EMail).FirstOrDefaultAsync();
             var EmailCheck = db.AccountData.Find(peopleData.EMail);
             //驗證是否有重複Email
-            if(EmailCheck != null) {
+            if (EmailCheck != null)
+            {
                 ViewBag.countyID = db.CityTypeData.ToList();
                 ViewBag.SaleStateID = db.PeopleRankData.ToList();
                 ViewBag.checkErrorEmailCheck = "電子信箱已重複";
@@ -87,7 +88,7 @@ namespace HomeBackProject.Controllers
                 var PeopleCountID = db.PeopleData.OrderByDescending(m => m.PeopleID).FirstOrDefault();//存入最後一筆的資料
                 peopleData.PeopleID = changIDAuto.changIDNumber(PeopleCountID.PeopleID, "A");  //自動加編號A000000000，新增一筆自動+1
 
-                peopleData.PeopleCash = 0; 
+                peopleData.PeopleCash = 0;
 
                 return actiondbController.Create(db, db.PeopleData, peopleData);
             }

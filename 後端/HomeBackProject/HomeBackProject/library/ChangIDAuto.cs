@@ -8,7 +8,8 @@ using System.Web;
 namespace HomeBackProject.library
 {
     public class ChangIDAuto
-    { 
+    {      
+        private HomeDataEntities db = new HomeDataEntities();
 
         /// <summary>
         /// 主要功能是自動編碼ID(抓DB最後一碼資料)；
@@ -25,6 +26,6 @@ namespace HomeBackProject.library
             string CheckID = data + id.ToString().PadLeft(9, '0');
 
             return CheckID;
-        }     
+        }
     }
 }
