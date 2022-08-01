@@ -1,0 +1,771 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SchoolModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="主管">
+          <Key>
+            <PropertyRef Name="員工字號" />
+          </Key>
+          <Property Name="員工字號" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="姓名" Type="varchar" MaxLength="12" />
+          <Property Name="主管字號" Type="char" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="客戶">
+          <Key>
+            <PropertyRef Name="客戶編號" />
+          </Key>
+          <Property Name="客戶編號" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="姓名" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="電話" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 '教務系統.dbo.客戶業績' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+        <EntityType Name="客戶業績">
+          <Key>
+            <PropertyRef Name="客戶編號" />
+            <PropertyRef Name="業績目標" />
+          </Key>
+          <Property Name="客戶編號" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="業績目標" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="員工">
+          <Key>
+            <PropertyRef Name="身份證字號" />
+          </Key>
+          <Property Name="身份證字號" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="姓名" Type="varchar" MaxLength="12" />
+          <Property Name="城市" Type="char" MaxLength="5" />
+          <Property Name="街道" Type="varchar" MaxLength="30" />
+          <Property Name="電話" Type="char" MaxLength="12" />
+          <Property Name="薪水" Type="money" />
+          <Property Name="保險" Type="money" />
+          <Property Name="扣稅" Type="money" />
+        </EntityType>
+        <EntityType Name="班級">
+          <Key>
+            <PropertyRef Name="教授編號" />
+            <PropertyRef Name="學號" />
+            <PropertyRef Name="課程編號" />
+          </Key>
+          <Property Name="教授編號" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="學號" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="課程編號" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="上課時間" Type="datetime" />
+          <Property Name="教室" Type="varchar" MaxLength="8" />
+        </EntityType>
+        <EntityType Name="教授">
+          <Key>
+            <PropertyRef Name="教授編號" />
+          </Key>
+          <Property Name="教授編號" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="職稱" Type="varchar" MaxLength="10" />
+          <Property Name="科系" Type="varchar" MaxLength="5" />
+          <Property Name="身份證字號" Type="char" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="新客戶">
+          <Key>
+            <PropertyRef Name="客戶編號" />
+          </Key>
+          <Property Name="客戶編號" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="姓名" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="電話" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="課程">
+          <Key>
+            <PropertyRef Name="課程編號" />
+          </Key>
+          <Property Name="課程編號" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="名稱" Type="varchar" MaxLength="30" />
+          <Property Name="學分" Type="int" />
+        </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 '教務系統.dbo.課程2' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+        <EntityType Name="課程2">
+          <Key>
+            <PropertyRef Name="課程編號" />
+          </Key>
+          <Property Name="課程編號" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="名稱" Type="varchar" MaxLength="30" />
+          <Property Name="學分" Type="int" />
+        </EntityType>
+        <EntityType Name="學生">
+          <Key>
+            <PropertyRef Name="學號" />
+          </Key>
+          <Property Name="學號" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="姓名" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="性別" Type="char" MaxLength="2" />
+          <Property Name="電話" Type="varchar" MaxLength="15" />
+          <Property Name="生日" Type="datetime" />
+        </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 '教務系統.dbo.View_1' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+        <EntityType Name="View_1">
+          <Key>
+            <PropertyRef Name="身份證字號" />
+            <PropertyRef Name="教授編號" />
+            <PropertyRef Name="Expr1" />
+            <PropertyRef Name="Expr2" />
+            <PropertyRef Name="學號" />
+            <PropertyRef Name="課程編號" />
+            <PropertyRef Name="Expr3" />
+            <PropertyRef Name="Expr4" />
+            <PropertyRef Name="Expr5" />
+          </Key>
+          <Property Name="身份證字號" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="姓名" Type="varchar" MaxLength="12" />
+          <Property Name="城市" Type="char" MaxLength="5" />
+          <Property Name="街道" Type="varchar" MaxLength="30" />
+          <Property Name="電話" Type="char" MaxLength="12" />
+          <Property Name="薪水" Type="money" />
+          <Property Name="保險" Type="money" />
+          <Property Name="扣稅" Type="money" />
+          <Property Name="教授編號" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="職稱" Type="varchar" MaxLength="10" />
+          <Property Name="科系" Type="varchar" MaxLength="5" />
+          <Property Name="Expr1" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="Expr2" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="學號" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="課程編號" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="上課時間" Type="datetime" />
+          <Property Name="教室" Type="varchar" MaxLength="8" />
+          <Property Name="Expr3" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="名稱" Type="varchar" MaxLength="30" />
+          <Property Name="學分" Type="int" />
+          <Property Name="Expr4" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="Expr5" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="性別" Type="char" MaxLength="2" />
+          <Property Name="Expr6" Type="varchar" MaxLength="15" />
+          <Property Name="生日" Type="datetime" />
+        </EntityType>
+        <Association Name="FK__客戶業績__客戶編號__440B1D61">
+          <End Role="客戶" Type="Self.客戶" Multiplicity="1" />
+          <End Role="客戶業績" Type="Self.客戶業績" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="客戶">
+              <PropertyRef Name="客戶編號" />
+            </Principal>
+            <Dependent Role="客戶業績">
+              <PropertyRef Name="客戶編號" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__班級__教授編號__2E1BDC42">
+          <End Role="教授" Type="Self.教授" Multiplicity="1" />
+          <End Role="班級" Type="Self.班級" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="教授">
+              <PropertyRef Name="教授編號" />
+            </Principal>
+            <Dependent Role="班級">
+              <PropertyRef Name="教授編號" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__班級__課程編號__2D27B809">
+          <End Role="課程" Type="Self.課程" Multiplicity="1" />
+          <End Role="班級" Type="Self.班級" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="課程">
+              <PropertyRef Name="課程編號" />
+            </Principal>
+            <Dependent Role="班級">
+              <PropertyRef Name="課程編號" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__班級__學號__2C3393D0">
+          <End Role="學生" Type="Self.學生" Multiplicity="1" />
+          <End Role="班級" Type="Self.班級" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="學生">
+              <PropertyRef Name="學號" />
+            </Principal>
+            <Dependent Role="班級">
+              <PropertyRef Name="學號" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__教授__身份證字號__2F10007B">
+          <End Role="員工" Type="Self.員工" Multiplicity="1" />
+          <End Role="教授" Type="Self.教授" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="員工">
+              <PropertyRef Name="身份證字號" />
+            </Principal>
+            <Dependent Role="教授">
+              <PropertyRef Name="身份證字號" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="deawStar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="deawStar2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="c" Type="int" Mode="In" />
+        </Function>
+        <Function Name="emplyeeDataRow" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="i" Type="int" Mode="In" />
+          <Parameter Name="j" Type="int" Mode="In" />
+        </Function>
+        <Function Name="fnGetdalary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="money">
+          <Parameter Name="id" Type="char" Mode="In" />
+        </Function>
+        <Function Name="fnOffsetFetchNext" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="m" Type="int" Mode="In" />
+          <Parameter Name="n" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="sn" Type="int" Nullable="false" />
+                <Property Name="id" Type="char" MaxLength="10" />
+                <Property Name="name" Type="varchar" MaxLength="12" />
+                <Property Name="salary" Type="money" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="getCoursePivot" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="getOrderDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="SchoolModelStoreContainer">
+          <EntitySet Name="主管" EntityType="Self.主管" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="客戶" EntityType="Self.客戶" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="員工" EntityType="Self.員工" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="班級" EntityType="Self.班級" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="教授" EntityType="Self.教授" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="新客戶" EntityType="Self.新客戶" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="課程" EntityType="Self.課程" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="學生" EntityType="Self.學生" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="客戶業績" EntityType="Self.客戶業績" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [客戶業績].[客戶編號] AS [客戶編號], 
+    [客戶業績].[業績目標] AS [業績目標]
+    FROM [dbo].[客戶業績] AS [客戶業績]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="課程2" EntityType="Self.課程2" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [課程2].[課程編號] AS [課程編號], 
+    [課程2].[名稱] AS [名稱], 
+    [課程2].[學分] AS [學分]
+    FROM [dbo].[課程2] AS [課程2]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_1" EntityType="Self.View_1" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_1].[身份證字號] AS [身份證字號], 
+    [View_1].[姓名] AS [姓名], 
+    [View_1].[城市] AS [城市], 
+    [View_1].[街道] AS [街道], 
+    [View_1].[電話] AS [電話], 
+    [View_1].[薪水] AS [薪水], 
+    [View_1].[保險] AS [保險], 
+    [View_1].[扣稅] AS [扣稅], 
+    [View_1].[教授編號] AS [教授編號], 
+    [View_1].[職稱] AS [職稱], 
+    [View_1].[科系] AS [科系], 
+    [View_1].[Expr1] AS [Expr1], 
+    [View_1].[Expr2] AS [Expr2], 
+    [View_1].[學號] AS [學號], 
+    [View_1].[課程編號] AS [課程編號], 
+    [View_1].[上課時間] AS [上課時間], 
+    [View_1].[教室] AS [教室], 
+    [View_1].[Expr3] AS [Expr3], 
+    [View_1].[名稱] AS [名稱], 
+    [View_1].[學分] AS [學分], 
+    [View_1].[Expr4] AS [Expr4], 
+    [View_1].[Expr5] AS [Expr5], 
+    [View_1].[性別] AS [性別], 
+    [View_1].[Expr6] AS [Expr6], 
+    [View_1].[生日] AS [生日]
+    FROM [dbo].[View_1] AS [View_1]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__客戶業績__客戶編號__440B1D61" Association="Self.FK__客戶業績__客戶編號__440B1D61">
+            <End Role="客戶" EntitySet="客戶" />
+            <End Role="客戶業績" EntitySet="客戶業績" />
+          </AssociationSet>
+          <AssociationSet Name="FK__班級__教授編號__2E1BDC42" Association="Self.FK__班級__教授編號__2E1BDC42">
+            <End Role="教授" EntitySet="教授" />
+            <End Role="班級" EntitySet="班級" />
+          </AssociationSet>
+          <AssociationSet Name="FK__班級__課程編號__2D27B809" Association="Self.FK__班級__課程編號__2D27B809">
+            <End Role="課程" EntitySet="課程" />
+            <End Role="班級" EntitySet="班級" />
+          </AssociationSet>
+          <AssociationSet Name="FK__班級__學號__2C3393D0" Association="Self.FK__班級__學號__2C3393D0">
+            <End Role="學生" EntitySet="學生" />
+            <End Role="班級" EntitySet="班級" />
+          </AssociationSet>
+          <AssociationSet Name="FK__教授__身份證字號__2F10007B" Association="Self.FK__教授__身份證字號__2F10007B">
+            <End Role="員工" EntitySet="員工" />
+            <End Role="教授" EntitySet="教授" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SchoolModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <ComplexType Name="fnOffsetFetchNext_Result">
+          <Property Name="sn" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="salary" Type="Decimal" Precision="19" Scale="4" />
+        </ComplexType>
+        <EntityType Name="主管">
+          <Key>
+            <PropertyRef Name="員工字號" />
+          </Key>
+          <Property Name="員工字號" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="姓名" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="主管字號" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="客戶">
+          <Key>
+            <PropertyRef Name="客戶編號" />
+          </Key>
+          <Property Name="客戶編號" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="姓名" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="電話" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="客戶業績" Relationship="Self.FK__客戶業績__客戶編號__440B1D61" FromRole="客戶" ToRole="客戶業績" />
+        </EntityType>
+        <EntityType Name="員工">
+          <Key>
+            <PropertyRef Name="身份證字號" />
+          </Key>
+          <Property Name="身份證字號" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="姓名" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="城市" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="街道" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="電話" Type="String" MaxLength="12" FixedLength="true" Unicode="false" />
+          <Property Name="薪水" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="保險" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="扣稅" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="教授" Relationship="Self.FK__教授__身份證字號__2F10007B" FromRole="員工" ToRole="教授" />
+        </EntityType>
+        <EntityType Name="班級">
+          <Key>
+            <PropertyRef Name="教授編號" />
+            <PropertyRef Name="學號" />
+            <PropertyRef Name="課程編號" />
+          </Key>
+          <Property Name="教授編號" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="學號" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="課程編號" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="上課時間" Type="DateTime" Precision="3" />
+          <Property Name="教室" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="教授" Relationship="Self.FK__班級__教授編號__2E1BDC42" FromRole="班級" ToRole="教授" />
+          <NavigationProperty Name="課程" Relationship="Self.FK__班級__課程編號__2D27B809" FromRole="班級" ToRole="課程" />
+          <NavigationProperty Name="學生" Relationship="Self.FK__班級__學號__2C3393D0" FromRole="班級" ToRole="學生" />
+        </EntityType>
+        <EntityType Name="教授">
+          <Key>
+            <PropertyRef Name="教授編號" />
+          </Key>
+          <Property Name="教授編號" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="職稱" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="科系" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="身份證字號" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="員工" Relationship="Self.FK__教授__身份證字號__2F10007B" FromRole="教授" ToRole="員工" />
+          <NavigationProperty Name="班級" Relationship="Self.FK__班級__教授編號__2E1BDC42" FromRole="教授" ToRole="班級" />
+        </EntityType>
+        <EntityType Name="新客戶">
+          <Key>
+            <PropertyRef Name="客戶編號" />
+          </Key>
+          <Property Name="客戶編號" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="姓名" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="電話" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="課程">
+          <Key>
+            <PropertyRef Name="課程編號" />
+          </Key>
+          <Property Name="課程編號" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="名稱" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="學分" Type="Int32" />
+          <NavigationProperty Name="班級" Relationship="Self.FK__班級__課程編號__2D27B809" FromRole="課程" ToRole="班級" />
+        </EntityType>
+        <EntityType Name="學生">
+          <Key>
+            <PropertyRef Name="學號" />
+          </Key>
+          <Property Name="學號" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="姓名" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="性別" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="電話" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="生日" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="班級" Relationship="Self.FK__班級__學號__2C3393D0" FromRole="學生" ToRole="班級" />
+        </EntityType>
+        <EntityType Name="客戶業績">
+          <Key>
+            <PropertyRef Name="客戶編號" />
+            <PropertyRef Name="業績目標" />
+          </Key>
+          <Property Name="客戶編號" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="業績目標" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="客戶" Relationship="Self.FK__客戶業績__客戶編號__440B1D61" FromRole="客戶業績" ToRole="客戶" />
+        </EntityType>
+        <EntityType Name="課程2">
+          <Key>
+            <PropertyRef Name="課程編號" />
+          </Key>
+          <Property Name="課程編號" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="名稱" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="學分" Type="Int32" />
+        </EntityType>
+        <EntityType Name="View_1">
+          <Key>
+            <PropertyRef Name="身份證字號" />
+            <PropertyRef Name="教授編號" />
+            <PropertyRef Name="Expr1" />
+            <PropertyRef Name="Expr2" />
+            <PropertyRef Name="學號" />
+            <PropertyRef Name="課程編號" />
+            <PropertyRef Name="Expr3" />
+            <PropertyRef Name="Expr4" />
+            <PropertyRef Name="Expr5" />
+          </Key>
+          <Property Name="身份證字號" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="姓名" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="城市" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="街道" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="電話" Type="String" MaxLength="12" FixedLength="true" Unicode="false" />
+          <Property Name="薪水" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="保險" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="扣稅" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="教授編號" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="職稱" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="科系" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Expr1" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Expr2" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="學號" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="課程編號" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="上課時間" Type="DateTime" Precision="3" />
+          <Property Name="教室" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="Expr3" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="名稱" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="學分" Type="Int32" />
+          <Property Name="Expr4" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Expr5" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="性別" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Expr6" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="生日" Type="DateTime" Precision="3" />
+        </EntityType>
+        <Association Name="FK__客戶業績__客戶編號__440B1D61">
+          <End Role="客戶" Type="Self.客戶" Multiplicity="1" />
+          <End Role="客戶業績" Type="Self.客戶業績" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="客戶">
+              <PropertyRef Name="客戶編號" />
+            </Principal>
+            <Dependent Role="客戶業績">
+              <PropertyRef Name="客戶編號" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__教授__身份證字號__2F10007B">
+          <End Role="員工" Type="Self.員工" Multiplicity="1" />
+          <End Role="教授" Type="Self.教授" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="員工">
+              <PropertyRef Name="身份證字號" />
+            </Principal>
+            <Dependent Role="教授">
+              <PropertyRef Name="身份證字號" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__班級__教授編號__2E1BDC42">
+          <End Role="教授" Type="Self.教授" Multiplicity="1" />
+          <End Role="班級" Type="Self.班級" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="教授">
+              <PropertyRef Name="教授編號" />
+            </Principal>
+            <Dependent Role="班級">
+              <PropertyRef Name="教授編號" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__班級__課程編號__2D27B809">
+          <End Role="課程" Type="Self.課程" Multiplicity="1" />
+          <End Role="班級" Type="Self.班級" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="課程">
+              <PropertyRef Name="課程編號" />
+            </Principal>
+            <Dependent Role="班級">
+              <PropertyRef Name="課程編號" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__班級__學號__2C3393D0">
+          <End Role="學生" Type="Self.學生" Multiplicity="1" />
+          <End Role="班級" Type="Self.班級" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="學生">
+              <PropertyRef Name="學號" />
+            </Principal>
+            <Dependent Role="班級">
+              <PropertyRef Name="學號" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SchoolEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="主管" EntityType="Self.主管" />
+          <EntitySet Name="客戶" EntityType="Self.客戶" />
+          <EntitySet Name="員工" EntityType="Self.員工" />
+          <EntitySet Name="班級" EntityType="Self.班級" />
+          <EntitySet Name="教授" EntityType="Self.教授" />
+          <EntitySet Name="新客戶" EntityType="Self.新客戶" />
+          <EntitySet Name="課程" EntityType="Self.課程" />
+          <EntitySet Name="學生" EntityType="Self.學生" />
+          <EntitySet Name="客戶業績" EntityType="Self.客戶業績" />
+          <EntitySet Name="課程2" EntityType="Self.課程2" />
+          <EntitySet Name="View_1" EntityType="Self.View_1" />
+          <AssociationSet Name="FK__客戶業績__客戶編號__440B1D61" Association="Self.FK__客戶業績__客戶編號__440B1D61">
+            <End Role="客戶" EntitySet="客戶" />
+            <End Role="客戶業績" EntitySet="客戶業績" />
+          </AssociationSet>
+          <AssociationSet Name="FK__教授__身份證字號__2F10007B" Association="Self.FK__教授__身份證字號__2F10007B">
+            <End Role="員工" EntitySet="員工" />
+            <End Role="教授" EntitySet="教授" />
+          </AssociationSet>
+          <AssociationSet Name="FK__班級__教授編號__2E1BDC42" Association="Self.FK__班級__教授編號__2E1BDC42">
+            <End Role="教授" EntitySet="教授" />
+            <End Role="班級" EntitySet="班級" />
+          </AssociationSet>
+          <AssociationSet Name="FK__班級__課程編號__2D27B809" Association="Self.FK__班級__課程編號__2D27B809">
+            <End Role="課程" EntitySet="課程" />
+            <End Role="班級" EntitySet="班級" />
+          </AssociationSet>
+          <AssociationSet Name="FK__班級__學號__2C3393D0" Association="Self.FK__班級__學號__2C3393D0">
+            <End Role="學生" EntitySet="學生" />
+            <End Role="班級" EntitySet="班級" />
+          </AssociationSet>
+          <FunctionImport Name="fnOffsetFetchNext" IsComposable="true" ReturnType="Collection(SchoolModel.fnOffsetFetchNext_Result)">
+            <Parameter Name="m" Mode="In" Type="Int32" />
+            <Parameter Name="n" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="deawStar" />
+          <FunctionImport Name="deawStar2">
+            <Parameter Name="c" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="emplyeeDataRow" ReturnType="Collection(SchoolModel.emplyeeDataRow_Result)">
+            <Parameter Name="i" Mode="In" Type="Int32" />
+            <Parameter Name="j" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getCoursePivot" />
+          <FunctionImport Name="getOrderDetails" ReturnType="Collection(SchoolModel.getOrderDetails_Result)" />
+        </EntityContainer>
+        <ComplexType Name="emplyeeDataRow_Result">
+          <Property Type="String" Name="身份證字號" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="姓名" Nullable="true" MaxLength="12" />
+          <Property Type="String" Name="城市" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="街道" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="電話" Nullable="true" MaxLength="12" />
+          <Property Type="Decimal" Name="薪水" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="保險" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="扣稅" Nullable="true" Precision="19" />
+        </ComplexType>
+        <ComplexType Name="getOrderDetails_Result">
+          <Property Type="String" Name="教授編號" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="課程編號" Nullable="false" MaxLength="5" />
+          <Property Type="Decimal" Name="薪水" Nullable="true" Precision="19" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SchoolModelStoreContainer" CdmEntityContainer="SchoolEntities">
+          <EntitySetMapping Name="主管">
+            <EntityTypeMapping TypeName="SchoolModel.主管">
+              <MappingFragment StoreEntitySet="主管">
+                <ScalarProperty Name="員工字號" ColumnName="員工字號" />
+                <ScalarProperty Name="姓名" ColumnName="姓名" />
+                <ScalarProperty Name="主管字號" ColumnName="主管字號" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="客戶">
+            <EntityTypeMapping TypeName="SchoolModel.客戶">
+              <MappingFragment StoreEntitySet="客戶">
+                <ScalarProperty Name="客戶編號" ColumnName="客戶編號" />
+                <ScalarProperty Name="姓名" ColumnName="姓名" />
+                <ScalarProperty Name="電話" ColumnName="電話" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="員工">
+            <EntityTypeMapping TypeName="SchoolModel.員工">
+              <MappingFragment StoreEntitySet="員工">
+                <ScalarProperty Name="身份證字號" ColumnName="身份證字號" />
+                <ScalarProperty Name="姓名" ColumnName="姓名" />
+                <ScalarProperty Name="城市" ColumnName="城市" />
+                <ScalarProperty Name="街道" ColumnName="街道" />
+                <ScalarProperty Name="電話" ColumnName="電話" />
+                <ScalarProperty Name="薪水" ColumnName="薪水" />
+                <ScalarProperty Name="保險" ColumnName="保險" />
+                <ScalarProperty Name="扣稅" ColumnName="扣稅" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="班級">
+            <EntityTypeMapping TypeName="SchoolModel.班級">
+              <MappingFragment StoreEntitySet="班級">
+                <ScalarProperty Name="教授編號" ColumnName="教授編號" />
+                <ScalarProperty Name="學號" ColumnName="學號" />
+                <ScalarProperty Name="課程編號" ColumnName="課程編號" />
+                <ScalarProperty Name="上課時間" ColumnName="上課時間" />
+                <ScalarProperty Name="教室" ColumnName="教室" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="教授">
+            <EntityTypeMapping TypeName="SchoolModel.教授">
+              <MappingFragment StoreEntitySet="教授">
+                <ScalarProperty Name="教授編號" ColumnName="教授編號" />
+                <ScalarProperty Name="職稱" ColumnName="職稱" />
+                <ScalarProperty Name="科系" ColumnName="科系" />
+                <ScalarProperty Name="身份證字號" ColumnName="身份證字號" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="新客戶">
+            <EntityTypeMapping TypeName="SchoolModel.新客戶">
+              <MappingFragment StoreEntitySet="新客戶">
+                <ScalarProperty Name="客戶編號" ColumnName="客戶編號" />
+                <ScalarProperty Name="姓名" ColumnName="姓名" />
+                <ScalarProperty Name="電話" ColumnName="電話" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="課程">
+            <EntityTypeMapping TypeName="SchoolModel.課程">
+              <MappingFragment StoreEntitySet="課程">
+                <ScalarProperty Name="課程編號" ColumnName="課程編號" />
+                <ScalarProperty Name="名稱" ColumnName="名稱" />
+                <ScalarProperty Name="學分" ColumnName="學分" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="學生">
+            <EntityTypeMapping TypeName="SchoolModel.學生">
+              <MappingFragment StoreEntitySet="學生">
+                <ScalarProperty Name="學號" ColumnName="學號" />
+                <ScalarProperty Name="姓名" ColumnName="姓名" />
+                <ScalarProperty Name="性別" ColumnName="性別" />
+                <ScalarProperty Name="電話" ColumnName="電話" />
+                <ScalarProperty Name="生日" ColumnName="生日" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="客戶業績">
+            <EntityTypeMapping TypeName="SchoolModel.客戶業績">
+              <MappingFragment StoreEntitySet="客戶業績">
+                <ScalarProperty Name="客戶編號" ColumnName="客戶編號" />
+                <ScalarProperty Name="業績目標" ColumnName="業績目標" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="課程2">
+            <EntityTypeMapping TypeName="SchoolModel.課程2">
+              <MappingFragment StoreEntitySet="課程2">
+                <ScalarProperty Name="課程編號" ColumnName="課程編號" />
+                <ScalarProperty Name="名稱" ColumnName="名稱" />
+                <ScalarProperty Name="學分" ColumnName="學分" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_1">
+            <EntityTypeMapping TypeName="SchoolModel.View_1">
+              <MappingFragment StoreEntitySet="View_1">
+                <ScalarProperty Name="身份證字號" ColumnName="身份證字號" />
+                <ScalarProperty Name="姓名" ColumnName="姓名" />
+                <ScalarProperty Name="城市" ColumnName="城市" />
+                <ScalarProperty Name="街道" ColumnName="街道" />
+                <ScalarProperty Name="電話" ColumnName="電話" />
+                <ScalarProperty Name="薪水" ColumnName="薪水" />
+                <ScalarProperty Name="保險" ColumnName="保險" />
+                <ScalarProperty Name="扣稅" ColumnName="扣稅" />
+                <ScalarProperty Name="教授編號" ColumnName="教授編號" />
+                <ScalarProperty Name="職稱" ColumnName="職稱" />
+                <ScalarProperty Name="科系" ColumnName="科系" />
+                <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+                <ScalarProperty Name="Expr2" ColumnName="Expr2" />
+                <ScalarProperty Name="學號" ColumnName="學號" />
+                <ScalarProperty Name="課程編號" ColumnName="課程編號" />
+                <ScalarProperty Name="上課時間" ColumnName="上課時間" />
+                <ScalarProperty Name="教室" ColumnName="教室" />
+                <ScalarProperty Name="Expr3" ColumnName="Expr3" />
+                <ScalarProperty Name="名稱" ColumnName="名稱" />
+                <ScalarProperty Name="學分" ColumnName="學分" />
+                <ScalarProperty Name="Expr4" ColumnName="Expr4" />
+                <ScalarProperty Name="Expr5" ColumnName="Expr5" />
+                <ScalarProperty Name="性別" ColumnName="性別" />
+                <ScalarProperty Name="Expr6" ColumnName="Expr6" />
+                <ScalarProperty Name="生日" ColumnName="生日" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionName="SchoolModel.Store.fnOffsetFetchNext" FunctionImportName="fnOffsetFetchNext">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SchoolModel.fnOffsetFetchNext_Result">
+                <ScalarProperty Name="sn" ColumnName="sn" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="salary" ColumnName="salary" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="deawStar" FunctionName="SchoolModel.Store.deawStar" />
+          <FunctionImportMapping FunctionImportName="deawStar2" FunctionName="SchoolModel.Store.deawStar2" />
+          <FunctionImportMapping FunctionImportName="emplyeeDataRow" FunctionName="SchoolModel.Store.emplyeeDataRow">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SchoolModel.emplyeeDataRow_Result">
+                <ScalarProperty Name="身份證字號" ColumnName="身份證字號" />
+                <ScalarProperty Name="姓名" ColumnName="姓名" />
+                <ScalarProperty Name="城市" ColumnName="城市" />
+                <ScalarProperty Name="街道" ColumnName="街道" />
+                <ScalarProperty Name="電話" ColumnName="電話" />
+                <ScalarProperty Name="薪水" ColumnName="薪水" />
+                <ScalarProperty Name="保險" ColumnName="保險" />
+                <ScalarProperty Name="扣稅" ColumnName="扣稅" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getCoursePivot" FunctionName="SchoolModel.Store.getCoursePivot" />
+          <FunctionImportMapping FunctionImportName="getOrderDetails" FunctionName="SchoolModel.Store.getOrderDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SchoolModel.getOrderDetails_Result">
+                <ScalarProperty Name="教授編號" ColumnName="教授編號" />
+                <ScalarProperty Name="課程編號" ColumnName="課程編號" />
+                <ScalarProperty Name="薪水" ColumnName="薪水" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

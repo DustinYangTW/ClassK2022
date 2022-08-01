@@ -1,0 +1,32 @@
+﻿@using System.Data
+@model System.Data.DataTable
+@{
+    ViewBag.Title = "GetCoursePivot";
+}
+
+<h2>GetCoursePivot</h2>
+
+<table class="table table-bordered">
+
+    <thead>
+        <tr>
+            <td>@Model.Columns[0].ColumnName</td>
+            <td>@Model.Columns[1].ColumnName</td>
+            <td>@Model.Columns[2].ColumnName</td>
+            <td>@Model.Columns[3].ColumnName</td>
+            <td>@Model.Columns[4].ColumnName</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (DataRow row in Model.Rows)
+        {
+            <tr>
+                <td>@row[0]</td>
+                <td>@row[1]</td>
+                <td>@row[2]</td>
+                <td>@row[3]</td>
+                <td>@row[4]</td>
+            </tr>
+        }
+    </tbody>
+</table>

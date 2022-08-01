@@ -1,0 +1,298 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SchoolModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="主管">
+    <Key>
+      <PropertyRef Name="員工字號" />
+    </Key>
+    <Property Name="員工字號" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="姓名" Type="varchar" MaxLength="12" />
+    <Property Name="主管字號" Type="char" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="客戶">
+    <Key>
+      <PropertyRef Name="客戶編號" />
+    </Key>
+    <Property Name="客戶編號" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="姓名" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="電話" Type="varchar" MaxLength="15" />
+  </EntityType>
+  <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 '教務系統.dbo.客戶業績' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+  <EntityType Name="客戶業績">
+    <Key>
+      <PropertyRef Name="客戶編號" />
+      <PropertyRef Name="業績目標" />
+    </Key>
+    <Property Name="客戶編號" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="業績目標" Type="money" Nullable="false" />
+  </EntityType>
+  <EntityType Name="員工">
+    <Key>
+      <PropertyRef Name="身份證字號" />
+    </Key>
+    <Property Name="身份證字號" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="姓名" Type="varchar" MaxLength="12" />
+    <Property Name="城市" Type="char" MaxLength="5" />
+    <Property Name="街道" Type="varchar" MaxLength="30" />
+    <Property Name="電話" Type="char" MaxLength="12" />
+    <Property Name="薪水" Type="money" />
+    <Property Name="保險" Type="money" />
+    <Property Name="扣稅" Type="money" />
+  </EntityType>
+  <EntityType Name="班級">
+    <Key>
+      <PropertyRef Name="教授編號" />
+      <PropertyRef Name="學號" />
+      <PropertyRef Name="課程編號" />
+    </Key>
+    <Property Name="教授編號" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="學號" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="課程編號" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="上課時間" Type="datetime" />
+    <Property Name="教室" Type="varchar" MaxLength="8" />
+  </EntityType>
+  <EntityType Name="教授">
+    <Key>
+      <PropertyRef Name="教授編號" />
+    </Key>
+    <Property Name="教授編號" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="職稱" Type="varchar" MaxLength="10" />
+    <Property Name="科系" Type="varchar" MaxLength="5" />
+    <Property Name="身份證字號" Type="char" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="新客戶">
+    <Key>
+      <PropertyRef Name="客戶編號" />
+    </Key>
+    <Property Name="客戶編號" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="姓名" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="電話" Type="varchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="課程">
+    <Key>
+      <PropertyRef Name="課程編號" />
+    </Key>
+    <Property Name="課程編號" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="名稱" Type="varchar" MaxLength="30" />
+    <Property Name="學分" Type="int" />
+  </EntityType>
+  <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 '教務系統.dbo.課程2' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+  <EntityType Name="課程2">
+    <Key>
+      <PropertyRef Name="課程編號" />
+    </Key>
+    <Property Name="課程編號" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="名稱" Type="varchar" MaxLength="30" />
+    <Property Name="學分" Type="int" />
+  </EntityType>
+  <EntityType Name="學生">
+    <Key>
+      <PropertyRef Name="學號" />
+    </Key>
+    <Property Name="學號" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="姓名" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="性別" Type="char" MaxLength="2" />
+    <Property Name="電話" Type="varchar" MaxLength="15" />
+    <Property Name="生日" Type="datetime" />
+  </EntityType>
+  <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 '教務系統.dbo.View_1' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+  <EntityType Name="View_1">
+    <Key>
+      <PropertyRef Name="身份證字號" />
+      <PropertyRef Name="教授編號" />
+      <PropertyRef Name="Expr1" />
+      <PropertyRef Name="Expr2" />
+      <PropertyRef Name="學號" />
+      <PropertyRef Name="課程編號" />
+      <PropertyRef Name="Expr3" />
+      <PropertyRef Name="Expr4" />
+      <PropertyRef Name="Expr5" />
+    </Key>
+    <Property Name="身份證字號" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="姓名" Type="varchar" MaxLength="12" />
+    <Property Name="城市" Type="char" MaxLength="5" />
+    <Property Name="街道" Type="varchar" MaxLength="30" />
+    <Property Name="電話" Type="char" MaxLength="12" />
+    <Property Name="薪水" Type="money" />
+    <Property Name="保險" Type="money" />
+    <Property Name="扣稅" Type="money" />
+    <Property Name="教授編號" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="職稱" Type="varchar" MaxLength="10" />
+    <Property Name="科系" Type="varchar" MaxLength="5" />
+    <Property Name="Expr1" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="Expr2" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="學號" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="課程編號" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="上課時間" Type="datetime" />
+    <Property Name="教室" Type="varchar" MaxLength="8" />
+    <Property Name="Expr3" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="名稱" Type="varchar" MaxLength="30" />
+    <Property Name="學分" Type="int" />
+    <Property Name="Expr4" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="Expr5" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="性別" Type="char" MaxLength="2" />
+    <Property Name="Expr6" Type="varchar" MaxLength="15" />
+    <Property Name="生日" Type="datetime" />
+  </EntityType>
+  <Association Name="FK__客戶業績__客戶編號__440B1D61">
+    <End Role="客戶" Type="Self.客戶" Multiplicity="1" />
+    <End Role="客戶業績" Type="Self.客戶業績" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="客戶">
+        <PropertyRef Name="客戶編號" />
+      </Principal>
+      <Dependent Role="客戶業績">
+        <PropertyRef Name="客戶編號" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__班級__教授編號__2E1BDC42">
+    <End Role="教授" Type="Self.教授" Multiplicity="1" />
+    <End Role="班級" Type="Self.班級" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="教授">
+        <PropertyRef Name="教授編號" />
+      </Principal>
+      <Dependent Role="班級">
+        <PropertyRef Name="教授編號" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__班級__課程編號__2D27B809">
+    <End Role="課程" Type="Self.課程" Multiplicity="1" />
+    <End Role="班級" Type="Self.班級" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="課程">
+        <PropertyRef Name="課程編號" />
+      </Principal>
+      <Dependent Role="班級">
+        <PropertyRef Name="課程編號" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__班級__學號__2C3393D0">
+    <End Role="學生" Type="Self.學生" Multiplicity="1" />
+    <End Role="班級" Type="Self.班級" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="學生">
+        <PropertyRef Name="學號" />
+      </Principal>
+      <Dependent Role="班級">
+        <PropertyRef Name="學號" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__教授__身份證字號__2F10007B">
+    <End Role="員工" Type="Self.員工" Multiplicity="1" />
+    <End Role="教授" Type="Self.教授" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="員工">
+        <PropertyRef Name="身份證字號" />
+      </Principal>
+      <Dependent Role="教授">
+        <PropertyRef Name="身份證字號" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="deawStar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="deawStar2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="c" Type="int" Mode="In" />
+  </Function>
+  <Function Name="emplyeeDataRow" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="i" Type="int" Mode="In" />
+    <Parameter Name="j" Type="int" Mode="In" />
+  </Function>
+  <Function Name="fnGetdalary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="money">
+    <Parameter Name="id" Type="char" Mode="In" />
+  </Function>
+  <Function Name="fnOffsetFetchNext" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="m" Type="int" Mode="In" />
+    <Parameter Name="n" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="sn" Type="int" Nullable="false" />
+          <Property Name="id" Type="char" MaxLength="10" />
+          <Property Name="name" Type="varchar" MaxLength="12" />
+          <Property Name="salary" Type="money" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="getCoursePivot" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="getOrderDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="SchoolModelStoreContainer">
+    <EntitySet Name="主管" EntityType="Self.主管" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="客戶" EntityType="Self.客戶" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="員工" EntityType="Self.員工" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="班級" EntityType="Self.班級" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="教授" EntityType="Self.教授" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="新客戶" EntityType="Self.新客戶" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="課程" EntityType="Self.課程" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="學生" EntityType="Self.學生" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="客戶業績" EntityType="Self.客戶業績" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [客戶業績].[客戶編號] AS [客戶編號], 
+    [客戶業績].[業績目標] AS [業績目標]
+    FROM [dbo].[客戶業績] AS [客戶業績]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="課程2" EntityType="Self.課程2" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [課程2].[課程編號] AS [課程編號], 
+    [課程2].[名稱] AS [名稱], 
+    [課程2].[學分] AS [學分]
+    FROM [dbo].[課程2] AS [課程2]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="View_1" EntityType="Self.View_1" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [View_1].[身份證字號] AS [身份證字號], 
+    [View_1].[姓名] AS [姓名], 
+    [View_1].[城市] AS [城市], 
+    [View_1].[街道] AS [街道], 
+    [View_1].[電話] AS [電話], 
+    [View_1].[薪水] AS [薪水], 
+    [View_1].[保險] AS [保險], 
+    [View_1].[扣稅] AS [扣稅], 
+    [View_1].[教授編號] AS [教授編號], 
+    [View_1].[職稱] AS [職稱], 
+    [View_1].[科系] AS [科系], 
+    [View_1].[Expr1] AS [Expr1], 
+    [View_1].[Expr2] AS [Expr2], 
+    [View_1].[學號] AS [學號], 
+    [View_1].[課程編號] AS [課程編號], 
+    [View_1].[上課時間] AS [上課時間], 
+    [View_1].[教室] AS [教室], 
+    [View_1].[Expr3] AS [Expr3], 
+    [View_1].[名稱] AS [名稱], 
+    [View_1].[學分] AS [學分], 
+    [View_1].[Expr4] AS [Expr4], 
+    [View_1].[Expr5] AS [Expr5], 
+    [View_1].[性別] AS [性別], 
+    [View_1].[Expr6] AS [Expr6], 
+    [View_1].[生日] AS [生日]
+    FROM [dbo].[View_1] AS [View_1]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__客戶業績__客戶編號__440B1D61" Association="Self.FK__客戶業績__客戶編號__440B1D61">
+      <End Role="客戶" EntitySet="客戶" />
+      <End Role="客戶業績" EntitySet="客戶業績" />
+    </AssociationSet>
+    <AssociationSet Name="FK__班級__教授編號__2E1BDC42" Association="Self.FK__班級__教授編號__2E1BDC42">
+      <End Role="教授" EntitySet="教授" />
+      <End Role="班級" EntitySet="班級" />
+    </AssociationSet>
+    <AssociationSet Name="FK__班級__課程編號__2D27B809" Association="Self.FK__班級__課程編號__2D27B809">
+      <End Role="課程" EntitySet="課程" />
+      <End Role="班級" EntitySet="班級" />
+    </AssociationSet>
+    <AssociationSet Name="FK__班級__學號__2C3393D0" Association="Self.FK__班級__學號__2C3393D0">
+      <End Role="學生" EntitySet="學生" />
+      <End Role="班級" EntitySet="班級" />
+    </AssociationSet>
+    <AssociationSet Name="FK__教授__身份證字號__2F10007B" Association="Self.FK__教授__身份證字號__2F10007B">
+      <End Role="員工" EntitySet="員工" />
+      <End Role="教授" EntitySet="教授" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
