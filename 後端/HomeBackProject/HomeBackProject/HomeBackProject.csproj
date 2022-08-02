@@ -128,8 +128,9 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Css\body.css" />
     <Content Include="Global.asax" />
-    <Content Include="js\FindCityOpenData.js" />
+    <Content Include="Js\FindCityOpenData.js" />
     <Content Include="Models\HomeData.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>HomeData.Context.cs</LastGenOutput>

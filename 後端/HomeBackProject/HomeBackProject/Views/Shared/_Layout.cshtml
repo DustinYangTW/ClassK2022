@@ -7,6 +7,7 @@
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.8.3.js"></script>
+    <link href="~/Css/body.css" rel="stylesheet" />
 </head>
 <body>
     <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-info">
@@ -20,23 +21,23 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="~/Home/Index">首頁</a>
                     </li>
-                    <li class="nav-item">
+                    @*<li class="nav-item">
                         <a class="nav-link" href="~/PeopleDatas/Create">加入會員</a>
-                    </li>           
-                    @*<li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Link
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
                     </li>*@
+                    @*<li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Link
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>*@
                     <!--<li class="nav-item">-->
-                        @*<a class="nav-link disabled" href="~/PeopleDatas/Create" tabindex="-1" aria-disabled="true">加入會員</a>*@
-                        <!--<a class="nav-link fs-4" href="~/PeopleDatas/Create">加入會員</a>
+                    @*<a class="nav-link disabled" href="~/PeopleDatas/Create" tabindex="-1" aria-disabled="true">加入會員</a>*@
+                    <!--<a class="nav-link fs-4" href="~/PeopleDatas/Create">加入會員</a>
                     </li>-->
                 </ul>
                 <form class="d-flex">
@@ -48,7 +49,7 @@
 
     <div class="container-fluid body-content mt-5 ">
         @RenderBody()
-       
+
         <footer>
             <hr />
             <p>&copy; @DateTime.Now.Year - 黃金屋網</p>
@@ -57,6 +58,6 @@
 
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
-    @RenderSection("Script", false);
+    @RenderSection("Script", false)
 </body>
 </html>
