@@ -15,6 +15,7 @@ namespace HomeBackProject.Models
     using System.ComponentModel.DataAnnotations;
     using MetaDataHomeBackProject.Models;
     [MetadataType(typeof(MetaTerritoryData))]
+
     public partial class TerritoryData
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -33,10 +34,10 @@ namespace HomeBackProject.Models
         public string TerritoryStreet { get; set; }
         public bool TerritorySaleAndLease { get; set; }
         public string TerritoryFeatures { get; set; }
-        public int TerritorySaleType { get; set; }
-        public int TerritoryType { get; set; }
+        public byte TerritorySaleType { get; set; }
+        public byte TerritoryType { get; set; }
         public string TerritoryPeopleID { get; set; }
-        public Nullable<int> TerritoryADLevel { get; set; }
+        public Nullable<short> TerritoryADLevel { get; set; }
     
         public virtual ADTypeData ADTypeData { get; set; }
         public virtual CityTypeData CityTypeData { get; set; }

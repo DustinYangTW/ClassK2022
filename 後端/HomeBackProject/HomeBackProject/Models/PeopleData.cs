@@ -15,7 +15,6 @@ namespace HomeBackProject.Models
     using System.ComponentModel.DataAnnotations;
     using MetaDataHomeBackProject.Models;
     [MetadataType(typeof(MetaPeopleData))]
-
     public partial class PeopleData
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -40,8 +39,8 @@ namespace HomeBackProject.Models
         public Nullable<decimal> PeopleAge { get; set; }
         public Nullable<decimal> PeopleCash { get; set; }
         public Nullable<System.DateTime> AuthorizationTime { get; set; }
-        public int SaleStateID { get; set; }
-        public Nullable<int> SchemeName { get; set; }
+        public byte SaleStateID { get; set; }
+        public Nullable<short> SchemeName { get; set; }
     
         public virtual AccountData AccountData { get; set; }
         public virtual CityTypeData CityTypeData { get; set; }

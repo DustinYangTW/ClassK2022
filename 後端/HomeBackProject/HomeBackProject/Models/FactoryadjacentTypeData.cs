@@ -18,7 +18,7 @@ namespace HomeBackProject.Models
 
     public partial class FactoryadjacentTypeData
     {
-        public int FactoryAdjacentStateID { get; set; }
+        public byte FactoryAdjacentStateID { get; set; }
         public string FactoryAdjacentName { get; set; }
         public string FactoryID { get; set; }
     

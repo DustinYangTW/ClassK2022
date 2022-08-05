@@ -15,7 +15,6 @@ namespace HomeBackProject.Models
     using System.ComponentModel.DataAnnotations;
     using MetaDataHomeBackProject.Models;
     [MetadataType(typeof(MetaPeopleRankData))]
-
     public partial class PeopleRankData
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,7 +23,7 @@ namespace HomeBackProject.Models
             this.PeopleData = new HashSet<PeopleData>();
         }
     
-        public int HomeTSaleStateID { get; set; }
+        public byte HomeTSaleStateID { get; set; }
         public string PeopleRank { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -18,7 +18,7 @@ namespace HomeBackProject.Models
 
     public partial class HomeadjacentTypeData
     {
-        public int HomeAdjacentStateID { get; set; }
+        public byte HomeAdjacentStateID { get; set; }
         public string HomeAdjacentName { get; set; }
         public string HomeID { get; set; }
     

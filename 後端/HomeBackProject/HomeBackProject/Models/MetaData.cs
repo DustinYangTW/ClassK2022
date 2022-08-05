@@ -25,7 +25,7 @@ namespace MetaDataHomeBackProject.Models
     {
         [Key]
         [DisplayName("廣告代號")]
-        public int ADID { get; set; }
+        public short ADID { get; set; }
         [DisplayName("廣告名稱")]
         [Required(ErrorMessage = "必填欄位")]
         [StringLength(30, ErrorMessage = "最長只能輸入30個字")]
@@ -36,7 +36,7 @@ namespace MetaDataHomeBackProject.Models
     {
         [Key]
         [DisplayName("車位代號")]
-        public int CarTypeID { get; set; }
+        public byte CarTypeID { get; set; }
         [DisplayName("車位名稱")]
         [Required(ErrorMessage = "必填欄位")]
         [StringLength(20, ErrorMessage = "最長只能輸入20個字")]
@@ -59,7 +59,7 @@ namespace MetaDataHomeBackProject.Models
     {
         [Key]
         [DisplayName("工廠鄰近物ID")]
-        public int FactoryAdjacentStateID { get; set; }
+        public byte FactoryAdjacentStateID { get; set; }
         [DisplayName("鄰近物名稱")]
         [Required(ErrorMessage = "必填欄位")]
         [StringLength(30, ErrorMessage = "最長只能輸入30個字")]
@@ -73,7 +73,7 @@ namespace MetaDataHomeBackProject.Models
     {
         [Key]
         [DisplayName("房屋鄰近物ID")]
-        public int HomeAdjacentStateID { get; set; }
+        public byte HomeAdjacentStateID { get; set; }
         [DisplayName("鄰近物名稱")]
         [Required(ErrorMessage = "必填欄位")]
         [StringLength(30, ErrorMessage = "最長只能輸入30個字")]
@@ -88,7 +88,7 @@ namespace MetaDataHomeBackProject.Models
     {
         [Key]
         [DisplayName("工廠鄰近物ID")]
-        public int TerritoryAdjacentStateID { get; set; }
+        public byte TerritoryAdjacentStateID { get; set; }
         [DisplayName("鄰近物名稱")]
         [Required(ErrorMessage = "必填欄位")]
         [StringLength(30, ErrorMessage = "最長只能輸入30個字")]
@@ -102,7 +102,7 @@ namespace MetaDataHomeBackProject.Models
     {
         [Key]
         [DisplayName("房屋類型代碼")]
-        public int HomeTypeID { get; set; }
+        public byte HomeTypeID { get; set; }
         [DisplayName("房屋類型")]
         [Required(ErrorMessage = "必填欄位")]
         [StringLength(20, ErrorMessage = "最長只能輸入20個字")]
@@ -113,7 +113,7 @@ namespace MetaDataHomeBackProject.Models
     {
         [Key]
         [DisplayName("會員身分代號")]
-        public int HomeTSaleStateID { get; set; }
+        public byte HomeTSaleStateID { get; set; }
         [DisplayName("會員身分")]
         [Required(ErrorMessage = "必填欄位")]
         [StringLength(20, ErrorMessage = "最長只能輸入20個字")]
@@ -124,7 +124,7 @@ namespace MetaDataHomeBackProject.Models
     {
         [Key]
         [DisplayName("會員方案代號")]
-        public int ProgramSerialID { get; set; }
+        public short ProgramSerialID { get; set; }
         [DisplayName("會員方案名稱")]
         [Required(ErrorMessage = "必填欄位")]
         [StringLength(30, ErrorMessage = "最長只能輸入30個字")]
@@ -135,7 +135,7 @@ namespace MetaDataHomeBackProject.Models
     {
         [Key]
         [DisplayName("銷售狀態代號")]
-        public int SaleStateID { get; set; }
+        public byte SaleStateID { get; set; }
         [DisplayName("銷售狀態")]
         [Required(ErrorMessage = "必填欄位")]
         [StringLength(5, ErrorMessage = "最長只能輸入5個字")]
@@ -146,7 +146,7 @@ namespace MetaDataHomeBackProject.Models
     {
         [Key]
         [DisplayName("土地類型代號")]
-        public int TerritorySerialID { get; set; }
+        public byte TerritorySerialID { get; set; }
         [DisplayName("土地類型")]
         [Required(ErrorMessage = "必填欄位")]
         [StringLength(10, ErrorMessage = "最長只能輸入10個字")]
@@ -207,9 +207,9 @@ namespace MetaDataHomeBackProject.Models
         public Nullable<System.DateTime> AuthorizationTime { get; set; }
         [DisplayName("會員身分")]
         [Required(ErrorMessage = "必填欄位")]
-        public int SaleStateID { get; set; }
+        public byte SaleStateID { get; set; }
         [DisplayName("方案名稱")]
-        public Nullable<int> SchemeName { get; set; }
+        public Nullable<short> SchemeName { get; set; }
 
         public class ChechIDName : ValidationAttribute
         {
@@ -275,13 +275,13 @@ namespace MetaDataHomeBackProject.Models
         public string FactoryStreet { get; set; }
         [DisplayName("樓層")]
         [RegularExpression("[0-9]{0,4}", ErrorMessage = "格式錯誤")]
-        public Nullable<int> FactoryFloor { get; set; }
+        public Nullable<byte> FactoryFloor { get; set; }
         [DisplayName("總樓層")]
         [RegularExpression("[0-9]{0,4}", ErrorMessage = "格式錯誤")]
-        public Nullable<int> FactoryHighFloor { get; set; }
+        public Nullable<byte> FactoryHighFloor { get; set; }
         [DisplayName("屋齡")]
         [Required(ErrorMessage = "必填欄位")]
-        public int FactoryAges { get; set; }
+        public byte FactoryAges { get; set; }
         [DisplayName("售/租")]
         [Required(ErrorMessage = "必填欄位")]
         public bool FactorySaleAndLease { get; set; }
@@ -290,7 +290,7 @@ namespace MetaDataHomeBackProject.Models
         public string FactoryFeatures { get; set; }
         [DisplayName("銷售狀態")]
         [Required(ErrorMessage = "必填欄位")]
-        public int FactorySaleType { get; set; }
+        public byte FactorySaleType { get; set; }
         [DisplayName("土地類型")]
         [Required(ErrorMessage = "必填欄位")]
         public string FactoryType { get; set; }
@@ -298,7 +298,7 @@ namespace MetaDataHomeBackProject.Models
         [Required(ErrorMessage = "必填欄位")]
         public string FactoryPeopleID { get; set; }
         [DisplayName("廣告等級")]
-        public Nullable<int> FactoryADLevel { get; set; }
+        public Nullable<short> FactoryADLevel { get; set; }
     }
 
 
@@ -332,10 +332,10 @@ namespace MetaDataHomeBackProject.Models
         public string HomeStreet { get; set; }
         [DisplayName("樓層")]
         [RegularExpression("[0-9]{0,4}", ErrorMessage = "格式錯誤")]
-        public Nullable<int> HomeFloor { get; set; }
+        public Nullable<byte> HomeFloor { get; set; }
         [DisplayName("總樓層")]
         [RegularExpression("[0-9]{0,4}", ErrorMessage = "格式錯誤")]
-        public Nullable<int> HomeHighFloor { get; set; }
+        public Nullable<byte> HomeHighFloor { get; set; }
         [DisplayName("售/租")]
         [Required(ErrorMessage = "必填欄位")]
         public bool HomeSaleAndLease { get; set; }
@@ -343,23 +343,22 @@ namespace MetaDataHomeBackProject.Models
         [Required(ErrorMessage = "必填欄位")]
         [RegularExpression("[0-9]{0,4}", ErrorMessage = "格式錯誤")]
 
-        public int HomeAges { get; set; }
+        public byte HomeAges { get; set; }
         [DisplayName("房")]
         [Required(ErrorMessage = "必填欄位")]
         [RegularExpression("[0-9]{0,7}", ErrorMessage = "格式錯誤")]
-        public int HomeRoom { get; set; }
+        public byte HomeRoom { get; set; }
         [DisplayName("廳")]
         [Required(ErrorMessage = "必填欄位")]
         [RegularExpression("[0-9]{0,7}", ErrorMessage = "格式錯誤")]
-        public int HomeHall { get; set; }
+        public byte HomeHall { get; set; }
         [DisplayName("衛浴")]
         [Required(ErrorMessage = "必填欄位")]
         [RegularExpression("[0-9]{0,7}", ErrorMessage = "格式錯誤")]
-        public int HomeBathroom { get; set; }
+        public byte HomeBathroom { get; set; }
         [DisplayName("陽台")]
-        [StringLength(7, ErrorMessage = "最長只能輸入7個數字")]
         [RegularExpression("^[0-9]*$", ErrorMessage = "格式錯誤")]
-        public int HomeBalcony { get; set; }
+        public byte HomeBalcony { get; set; }
         [DisplayName("廠房特色")]
         [StringLength(1000, ErrorMessage = "最長只能輸入1000個字")]
         public string HomeFeatures { get; set; }
@@ -369,18 +368,18 @@ namespace MetaDataHomeBackProject.Models
         public Nullable<int> HomeManageTip { get; set; }
         [DisplayName("車位類型")]
         [Required(ErrorMessage = "必填欄位")]
-        public int HomeCarID { get; set; }
+        public byte HomeCarID { get; set; }
         [DisplayName("銷售狀態")]
         [Required(ErrorMessage = "必填欄位")]
-        public int HomeSaleType { get; set; }
+        public byte HomeSaleType { get; set; }
         [DisplayName("房屋類型")]
         [Required(ErrorMessage = "必填欄位")]
-        public int HomeType { get; set; }
+        public byte HomeType { get; set; }
         [DisplayName("會員編號")]
         [Required(ErrorMessage = "必填欄位")]
         public string HomePeopleID { get; set; }
         [DisplayName("廣告等級")]
-        public Nullable<int> HomeADLevel { get; set; }
+        public Nullable<short> HomeADLevel { get; set; }
 
     }
 
@@ -420,15 +419,15 @@ namespace MetaDataHomeBackProject.Models
         public string TerritoryFeatures { get; set; }
         [DisplayName("銷售狀態")]
         [Required(ErrorMessage = "必填欄位")]
-        public int TerritorySaleType { get; set; }
+        public byte TerritorySaleType { get; set; }
         [DisplayName("土地類型")]
         [Required(ErrorMessage = "必填欄位")]
-        public int TerritoryType { get; set; }
+        public byte TerritoryType { get; set; }
         [DisplayName("會員編號")]
         [Required(ErrorMessage = "必填欄位")]
         public string TerritoryPeopleID { get; set; }
         [DisplayName("廣告等級")]
-        public Nullable<int> TerritoryADLevel { get; set; }
+        public Nullable<short> TerritoryADLevel { get; set; }
     }
 
 

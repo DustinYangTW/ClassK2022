@@ -15,10 +15,9 @@ namespace HomeBackProject.Models
     using System.ComponentModel.DataAnnotations;
     using MetaDataHomeBackProject.Models;
     [MetadataType(typeof(MetaTerritoryadjacentTypeData))]
-
     public partial class TerritoryadjacentTypeData
     {
-        public int TerritoryAdjacentStateID { get; set; }
+        public byte TerritoryAdjacentStateID { get; set; }
         public string TerritoryAdjacentName { get; set; }
         public string TerritoryID { get; set; }
     

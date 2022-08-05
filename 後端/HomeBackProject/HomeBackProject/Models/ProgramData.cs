@@ -15,7 +15,6 @@ namespace HomeBackProject.Models
     using System.ComponentModel.DataAnnotations;
     using MetaDataHomeBackProject.Models;
     [MetadataType(typeof(MetaProgramData))]
-
     public partial class ProgramData
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,7 +23,7 @@ namespace HomeBackProject.Models
             this.PeopleData = new HashSet<PeopleData>();
         }
     
-        public int ProgramSerialID { get; set; }
+        public short ProgramSerialID { get; set; }
         public string ProgramName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
