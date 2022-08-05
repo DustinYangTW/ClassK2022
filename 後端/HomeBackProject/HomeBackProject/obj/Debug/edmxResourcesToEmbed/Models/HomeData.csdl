@@ -12,7 +12,7 @@
     <Key>
       <PropertyRef Name="ADID" />
     </Key>
-    <Property Name="ADID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ADID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ADName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="FactoryData" Relationship="Self.FK_FactoryData_ADTypeData" FromRole="ADTypeData" ToRole="FactoryData" />
     <NavigationProperty Name="HomeData" Relationship="Self.FK_HomeData_ADTypeData" FromRole="ADTypeData" ToRole="HomeData" />
@@ -22,7 +22,7 @@
     <Key>
       <PropertyRef Name="CarTypeID" />
     </Key>
-    <Property Name="CarTypeID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CarTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="CarTypeName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="HomeData" Relationship="Self.FK_HomeData_CarTypeData" FromRole="CarTypeData" ToRole="HomeData" />
   </EntityType>
@@ -41,7 +41,7 @@
     <Key>
       <PropertyRef Name="FactoryAdjacentStateID" />
     </Key>
-    <Property Name="FactoryAdjacentStateID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FactoryAdjacentStateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="FactoryAdjacentName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="FactoryID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
     <NavigationProperty Name="FactoryData" Relationship="Self.FK_FactoryadjacentTypeData_FactoryData" FromRole="FactoryadjacentTypeData" ToRole="FactoryData" />
@@ -58,15 +58,15 @@
     <Property Name="FactoryCity" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
     <Property Name="FactoryTown" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="FactoryStreet" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="FactoryFloor" Type="Byte" />
-    <Property Name="FactoryHighFloor" Type="Byte" />
-    <Property Name="FactoryAges" Type="Byte" Nullable="false" />
+    <Property Name="FactoryFloor" Type="Int32" />
+    <Property Name="FactoryHighFloor" Type="Int32" />
+    <Property Name="FactoryAges" Type="Int32" Nullable="false" />
     <Property Name="FactorySaleAndLease" Type="Boolean" Nullable="false" />
     <Property Name="FactoryFeatures" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-    <Property Name="FactorySaleType" Type="Byte" Nullable="false" />
-    <Property Name="FactoryType" Type="Byte" Nullable="false" />
+    <Property Name="FactorySaleType" Type="Int32" Nullable="false" />
+    <Property Name="FactoryType" Type="Int32" Nullable="false" />
     <Property Name="FactoryPeopleID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="FactoryADLevel" Type="Int16" />
+    <Property Name="FactoryADLevel" Type="Int32" />
     <NavigationProperty Name="ADTypeData" Relationship="Self.FK_FactoryData_ADTypeData" FromRole="FactoryData" ToRole="ADTypeData" />
     <NavigationProperty Name="CityTypeData" Relationship="Self.FK_FactoryData_CityTypeData" FromRole="FactoryData" ToRole="CityTypeData" />
     <NavigationProperty Name="FactoryadjacentTypeData" Relationship="Self.FK_FactoryadjacentTypeData_FactoryData" FromRole="FactoryData" ToRole="FactoryadjacentTypeData" />
@@ -78,7 +78,7 @@
     <Key>
       <PropertyRef Name="HomeAdjacentStateID" />
     </Key>
-    <Property Name="HomeAdjacentStateID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HomeAdjacentStateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="HomeAdjacentName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="HomeID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
     <NavigationProperty Name="HomeData" Relationship="Self.FK_HomeadjacentTypeData_HomeData" FromRole="HomeadjacentTypeData" ToRole="HomeData" />
@@ -95,21 +95,21 @@
     <Property Name="HomeCity" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
     <Property Name="HomeTown" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="HomeStreet" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="HomeFloor" Type="Byte" />
-    <Property Name="HomeHighFloor" Type="Byte" />
+    <Property Name="HomeFloor" Type="Int32" />
+    <Property Name="HomeHighFloor" Type="Int32" />
     <Property Name="HomeSaleAndLease" Type="Boolean" Nullable="false" />
-    <Property Name="HomeAges" Type="Byte" Nullable="false" />
-    <Property Name="HomeRoom" Type="Byte" Nullable="false" />
-    <Property Name="HomeHall" Type="Byte" Nullable="false" />
-    <Property Name="HomeBathroom" Type="Byte" Nullable="false" />
-    <Property Name="HomeBalcony" Type="Byte" Nullable="false" />
+    <Property Name="HomeAges" Type="Int32" Nullable="false" />
+    <Property Name="HomeRoom" Type="Int32" Nullable="false" />
+    <Property Name="HomeHall" Type="Int32" Nullable="false" />
+    <Property Name="HomeBathroom" Type="Int32" Nullable="false" />
+    <Property Name="HomeBalcony" Type="Int32" Nullable="false" />
     <Property Name="HomeFeatures" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-    <Property Name="HomeManageTip" Type="Int64" />
-    <Property Name="HomeCarID" Type="Byte" Nullable="false" />
-    <Property Name="HomeSaleType" Type="Byte" Nullable="false" />
-    <Property Name="HomeType" Type="Byte" Nullable="false" />
+    <Property Name="HomeManageTip" Type="Int32" />
+    <Property Name="HomeCarID" Type="Int32" Nullable="false" />
+    <Property Name="HomeSaleType" Type="Int32" Nullable="false" />
+    <Property Name="HomeType" Type="Int32" Nullable="false" />
     <Property Name="HomePeopleID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="HomeADLevel" Type="Int16" />
+    <Property Name="HomeADLevel" Type="Int32" />
     <NavigationProperty Name="ADTypeData" Relationship="Self.FK_HomeData_ADTypeData" FromRole="HomeData" ToRole="ADTypeData" />
     <NavigationProperty Name="CarTypeData" Relationship="Self.FK_HomeData_CarTypeData" FromRole="HomeData" ToRole="CarTypeData" />
     <NavigationProperty Name="CityTypeData" Relationship="Self.FK_HomeData_CityTypeData" FromRole="HomeData" ToRole="CityTypeData" />
@@ -122,7 +122,7 @@
     <Key>
       <PropertyRef Name="HomeTypeID" />
     </Key>
-    <Property Name="HomeTypeID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HomeTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="HomeTypeName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="HomeData" Relationship="Self.FK_HomeData_HomeTypeData" FromRole="HomeTypeData" ToRole="HomeData" />
   </EntityType>
@@ -144,8 +144,8 @@
     <Property Name="PeopleAge" Type="Decimal" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Computed" />
     <Property Name="PeopleCash" Type="Decimal" Precision="10" Scale="4" />
     <Property Name="AuthorizationTime" Type="DateTime" Precision="3" />
-    <Property Name="SaleStateID" Type="Byte" Nullable="false" />
-    <Property Name="SchemeName" Type="Int16" />
+    <Property Name="SaleStateID" Type="Int32" Nullable="false" />
+    <Property Name="SchemeName" Type="Int32" />
     <NavigationProperty Name="AccountData" Relationship="Self.FK_PeopleData_AccountData" FromRole="PeopleData" ToRole="AccountData" />
     <NavigationProperty Name="CityTypeData" Relationship="Self.FK_PeopleData_CityTypeData" FromRole="PeopleData" ToRole="CityTypeData" />
     <NavigationProperty Name="FactoryData" Relationship="Self.FK_FactoryData_PeopleData" FromRole="PeopleData" ToRole="FactoryData" />
@@ -158,7 +158,7 @@
     <Key>
       <PropertyRef Name="HomeTSaleStateID" />
     </Key>
-    <Property Name="HomeTSaleStateID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HomeTSaleStateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="PeopleRank" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="PeopleData" Relationship="Self.FK_PeopleData_PeopleRankData" FromRole="PeopleRankData" ToRole="PeopleData" />
   </EntityType>
@@ -166,7 +166,7 @@
     <Key>
       <PropertyRef Name="ProgramSerialID" />
     </Key>
-    <Property Name="ProgramSerialID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProgramSerialID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ProgramName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="PeopleData" Relationship="Self.FK_PeopleData_ProgramData" FromRole="ProgramData" ToRole="PeopleData" />
   </EntityType>
@@ -174,7 +174,7 @@
     <Key>
       <PropertyRef Name="SaleStateID" />
     </Key>
-    <Property Name="SaleStateID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SaleStateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="SaleState" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="FactoryData" Relationship="Self.FK_FactoryData_SaleTypeData" FromRole="SaleTypeData" ToRole="FactoryData" />
     <NavigationProperty Name="HomeData" Relationship="Self.FK_HomeData_SaleTypeData" FromRole="SaleTypeData" ToRole="HomeData" />
@@ -194,7 +194,7 @@
     <Key>
       <PropertyRef Name="TerritoryAdjacentStateID" />
     </Key>
-    <Property Name="TerritoryAdjacentStateID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TerritoryAdjacentStateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="TerritoryAdjacentName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="TerritoryID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
     <NavigationProperty Name="TerritoryData" Relationship="Self.FK_TerritoryadjacentTypeData_TerritoryData" FromRole="TerritoryadjacentTypeData" ToRole="TerritoryData" />
@@ -213,10 +213,10 @@
     <Property Name="TerritoryStreet" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="TerritorySaleAndLease" Type="Boolean" Nullable="false" />
     <Property Name="TerritoryFeatures" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-    <Property Name="TerritorySaleType" Type="Byte" Nullable="false" />
-    <Property Name="TerritoryType" Type="Byte" Nullable="false" />
+    <Property Name="TerritorySaleType" Type="Int32" Nullable="false" />
+    <Property Name="TerritoryType" Type="Int32" Nullable="false" />
     <Property Name="TerritoryPeopleID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="TerritoryADLevel" Type="Int16" />
+    <Property Name="TerritoryADLevel" Type="Int32" />
     <NavigationProperty Name="ADTypeData" Relationship="Self.FK_TerritoryData_ADTypeData" FromRole="TerritoryData" ToRole="ADTypeData" />
     <NavigationProperty Name="CityTypeData" Relationship="Self.FK_TerritoryData_CityTypeData" FromRole="TerritoryData" ToRole="CityTypeData" />
     <NavigationProperty Name="PeopleData" Relationship="Self.FK_TerritoryData_PeopleData" FromRole="TerritoryData" ToRole="PeopleData" />
@@ -228,7 +228,7 @@
     <Key>
       <PropertyRef Name="TerritorySerialID" />
     </Key>
-    <Property Name="TerritorySerialID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TerritorySerialID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="TerritoryTypeSelect" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="FactoryData" Relationship="Self.FK_FactoryData_TerritoryTypeData" FromRole="TerritoryTypeData" ToRole="FactoryData" />
     <NavigationProperty Name="TerritoryData" Relationship="Self.FK_TerritoryData_TerritoryTypeData1" FromRole="TerritoryTypeData" ToRole="TerritoryData" />
@@ -356,7 +356,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_FactoryData_PeopleData">
-    <End Role="PeopleData" Type="Self.PeopleData" Multiplicity="1" />
+    <End Role="PeopleData" Type="Self.PeopleData" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="FactoryData" Type="Self.FactoryData" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="PeopleData">
@@ -416,7 +418,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_HomeData_PeopleData">
-    <End Role="PeopleData" Type="Self.PeopleData" Multiplicity="1" />
+    <End Role="PeopleData" Type="Self.PeopleData" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="HomeData" Type="Self.HomeData" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="PeopleData">
@@ -464,7 +468,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_TerritoryData_PeopleData">
-    <End Role="PeopleData" Type="Self.PeopleData" Multiplicity="1" />
+    <End Role="PeopleData" Type="Self.PeopleData" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="TerritoryData" Type="Self.TerritoryData" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="PeopleData">
@@ -621,5 +627,46 @@
       <End Role="TerritoryTypeData" EntitySet="TerritoryTypeData" />
       <End Role="TerritoryData" EntitySet="TerritoryData" />
     </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(HomeDataModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(HomeDataModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
   </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
 </Schema>

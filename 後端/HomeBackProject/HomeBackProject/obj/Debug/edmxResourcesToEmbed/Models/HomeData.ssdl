@@ -11,14 +11,14 @@
     <Key>
       <PropertyRef Name="ADID" />
     </Key>
-    <Property Name="ADID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ADID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ADName" Type="nvarchar" MaxLength="30" Nullable="false" />
   </EntityType>
   <EntityType Name="CarTypeData">
     <Key>
       <PropertyRef Name="CarTypeID" />
     </Key>
-    <Property Name="CarTypeID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CarTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CarTypeName" Type="nvarchar" MaxLength="20" Nullable="false" />
   </EntityType>
   <EntityType Name="CityTypeData">
@@ -32,7 +32,7 @@
     <Key>
       <PropertyRef Name="FactoryAdjacentStateID" />
     </Key>
-    <Property Name="FactoryAdjacentStateID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FactoryAdjacentStateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="FactoryAdjacentName" Type="nvarchar" MaxLength="30" Nullable="false" />
     <Property Name="FactoryID" Type="nchar" MaxLength="10" Nullable="false" />
   </EntityType>
@@ -48,21 +48,21 @@
     <Property Name="FactoryCity" Type="char" MaxLength="1" Nullable="false" />
     <Property Name="FactoryTown" Type="nvarchar" MaxLength="5" Nullable="false" />
     <Property Name="FactoryStreet" Type="nvarchar" MaxLength="10" Nullable="false" />
-    <Property Name="FactoryFloor" Type="tinyint" />
-    <Property Name="FactoryHighFloor" Type="tinyint" />
-    <Property Name="FactoryAges" Type="tinyint" Nullable="false" />
+    <Property Name="FactoryFloor" Type="int" />
+    <Property Name="FactoryHighFloor" Type="int" />
+    <Property Name="FactoryAges" Type="int" Nullable="false" />
     <Property Name="FactorySaleAndLease" Type="bit" Nullable="false" />
     <Property Name="FactoryFeatures" Type="nvarchar" MaxLength="1000" />
-    <Property Name="FactorySaleType" Type="tinyint" Nullable="false" />
-    <Property Name="FactoryType" Type="tinyint" Nullable="false" />
+    <Property Name="FactorySaleType" Type="int" Nullable="false" />
+    <Property Name="FactoryType" Type="int" Nullable="false" />
     <Property Name="FactoryPeopleID" Type="nchar" MaxLength="10" Nullable="false" />
-    <Property Name="FactoryADLevel" Type="smallint" />
+    <Property Name="FactoryADLevel" Type="int" />
   </EntityType>
   <EntityType Name="HomeadjacentTypeData">
     <Key>
       <PropertyRef Name="HomeAdjacentStateID" />
     </Key>
-    <Property Name="HomeAdjacentStateID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HomeAdjacentStateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="HomeAdjacentName" Type="nvarchar" MaxLength="30" Nullable="false" />
     <Property Name="HomeID" Type="nchar" MaxLength="10" Nullable="false" />
   </EntityType>
@@ -78,27 +78,27 @@
     <Property Name="HomeCity" Type="char" MaxLength="1" Nullable="false" />
     <Property Name="HomeTown" Type="nvarchar" MaxLength="5" Nullable="false" />
     <Property Name="HomeStreet" Type="nvarchar" MaxLength="10" Nullable="false" />
-    <Property Name="HomeFloor" Type="tinyint" />
-    <Property Name="HomeHighFloor" Type="tinyint" />
+    <Property Name="HomeFloor" Type="int" />
+    <Property Name="HomeHighFloor" Type="int" />
     <Property Name="HomeSaleAndLease" Type="bit" Nullable="false" />
-    <Property Name="HomeAges" Type="tinyint" Nullable="false" />
-    <Property Name="HomeRoom" Type="tinyint" Nullable="false" />
-    <Property Name="HomeHall" Type="tinyint" Nullable="false" />
-    <Property Name="HomeBathroom" Type="tinyint" Nullable="false" />
-    <Property Name="HomeBalcony" Type="tinyint" Nullable="false" />
+    <Property Name="HomeAges" Type="int" Nullable="false" />
+    <Property Name="HomeRoom" Type="int" Nullable="false" />
+    <Property Name="HomeHall" Type="int" Nullable="false" />
+    <Property Name="HomeBathroom" Type="int" Nullable="false" />
+    <Property Name="HomeBalcony" Type="int" Nullable="false" />
     <Property Name="HomeFeatures" Type="nvarchar" MaxLength="1000" />
-    <Property Name="HomeManageTip" Type="money" />
-    <Property Name="HomeCarID" Type="tinyint" Nullable="false" />
-    <Property Name="HomeSaleType" Type="tinyint" Nullable="false" />
-    <Property Name="HomeType" Type="tinyint" Nullable="false" />
+    <Property Name="HomeManageTip" Type="int" />
+    <Property Name="HomeCarID" Type="int" Nullable="false" />
+    <Property Name="HomeSaleType" Type="int" Nullable="false" />
+    <Property Name="HomeType" Type="int" Nullable="false" />
     <Property Name="HomePeopleID" Type="nchar" MaxLength="10" Nullable="false" />
-    <Property Name="HomeADLevel" Type="smallint" />
+    <Property Name="HomeADLevel" Type="int" />
   </EntityType>
   <EntityType Name="HomeTypeData">
     <Key>
       <PropertyRef Name="HomeTypeID" />
     </Key>
-    <Property Name="HomeTypeID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HomeTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="HomeTypeName" Type="nvarchar" MaxLength="20" Nullable="false" />
   </EntityType>
   <EntityType Name="PeopleData">
@@ -119,28 +119,28 @@
     <Property Name="PeopleAge" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Computed" />
     <Property Name="PeopleCash" Type="smallmoney" />
     <Property Name="AuthorizationTime" Type="datetime" />
-    <Property Name="SaleStateID" Type="tinyint" Nullable="false" />
-    <Property Name="SchemeName" Type="smallint" />
+    <Property Name="SaleStateID" Type="int" Nullable="false" />
+    <Property Name="SchemeName" Type="int" />
   </EntityType>
   <EntityType Name="PeopleRankData">
     <Key>
       <PropertyRef Name="HomeTSaleStateID" />
     </Key>
-    <Property Name="HomeTSaleStateID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HomeTSaleStateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="PeopleRank" Type="nvarchar" MaxLength="20" Nullable="false" />
   </EntityType>
   <EntityType Name="ProgramData">
     <Key>
       <PropertyRef Name="ProgramSerialID" />
     </Key>
-    <Property Name="ProgramSerialID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProgramSerialID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ProgramName" Type="nvarchar" MaxLength="30" Nullable="false" />
   </EntityType>
   <EntityType Name="SaleTypeData">
     <Key>
       <PropertyRef Name="SaleStateID" />
     </Key>
-    <Property Name="SaleStateID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SaleStateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="SaleState" Type="nvarchar" MaxLength="5" Nullable="false" />
   </EntityType>
   <EntityType Name="sysdiagrams">
@@ -157,7 +157,7 @@
     <Key>
       <PropertyRef Name="TerritoryAdjacentStateID" />
     </Key>
-    <Property Name="TerritoryAdjacentStateID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TerritoryAdjacentStateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TerritoryAdjacentName" Type="nvarchar" MaxLength="30" Nullable="false" />
     <Property Name="TerritoryID" Type="nchar" MaxLength="10" Nullable="false" />
   </EntityType>
@@ -175,16 +175,16 @@
     <Property Name="TerritoryStreet" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="TerritorySaleAndLease" Type="bit" Nullable="false" />
     <Property Name="TerritoryFeatures" Type="nvarchar" MaxLength="1000" />
-    <Property Name="TerritorySaleType" Type="tinyint" Nullable="false" />
-    <Property Name="TerritoryType" Type="tinyint" Nullable="false" />
+    <Property Name="TerritorySaleType" Type="int" Nullable="false" />
+    <Property Name="TerritoryType" Type="int" Nullable="false" />
     <Property Name="TerritoryPeopleID" Type="nchar" MaxLength="10" Nullable="false" />
-    <Property Name="TerritoryADLevel" Type="smallint" />
+    <Property Name="TerritoryADLevel" Type="int" />
   </EntityType>
   <EntityType Name="TerritoryTypeData">
     <Key>
       <PropertyRef Name="TerritorySerialID" />
     </Key>
-    <Property Name="TerritorySerialID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TerritorySerialID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TerritoryTypeSelect" Type="nvarchar" MaxLength="10" Nullable="false" />
   </EntityType>
   <Association Name="FK_FactoryadjacentTypeData_FactoryData">
@@ -224,7 +224,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_FactoryData_PeopleData">
-    <End Role="PeopleData" Type="Self.PeopleData" Multiplicity="1" />
+    <End Role="PeopleData" Type="Self.PeopleData" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="FactoryData" Type="Self.FactoryData" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="PeopleData">
@@ -320,7 +322,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_HomeData_PeopleData">
-    <End Role="PeopleData" Type="Self.PeopleData" Multiplicity="1" />
+    <End Role="PeopleData" Type="Self.PeopleData" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="HomeData" Type="Self.HomeData" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="PeopleData">
@@ -430,7 +434,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_TerritoryData_PeopleData">
-    <End Role="PeopleData" Type="Self.PeopleData" Multiplicity="1" />
+    <End Role="PeopleData" Type="Self.PeopleData" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="TerritoryData" Type="Self.TerritoryData" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="PeopleData">
@@ -465,6 +471,37 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="HomeDataModelStoreContainer">
     <EntitySet Name="AccountData" EntityType="Self.AccountData" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ADTypeData" EntityType="Self.ADTypeData" Schema="dbo" store:Type="Tables" />

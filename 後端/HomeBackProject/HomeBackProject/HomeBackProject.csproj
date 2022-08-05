@@ -170,6 +170,13 @@
     <Content Include="Content\bootstrap-grid.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <EntityDeploy Include="Models\HomeData.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>HomeData.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\HomeData.edmx.diagram">
+      <DependentUpon>HomeData.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -250,6 +257,12 @@
     <Compile Include="Models\SaleTypeData.cs">
       <DependentUpon>HomeData.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>HomeData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>HomeData.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>HomeData.tt</DependentUpon>
     </Compile>
@@ -268,13 +281,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
-    <EntityDeploy Include="Models\HomeData.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>HomeData.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\HomeData.edmx.diagram">
-      <DependentUpon>HomeData.edmx</DependentUpon>
-    </Content>
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />

@@ -15,6 +15,7 @@ namespace HomeBackProject.Models
     using System.ComponentModel.DataAnnotations;
     using MetaDataHomeBackProject.Models;
     [MetadataType(typeof(MetaADTypeData))]
+
     public partial class ADTypeData
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -25,7 +26,7 @@ namespace HomeBackProject.Models
             this.TerritoryData = new HashSet<TerritoryData>();
         }
     
-        public short ADID { get; set; }
+        public int ADID { get; set; }
         public string ADName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

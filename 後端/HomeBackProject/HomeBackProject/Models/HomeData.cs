@@ -15,6 +15,7 @@ namespace HomeBackProject.Models
     using System.ComponentModel.DataAnnotations;
     using MetaDataHomeBackProject.Models;
     [MetadataType(typeof(MetaHomeData))]
+
     public partial class HomeData
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -31,21 +32,21 @@ namespace HomeBackProject.Models
         public string HomeCity { get; set; }
         public string HomeTown { get; set; }
         public string HomeStreet { get; set; }
-        public Nullable<byte> HomeFloor { get; set; }
-        public Nullable<byte> HomeHighFloor { get; set; }
+        public Nullable<int> HomeFloor { get; set; }
+        public Nullable<int> HomeHighFloor { get; set; }
         public bool HomeSaleAndLease { get; set; }
-        public byte HomeAges { get; set; }
-        public byte HomeRoom { get; set; }
-        public byte HomeHall { get; set; }
-        public byte HomeBathroom { get; set; }
-        public byte HomeBalcony { get; set; }
+        public int HomeAges { get; set; }
+        public int HomeRoom { get; set; }
+        public int HomeHall { get; set; }
+        public int HomeBathroom { get; set; }
+        public int HomeBalcony { get; set; }
         public string HomeFeatures { get; set; }
-        public Nullable<long> HomeManageTip { get; set; }
-        public byte HomeCarID { get; set; }
-        public byte HomeSaleType { get; set; }
-        public byte HomeType { get; set; }
+        public Nullable<int> HomeManageTip { get; set; }
+        public int HomeCarID { get; set; }
+        public int HomeSaleType { get; set; }
+        public int HomeType { get; set; }
         public string HomePeopleID { get; set; }
-        public Nullable<short> HomeADLevel { get; set; }
+        public Nullable<int> HomeADLevel { get; set; }
     
         public virtual ADTypeData ADTypeData { get; set; }
         public virtual CarTypeData CarTypeData { get; set; }

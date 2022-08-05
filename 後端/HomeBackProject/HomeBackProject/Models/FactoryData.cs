@@ -15,6 +15,7 @@ namespace HomeBackProject.Models
     using System.ComponentModel.DataAnnotations;
     using MetaDataHomeBackProject.Models;
     [MetadataType(typeof(MetaFactoryData))]
+
     public partial class FactoryData
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -31,15 +32,15 @@ namespace HomeBackProject.Models
         public string FactoryCity { get; set; }
         public string FactoryTown { get; set; }
         public string FactoryStreet { get; set; }
-        public Nullable<byte> FactoryFloor { get; set; }
-        public Nullable<byte> FactoryHighFloor { get; set; }
-        public byte FactoryAges { get; set; }
+        public Nullable<int> FactoryFloor { get; set; }
+        public Nullable<int> FactoryHighFloor { get; set; }
+        public int FactoryAges { get; set; }
         public bool FactorySaleAndLease { get; set; }
         public string FactoryFeatures { get; set; }
-        public byte FactorySaleType { get; set; }
-        public byte FactoryType { get; set; }
+        public int FactorySaleType { get; set; }
+        public int FactoryType { get; set; }
         public string FactoryPeopleID { get; set; }
-        public Nullable<short> FactoryADLevel { get; set; }
+        public Nullable<int> FactoryADLevel { get; set; }
     
         public virtual ADTypeData ADTypeData { get; set; }
         public virtual CityTypeData CityTypeData { get; set; }

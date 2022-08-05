@@ -24,7 +24,7 @@ namespace HomeBackProject.Models
             this.HomeData = new HashSet<HomeData>();
         }
     
-        public byte HomeTypeID { get; set; }
+        public int HomeTypeID { get; set; }
         public string HomeTypeName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

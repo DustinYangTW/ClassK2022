@@ -10,18 +10,13 @@
 namespace HomeBackProject.Models
 {
     using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-    using MetaDataHomeBackProject.Models;
-    [MetadataType(typeof(MetaHomeadjacentTypeData))]
-
-    public partial class HomeadjacentTypeData
-    {
-        public int HomeAdjacentStateID { get; set; }
-        public string HomeAdjacentName { get; set; }
-        public string HomeID { get; set; }
     
-        public virtual HomeData HomeData { get; set; }
+    public partial class sp_helpdiagrams_Result
+    {
+        public string Database { get; set; }
+        public string Name { get; set; }
+        public int ID { get; set; }
+        public string Owner { get; set; }
+        public int OwnerID { get; set; }
     }
 }
