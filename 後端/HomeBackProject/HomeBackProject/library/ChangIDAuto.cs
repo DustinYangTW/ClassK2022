@@ -9,8 +9,6 @@ namespace HomeBackProject.library
 {
     public class ChangIDAuto
     {      
-        private HomeDataEntities db = new HomeDataEntities();
-
         /// <summary>
         /// 主要功能是自動編碼ID(抓DB最後一碼資料)；
         /// idIn，db裡面的ID最後一碼；

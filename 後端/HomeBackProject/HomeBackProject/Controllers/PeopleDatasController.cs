@@ -124,13 +124,11 @@ namespace HomeBackProject.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PeopleID,PeopleName,IdebtityNumber,Birthday,Gender,PhoneNumber,EMail,County,Town,RoadAndNumber,CompanyName,PeopleAge,PeopleCash,AuthorizationTime,SaleStateID,SchemeName")] PeopleData peopleData)
+        public ActionResult Edit(PeopleData peopleData)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(peopleData).State = System.Data.Entity.EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                return actiondbController.Edit(db, db.PeopleData, peopleData);
             }
             ViewBag.EMail = new SelectList(db.AccountData, "EmailAccount", "PassWord", peopleData.EMail);
             ViewBag.County = new SelectList(db.CityTypeData, "CityIDTW", "CityTW", peopleData.County);
@@ -140,30 +138,30 @@ namespace HomeBackProject.Controllers
         }
 
         // GET: PeopleDatas/Delete/5
-        public ActionResult Delete(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            PeopleData peopleData = db.PeopleData.Find(id);
-            if (peopleData == null)
-            {
-                return HttpNotFound();
-            }
-            return View(peopleData);
-        }
+        //public ActionResult Delete(string id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    PeopleData peopleData = db.PeopleData.Find(id);
+        //    if (peopleData == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(peopleData);
+        //}
 
-        // POST: PeopleDatas/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
-        {
-            PeopleData peopleData = db.PeopleData.Find(id);
-            db.PeopleData.Remove(peopleData);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        //// POST: PeopleDatas/Delete/5
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteConfirmed(string id)
+        //{
+        //    PeopleData peopleData = db.PeopleData.Find(id);
+        //    db.PeopleData.Remove(peopleData);
+        //    db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
 
         //protected override void Dispose(bool disposing)
         //{
