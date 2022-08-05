@@ -130,6 +130,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Css\body.css" />
     <Content Include="Global.asax" />
+    <Content Include="Js\FindCitynowData .js" />
     <Content Include="Js\FindCityOpenData.js" />
     <Content Include="Models\HomeData.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

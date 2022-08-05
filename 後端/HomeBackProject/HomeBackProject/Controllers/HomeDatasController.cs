@@ -68,7 +68,7 @@ namespace HomeBackProject.Controllers
             {
                 var countHomeDatas = db.HomeData.OrderByDescending(m => m.HomeID).FirstOrDefault();
                 homeData.HomeID = changIDAuto.changIDNumber(countHomeDatas.HomeID, "H");  //自動加編號H000000000，新增一筆自動+1
-                return actiondbController.Create(db, db.PeopleData, homeData);
+                return actiondbController.Create(db, db.HomeData, homeData);
             }
 
             //ViewBag.HomeADLevel = new SelectList(db.ADTypeData, "ADID", "ADName", homeData.HomeADLevel);
@@ -102,6 +102,12 @@ namespace HomeBackProject.Controllers
             ViewBag.HomeType = new SelectList(db.HomeTypeData, "HomeTypeID", "HomeTypeName", homeData.HomeType);
             ViewBag.HomePeopleID = new SelectList(db.PeopleData, "PeopleID", "PeopleName", homeData.HomePeopleID);
             ViewBag.HomeSaleType = new SelectList(db.SaleTypeData, "SaleStateID", "SaleState", homeData.HomeSaleType);
+            ViewBag.countyID = db.CityTypeData.ToList();
+            ViewBag.countyIDlast = homeData.HomeCity;
+            var countyTWlast = db.CityTypeData.Where(m => m.CityIDTW == homeData.HomeCity).FirstOrDefault();
+            ViewBag.countyTWlast = countyTWlast.CityTW;
+            ViewBag.HomeTownlast = homeData.HomeTown;
+
             return View(homeData);
         }
 
@@ -111,13 +117,11 @@ namespace HomeBackProject.Controllers
         [LoginCkeck]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "HomeID,HomeName,HomeMoney,HomeSquareMeters,HomeMetersMoney,HomeCity,HomeTown,HomeStreet,HomeFloor,HomeHighFloor,HomeSaleAndLease,HomeAges,HomeRoom,HomeHall,HomeBathroom,HomeBalcony,HomeFeatures,HomeManageTip,HomeCarID,HomeSaleType,HomeType,HomePeopleID,HomeADLevel")] HomeData homeData)
+        public ActionResult Edit(HomeData homeData)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(homeData).State = System.Data.Entity.EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                return actiondbController.Edit(db, db.HomeData, homeData);
             }
             ViewBag.HomeADLevel = new SelectList(db.ADTypeData, "ADID", "ADName", homeData.HomeADLevel);
             ViewBag.HomeCarID = new SelectList(db.CarTypeData, "CarTypeID", "CarTypeName", homeData.HomeCarID);
@@ -125,6 +129,7 @@ namespace HomeBackProject.Controllers
             ViewBag.HomeType = new SelectList(db.HomeTypeData, "HomeTypeID", "HomeTypeName", homeData.HomeType);
             ViewBag.HomePeopleID = new SelectList(db.PeopleData, "PeopleID", "PeopleName", homeData.HomePeopleID);
             ViewBag.HomeSaleType = new SelectList(db.SaleTypeData, "SaleStateID", "SaleState", homeData.HomeSaleType);
+            ViewBag.countyID = db.CityTypeData.ToList();
             return View(homeData);
         }
 
@@ -150,9 +155,7 @@ namespace HomeBackProject.Controllers
         public ActionResult DeleteConfirmed(string id)
         {
             HomeData homeData = db.HomeData.Find(id);
-            db.HomeData.Remove(homeData);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            return actiondbController.Delete(db, db.PeopleData, homeData);
         }
 
         protected override void Dispose(bool disposing)

@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout_LogInOut.cshtml";
 }
 
-<h2>創建新一筆房屋資料</h2>
+<h2>創建房屋資料</h2>
 
 
 @using (Html.BeginForm())
@@ -41,7 +41,6 @@
             </div>
         </div>
 
-        <div class="form-group">
             <div class="form-group">
                 <div>
                     <div class="col-md-10">
@@ -62,7 +61,7 @@
                         @Html.ValidationMessageFor(model => model.HomeCity, "", new { @class = "text-danger" })
                     </div>*@
             </div>
-        </div>
+
 
         <div class="form-group">
             <div>
@@ -109,7 +108,7 @@
             <div>
                 <div class="col-md-10">
                     售/租
-                    <select class="form-control" name="Gender">
+                    <select class="form-control" name="HomeSaleAndLease">
                         <option value="true">售</option>
                         <option value="false">租</option>
                     </select>
@@ -234,19 +233,19 @@
         <div class="form-group">
             @Html.LabelFor(model => model.HomeFeatures, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <textarea id="HomeFeatures" name="HomeFeatures" rows="5" cols="40" class = "form-control"></textarea>
+                <textarea id="HomeFeatures" name="HomeFeatures" rows="5" cols="40" class="form-control"></textarea>
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.HomeManageTip, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <input type="text" name="HomeManageTip" id="HomeManageTip" value="0" class = "form-control"/>
-            </div>    
+                <input type="text" name="HomeManageTip" id="HomeManageTip" value="0" class="form-control" />
+            </div>
             @*<div class="col-md-10">
-                @Html.EditorFor(model => model.HomeManageTip, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.HomeManageTip, "", new { @class = "text-danger"})
-            </div>*@
+                    @Html.EditorFor(model => model.HomeManageTip, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.HomeManageTip, "", new { @class = "text-danger"})
+                </div>*@
         </div>
 
         <div class="form-group">
@@ -263,10 +262,10 @@
                 </div>
             </div>
             @*車位選擇
-            <div class="col-md-10">
-                @Html.DropDownList("HomeCarID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.HomeCarID, "", new { @class = "text-danger" })
-            </div>*@
+                <div class="col-md-10">
+                    @Html.DropDownList("HomeCarID", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.HomeCarID, "", new { @class = "text-danger" })
+                </div>*@
         </div>
 
         <div class="form-group">
@@ -283,10 +282,10 @@
                 </div>
             </div>
             @*銷售狀態
-            <div class="col-md-10">
-                @Html.DropDownList("HomeSaleType", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.HomeSaleType, "", new { @class = "text-danger" })
-            </div>*@
+                <div class="col-md-10">
+                    @Html.DropDownList("HomeSaleType", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.HomeSaleType, "", new { @class = "text-danger" })
+                </div>*@
         </div>
 
         <div class="form-group">
@@ -323,6 +322,8 @@
 </div>
 
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+@section Script {
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}
 <script src="~/Js/FindCityOpenData.js"></script>

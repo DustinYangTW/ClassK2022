@@ -5,15 +5,11 @@
     Layout = "~/Views/Shared/_Layout_LogInOut.cshtml";
 }
 
-<h2>Edit</h2>
-
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
     <div class="form-horizontal">
-        <h4>HomeData</h4>
+        <h4>修改房屋資料</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.HomeID)
@@ -51,19 +47,41 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.HomeCity, "HomeCity", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("HomeCity", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.HomeCity, "", new { @class = "text-danger" })
+            <div>
+                <div class="col-md-10">
+                    縣市
+                    <select class="form-control" name="HomeCity" id="selectCounty" onchange="mainIdex()">
+                        <option disabled style="display: none" selected value="@ViewBag.countyIDlast">@ViewBag.countyTWlast</option>
+                        @foreach (var item in ViewBag.countyID)
+                        {
+                            <option value="@item.CityIDTW">@item.CityTW</option>
+                        }
+                    </select>
+                    @Html.ValidationMessageFor(model => model.HomeCity, "", new { @class = "text-danger" })
+                </div>
             </div>
+            @*@Html.LabelFor(model => model.HomeCity, "HomeCity", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("HomeCity", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.HomeCity, "", new { @class = "text-danger" })
+                </div>*@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.HomeTown, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.HomeTown, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.HomeTown, "", new { @class = "text-danger" })
+            <div>
+                鄉鎮
+                <div class="col-md-10">
+                    <select class="form-control" name="HomeTown" id="selectCity">
+                        <option disabled style="display: none" selected>@ViewBag.HomeTownlast</option>
+                    </select>
+                    @Html.ValidationMessageFor(model => model.HomeTown, "", new { @class = "text-danger" })
+                </div>
             </div>
+            @*@Html.LabelFor(model => model.HomeTown, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.HomeTown, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.HomeTown, "", new { @class = "text-danger" })
+                </div>*@
         </div>
 
         <div class="form-group">
@@ -91,12 +109,21 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.HomeSaleAndLease, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.HomeSaleAndLease)
-                    @Html.ValidationMessageFor(model => model.HomeSaleAndLease, "", new { @class = "text-danger" })
+            <div>
+                <div class="col-md-10">
+                    售/租
+                    <select class="form-control" name="HomeSaleAndLease">
+                        <option value="true">售</option>
+                        <option value="false">租</option>
+                    </select>
                 </div>
+                @*@Html.LabelFor(model => model.HomeSaleAndLease, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <div class="checkbox">
+                            @Html.EditorFor(model => model.HomeSaleAndLease)
+                            @Html.ValidationMessageFor(model => model.HomeSaleAndLease, "", new { @class = "text-danger" })
+                        </div>
+                    </div>*@
             </div>
         </div>
 
@@ -157,7 +184,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.HomeCarID, "HomeCarID", htmlAttributes: new { @class = "control-label col-md-2" })
+            汽車車位
             <div class="col-md-10">
                 @Html.DropDownList("HomeCarID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.HomeCarID, "", new { @class = "text-danger" })
@@ -165,7 +192,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.HomeSaleType, "HomeSaleType", htmlAttributes: new { @class = "control-label col-md-2" })
+            銷售狀態
             <div class="col-md-10">
                 @Html.DropDownList("HomeSaleType", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.HomeSaleType, "", new { @class = "text-danger" })
@@ -173,7 +200,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.HomeType, "HomeType", htmlAttributes: new { @class = "control-label col-md-2" })
+            房屋類型
             <div class="col-md-10">
                 @Html.DropDownList("HomeType", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.HomeType, "", new { @class = "text-danger" })
@@ -181,33 +208,22 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.HomePeopleID, "HomePeopleID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("HomePeopleID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.HomePeopleID, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.HomeADLevel, "HomeADLevel", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("HomeADLevel", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.HomeADLevel, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="存檔" class="btn btn-danger" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("回到上一頁", "Index", new { }, new { @class = "btn btn-primary" })
 </div>
 
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+@section Script {
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}
+<script src="~/Js/FindCitynowData .js"></script>
+<script>mainIdex()</script>

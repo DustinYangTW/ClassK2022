@@ -366,7 +366,7 @@ namespace MetaDataHomeBackProject.Models
         [DisplayName("管理費")]
         [StringLength(7, ErrorMessage = "最長只能輸入7個數字")]
         [RegularExpression("^[0-9]*$", ErrorMessage = "格式錯誤")]
-        public Nullable<decimal> HomeManageTip { get; set; }
+        public Nullable<int> HomeManageTip { get; set; }
         [DisplayName("車位類型")]
         [Required(ErrorMessage = "必填欄位")]
         public byte HomeCarID { get; set; }

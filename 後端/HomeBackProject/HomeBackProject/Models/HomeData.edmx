@@ -690,7 +690,7 @@
           <Property Name="HomeBathroom" Type="Byte" Nullable="false" />
           <Property Name="HomeBalcony" Type="Byte" Nullable="false" />
           <Property Name="HomeFeatures" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="HomeManageTip" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="HomeManageTip" Type="Int64" />
           <Property Name="HomeCarID" Type="Byte" Nullable="false" />
           <Property Name="HomeSaleType" Type="Byte" Nullable="false" />
           <Property Name="HomeType" Type="Byte" Nullable="false" />
