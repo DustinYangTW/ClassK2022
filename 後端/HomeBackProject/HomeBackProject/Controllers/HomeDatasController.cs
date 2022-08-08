@@ -21,7 +21,7 @@ namespace HomeBackProject.Controllers
         [LoginCkeck]
         public ActionResult Index()
         {
-            var homeData = db.HomeData.Include(h => h.ADTypeData).Include(h => h.CarTypeData).Include(h => h.CityTypeData).Include(h => h.HomeTypeData).Include(h => h.PeopleData).Include(h => h.SaleTypeData);
+            var homeData = db.HomeData.Include(h => h.ADTypeData).Include(h => h.CarTypeData).Include(h => h.CityTypeData).Include(h => h.HomeTypeData).Include(h => h.PeopleData).Include(h => h.SaleTypeData).OrderByDescending(h=>h.HomeID);
             return View(homeData.ToList());
         }
 
@@ -56,6 +56,7 @@ namespace HomeBackProject.Controllers
             return View();
         }
 
+
         // POST: HomeDatas/Create
         // 若要避免過量張貼攻擊，請啟用您要繫結的特定屬性。
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
@@ -68,6 +69,7 @@ namespace HomeBackProject.Controllers
             {
                 var countHomeDatas = db.HomeData.OrderByDescending(m => m.HomeID).FirstOrDefault();
                 homeData.HomeID = changIDAuto.changIDNumber(countHomeDatas.HomeID, "H");  //自動加編號H000000000，新增一筆自動+1
+                homeData.HomePeopleID = Session["userID"].ToString();
                 return actiondbController.Create(db, db.HomeData, homeData);
             }
 

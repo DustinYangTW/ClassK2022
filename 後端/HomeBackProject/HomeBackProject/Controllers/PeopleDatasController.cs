@@ -20,7 +20,7 @@ namespace HomeBackProject.Controllers
         [LoginCkeck]
         public ActionResult Index()
         {
-            var peopleData = db.PeopleData.Include(p => p.AccountData).Include(p => p.CityTypeData).Include(p => p.PeopleRankData).Include(p => p.ProgramData);
+            var peopleData = db.PeopleData.Include(p => p.AccountData).Include(p => p.CityTypeData).Include(p => p.PeopleRankData).Include(p => p.ProgramData).OrderByDescending(p=>p.PeopleID);
             return View(peopleData.ToList());
         }
 
