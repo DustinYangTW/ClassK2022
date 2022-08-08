@@ -90,7 +90,7 @@ namespace HomeBackProject.Controllers
 
                 peopleData.PeopleCash = 0;
 
-                return actiondbController.Create(db, db.PeopleData, peopleData);
+                return actiondbController.Create(db, db.PeopleData, peopleData, "Login","LogInOut");
             }
             else
             {
