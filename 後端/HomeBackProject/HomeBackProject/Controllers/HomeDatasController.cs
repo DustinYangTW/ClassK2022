@@ -108,7 +108,8 @@ namespace HomeBackProject.Controllers
             ViewBag.countyIDlast = homeData.HomeCity;
             var countyTWlast = db.CityTypeData.Where(m => m.CityIDTW == homeData.HomeCity).FirstOrDefault();
             ViewBag.countyTWlast = countyTWlast.CityTW;
-            ViewBag.HomeTownlast = homeData.HomeTown;
+            var countyTownlast = db.HomeData.Where(p => p.HomeID == homeData.HomeID).FirstOrDefault();
+            ViewBag.HomeTownlast = countyTownlast.HomeTown;
 
             return View(homeData);
         }
@@ -123,6 +124,7 @@ namespace HomeBackProject.Controllers
         {
             if (ModelState.IsValid)
             {
+                homeData.HomePeopleID = Session["userID"].ToString();
                 return actiondbController.Edit(db, db.HomeData, homeData);
             }
             ViewBag.HomeADLevel = new SelectList(db.ADTypeData, "ADID", "ADName", homeData.HomeADLevel);

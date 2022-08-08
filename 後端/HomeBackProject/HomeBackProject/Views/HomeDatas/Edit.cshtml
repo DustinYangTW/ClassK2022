@@ -51,7 +51,7 @@
                 <div class="col-md-10">
                     縣市
                     <select class="form-control" name="HomeCity" id="selectCounty" onchange="mainIdex()">
-                        <option disabled style="display: none" selected value="@ViewBag.countyIDlast">@ViewBag.countyTWlast</option>
+                        <option style="display: none"  value="@ViewBag.countyIDlast">@ViewBag.countyTWlast</option>
                         @foreach (var item in ViewBag.countyID)
                         {
                             <option value="@item.CityIDTW">@item.CityTW</option>
@@ -72,7 +72,7 @@
                 鄉鎮
                 <div class="col-md-10">
                     <select class="form-control" name="HomeTown" id="selectCity">
-                        <option disabled style="display: none" selected>@ViewBag.HomeTownlast</option>
+                        <option selected value="@ViewBag.HomeTownlast">@ViewBag.HomeTownlast</option>
                     </select>
                     @Html.ValidationMessageFor(model => model.HomeTown, "", new { @class = "text-danger" })
                 </div>
@@ -225,5 +225,5 @@
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 }
-<script src="~/Js/FindCitynowData .js"></script>
+<script src="~/Js/FindCityData.js"></script>
 <script>mainIdex()</script>
