@@ -29,9 +29,12 @@
                         </div>
                         <div class="me-5">
                             <div class="me-5">
-                                <div class="mb-3 form-check me-5">
+                                <div class="mb-1 form-check me-2">
                                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                     <label class="form-check-label" for="exampleCheck1">記住我</label>
+                                </div>
+                                <div class="text-danger fs-6 mb-2">
+                                    @ViewBag.ErrMsg
                                 </div>
                                 <div class="mb-3">
                                     <input type="submit" value="登入" class="btn btn-warning" />
@@ -58,7 +61,6 @@
         @Html.ActionLink("回到上一頁", "Index", new { }, new { @class = "btn btn-primary" })
     </div>
 </div>
-<script src="~/Scripts/jquery-3.6.0.min.js"></script>
 @section Script {
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
