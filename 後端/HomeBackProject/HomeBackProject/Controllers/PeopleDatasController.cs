@@ -20,15 +20,24 @@ namespace HomeBackProject.Controllers
         [LoginCkeck]
         public ActionResult Index()
         {
-            var peopleData = db.PeopleData.Include(p => p.AccountData).Include(p => p.CityTypeData).Include(p => p.PeopleRankData).Include(p => p.ProgramData).OrderByDescending(p=>p.PeopleID);
+            var peopleData = db.PeopleData.Include(p => p.AccountData).Include(p => p.CityTypeData).Include(p => p.PeopleRankData).Include(p => p.ProgramData).OrderByDescending(p => p.PeopleID);
             return View(peopleData.ToList());
         }
         [LoginCkeck]
         [HttpPost]
         public ActionResult search(string name)
         {
-            var peopleData = db.PeopleData.Include(p => p.AccountData).Include(p => p.CityTypeData).Include(p => p.PeopleRankData).Include(p => p.ProgramData).OrderByDescending(p=>p.PeopleID).Where(p=>p.PeopleName.Contains(name));
-            return View("Index",peopleData.ToList());
+            if (name.Contains("09"))
+            {
+                var peopleData = db.PeopleData.Include(p => p.AccountData).Include(p => p.CityTypeData).Include(p => p.PeopleRankData).Include(p => p.ProgramData).OrderByDescending(p => p.PeopleID).Where(p => p.PhoneNumber.Contains(name));
+                return View("Index", peopleData.ToList());
+            }
+            else
+            {
+                var peopleData = db.PeopleData.Include(p => p.AccountData).Include(p => p.CityTypeData).Include(p => p.PeopleRankData).Include(p => p.ProgramData).OrderByDescending(p => p.PeopleID).Where(p => p.PeopleName.Contains(name));
+                return View("Index", peopleData.ToList());
+            }
+                
         }
 
         // GET: PeopleDatas/Details/5
@@ -98,7 +107,7 @@ namespace HomeBackProject.Controllers
 
                 peopleData.PeopleCash = 0;
 
-                return actiondbController.Create(db, db.PeopleData, peopleData, "Login","LogInOut");
+                return actiondbController.Create(db, db.PeopleData, peopleData, "Login", "LogInOut");
             }
             else
             {

@@ -10,7 +10,7 @@
     <link href="~/Css/body.css" rel="stylesheet" />
 </head>
 <body>
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-info">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-info shadow">
         <div class="container-fluid">
             <a class="navbar-brand fs-2" href="~/Home/Index">黃金屋網</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,9 +50,9 @@
     <div class="container-fluid body-content mt-5 ">
         @RenderBody()
 
-        <footer>
+        <footer class="bg-info shadow-lg">
             <hr />
-            <p>&copy; @DateTime.Now.Year - 黃金屋網</p>
+            <p class="align-text-top mb-2 pb-2">&copy; @DateTime.Now.Year - 黃金屋網</p>
         </footer>
     </div>
 
