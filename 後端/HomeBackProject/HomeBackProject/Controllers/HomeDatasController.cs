@@ -70,6 +70,8 @@ namespace HomeBackProject.Controllers
                 var countHomeDatas = db.HomeData.OrderByDescending(m => m.HomeID).FirstOrDefault();
                 homeData.HomeID = changIDAuto.changIDNumber(countHomeDatas.HomeID, "H");  //自動加編號H000000000，新增一筆自動+1
                 homeData.HomePeopleID = Session["userID"].ToString();
+                homeData.HomeManageTip = homeData.HomeManageTip > 0 ? homeData.HomeManageTip : 0;
+                homeData.HomeADLevel = 0;
                 return actiondbController.Create(db, db.HomeData, homeData);
             }
 
