@@ -8,11 +8,19 @@
 <h2>會員管理</h2>
 
 <div class="d-flex justify-content-between">
-    <div>
-        @Html.ActionLink("新增會員", "Create", new { }, new { @class = "btn btn-primary me-4" })
+    <div class="col-5 d-flex flex-row">
+        <div class="col-8">
+            <form class="d-flex" action="~/PeopleDatas/search" method="post">
+                <input class="form-control me-3" type="search" name="name" placeholder="姓名" aria-label="Search">
+                <button class="btn btn-outline-success ms-2" type="submit">搜尋</button>
+            </form>
+        </div>
+        <div>
+            <a class="btn btn-outline-primary" href="~/PeopleDatas/Index">清除</a>
+        </div>
     </div>
     <div>
-        @Html.ActionLink("新增會員", "Create", new { }, new { @class = "btn btn-primary me-4" })
+        @Html.ActionLink("新增會員", "Create", new { }, new { @class = "btn btn-primary me-3" })
     </div>
 </div>
 

@@ -23,8 +23,16 @@ namespace HomeBackProject.Controllers
             var peopleData = db.PeopleData.Include(p => p.AccountData).Include(p => p.CityTypeData).Include(p => p.PeopleRankData).Include(p => p.ProgramData).OrderByDescending(p=>p.PeopleID);
             return View(peopleData.ToList());
         }
+        [LoginCkeck]
+        [HttpPost]
+        public ActionResult search(string name)
+        {
+            var peopleData = db.PeopleData.Include(p => p.AccountData).Include(p => p.CityTypeData).Include(p => p.PeopleRankData).Include(p => p.ProgramData).OrderByDescending(p=>p.PeopleID).Where(p=>p.PeopleName.Contains(name));
+            return View("Index",peopleData.ToList());
+        }
 
         // GET: PeopleDatas/Details/5
+        [LoginCkeck]
         public ActionResult Details(string id)
         {
             if (id == null)
