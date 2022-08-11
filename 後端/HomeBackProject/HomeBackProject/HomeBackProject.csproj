@@ -290,6 +290,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="library\ChangIDAuto.cs" />
+    <Compile Include="library\PostPhoto.cs" />
     <Compile Include="Models\AccountData.cs">
       <DependentUpon>HomeData.tt</DependentUpon>
     </Compile>
