@@ -16,6 +16,7 @@ namespace HomeBackProject.Controllers
         private HomeDataEntities db = new HomeDataEntities();
         private ActiondbController actiondbController = new ActiondbController();
         private ChangIDAuto changIDAuto = new ChangIDAuto();
+        private PostPhotos postPhotos = new PostPhotos();
 
         // GET: HomeDatas
         [LoginCkeck]
@@ -75,12 +76,43 @@ namespace HomeBackProject.Controllers
                 return actiondbController.Create(db, db.HomeData, homeData);
             }
 
-            //ViewBag.HomeADLevel = new SelectList(db.ADTypeData, "ADID", "ADName", homeData.HomeADLevel);
-            //ViewBag.HomeCarID = new SelectList(db.CarTypeData, "CarTypeID", "CarTypeName", homeData.HomeCarID);
-            //ViewBag.HomeCity = new SelectList(db.CityTypeData, "CityIDTW", "CityTW", homeData.HomeCity);
-            //ViewBag.HomeType = new SelectList(db.HomeTypeData, "HomeTypeID", "HomeTypeName", homeData.HomeType);
-            //ViewBag.HomePeopleID = new SelectList(db.PeopleData, "PeopleID", "PeopleID", homeData.HomePeopleID);
-            //ViewBag.HomeSaleType = new SelectList(db.SaleTypeData, "SaleStateID", "SaleState", homeData.HomeSaleType);
+            ViewBag.HomeSaleType = db.SaleTypeData.ToList();
+            ViewBag.HomeCarID = db.CarTypeData.ToList();
+            ViewBag.countyID = db.CityTypeData.ToList();
+            ViewBag.homeTypeData = db.HomeTypeData.ToList();
+            return View(homeData);
+        }    
+        [LoginCkeck]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(HomeData homeData, HttpPostedFileBase[] photo)
+        {
+            List<HttpPostedFileBase> photoList = new List<HttpPostedFileBase>();
+            for (int i = 0; i < photo.Length; i++)
+            {
+                if (photo[i] != null || postPhotos.checkPhoto(photo[i].FileName, photo[i].ContentLength) != "OK")
+                {
+                    ViewBag.HomeSaleType = db.SaleTypeData.ToList();
+                    ViewBag.HomeCarID = db.CarTypeData.ToList();
+                    ViewBag.countyID = db.CityTypeData.ToList();
+                    ViewBag.homeTypeData = db.HomeTypeData.ToList();
+                    return View(homeData);
+                }
+                photoList.Add(photo[i]);
+            }
+
+            if (ModelState.IsValid)
+            {
+                var countHomeDatas = db.HomeData.OrderByDescending(m => m.HomeID).FirstOrDefault();
+                homeData.HomeID = changIDAuto.changIDNumber(countHomeDatas.HomeID, "H");  //自動加編號H000000000，新增一筆自動+1
+                homeData.HomePeopleID = Session["userID"].ToString();
+                homeData.HomeManageTip = homeData.HomeManageTip > 0 ? homeData.HomeManageTip : 0;
+                homeData.HomeADLevel = 0;
+                actiondbController.Create(db, db.HomeData, homeData);
+
+                return actiondbController.SavePhoto(photoList, Session["userID"].ToString(), homeData.HomeID);
+            }
+
             ViewBag.HomeSaleType = db.SaleTypeData.ToList();
             ViewBag.HomeCarID = db.CarTypeData.ToList();
             ViewBag.countyID = db.CityTypeData.ToList();

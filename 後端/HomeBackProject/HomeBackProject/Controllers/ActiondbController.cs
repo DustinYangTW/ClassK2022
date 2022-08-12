@@ -99,5 +99,19 @@ namespace HomeBackProject.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult SavePhoto(List<HttpPostedFileBase> photo, string peopleID,string caseID)
+        {
+            string filename = "";
+            string checkid = "";
+            for (int i = 0; i < photo.Count; i++)
+            {
+                checkid = photo[i].FileName.Substring(photo[i].FileName.IndexOf("."));
+                filename = string.Concat(i,".",checkid);
+
+                photo[i].SaveAs(Server.MapPath("~/" + peopleID + "/" + caseID + "/" + filename));
+            }    
+            return RedirectToAction("Index");
+        }
+
     }
 }

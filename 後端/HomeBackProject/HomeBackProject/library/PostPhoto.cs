@@ -5,11 +5,12 @@ using System.Web;
 
 namespace HomeBackProject.library
 {
-    public class PostPhoto
+    public class PostPhotos
     {
         public string checkPhoto(string fileName,int contentLength)
         {
-            if (fileName == "JPG" || fileName == "JPEG" || fileName == "GIF" || fileName == "PNG")
+            string checkid = fileName.Substring(fileName.IndexOf(".")).ToUpper();
+            if (checkid == "JPG" || checkid == "JPEG" || checkid == "GIF" || checkid == "PNG")
             {
                 return "檔案不正確，只能上傳JPG,JPEG,GIF,PNG檔案";
             }else if(contentLength > 524288)
