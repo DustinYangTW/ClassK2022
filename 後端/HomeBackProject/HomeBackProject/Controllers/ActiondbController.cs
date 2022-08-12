@@ -104,11 +104,19 @@ namespace HomeBackProject.Controllers
             return RedirectToAction("Index");
         }
 
+        /// <summary>
+        /// 透過傳入的值來達成，上傳照片
+        /// </summary>
+        /// <param name="photo"></param>
+        /// <param name="peopleID"></param>
+        /// <param name="caseID"></param>
+        /// <returns></returns>
         public ActionResult SavePhoto(List<HttpPostedFileBase> photo, string peopleID, string caseID)
         {
+            string go = "D:/Git2/後端/HomeBackProject/HomeBackProject";
             string firstName = caseID.Substring(0, 1);
             string allName = postPhotos.ChangeAllName(firstName);
-            string filename = goconfig.go + "/AllPhoto/" + peopleID + "/" + allName + "/" + caseID;
+            string filename = go + "/AllPhoto/" + peopleID + "/" + allName + "/" + caseID;
             string checkid = "";
 
             if (Directory.Exists(@filename) == false)
@@ -116,7 +124,7 @@ namespace HomeBackProject.Controllers
                 Directory.CreateDirectory(@filename);
             }
 
-            filename = goconfig.go + "/AllPhoto/" + peopleID + "/" + allName + "/" + caseID + "/";
+            filename = go + "/AllPhoto/" + peopleID + "/" + allName + "/" + caseID + "/";
 
             for (int i = 0; i < photo.Count; i++)
             {
@@ -124,6 +132,36 @@ namespace HomeBackProject.Controllers
                 photo[i].SaveAs(filename + string.Concat(i, checkid));
             }
             return RedirectToAction("Index");
+        }
+
+
+        /// <summary>
+        /// 透過傳入的值來新增照片，並導向會員登入
+        /// </summary>
+        /// <param name="photo"></param>
+        /// <param name="peopleID"></param>
+        /// <param name="actionName"></param>
+        /// <param name="cName"></param>
+        /// <returns></returns>
+        public ActionResult SavePhoto(List<HttpPostedFileBase> photo, string peopleID, string actionName, string cName)
+        {
+            string go = "D:/Git2/後端/HomeBackProject/HomeBackProject";
+            string filename = go + "/AllPhoto/" + peopleID + "/" +"Peopleimage";
+            string checkid = "";
+
+            if (Directory.Exists(@filename) == false)
+            {
+                Directory.CreateDirectory(@filename);
+            }
+
+            filename = go + "/AllPhoto/" + peopleID + "/" + "Peopleimage";
+
+            for (int i = 0; i < photo.Count; i++)
+            {
+                checkid = photo[i].FileName.Substring(photo[i].FileName.IndexOf("."));
+                photo[i].SaveAs(filename + string.Concat(i, checkid));
+            }
+            return RedirectToAction(actionName, cName);
         }
 
     }

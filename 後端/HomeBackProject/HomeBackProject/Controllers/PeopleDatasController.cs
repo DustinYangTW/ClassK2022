@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using HomeBackProject.library;
+using System.Web;
 
 namespace HomeBackProject.Controllers
 {
@@ -15,6 +16,7 @@ namespace HomeBackProject.Controllers
         private ActiondbController actiondbController = new ActiondbController();
         private AccountData accountData = new AccountData();
         private ChangIDAuto changIDAuto = new ChangIDAuto();
+        private PostPhotos postPhotos = new PostPhotos();
 
         // GET: PeopleDatas
         [LoginCkeck]
@@ -75,13 +77,25 @@ namespace HomeBackProject.Controllers
         //[LoginCkeck]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(PeopleData peopleData)
+        public ActionResult Create(PeopleData peopleData, HttpPostedFileBase[] photo)
         {
-            //ArrayList checkOption = new ArrayList();
-            //checkOption.Add(peopleData.Gender);
-            //checkOption.Add(peopleData.County);
-            //checkOption.Add(peopleData.Town);
-            //checkOption.Add(peopleData.SaleStateID);
+            List<HttpPostedFileBase> photoList = new List<HttpPostedFileBase>();
+            string checkdataPhoto = "";
+            for (int i = 0; i < photo.Length; i++)
+            {
+                checkdataPhoto = postPhotos.checkPhoto(photo[i].FileName, photo[i].ContentLength);
+                if(photo[i] == null)
+                {
+                    break;
+                }
+                else if (checkdataPhoto != "OK")
+                {
+                    ViewBag.countyID = db.CityTypeData.ToList();
+                    ViewBag.SaleStateID = db.PeopleRankData.ToList();
+                    return View(peopleData);
+                }
+                photoList.Add(photo[i]);
+            }
 
             //var EmailCheck = db.AccountData.Where(email => email.EmailAccount == peopleData.EMail).FirstOrDefaultAsync();
             var EmailCheck = db.AccountData.Find(peopleData.EMail);
@@ -112,7 +126,8 @@ namespace HomeBackProject.Controllers
 
                 peopleData.PeopleCash = 0;
 
-                return actiondbController.Create(db, db.PeopleData, peopleData, "Login", "LogInOut");
+                actiondbController.Create(db, db.PeopleData, peopleData, "Login", "LogInOut");
+                return actiondbController.SavePhoto(photoList,peopleData.PeopleID, "Login", "LogInOut");
             }
             else
             {
