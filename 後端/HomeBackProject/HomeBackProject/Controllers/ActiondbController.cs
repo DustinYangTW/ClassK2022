@@ -5,11 +5,16 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
 using HomeBackProject.Models;
+using System.IO;
+using HomeBackProject;
+using HomeBackProject.library;
 
 namespace HomeBackProject.Controllers
 {
     public class ActiondbController : Controller
     {
+        private PostPhotos postPhotos = new PostPhotos();
+
         /// <summary>
         /// 透過這個統一建立資料
         /// db，是資料庫實體化;
@@ -99,17 +104,25 @@ namespace HomeBackProject.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult SavePhoto(List<HttpPostedFileBase> photo, string peopleID,string caseID)
+        public ActionResult SavePhoto(List<HttpPostedFileBase> photo, string peopleID, string caseID)
         {
-            string filename = "";
+            string firstName = caseID.Substring(0, 1);
+            string allName = postPhotos.ChangeAllName(firstName);
+            string filename = goconfig.go + "/AllPhoto/" + peopleID + "/" + allName + "/" + caseID;
             string checkid = "";
+
+            if (Directory.Exists(@filename) == false)
+            {
+                Directory.CreateDirectory(@filename);
+            }
+
+            filename = goconfig.go + "/AllPhoto/" + peopleID + "/" + allName + "/" + caseID + "/";
+
             for (int i = 0; i < photo.Count; i++)
             {
                 checkid = photo[i].FileName.Substring(photo[i].FileName.IndexOf("."));
-                filename = string.Concat(i,".",checkid);
-
-                photo[i].SaveAs(Server.MapPath("~/" + peopleID + "/" + caseID + "/" + filename));
-            }    
+                photo[i].SaveAs(filename + string.Concat(i, checkid));
+            }
             return RedirectToAction("Index");
         }
 

@@ -25,9 +25,14 @@ namespace HomeBackProject.Controllers
         }
         [LoginCkeck]
         [HttpPost]
-        public ActionResult search(string name)
+        public ActionResult Index(string name)
         {
-            if (name.Contains("09"))
+            if (name =="")
+            {
+                var peopleData = db.PeopleData.Include(p => p.AccountData).Include(p => p.CityTypeData).Include(p => p.PeopleRankData).Include(p => p.ProgramData).OrderByDescending(p => p.PeopleID);
+                return View(peopleData.ToList());
+            }
+            else if (name.Contains("09"))
             {
                 var peopleData = db.PeopleData.Include(p => p.AccountData).Include(p => p.CityTypeData).Include(p => p.PeopleRankData).Include(p => p.ProgramData).OrderByDescending(p => p.PeopleID).Where(p => p.PhoneNumber.Contains(name));
                 return View("Index", peopleData.ToList());

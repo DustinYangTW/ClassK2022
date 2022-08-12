@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using HomeBackProject.library;
 using HomeBackProject.Models;
+using System.IO;
 
 namespace HomeBackProject.Controllers
 {
@@ -61,36 +62,38 @@ namespace HomeBackProject.Controllers
         // POST: HomeDatas/Create
         // 若要避免過量張貼攻擊，請啟用您要繫結的特定屬性。
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
-        [LoginCkeck]
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(HomeData homeData)
-        {
-            if (ModelState.IsValid)
-            {
-                var countHomeDatas = db.HomeData.OrderByDescending(m => m.HomeID).FirstOrDefault();
-                homeData.HomeID = changIDAuto.changIDNumber(countHomeDatas.HomeID, "H");  //自動加編號H000000000，新增一筆自動+1
-                homeData.HomePeopleID = Session["userID"].ToString();
-                homeData.HomeManageTip = homeData.HomeManageTip > 0 ? homeData.HomeManageTip : 0;
-                homeData.HomeADLevel = 0;
-                return actiondbController.Create(db, db.HomeData, homeData);
-            }
+        //[LoginCkeck]
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Create(HomeData homeData)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var countHomeDatas = db.HomeData.OrderByDescending(m => m.HomeID).FirstOrDefault();
+        //        homeData.HomeID = changIDAuto.changIDNumber(countHomeDatas.HomeID, "H");  //自動加編號H000000000，新增一筆自動+1
+        //        homeData.HomePeopleID = Session["userID"].ToString();
+        //        homeData.HomeManageTip = homeData.HomeManageTip > 0 ? homeData.HomeManageTip : 0;
+        //        homeData.HomeADLevel = 0;
+        //        return actiondbController.Create(db, db.HomeData, homeData);
+        //    }
 
-            ViewBag.HomeSaleType = db.SaleTypeData.ToList();
-            ViewBag.HomeCarID = db.CarTypeData.ToList();
-            ViewBag.countyID = db.CityTypeData.ToList();
-            ViewBag.homeTypeData = db.HomeTypeData.ToList();
-            return View(homeData);
-        }    
+        //    ViewBag.HomeSaleType = db.SaleTypeData.ToList();
+        //    ViewBag.HomeCarID = db.CarTypeData.ToList();
+        //    ViewBag.countyID = db.CityTypeData.ToList();
+        //    ViewBag.homeTypeData = db.HomeTypeData.ToList();
+        //    return View(homeData);
+        //}    
         [LoginCkeck]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(HomeData homeData, HttpPostedFileBase[] photo)
         {
             List<HttpPostedFileBase> photoList = new List<HttpPostedFileBase>();
+            string checkdataPhoto = "";
             for (int i = 0; i < photo.Length; i++)
             {
-                if (photo[i] != null || postPhotos.checkPhoto(photo[i].FileName, photo[i].ContentLength) != "OK")
+                checkdataPhoto = postPhotos.checkPhoto(photo[i].FileName, photo[i].ContentLength);
+                if (photo[i] == null || checkdataPhoto != "OK")
                 {
                     ViewBag.HomeSaleType = db.SaleTypeData.ToList();
                     ViewBag.HomeCarID = db.CarTypeData.ToList();
@@ -107,7 +110,7 @@ namespace HomeBackProject.Controllers
                 homeData.HomeID = changIDAuto.changIDNumber(countHomeDatas.HomeID, "H");  //自動加編號H000000000，新增一筆自動+1
                 homeData.HomePeopleID = Session["userID"].ToString();
                 homeData.HomeManageTip = homeData.HomeManageTip > 0 ? homeData.HomeManageTip : 0;
-                homeData.HomeADLevel = 0;
+                homeData.HomeADLevel = 1;
                 actiondbController.Create(db, db.HomeData, homeData);
 
                 return actiondbController.SavePhoto(photoList, Session["userID"].ToString(), homeData.HomeID);
