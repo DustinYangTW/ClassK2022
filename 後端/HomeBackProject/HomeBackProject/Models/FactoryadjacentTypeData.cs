@@ -15,6 +15,7 @@ namespace HomeBackProject.Models
     using System.ComponentModel.DataAnnotations;
     using MetaDataHomeBackProject.Models;
     [MetadataType(typeof(MetaFactoryadjacentTypeData))]
+
     public partial class FactoryadjacentTypeData
     {
         public byte FactoryAdjacentStateID { get; set; }

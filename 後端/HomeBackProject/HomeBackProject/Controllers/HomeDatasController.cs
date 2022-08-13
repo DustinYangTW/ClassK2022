@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using HomeBackProject.library;
 using HomeBackProject.Models;
+using System.IO;
 
 namespace HomeBackProject.Controllers
 {
@@ -16,12 +17,13 @@ namespace HomeBackProject.Controllers
         private HomeDataEntities db = new HomeDataEntities();
         private ActiondbController actiondbController = new ActiondbController();
         private ChangIDAuto changIDAuto = new ChangIDAuto();
+        private PostPhotos postPhotos = new PostPhotos();
 
         // GET: HomeDatas
         [LoginCkeck]
         public ActionResult Index()
         {
-            var homeData = db.HomeData.Include(h => h.ADTypeData).Include(h => h.CarTypeData).Include(h => h.CityTypeData).Include(h => h.HomeTypeData).Include(h => h.PeopleData).Include(h => h.SaleTypeData);
+            var homeData = db.HomeData.Include(h => h.ADTypeData).Include(h => h.CarTypeData).Include(h => h.CityTypeData).Include(h => h.HomeTypeData).Include(h => h.PeopleData).Include(h => h.SaleTypeData).OrderByDescending(h=>h.HomeID);
             return View(homeData.ToList());
         }
 
@@ -56,27 +58,68 @@ namespace HomeBackProject.Controllers
             return View();
         }
 
+
         // POST: HomeDatas/Create
         // 若要避免過量張貼攻擊，請啟用您要繫結的特定屬性。
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
+        //[LoginCkeck]
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Create(HomeData homeData)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var countHomeDatas = db.HomeData.OrderByDescending(m => m.HomeID).FirstOrDefault();
+        //        homeData.HomeID = changIDAuto.changIDNumber(countHomeDatas.HomeID, "H");  //自動加編號H000000000，新增一筆自動+1
+        //        homeData.HomePeopleID = Session["userID"].ToString();
+        //        homeData.HomeManageTip = homeData.HomeManageTip > 0 ? homeData.HomeManageTip : 0;
+        //        homeData.HomeADLevel = 0;
+        //        return actiondbController.Create(db, db.HomeData, homeData);
+        //    }
+
+        //    ViewBag.HomeSaleType = db.SaleTypeData.ToList();
+        //    ViewBag.HomeCarID = db.CarTypeData.ToList();
+        //    ViewBag.countyID = db.CityTypeData.ToList();
+        //    ViewBag.homeTypeData = db.HomeTypeData.ToList();
+        //    return View(homeData);
+        //}    
         [LoginCkeck]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(HomeData homeData)
+        public ActionResult Create(HomeData homeData, HttpPostedFileBase[] photo)
         {
+            List<HttpPostedFileBase> photoList = new List<HttpPostedFileBase>();
+            string checkdataPhoto = "";
+            for (int i = 0; i < photo.Length; i++)
+            {
+                checkdataPhoto = postPhotos.checkPhoto(photo[i].FileName, photo[i].ContentLength);
+                if (photo[i] == null)
+                {
+                    break;
+                }
+                else if (checkdataPhoto != "OK")
+                {
+                    ViewBag.HomeSaleType = db.SaleTypeData.ToList();
+                    ViewBag.HomeCarID = db.CarTypeData.ToList();
+                    ViewBag.countyID = db.CityTypeData.ToList();
+                    ViewBag.homeTypeData = db.HomeTypeData.ToList();
+                    return View(homeData);
+                }
+                photoList.Add(photo[i]);
+            }
+
             if (ModelState.IsValid)
             {
                 var countHomeDatas = db.HomeData.OrderByDescending(m => m.HomeID).FirstOrDefault();
                 homeData.HomeID = changIDAuto.changIDNumber(countHomeDatas.HomeID, "H");  //自動加編號H000000000，新增一筆自動+1
-                return actiondbController.Create(db, db.PeopleData, homeData);
+                homeData.HomePeopleID = Session["userID"].ToString();
+                homeData.HomeManageTip = homeData.HomeManageTip > 0 ? homeData.HomeManageTip : 0;
+                homeData.HomeADLevel = 1;
+                actiondbController.Create(db, db.HomeData, homeData);
+
+                return actiondbController.SavePhoto(photoList, Session["userID"].ToString(), homeData.HomeID);
             }
 
-            //ViewBag.HomeADLevel = new SelectList(db.ADTypeData, "ADID", "ADName", homeData.HomeADLevel);
-            //ViewBag.HomeCarID = new SelectList(db.CarTypeData, "CarTypeID", "CarTypeName", homeData.HomeCarID);
-            //ViewBag.HomeCity = new SelectList(db.CityTypeData, "CityIDTW", "CityTW", homeData.HomeCity);
-            //ViewBag.HomeType = new SelectList(db.HomeTypeData, "HomeTypeID", "HomeTypeName", homeData.HomeType);
-            //ViewBag.HomePeopleID = new SelectList(db.PeopleData, "PeopleID", "PeopleID", homeData.HomePeopleID);
-            //ViewBag.HomeSaleType = new SelectList(db.SaleTypeData, "SaleStateID", "SaleState", homeData.HomeSaleType);
             ViewBag.HomeSaleType = db.SaleTypeData.ToList();
             ViewBag.HomeCarID = db.CarTypeData.ToList();
             ViewBag.countyID = db.CityTypeData.ToList();
@@ -102,6 +145,13 @@ namespace HomeBackProject.Controllers
             ViewBag.HomeType = new SelectList(db.HomeTypeData, "HomeTypeID", "HomeTypeName", homeData.HomeType);
             ViewBag.HomePeopleID = new SelectList(db.PeopleData, "PeopleID", "PeopleName", homeData.HomePeopleID);
             ViewBag.HomeSaleType = new SelectList(db.SaleTypeData, "SaleStateID", "SaleState", homeData.HomeSaleType);
+            ViewBag.countyID = db.CityTypeData.ToList();
+            ViewBag.countyIDlast = homeData.HomeCity;
+            var countyTWlast = db.CityTypeData.Where(m => m.CityIDTW == homeData.HomeCity).FirstOrDefault();
+            ViewBag.countyTWlast = countyTWlast.CityTW;
+            var countyTownlast = db.HomeData.Where(p => p.HomeID == homeData.HomeID).FirstOrDefault();
+            ViewBag.HomeTownlast = countyTownlast.HomeTown;
+
             return View(homeData);
         }
 
@@ -111,13 +161,12 @@ namespace HomeBackProject.Controllers
         [LoginCkeck]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "HomeID,HomeName,HomeMoney,HomeSquareMeters,HomeMetersMoney,HomeCity,HomeTown,HomeStreet,HomeFloor,HomeHighFloor,HomeSaleAndLease,HomeAges,HomeRoom,HomeHall,HomeBathroom,HomeBalcony,HomeFeatures,HomeManageTip,HomeCarID,HomeSaleType,HomeType,HomePeopleID,HomeADLevel")] HomeData homeData)
+        public ActionResult Edit(HomeData homeData)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(homeData).State = System.Data.Entity.EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                homeData.HomePeopleID = Session["userID"].ToString();
+                return actiondbController.Edit(db, db.HomeData, homeData);
             }
             ViewBag.HomeADLevel = new SelectList(db.ADTypeData, "ADID", "ADName", homeData.HomeADLevel);
             ViewBag.HomeCarID = new SelectList(db.CarTypeData, "CarTypeID", "CarTypeName", homeData.HomeCarID);
@@ -125,6 +174,7 @@ namespace HomeBackProject.Controllers
             ViewBag.HomeType = new SelectList(db.HomeTypeData, "HomeTypeID", "HomeTypeName", homeData.HomeType);
             ViewBag.HomePeopleID = new SelectList(db.PeopleData, "PeopleID", "PeopleName", homeData.HomePeopleID);
             ViewBag.HomeSaleType = new SelectList(db.SaleTypeData, "SaleStateID", "SaleState", homeData.HomeSaleType);
+            ViewBag.countyID = db.CityTypeData.ToList();
             return View(homeData);
         }
 
@@ -150,9 +200,7 @@ namespace HomeBackProject.Controllers
         public ActionResult DeleteConfirmed(string id)
         {
             HomeData homeData = db.HomeData.Find(id);
-            db.HomeData.Remove(homeData);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            return actiondbController.Delete(db, db.PeopleData, homeData);
         }
 
         protected override void Dispose(bool disposing)

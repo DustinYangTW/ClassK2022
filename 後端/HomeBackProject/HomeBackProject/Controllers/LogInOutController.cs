@@ -33,8 +33,8 @@ namespace HomeBackProject.Controllers
 
             if (user == null)
             {
-                ViewBag.ErrMsg = "帳號或密碼有錯誤";
-                return View(vMLogin);
+                ViewBag.ErrMsg = "**帳號或密碼有錯誤";
+                return View("Login");
             }
             var userID = db.PeopleData.Where(userIDFind => userIDFind.EMail == vMLogin.EmailAccount).FirstOrDefault();
 

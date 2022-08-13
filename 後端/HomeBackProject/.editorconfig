@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# CS0472: 運算式的結果一律會相同，因為此類型的值絕對不會等於 'null'
+dotnet_diagnostic.CS0472.severity = none

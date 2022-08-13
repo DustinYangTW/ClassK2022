@@ -306,7 +306,6 @@ namespace MetaDataHomeBackProject.Models
     {
         [Key]
         [DisplayName("房屋編號")]
-        [RegularExpression("[H][0-9]{9}", ErrorMessage = "編號格式錯誤")]
         public string HomeID { get; set; }
         [DisplayName("房屋案名")]
         [Required(ErrorMessage = "必填欄位")]
@@ -357,16 +356,14 @@ namespace MetaDataHomeBackProject.Models
         [RegularExpression("[0-9]{0,7}", ErrorMessage = "格式錯誤")]
         public byte HomeBathroom { get; set; }
         [DisplayName("陽台")]
-        [StringLength(7, ErrorMessage = "最長只能輸入7個數字")]
         [RegularExpression("^[0-9]*$", ErrorMessage = "格式錯誤")]
         public byte HomeBalcony { get; set; }
         [DisplayName("廠房特色")]
         [StringLength(1000, ErrorMessage = "最長只能輸入1000個字")]
         public string HomeFeatures { get; set; }
         [DisplayName("管理費")]
-        [StringLength(7, ErrorMessage = "最長只能輸入7個數字")]
         [RegularExpression("^[0-9]*$", ErrorMessage = "格式錯誤")]
-        public Nullable<decimal> HomeManageTip { get; set; }
+        public Nullable<int> HomeManageTip { get; set; }
         [DisplayName("車位類型")]
         [Required(ErrorMessage = "必填欄位")]
         public byte HomeCarID { get; set; }
@@ -377,7 +374,6 @@ namespace MetaDataHomeBackProject.Models
         [Required(ErrorMessage = "必填欄位")]
         public byte HomeType { get; set; }
         [DisplayName("會員編號")]
-        [Required(ErrorMessage = "必填欄位")]
         public string HomePeopleID { get; set; }
         [DisplayName("廣告等級")]
         public Nullable<short> HomeADLevel { get; set; }

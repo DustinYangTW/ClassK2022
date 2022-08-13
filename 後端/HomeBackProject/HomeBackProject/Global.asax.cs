@@ -20,4 +20,9 @@ namespace HomeBackProject
             RouteConfig.RegisterRoutes(RouteTable.Routes);            
         }
     }
+
+    public static class goconfig
+    {
+        public static readonly string go = "D:/Git2/後端/HomeBackProject/HomeBackProject";
+    }
 }

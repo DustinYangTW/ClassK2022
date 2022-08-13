@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using HomeBackProject.library;
+using System.Web;
 
 namespace HomeBackProject.Controllers
 {
@@ -15,16 +16,39 @@ namespace HomeBackProject.Controllers
         private ActiondbController actiondbController = new ActiondbController();
         private AccountData accountData = new AccountData();
         private ChangIDAuto changIDAuto = new ChangIDAuto();
+        private PostPhotos postPhotos = new PostPhotos();
 
         // GET: PeopleDatas
         [LoginCkeck]
         public ActionResult Index()
         {
-            var peopleData = db.PeopleData.Include(p => p.AccountData).Include(p => p.CityTypeData).Include(p => p.PeopleRankData).Include(p => p.ProgramData);
+            var peopleData = db.PeopleData.Include(p => p.AccountData).Include(p => p.CityTypeData).Include(p => p.PeopleRankData).Include(p => p.ProgramData).OrderByDescending(p => p.PeopleID);
             return View(peopleData.ToList());
+        }
+        [LoginCkeck]
+        [HttpPost]
+        public ActionResult Index(string name)
+        {
+            if (name =="")
+            {
+                var peopleData = db.PeopleData.Include(p => p.AccountData).Include(p => p.CityTypeData).Include(p => p.PeopleRankData).Include(p => p.ProgramData).OrderByDescending(p => p.PeopleID);
+                return View(peopleData.ToList());
+            }
+            else if (name.Contains("09"))
+            {
+                var peopleData = db.PeopleData.Include(p => p.AccountData).Include(p => p.CityTypeData).Include(p => p.PeopleRankData).Include(p => p.ProgramData).OrderByDescending(p => p.PeopleID).Where(p => p.PhoneNumber.Contains(name));
+                return View("Index", peopleData.ToList());
+            }
+            else
+            {
+                var peopleData = db.PeopleData.Include(p => p.AccountData).Include(p => p.CityTypeData).Include(p => p.PeopleRankData).Include(p => p.ProgramData).OrderByDescending(p => p.PeopleID).Where(p => p.PeopleName.Contains(name));
+                return View("Index", peopleData.ToList());
+            }
+                
         }
 
         // GET: PeopleDatas/Details/5
+        [LoginCkeck]
         public ActionResult Details(string id)
         {
             if (id == null)
@@ -53,13 +77,25 @@ namespace HomeBackProject.Controllers
         //[LoginCkeck]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(PeopleData peopleData)
+        public ActionResult Create(PeopleData peopleData, HttpPostedFileBase[] photo)
         {
-            //ArrayList checkOption = new ArrayList();
-            //checkOption.Add(peopleData.Gender);
-            //checkOption.Add(peopleData.County);
-            //checkOption.Add(peopleData.Town);
-            //checkOption.Add(peopleData.SaleStateID);
+            List<HttpPostedFileBase> photoList = new List<HttpPostedFileBase>();
+            string checkdataPhoto = "";
+            for (int i = 0; i < photo.Length; i++)
+            {
+                checkdataPhoto = postPhotos.checkPhoto(photo[i].FileName, photo[i].ContentLength);
+                if(photo[i] == null)
+                {
+                    break;
+                }
+                else if (checkdataPhoto != "OK")
+                {
+                    ViewBag.countyID = db.CityTypeData.ToList();
+                    ViewBag.SaleStateID = db.PeopleRankData.ToList();
+                    return View(peopleData);
+                }
+                photoList.Add(photo[i]);
+            }
 
             //var EmailCheck = db.AccountData.Where(email => email.EmailAccount == peopleData.EMail).FirstOrDefaultAsync();
             var EmailCheck = db.AccountData.Find(peopleData.EMail);
@@ -90,7 +126,8 @@ namespace HomeBackProject.Controllers
 
                 peopleData.PeopleCash = 0;
 
-                return actiondbController.Create(db, db.PeopleData, peopleData);
+                actiondbController.Create(db, db.PeopleData, peopleData, "Login", "LogInOut");
+                return actiondbController.SavePhoto(photoList,peopleData.PeopleID, "Login", "LogInOut");
             }
             else
             {
@@ -124,13 +161,11 @@ namespace HomeBackProject.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PeopleID,PeopleName,IdebtityNumber,Birthday,Gender,PhoneNumber,EMail,County,Town,RoadAndNumber,CompanyName,PeopleAge,PeopleCash,AuthorizationTime,SaleStateID,SchemeName")] PeopleData peopleData)
+        public ActionResult Edit(PeopleData peopleData)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(peopleData).State = System.Data.Entity.EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                return actiondbController.Edit(db, db.PeopleData, peopleData);
             }
             ViewBag.EMail = new SelectList(db.AccountData, "EmailAccount", "PassWord", peopleData.EMail);
             ViewBag.County = new SelectList(db.CityTypeData, "CityIDTW", "CityTW", peopleData.County);
@@ -140,30 +175,30 @@ namespace HomeBackProject.Controllers
         }
 
         // GET: PeopleDatas/Delete/5
-        public ActionResult Delete(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            PeopleData peopleData = db.PeopleData.Find(id);
-            if (peopleData == null)
-            {
-                return HttpNotFound();
-            }
-            return View(peopleData);
-        }
+        //public ActionResult Delete(string id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    PeopleData peopleData = db.PeopleData.Find(id);
+        //    if (peopleData == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(peopleData);
+        //}
 
-        // POST: PeopleDatas/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
-        {
-            PeopleData peopleData = db.PeopleData.Find(id);
-            db.PeopleData.Remove(peopleData);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        //// POST: PeopleDatas/Delete/5
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteConfirmed(string id)
+        //{
+        //    PeopleData peopleData = db.PeopleData.Find(id);
+        //    db.PeopleData.Remove(peopleData);
+        //    db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
 
         //protected override void Dispose(bool disposing)
         //{
