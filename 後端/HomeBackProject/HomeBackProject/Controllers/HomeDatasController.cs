@@ -23,7 +23,7 @@ namespace HomeBackProject.Controllers
         [LoginCkeck]
         public ActionResult Index()
         {
-            var homeData = db.HomeData.Include(h => h.ADTypeData).Include(h => h.CarTypeData).Include(h => h.CityTypeData).Include(h => h.HomeTypeData).Include(h => h.PeopleData).Include(h => h.SaleTypeData).OrderByDescending(h=>h.HomeID);
+            var homeData = db.HomeData.Include(h => h.ADTypeData).Include(h => h.CarTypeData).Include(h => h.CityTypeData).Include(h => h.HomeTypeData).Include(h => h.PeopleData).Include(h => h.SaleTypeData).OrderByDescending(h => h.HomeID);
             return View(homeData.ToList());
         }
 
@@ -90,22 +90,22 @@ namespace HomeBackProject.Controllers
         {
             List<HttpPostedFileBase> photoList = new List<HttpPostedFileBase>();
             string checkdataPhoto = "";
-            for (int i = 0; i < photo.Length; i++)
+            if (photo[0] != null)
             {
-                checkdataPhoto = postPhotos.checkPhoto(photo[i].FileName, photo[i].ContentLength);
-                if (photo[i] == null)
+                for (int i = 0; i < photo.Length; i++)
                 {
-                    break;
+                    checkdataPhoto = postPhotos.checkPhoto(photo[i].FileName, photo[i].ContentLength);
+
+                    if (checkdataPhoto != "OK")
+                    {
+                        ViewBag.HomeSaleType = db.SaleTypeData.ToList();
+                        ViewBag.HomeCarID = db.CarTypeData.ToList();
+                        ViewBag.countyID = db.CityTypeData.ToList();
+                        ViewBag.homeTypeData = db.HomeTypeData.ToList();
+                        return View(homeData);
+                    }
+                    photoList.Add(photo[i]);
                 }
-                else if (checkdataPhoto != "OK")
-                {
-                    ViewBag.HomeSaleType = db.SaleTypeData.ToList();
-                    ViewBag.HomeCarID = db.CarTypeData.ToList();
-                    ViewBag.countyID = db.CityTypeData.ToList();
-                    ViewBag.homeTypeData = db.HomeTypeData.ToList();
-                    return View(homeData);
-                }
-                photoList.Add(photo[i]);
             }
 
             if (ModelState.IsValid)

@@ -29,7 +29,7 @@ namespace HomeBackProject.Controllers
         [HttpPost]
         public ActionResult Index(string name)
         {
-            if (name =="")
+            if (name == "")
             {
                 var peopleData = db.PeopleData.Include(p => p.AccountData).Include(p => p.CityTypeData).Include(p => p.PeopleRankData).Include(p => p.ProgramData).OrderByDescending(p => p.PeopleID);
                 return View(peopleData.ToList());
@@ -44,7 +44,7 @@ namespace HomeBackProject.Controllers
                 var peopleData = db.PeopleData.Include(p => p.AccountData).Include(p => p.CityTypeData).Include(p => p.PeopleRankData).Include(p => p.ProgramData).OrderByDescending(p => p.PeopleID).Where(p => p.PeopleName.Contains(name));
                 return View("Index", peopleData.ToList());
             }
-                
+
         }
 
         // GET: PeopleDatas/Details/5
@@ -77,24 +77,23 @@ namespace HomeBackProject.Controllers
         //[LoginCkeck]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(PeopleData peopleData, HttpPostedFileBase[] photo)
+        public ActionResult Create(PeopleData peopleData, HttpPostedFileBase[] photo, string PassWord,string PassWordCheck)
         {
             List<HttpPostedFileBase> photoList = new List<HttpPostedFileBase>();
             string checkdataPhoto = "";
-            for (int i = 0; i < photo.Length; i++)
+            if (photo[0] !=  null)
             {
-                checkdataPhoto = postPhotos.checkPhoto(photo[i].FileName, photo[i].ContentLength);
-                if(photo[i] == null)
+                for (int i = 0; i < photo.Length; i++)
                 {
-                    break;
+                    checkdataPhoto = postPhotos.checkPhoto(photo[i].FileName, photo[i].ContentLength);
+                    if (checkdataPhoto != "OK")
+                    {
+                        ViewBag.countyID = db.CityTypeData.ToList();
+                        ViewBag.SaleStateID = db.PeopleRankData.ToList();
+                        return View(peopleData);
+                    }
+                    photoList.Add(photo[i]);
                 }
-                else if (checkdataPhoto != "OK")
-                {
-                    ViewBag.countyID = db.CityTypeData.ToList();
-                    ViewBag.SaleStateID = db.PeopleRankData.ToList();
-                    return View(peopleData);
-                }
-                photoList.Add(photo[i]);
             }
 
             //var EmailCheck = db.AccountData.Where(email => email.EmailAccount == peopleData.EMail).FirstOrDefaultAsync();
@@ -106,6 +105,14 @@ namespace HomeBackProject.Controllers
                 ViewBag.SaleStateID = db.PeopleRankData.ToList();
                 ViewBag.checkErrorEmailCheck = "電子信箱已重複";
                 return View(peopleData);
+            }        
+
+            if (PassWord != PassWordCheck)
+            {
+                ViewBag.countyID = db.CityTypeData.ToList();
+                ViewBag.SaleStateID = db.PeopleRankData.ToList();
+                ViewBag.PassWordCheck = "密碼與前者不相符";
+                return View(peopleData);
             }
 
             if (peopleData.SaleStateID == 0)
@@ -115,10 +122,11 @@ namespace HomeBackProject.Controllers
                 ViewBag.checkErrorSaleStateID = "必填欄位";
                 return View(peopleData);
             }
+
             if (ModelState.IsValid)
             {
                 accountData.EmailAccount = peopleData.EMail;
-                accountData.PassWord = peopleData.IdebtityNumber;
+                accountData.PassWord = PassWord;
                 actiondbController.Create(db, db.AccountData, accountData);
 
                 var PeopleCountID = db.PeopleData.OrderByDescending(m => m.PeopleID).FirstOrDefault();//存入最後一筆的資料
@@ -127,7 +135,7 @@ namespace HomeBackProject.Controllers
                 peopleData.PeopleCash = 0;
 
                 actiondbController.Create(db, db.PeopleData, peopleData, "Login", "LogInOut");
-                return actiondbController.SavePhoto(photoList,peopleData.PeopleID, "Login", "LogInOut");
+                return actiondbController.SavePhoto(photoList, peopleData.PeopleID, "Login", "LogInOut");
             }
             else
             {

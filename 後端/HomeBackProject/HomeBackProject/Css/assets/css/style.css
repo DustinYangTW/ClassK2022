@@ -1137,9 +1137,9 @@ a {
     padding: 3rem 0 3rem;
 }
 
-@media (max-width: 767px) {
+@media (min-width: 767px) {
     .intro-single {
-        padding-top: 9rem;
+        padding-top: 5rem;
     }
 }
 
