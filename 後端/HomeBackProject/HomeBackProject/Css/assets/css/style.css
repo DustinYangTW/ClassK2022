@@ -556,7 +556,8 @@ a {
 }
 
     .btn.btn-a,
-    .btn.btn-b {
+    .btn.btn-b,
+    .btn.btn-blue {
         border-radius: 0;
         padding: 1rem 3rem;
         letter-spacing: 0.05rem;
@@ -592,6 +593,27 @@ a {
         .btn.btn-b-n:hover {
             background-color: #26a356;
             color: #ffffff;
+        }
+
+    .btn.btn-blue {
+        background-color: #67BDFC;
+        color: #000000;
+    }
+
+        .btn.btn-blue:hover {
+            background-color: #B8D3E6;
+            color: #000000;
+        }
+
+    .btn.btn-blue-n {
+        background-color: #67BDFC;
+        color: #000000;
+        border-radius: 0;
+    }
+
+        .btn.btn-blue-n:hover {
+            background-color: #B8D3E6;
+            color: #000000;
         }
 
 .navbar-toggle-box {
