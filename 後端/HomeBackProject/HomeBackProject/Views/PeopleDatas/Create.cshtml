@@ -7,7 +7,7 @@
 }
 
 
-@using (Html.BeginForm("Create", "PeopleDatas", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Create", "PeopleDatas", FormMethod.Post, new { enctype = "multipart/form-data", @class = "needs-validation" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -34,17 +34,23 @@
                                             <div class="col-md-6 mb-4 pb-2">
                                                 <div class="form-outline">
                                                     <label class="form-label fs-5" for="PeopleName">姓名</label>
-                                                    <input type="text" id="PeopleName" class="form-control form-control-lg" name="PeopleName" />
+                                                    <input type="text" id="PeopleName" class="form-control form-control-lg" name="PeopleName" required />
+                                                    <div class="invalid-feedback">
+                                                        **必填欄位
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6 mb-4 pb-2">
                                                 <div class="form-outline">
                                                     <label class="form-label fs-5" for="Gender">性別</label>
-                                                    <select class="form-control form-control-lg" name="Gender" id="Gender">
-                                                        <option disabled style="display: none" selected value="true">請選擇</option>
+                                                    <select class="form-select form-control-lg" name="Gender" id="Gender" required>
+                                                        <option selected disabled style="display: none" value="">請選擇</option>
                                                         <option value="true">男</option>
                                                         <option value="false">女</option>
                                                     </select>
+                                                    <div class="invalid-feedback">
+                                                        **必填欄位
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -52,7 +58,10 @@
                                         <div class="col-md-12 mb-4 pb-2">
                                             <div class="form-outline w-100">
                                                 <label class="form-label fs-5" for="EMail">帳號(電子信箱)</label>
-                                                <input type="text" id="EMail" class="form-control form-control-lg" name="EMail" />
+                                                <input type="email" id="EMail" class="form-control form-control-lg" name="EMail" required />
+                                                <div class="invalid-feedback">
+                                                    請填寫正確的電子信箱
+                                                </div>
                                                 <sapn class="text-danger mt-2">@ViewBag.checkErrorEmailCheck</sapn>
                                             </div>
                                         </div>
@@ -61,44 +70,45 @@
                                             <div class="col-md-6 mb-4 pb-2">
                                                 <div class="form-outline">
                                                     <label class="form-label fs-5" for="PassWord">密碼</label>
-                                                    <input type="password" id="PassWord" class="form-control form-control-lg" name="PassWord" />
-                                                    @*<div class="col-md-12">
-                                                            @Html.EditorFor(model => model.PassWord, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
-                                                            @Html.ValidationMessageFor(model => model.PassWord, "", new { @class = "text-danger" })
-                                                        </div>*@
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-6 mb-4 pb-2">
-                                                <div class="form-outline">
-                                                    <label class="form-label fs-5" for="PassWordCheck">密碼</label>
-                                                    <input type="password" id="PassWordCheck" class="form-control form-control-lg" name="PassWordCheck" />
-                                                    <sapn class="text-danger mt-2">@ViewBag.PassWordCheck</sapn>
-                                                    @*@Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "form-label fs-5" })
-                                                        <div class="col-md-12">
-                                                            @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
-                                                            @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })*@
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-md-6 mb-4 pb-2">
-                                                <div class="form-outline">
-                                                    @Html.LabelFor(model => model.IdebtityNumber, htmlAttributes: new { @class = "form-label fs-5" })
-                                                    <div class="col-md-12">
-                                                        @Html.EditorFor(model => model.IdebtityNumber, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
-                                                        @Html.ValidationMessageFor(model => model.IdebtityNumber, "", new { @class = "text-danger" })
+                                                    <input type="password" id="PassWord" class="form-control form-control-lg" name="PassWord" required />
+                                                    <div class="invalid-feedback">
+                                                        **必填欄位
                                                     </div>
                                                 </div>
                                             </div>
 
                                             <div class="col-md-6 mb-4 pb-2">
                                                 <div class="form-outline">
-                                                    <label class="form-label fs-5" for="Birthday">生日</label>
-                                                    <input type="date" id="Birthday" class="form-control form-control-lg" name="Birthday" />
+                                                    <label class="form-label fs-5" for="PassWordCheck">密碼</label>
+                                                    <input type="password" id="PassWordCheck" class="form-control form-control-lg" name="PassWordCheck" required />
+                                                    <sapn class="text-danger mt-2">@ViewBag.PassWordCheck</sapn>
+                                                    <div class="invalid-feedback">
+                                                        **必填欄位
+                                                    </div>
                                                 </div>
-                                            </div>                                
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6 mb-4 pb-2">
+                                                @Html.LabelFor(model => model.IdebtityNumber, htmlAttributes: new { @class = "form-label fs-5" })
+                                                <div class="col-md-12">
+                                                    @Html.EditorFor(model => model.IdebtityNumber, new { htmlAttributes = new { @class = "form-control form-control-lg", required = "required" } })
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    **必填欄位
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 mb-4 pb-2">
+                                                <div class="form-outline">
+                                                    <label class="form-label fs-5" for="Birthday">生日</label>
+                                                    <input type="date" id="Birthday" class="form-control form-control-lg" name="Birthday" required />
+                                                    <div class="invalid-feedback">
+                                                        **必填欄位
+                                                    </div>
+                                                </div>
+                                            </div>
 
 
                                             <div class="row">
@@ -106,8 +116,11 @@
                                                 <div class="col-md-6 mb-4 pb-2">
                                                     <div class="form-outline">
                                                         @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "form-label fs-5" })
-                                                        @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                                                        @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control form-control-lg", required = "required" } })
                                                         @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                                                        <div class="invalid-feedback">
+                                                            **必填欄位
+                                                        </div>
                                                     </div>
                                                 </div>
 
@@ -117,7 +130,7 @@
                                                 </div>
                                             </div>
 
-                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -131,14 +144,16 @@
                                             <div class="col-md-6 mb-4 pb-2">
                                                 <div class="form-outline form-white">
                                                     <label class="form-label fs-5" for="selectCounty">縣市</label>
-                                                    <select class="form-control form-control-lg" name="County" id="selectCounty" onchange="mainIdex()">
-                                                        <option disabled style="display: none" selected value="請選擇">請選擇</option>
+                                                    <select class="form-select form-select-lg" name="County" id="selectCounty" onchange="mainIdex()" required>
+                                                        <option selected disabled style="display: none" value="">請選擇</option>
                                                         @foreach (var item in ViewBag.countyID)
                                                         {
                                                             <option value="@item.CityIDTW">@item.CityTW</option>
                                                         }
                                                     </select>
-                                                    @Html.ValidationMessageFor(model => model.County, "", new { @class = "text-danger" })
+                                                    <div class="invalid-feedback">
+                                                        **必填欄位
+                                                    </div>
                                                 </div>
                                             </div>
 
@@ -146,10 +161,12 @@
                                             <div class="col-md-6 mb-4 pb-2">
                                                 <div class="form-outline form-white">
                                                     <label class="form-label fs-5" for="selectCity">鄉鎮區</label>
-                                                    <select class="form-control form-control-lg" name="Town" id="selectCity">
-                                                        <option disabled style="display: none" selected value="請選擇">請先選擇縣市</option>
+                                                    <select class="form-select form-select-lg" name="Town" id="selectCity" required>
+                                                        <option selected disabled style="display: none" value="">請先選擇縣市</option>
                                                     </select>
-                                                    @Html.ValidationMessageFor(model => model.Town, "", new { @class = "text-danger" })
+                                                    <div class="invalid-feedback">
+                                                        **必填欄位
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -158,8 +175,11 @@
                                             <div class="form-outline form-white">
                                                 @Html.LabelFor(model => model.RoadAndNumber, htmlAttributes: new { @class = "form-label fs-5" })
                                                 <div class="col-md-12">
-                                                    @Html.EditorFor(model => model.RoadAndNumber, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
+                                                    @Html.EditorFor(model => model.RoadAndNumber, new { htmlAttributes = new { @class = "form-control form-control-lg", required = "required" } })
                                                     @Html.ValidationMessageFor(model => model.RoadAndNumber, "", new { @class = "text-danger" })
+                                                    <div class="invalid-feedback">
+                                                        **必填欄位
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -169,7 +189,6 @@
                                                 @Html.LabelFor(model => model.CompanyName, htmlAttributes: new { @class = "form-label fs-5" })
                                                 <div class="col-md-10">
                                                     @Html.EditorFor(model => model.CompanyName, new { htmlAttributes = new { @class = "form-control form-control-lg" } })
-                                                    @Html.ValidationMessageFor(model => model.CompanyName, "", new { @class = "text-danger" })
                                                 </div>
                                             </div>
                                         </div>
@@ -179,8 +198,8 @@
                                             <div class="form-outline form-white">
 
                                                 <label class="form-label fs-5" for="SaleStateID">會員身分</label>
-                                                <select class="form-control form-control-lg" name="SaleStateID" id="SaleStateID">
-                                                    <option disabled style="display: none" selected value="請選擇">請選擇</option>
+                                                <select class="form-select form-select-lg" name="SaleStateID" id="SaleStateID" required>
+                                                    <option selected disabled value="">請選擇</option>
                                                     @foreach (var peopleRankData in ViewBag.SaleStateID)
                                                     {
                                                         if (@peopleRankData.PeopleRank != "管理員")
@@ -189,18 +208,21 @@
                                                         }
                                                     }
                                                 </select>
-
-                                                <sapn class="text-danger">@ViewBag.checkErrorSaleStateID</sapn>
-
+                                                <div class="invalid-feedback">
+                                                    **必填欄位
+                                                </div>
                                             </div>
                                         </div>
 
 
                                         <div class="form-check d-flex justify-content-start mb-4 pb-1">
-                                            <input class="form-check-input me-3" type="checkbox" value="" id="checkAllRow" />
-                                            <label class="form-check-label text-white" for="checkAllRow">
+                                            <input class="form-check-input me-3 col-2" type="checkbox" value="" id="checkAllRow" required />
+                                            <label class="form-check-label text-white col-4" for="checkAllRow">
                                                 我同意本網站 <a href="#!" class="text-white"><u>相關規定</u></a>
                                             </label>
+                                            <div class="invalid-feedback">
+                                                **必填欄位
+                                            </div>
                                         </div>
 
                                         <button type="submit" class="btn btn-light btn-lg"
@@ -217,6 +239,38 @@
             </div>
         </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -426,9 +480,6 @@
         @Html.ActionLink("Back to List", "Index")
     </div>*@
 
-<script src="~/Scripts/jquery-3.6.0.min.js"></script>
-
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-<script src="~/Js/FindCityData.js"></script>
-
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+    <script src="~/Js/FindCityData.js"></script>
+    <script src="~/Js/Validation.js"></script>

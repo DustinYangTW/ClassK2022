@@ -176,6 +176,7 @@
     <Content Include="Css\body.css" />
     <Content Include="Global.asax" />
     <Content Include="Js\FindCityData.js" />
+    <Content Include="Js\Validation.js" />
     <Content Include="Models\HomeData.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>HomeData.Context.cs</LastGenOutput>
