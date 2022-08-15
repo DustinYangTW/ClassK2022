@@ -46,7 +46,7 @@ namespace HW7Project.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MemberID,Account,MemberName,MenberPhotoFile,MemberBirdthday,CreatedDate,PassWord")] Members members)
+        public ActionResult Create([Bind(Include = "MemberID,Account,MemberName,MenberPhotoFile,MemberBirdthday,CreatedDate,PassWord")] Members members, HttpPostedFileBase photo)
         {
            //var account =  db.Members.Where(m => m.Account == members.Account).FirstOrDefault();
            // if(account != null)
@@ -54,8 +54,18 @@ namespace HW7Project.Controllers
            //     ViewBag.Error = "此帳號有人使用";
            //     return View();
            // }
+
+            if(photo != null)
+            {
+                if (photo.ContentLength > 0)
+                {
+                    photo.SaveAs(Server.MapPath("~/MemberPhoto" + members.Account + ".jpg"));
+                }
+            }
+
             if (ModelState.IsValid)
             {
+                members.MenberPhotoFile = members.Account + ".jpg";
                 db.Members.Add(members);
                 db.SaveChanges();
                 return RedirectToAction("Index");

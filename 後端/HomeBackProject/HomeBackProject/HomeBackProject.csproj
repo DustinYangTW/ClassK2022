@@ -253,6 +253,7 @@
     <Compile Include="Models\CarTypeData.cs">
       <DependentUpon>HomeData.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CheckDataFromDB.cs" />
     <Compile Include="Models\CityTypeData.cs">
       <DependentUpon>HomeData.tt</DependentUpon>
     </Compile>

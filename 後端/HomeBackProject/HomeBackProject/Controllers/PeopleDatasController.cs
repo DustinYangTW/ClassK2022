@@ -99,13 +99,13 @@ namespace HomeBackProject.Controllers
             //var EmailCheck = db.AccountData.Where(email => email.EmailAccount == peopleData.EMail).FirstOrDefaultAsync();
             var EmailCheck = db.AccountData.Find(peopleData.EMail);
             //驗證是否有重複Email
-            if (EmailCheck != null)
-            {
-                ViewBag.countyID = db.CityTypeData.ToList();
-                ViewBag.SaleStateID = db.PeopleRankData.ToList();
-                ViewBag.checkErrorEmailCheck = "電子信箱已重複";
-                return View();
-            }        
+            //if (EmailCheck != null)
+            //{
+            //    ViewBag.countyID = db.CityTypeData.ToList();
+            //    ViewBag.SaleStateID = db.PeopleRankData.ToList();
+            //    ViewBag.checkErrorEmailCheck = "電子信箱已重複";
+            //    return View();
+            //}        
 
             //if (PassWord != PassWordCheck)
             //{
@@ -200,13 +200,13 @@ namespace HomeBackProject.Controllers
         //    return RedirectToAction("Index");
         //}
 
-        //protected override void Dispose(bool disposing)
-        //{
-        //    if (disposing)
-        //    {
-        //        db.Dispose();
-        //    }
-        //    base.Dispose(disposing);
-        //}
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
     }
 }

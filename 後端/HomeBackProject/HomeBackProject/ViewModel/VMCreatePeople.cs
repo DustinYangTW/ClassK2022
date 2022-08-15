@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using static HomeBackProject.Models.CheckDataFromDB;
 using static MetaDataHomeBackProject.Models.MetaPeopleData;
 
 namespace HomeBackProject.ViewModel
@@ -15,6 +16,7 @@ namespace HomeBackProject.ViewModel
         [Required(ErrorMessage = "必填欄位")]
         [EmailAddress(ErrorMessage = "電子郵件格錯誤")]
         [StringLength(64, ErrorMessage = "最長只能輸入64個字")]
+        [CheckAoccount]
         public string EMail { get; set; }
 
 
