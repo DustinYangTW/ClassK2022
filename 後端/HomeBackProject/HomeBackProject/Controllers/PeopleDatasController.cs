@@ -130,6 +130,7 @@ namespace HomeBackProject.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.BirthDay = db.PeopleData.Where(m => m.PeopleID == id.ToString()).FirstOrDefault().Birthday;
             ViewBag.EMail = new SelectList(db.AccountData, "EmailAccount", "PassWord", peopleData.EMail);
             ViewBag.County = new SelectList(db.CityTypeData, "CityIDTW", "CityTW", peopleData.County);
             ViewBag.SaleStateID = new SelectList(db.PeopleRankData, "HomeTSaleStateID", "PeopleRank", peopleData.SaleStateID);

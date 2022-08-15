@@ -5,116 +5,114 @@
     Layout = "~/Views/Shared/_Layout_LogInOut.cshtml";
 }
 
-<h2>會員管理</h2>
 
-<div class="d-flex justify-content-between">
-    <div class="col-5 d-flex flex-row">
-        <div class="col-6">
-            <form class="d-flex" action="~/PeopleDatas/Index" method="post">
-                <input class="form-control me-3" type="search" name="name" placeholder="姓名或電話" aria-label="Search">
-                <button class="btn btn-outline-success ms-2" type="submit">搜尋</button>
-            </form>
+
+<div class="container-fluid">
+    <div class="me-3 ms-3">
+        <h2>會員管理</h2>
+        <form class="d-flex flex-sm-column flex-lg-row justify-content-lg-end flex-lg-wrap" action="~/PeopleDatas/Index" method="post">
+            <input class="form-control mb-3 mb-lg-0 me-lg-3 col-lg-6" style="max-width:auto" type="search" name="name" placeholder="查詢使用姓名或電話" aria-label="Search">
+            <button class="btn btn-outline-success mb-3 mb-lg-0 me-lg-3" type="submit">搜尋</button>
+            <a class="btn btn-outline-primary mb-3 mb-lg-0 me-lg-3" href="~/PeopleDatas/Index">清除</a>
+            @Html.ActionLink("新增會員", "Create", new { }, new { @class = "btn btn-primary me-lg-3" })
+        </form>
+        <div class="table-responsive mt-lg-3">
+            <table class="table text-center table-striped table-hover" overflow="auto">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PeopleName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.IdebtityNumber)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Birthday)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Gender)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PhoneNumber)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CityTypeData.CityTW)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Town)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CompanyName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PeopleCash)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PeopleRankData.PeopleRank)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ProgramData.ProgramName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.AuthorizationTime)
+                        </th>
+                        <th>詳細資料</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PeopleName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IdebtityNumber)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Birthday)
+                            </td>
+                            <td>
+                                @if (item.Gender == true)
+                                {
+                                    <p>男</p>
+                                }
+                                else
+                                {
+                                    <p>女</p>
+                                }
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PhoneNumber)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CityTypeData.CityTW)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Town)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CompanyName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PeopleCash)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PeopleRankData.PeopleRank)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ProgramData.ProgramName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AuthorizationTime)
+                            </td>
+                            <td>
+                                @Html.ActionLink("詳細資料", "Details", new { id = item.PeopleID }, new { @class = "btn btn-primary" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
         </div>
-        <div>
-            <a class="btn btn-outline-primary" href="~/PeopleDatas/Index">清除</a>
-        </div>
-    </div>
-    <div>
-        @Html.ActionLink("新增會員", "Create", new { }, new { @class = "btn btn-primary me-4" })
     </div>
 </div>
-
-<table class="table text-center">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.PeopleName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IdebtityNumber)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Birthday)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Gender)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CityTypeData.CityTW)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Town)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CompanyName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PeopleCash)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PeopleRankData.PeopleRank)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ProgramData.ProgramName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AuthorizationTime)
-        </th>
-        <th>詳細資料</th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.PeopleName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdebtityNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Birthday)
-            </td>
-            <td>
-                @if (item.Gender == true)
-                {
-                    <p>男</p>
-                }
-                else
-                {
-                    <p>女</p>
-                }
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PhoneNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CityTypeData.CityTW)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Town)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CompanyName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PeopleCash)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PeopleRankData.PeopleRank)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProgramData.ProgramName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AuthorizationTime)
-            </td>
-            <td>
-                @Html.ActionLink("詳細資料", "Details", new { id = item.PeopleID }, new { @class = "btn btn-primary" })
-            </td>
-        </tr>
-    }
-
-</table>
