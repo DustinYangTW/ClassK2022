@@ -48,6 +48,12 @@ namespace HW7Project.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "MemberID,Account,MemberName,MenberPhotoFile,MemberBirdthday,CreatedDate,PassWord")] Members members)
         {
+           //var account =  db.Members.Where(m => m.Account == members.Account).FirstOrDefault();
+           // if(account != null)
+           // {
+           //     ViewBag.Error = "此帳號有人使用";
+           //     return View();
+           // }
             if (ModelState.IsValid)
             {
                 db.Members.Add(members);

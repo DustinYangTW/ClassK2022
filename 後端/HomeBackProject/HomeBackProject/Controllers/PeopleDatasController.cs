@@ -90,7 +90,7 @@ namespace HomeBackProject.Controllers
                     {
                         ViewBag.countyID = db.CityTypeData.ToList();
                         ViewBag.SaleStateID = db.PeopleRankData.ToList();
-                        return View(peopleData);
+                        return View();
                     }
                     photoList.Add(photo[i]);
                 }
@@ -104,24 +104,16 @@ namespace HomeBackProject.Controllers
                 ViewBag.countyID = db.CityTypeData.ToList();
                 ViewBag.SaleStateID = db.PeopleRankData.ToList();
                 ViewBag.checkErrorEmailCheck = "電子信箱已重複";
-                return View(peopleData);
+                return View();
             }        
 
-            if (PassWord != PassWordCheck)
-            {
-                ViewBag.countyID = db.CityTypeData.ToList();
-                ViewBag.SaleStateID = db.PeopleRankData.ToList();
-                ViewBag.PassWordCheck = "密碼與前者不相符";
-                return View(peopleData);
-            }
-
-            if (peopleData.SaleStateID == 0)
-            {
-                ViewBag.countyID = db.CityTypeData.ToList();
-                ViewBag.SaleStateID = db.PeopleRankData.ToList();
-                ViewBag.checkErrorSaleStateID = "必填欄位";
-                return View(peopleData);
-            }
+            //if (PassWord != PassWordCheck)
+            //{
+            //    ViewBag.countyID = db.CityTypeData.ToList();
+            //    ViewBag.SaleStateID = db.PeopleRankData.ToList();
+            //    ViewBag.PassWordCheck = "密碼與前者不相符";
+            //    return View(peopleData);
+            //}
 
             if (ModelState.IsValid)
             {
@@ -141,7 +133,7 @@ namespace HomeBackProject.Controllers
             {
                 ViewBag.countyID = db.CityTypeData.ToList();
                 ViewBag.SaleStateID = db.PeopleRankData.ToList();
-                return View(peopleData);
+                return View();
             }
         }
 
