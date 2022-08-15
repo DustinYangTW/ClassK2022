@@ -145,7 +145,8 @@ namespace HomeBackProject.Controllers
         /// <returns></returns>
         public ActionResult SavePhoto(List<HttpPostedFileBase> photo, string peopleID, string actionName, string cName)
         {
-            string goTitle = "E:/Git2/後端/HomeBackProject/HomeBackProject";
+            //string goTitle = "E:/Git2/後端/HomeBackProject/HomeBackProject"; //Home
+            string goTitle = "D:/Git2/後端/HomeBackProject/HomeBackProject"; //school
             string filename = goTitle + "/AllPhoto/" + peopleID + "/" +"Peopleimage";
             string checkid = "";
 
