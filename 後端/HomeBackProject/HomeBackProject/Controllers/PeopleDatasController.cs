@@ -77,7 +77,7 @@ namespace HomeBackProject.Controllers
         //[LoginCkeck]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(PeopleData peopleData, HttpPostedFileBase[] photo, string PassWord,string PassWordCheck)
+        public ActionResult Create(PeopleData peopleData, HttpPostedFileBase[] photo, string PassWord)
         {
             List<HttpPostedFileBase> photoList = new List<HttpPostedFileBase>();
             string checkdataPhoto = "";
@@ -95,25 +95,6 @@ namespace HomeBackProject.Controllers
                     photoList.Add(photo[i]);
                 }
             }
-
-            //var EmailCheck = db.AccountData.Where(email => email.EmailAccount == peopleData.EMail).FirstOrDefaultAsync();
-            var EmailCheck = db.AccountData.Find(peopleData.EMail);
-            //驗證是否有重複Email
-            //if (EmailCheck != null)
-            //{
-            //    ViewBag.countyID = db.CityTypeData.ToList();
-            //    ViewBag.SaleStateID = db.PeopleRankData.ToList();
-            //    ViewBag.checkErrorEmailCheck = "電子信箱已重複";
-            //    return View();
-            //}        
-
-            //if (PassWord != PassWordCheck)
-            //{
-            //    ViewBag.countyID = db.CityTypeData.ToList();
-            //    ViewBag.SaleStateID = db.PeopleRankData.ToList();
-            //    ViewBag.PassWordCheck = "密碼與前者不相符";
-            //    return View(peopleData);
-            //}
 
             if (ModelState.IsValid)
             {

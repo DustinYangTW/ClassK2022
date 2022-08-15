@@ -58,31 +58,6 @@ namespace HomeBackProject.Controllers
             return View();
         }
 
-
-        // POST: HomeDatas/Create
-        // 若要避免過量張貼攻擊，請啟用您要繫結的特定屬性。
-        // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
-        //[LoginCkeck]
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Create(HomeData homeData)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var countHomeDatas = db.HomeData.OrderByDescending(m => m.HomeID).FirstOrDefault();
-        //        homeData.HomeID = changIDAuto.changIDNumber(countHomeDatas.HomeID, "H");  //自動加編號H000000000，新增一筆自動+1
-        //        homeData.HomePeopleID = Session["userID"].ToString();
-        //        homeData.HomeManageTip = homeData.HomeManageTip > 0 ? homeData.HomeManageTip : 0;
-        //        homeData.HomeADLevel = 0;
-        //        return actiondbController.Create(db, db.HomeData, homeData);
-        //    }
-
-        //    ViewBag.HomeSaleType = db.SaleTypeData.ToList();
-        //    ViewBag.HomeCarID = db.CarTypeData.ToList();
-        //    ViewBag.countyID = db.CityTypeData.ToList();
-        //    ViewBag.homeTypeData = db.HomeTypeData.ToList();
-        //    return View(homeData);
-        //}    
         [LoginCkeck]
         [HttpPost]
         [ValidateAntiForgeryToken]

@@ -58,7 +58,7 @@
                                         <div class="col-md-12 mb-4 pb-2">
                                             <div class="form-outline w-100">
                                                 <label class="form-label fs-5" for="EMail">帳號(電子信箱)</label>
-                                               @* <input type="email" id="EMail" class="form-control form-control-lg" name="EMail" required style="max-width:100%" />*@
+                                                @* <input type="email" id="EMail" class="form-control form-control-lg" name="EMail" required style="max-width:100%" />*@
                                                 @Html.EditorFor(model => model.EMail, new { htmlAttributes = new { @class = "form-control form-control-lg", name = "EMail", type = "email", style = "max-width:100%", id = "EMail", required = "required" } })
                                                 @Html.ValidationMessageFor(model => model.EMail, "", new { @class = "text-danger" })
                                                 <div class="invalid-feedback">
@@ -192,7 +192,7 @@
                                             <div class="form-outline form-white">
                                                 @Html.LabelFor(model => model.CompanyName, htmlAttributes: new { @class = "form-label fs-5" })
                                                 <div class="col-md-12">
-                                                    @Html.EditorFor(model => model.CompanyName, new { htmlAttributes = new { @class = "form-control form-control-lg" ,style = "max-width:100%" } })
+                                                    @Html.EditorFor(model => model.CompanyName, new { htmlAttributes = new { @class = "form-control form-control-lg", style = "max-width:100%" } })
                                                 </div>
                                             </div>
                                         </div>
@@ -487,6 +487,7 @@
 @section Script {
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Js/FindCityData.js"></script>
+    <script src="~/Js/Validation.js"></script>
 }
-<script src="~/Js/FindCityData.js"></script>
-<script src="~/Js/Validation.js"></script>
+

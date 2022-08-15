@@ -57,26 +57,30 @@
                     </li>
 
                     @*<li class="nav-item">
-                            <a class="nav-link" href="#">關於我們</a>
-                        </li>*@
+                    <a class="nav-link" href="#">關於我們</a>
+                </li>*@
 
                     @*<li class="nav-item">
-                            <a class="nav-link " href="property-grid.html">Property</a>
-                        </li>
+                    <a class="nav-link " href="property-grid.html">Property</a>
+                </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link " href="blog-grid.html">Blog</a>
-                        </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="blog-grid.html">Blog</a>
+                </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link " href="contact.html">Contact</a>
-                        </li>*@
+                <li class="nav-item">
+                    <a class="nav-link " href="contact.html">Contact</a>
+                </li>*@
                 </ul>
+                <div class="d-flex text-center justify-content-center align-items-center">
+                    <div class="me-4 d-lg-none d-xl-none">您好! @Session["userNmae"]</div>
+                    @Html.ActionLink("登出", "Logout", "LogInOut", new { area = "" }, new { @class = "btn btn-blue navbar-toggle-box navbar-toggle-box-collapse shadow rounded-3   d-lg-none d-xl-none" })
+                </div>
             </div>
 
             <div class="d-flex text-center justify-content-center align-items-center">
-                <div class="me-4">您好! @Session["userNmae"]</div>
-                @Html.ActionLink("登出", "Logout", "LogInOut", new { area = "" }, new { @class = "btn btn-blue navbar-toggle-box navbar-toggle-box-collapse shadow rounded-3" })
+                <div class="me-4 d-none d-lg-block">您好! @Session["userNmae"]</div>
+                @Html.ActionLink("登出", "Logout", "LogInOut", new { area = "" }, new { @class = "btn btn-blue navbar-toggle-box navbar-toggle-box-collapse shadow rounded-3 d-none d-lg-block" })
             </div>
 
         </div>
