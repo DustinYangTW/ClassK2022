@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using static HomeBackProject.Models.CheckDataFromDB;
 
 namespace MetaDataHomeBackProject.Models
 {
@@ -184,6 +185,7 @@ namespace MetaDataHomeBackProject.Models
         [Required(ErrorMessage = "必填欄位")]
         [EmailAddress(ErrorMessage = "電子郵件格式錯誤")]
         [StringLength(64, ErrorMessage = "最長只能輸入64個字")]
+        [CheckAoccount]
         public string EMail { get; set; }
         [DisplayName("縣市")]
         [Required(ErrorMessage = "必填欄位")]
