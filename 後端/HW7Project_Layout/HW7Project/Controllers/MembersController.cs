@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using HW7Project.Models;
 using PagedList;
+using System.Configuration;
+using System.Data.SqlClient;
 
 namespace HW7Project.Controllers
 {
@@ -87,6 +89,7 @@ namespace HW7Project.Controllers
         // GET: Members/Edit/5
         public ActionResult Edit(int? id)
         {
+            
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -106,6 +109,29 @@ namespace HW7Project.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Members members)
         {
+
+            string sql = "update members set MemberName=@MemberName" +
+                         ",MemberBirthday=@MemberBirthday " +
+                         "where MemberID = @MemberID";
+
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["HW7ProjectConnection"].ConnectionString);
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            cmd.Parameters.AddWithValue("@MemberName",members.MemberName);
+            cmd.Parameters.AddWithValue("@MemberBirthday", members.MemberBirthday);
+            cmd.Parameters.AddWithValue("@MemberID", members.MemberID);
+
+            conn.Open();
+            try {
+                cmd.ExecuteNonQuery();
+                return RedirectToAction("Index");
+            }
+            catch(Exception ex)
+            {
+                ViewBag.Erroe = ex.Message;
+            }
+            conn.Close();
+
             var member = db.Members.Find(members.MemberID);
             member.MemberName= members.MemberName;
             member.MemberBirthday = member.MemberBirthday;
