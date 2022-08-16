@@ -172,7 +172,7 @@ namespace MetaDataHomeBackProject.Models
         [DisplayName("生日")]
         [Required(ErrorMessage = "必填欄位")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public System.DateTime Birthday { get; set; }
         [DisplayName("性別")]
         [Required(ErrorMessage = "必填欄位")]
