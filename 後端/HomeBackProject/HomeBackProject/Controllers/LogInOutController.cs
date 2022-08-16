@@ -44,7 +44,8 @@ namespace HomeBackProject.Controllers
         }
         public ActionResult Logout()
         {
-            Session[""] = null;
+            Session["userID"] = null;
+            Session["userNmae"] = null;
             return RedirectToAction("Index", "Home");
         }
     }
