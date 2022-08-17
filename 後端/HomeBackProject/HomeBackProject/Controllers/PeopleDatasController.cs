@@ -85,7 +85,8 @@ namespace HomeBackProject.Controllers
                 for (int i = 0; i < photo.Length; i++)
                 {
                     checkdataPhoto = postPhotos.checkPhoto(photo[i].FileName, photo[i].ContentLength);
-                    if (photo[0] != null)
+
+                    if (photo[i] != null)
                     {
                         break;
                     }
