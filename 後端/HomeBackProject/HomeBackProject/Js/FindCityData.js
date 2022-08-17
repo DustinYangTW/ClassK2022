@@ -4,7 +4,7 @@ function mainIdex() {
     //console.log(selectCountyValue);
     var selecttwValue = $('#selectCity').children().text();
     //console.log(selecttwValue);
-
+    
     var cityid = "";
     var cityadd = "";
     $('#selectCity').empty();
