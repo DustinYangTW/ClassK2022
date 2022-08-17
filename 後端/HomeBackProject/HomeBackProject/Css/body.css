@@ -1,6 +1,9 @@
 ﻿@media (min-width: 1025px) {
     .h-custom {
         height: 110vh !important;
+    }   
+    .h-house {
+        height: 150vh !important;
     }
 }
 

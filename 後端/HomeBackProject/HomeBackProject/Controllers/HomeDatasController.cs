@@ -71,7 +71,11 @@ namespace HomeBackProject.Controllers
                 {
                     checkdataPhoto = postPhotos.checkPhoto(photo[i].FileName, photo[i].ContentLength);
 
-                    if (checkdataPhoto != "OK")
+                    if (photo[0] != null)
+                    {
+                        break;
+                    }
+                    else if (checkdataPhoto != "OK")
                     {
                         ViewBag.HomeSaleType = db.SaleTypeData.ToList();
                         ViewBag.HomeCarID = db.CarTypeData.ToList();

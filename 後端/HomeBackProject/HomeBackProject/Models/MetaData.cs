@@ -360,7 +360,7 @@ namespace MetaDataHomeBackProject.Models
         [DisplayName("陽台")]
         [RegularExpression("^[0-9]*$", ErrorMessage = "格式錯誤")]
         public byte HomeBalcony { get; set; }
-        [DisplayName("廠房特色")]
+        [DisplayName("房屋特色")]
         [StringLength(1000, ErrorMessage = "最長只能輸入1000個字")]
         public string HomeFeatures { get; set; }
         [DisplayName("管理費")]
