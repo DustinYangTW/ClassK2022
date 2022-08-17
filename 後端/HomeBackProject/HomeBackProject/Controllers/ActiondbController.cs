@@ -14,6 +14,9 @@ namespace HomeBackProject.Controllers
     public class ActiondbController : Controller
     {
         private  PostPhotos postPhotos = new PostPhotos();
+        //private string goTitle = "E:/Git2/後端/HomeBackProject/HomeBackProject"; //Home
+        private string goTitle = "D:/Git2/後端/HomeBackProject/HomeBackProject"; //school
+
 
         /// <summary>
         /// 透過這個統一建立資料
@@ -113,10 +116,11 @@ namespace HomeBackProject.Controllers
         /// <returns></returns>
         public ActionResult SavePhoto(List<HttpPostedFileBase> photo, string peopleID, string caseID)
         {
-            string go = "D:/Git2/後端/HomeBackProject/HomeBackProject";
+            //string goTitle = "E:/Git2/後端/HomeBackProject/HomeBackProject"; //Home
+            //string goTitle = "D:/Git2/後端/HomeBackProject/HomeBackProject"; //school
             string firstName = caseID.Substring(0, 1);
             string allName = postPhotos.ChangeAllName(firstName);
-            string filename = go + "/AllPhoto/" + peopleID + "/" + allName + "/" + caseID;
+            string filename = goTitle + "/AllPhoto/" + peopleID + "/" + allName + "/" + caseID;
             string checkid = "";
 
             if (Directory.Exists(@filename) == false)
@@ -124,7 +128,7 @@ namespace HomeBackProject.Controllers
                 Directory.CreateDirectory(@filename);
             }
 
-            filename = go + "/AllPhoto/" + peopleID + "/" + allName + "/" + caseID + "/";
+            filename = goTitle + "/AllPhoto/" + peopleID + "/" + allName + "/" + caseID + "/";
 
             for (int i = 0; i < photo.Count; i++)
             {
@@ -133,6 +137,7 @@ namespace HomeBackProject.Controllers
             }
             return RedirectToAction("Index");
         }
+
 
 
         /// <summary>
@@ -145,7 +150,7 @@ namespace HomeBackProject.Controllers
         /// <returns></returns>
         public ActionResult SavePhoto(List<HttpPostedFileBase> photo, string peopleID, string actionName, string cName)
         {
-            string goTitle = "E:/Git2/後端/HomeBackProject/HomeBackProject"; //Home
+            //string goTitle = "E:/Git2/後端/HomeBackProject/HomeBackProject"; //Home
             //string goTitle = "D:/Git2/後端/HomeBackProject/HomeBackProject"; //school
             string filename = goTitle + "/AllPhoto/" + peopleID + "/" +"Peopleimage";
             string checkid = "";
