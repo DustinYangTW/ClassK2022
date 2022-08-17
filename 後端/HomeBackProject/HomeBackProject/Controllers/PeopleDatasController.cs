@@ -84,18 +84,18 @@ namespace HomeBackProject.Controllers
             {
                 for (int i = 0; i < photo.Length; i++)
                 {
-                    checkdataPhoto = postPhotos.checkPhoto(photo[i].FileName, photo[i].ContentLength);
-
-                    if (photo[i] != null)
+                    if (photo[i] == null)
                     {
                         break;
                     }
-                    else if (checkdataPhoto != "OK")
+                    checkdataPhoto = postPhotos.checkPhoto(photo[i].FileName, photo[i].ContentLength);
+                    if (checkdataPhoto != "OK")
                     {
                         ViewBag.countyID = db.CityTypeData.ToList();
                         ViewBag.SaleStateID = db.PeopleRankData.ToList();
                         return View();
                     }
+                    
                     photoList.Add(photo[i]);
                 }
             }

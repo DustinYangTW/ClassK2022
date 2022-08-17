@@ -69,13 +69,14 @@ namespace HomeBackProject.Controllers
             {
                 for (int i = 0; i < photo.Length; i++)
                 {
-                    checkdataPhoto = postPhotos.checkPhoto(photo[i].FileName, photo[i].ContentLength);
-
-                    if (photo[i] != null)
+                    if (photo[i] == null)
                     {
                         break;
                     }
-                    else if (checkdataPhoto != "OK")
+
+                    checkdataPhoto = postPhotos.checkPhoto(photo[i].FileName, photo[i].ContentLength);
+
+                    if (checkdataPhoto != "OK")
                     {
                         ViewBag.HomeSaleType = db.SaleTypeData.ToList();
                         ViewBag.HomeCarID = db.CarTypeData.ToList();
@@ -83,6 +84,7 @@ namespace HomeBackProject.Controllers
                         ViewBag.homeTypeData = db.HomeTypeData.ToList();
                         return View(homeData);
                     }
+                    
                     photoList.Add(photo[i]);
                 }
             }
@@ -90,6 +92,8 @@ namespace HomeBackProject.Controllers
             if (ModelState.IsValid)
             {
                 var countHomeDatas = db.HomeData.OrderByDescending(m => m.HomeID).FirstOrDefault();
+
+                homeData.HomeFloor = homeData.HomeFloor == null ? 0 : homeData.HomeFloor;
                 homeData.HomeID = changIDAuto.changIDNumber(countHomeDatas.HomeID, "H");  //自動加編號H000000000，新增一筆自動+1
                 homeData.HomePeopleID = Session["userID"].ToString();
                 homeData.HomeManageTip = homeData.HomeManageTip > 0 ? homeData.HomeManageTip : 0;
