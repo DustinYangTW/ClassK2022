@@ -13,7 +13,7 @@ namespace HomeBackProject.Controllers
 {
     public class ActiondbController : Controller
     {
-        private PostPhotos postPhotos = new PostPhotos();
+        private  PostPhotos postPhotos = new PostPhotos();
 
         /// <summary>
         /// 透過這個統一建立資料
@@ -94,7 +94,7 @@ namespace HomeBackProject.Controllers
         /// <param name="dbSet"></param>
         /// <param name="item"></param>
         /// <returns></returns>
-        public ActionResult Edit<T>(DbContext db, DbSet dbSet, T item)
+        public ActionResult Edit<T>(DbContext db, T item)
         {
             if (ModelState.IsValid)
             {

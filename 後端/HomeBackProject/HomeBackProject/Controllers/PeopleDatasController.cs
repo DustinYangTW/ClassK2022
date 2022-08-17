@@ -1,22 +1,21 @@
-﻿using HomeBackProject.Models;
-using System.Collections;
+﻿using HomeBackProject.library;
+using HomeBackProject.Models;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web.Mvc;
-using HomeBackProject.library;
 using System.Web;
+using System.Web.Mvc;
 
 namespace HomeBackProject.Controllers
 {
     public class PeopleDatasController : Controller
     {
-        private HomeDataEntities db = new HomeDataEntities();
-        private ActiondbController actiondbController = new ActiondbController();
-        private AccountData accountData = new AccountData();
-        private ChangIDAuto changIDAuto = new ChangIDAuto();
-        private PostPhotos postPhotos = new PostPhotos();
+        private  HomeDataEntities db = new HomeDataEntities();
+        private  ActiondbController actiondbController = new ActiondbController();
+        private  AccountData accountData = new AccountData();
+        private  ChangIDAuto changIDAuto = new ChangIDAuto();
+        private  PostPhotos postPhotos = new PostPhotos();
 
         // GET: PeopleDatas
         [LoginCkeck]
@@ -81,7 +80,7 @@ namespace HomeBackProject.Controllers
         {
             List<HttpPostedFileBase> photoList = new List<HttpPostedFileBase>();
             string checkdataPhoto = "";
-            if (photo[0] !=  null)
+            if (photo[0] != null)
             {
                 for (int i = 0; i < photo.Length; i++)
                 {
@@ -147,7 +146,7 @@ namespace HomeBackProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                return actiondbController.Edit(db, db.PeopleData, peopleData);
+                return actiondbController.Edit(db, peopleData);
             }
             ViewBag.EMail = new SelectList(db.AccountData, "EmailAccount", "PassWord", peopleData.EMail);
             ViewBag.County = new SelectList(db.CityTypeData, "CityIDTW", "CityTW", peopleData.County);

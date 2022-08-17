@@ -141,7 +141,7 @@ namespace HomeBackProject.Controllers
             if (ModelState.IsValid)
             {
                 homeData.HomePeopleID = Session["userID"].ToString();
-                return actiondbController.Edit(db, db.HomeData, homeData);
+                return actiondbController.Edit(db, homeData);
             }
             ViewBag.HomeADLevel = new SelectList(db.ADTypeData, "ADID", "ADName", homeData.HomeADLevel);
             ViewBag.HomeCarID = new SelectList(db.CarTypeData, "CarTypeID", "CarTypeName", homeData.HomeCarID);
