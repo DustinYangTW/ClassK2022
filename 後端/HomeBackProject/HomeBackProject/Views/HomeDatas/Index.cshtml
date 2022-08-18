@@ -12,12 +12,13 @@
 <div class="container-fluid">
     <div class="me-3 ms-3">
         <h1 class="text-center text-lg-start ms-lg-2">房屋案件管理</h1>
-        <form class="d-flex flex-column  flex-lg-row justify-content-lg-end flex-lg-wrap" action="~/PeopleDatas/Index" method="post">
-            <input class="form-control mb-3 mb-lg-0 me-lg-3 col-lg-6" type="search" name="name" style="width:auto" placeholder="查詢使用姓名或電話" aria-label="Search">
-            <button class="btn btn-outline-success mb-3 mb-lg-0 me-lg-3" type="button">搜尋</button>
-            <a class="btn btn-outline-info mb-4 mb-lg-0 me-lg-3" href="#">清除</a> @*~/PeopleDatas/Index*@
-            @Html.ActionLink("建立新房屋案件", "Create", new { }, new { @class = "btn btn-outline-primary me-lg-3 mb-2 mb-lg-0" })
-        </form>
+        <div class="d-flex flex-column  flex-lg-row justify-content-lg-end flex-lg-wrap">
+            <button class="d-flex justify-content-center align-items-center mt-2 mt-lg-0 me-lg-3 p-1 ps-3 pe-3 btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#SearchBtn">
+                <i class="bi bi-search"></i>
+            </button>
+            @Html.ActionLink("建立新房屋案件", "Create", new { }, new { @class = "btn btn-outline-primary me-lg-3 mb-2 mb-lg-0 text-center" })
+        </div>
+
         <div class="table-responsive mt-3 mt-lg-5 shadow border border-dark rounded-start">
             <table class="table text-center table-striped table-hover" overflow="auto">
                 <thead>
@@ -39,9 +40,6 @@
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.FirstOrDefault().HomeTown)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.FirstOrDefault().HomeStreet)
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.FirstOrDefault().HomeFloor)
@@ -99,10 +97,7 @@
                                     @Html.DisplayFor(modelItem => item.HomeTown)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.HomeStreet)
-                                </td>
-                                <td>
-                                    @if (item.HomeFloor != null)
+                                    @if (item.HomeFloor != null || item.HomeFloor != 0)
                                     {
                                         @Html.DisplayFor(modelItem => item.HomeFloor)
                                     }
@@ -151,8 +146,39 @@
                 </tbody>
             </table>
         </div>
+
+
+
         <div class="d-flex justify-content-center">
             @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+        </div>
+
+    </div>
+</div>
+
+<div class="modal fade" id="SearchBtn" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="~/PeopleDatas/Index" method="post">
+                <div class="modal-body">
+                    <section class="row">
+                        <div class="col-lg-6">
+                            123
+                        </div>
+                        <div class="col-lg-6">
+                            132
+                        </div>
+                    </section>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+                    <button type="submit" class="btn btn-primary">查詢</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
