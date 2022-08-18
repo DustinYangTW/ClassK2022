@@ -1,4 +1,9 @@
-﻿@model IEnumerable<HomeBackProject.Models.PeopleData>
+﻿@using PagedList;
+@using PagedList.Mvc;
+
+
+@*@model IEnumerable<HomeBackProject.Models.PeopleData>*@
+@model IPagedList<HomeBackProject.Models.PeopleData>
 
 @{
     ViewBag.Title = "會員管理";
@@ -21,22 +26,22 @@
                 <thead>
                     <tr>
                         <th>
-                            @Html.DisplayNameFor(model => model.PeopleName)
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().PeopleName)
                         </th>
                         <th>
                             身分證後4碼
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.PhoneNumber)
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().PhoneNumber)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.CityTypeData.CityTW)
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().CityTypeData.CityTW)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Town)
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().Town)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.PeopleRankData.PeopleRank)
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().PeopleRankData.PeopleRank)
                         </th>
                         <th>詳細資料</th>
                     </tr>
@@ -70,6 +75,10 @@
                     }
                 </tbody>
             </table>
+
+        </div>         
+        <div class="d-flex justify-content-center">
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
         </div>
     </div>
 </div>

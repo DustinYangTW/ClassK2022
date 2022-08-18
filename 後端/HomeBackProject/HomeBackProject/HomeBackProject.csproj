@@ -181,6 +181,7 @@
     <Content Include="Css\assets\vendor\swiper\swiper-bundle.min.css" />
     <Content Include="Css\assets\vendor\swiper\swiper-bundle.min.js" />
     <Content Include="Css\body.css" />
+    <Content Include="Css\MyStyle.css" />
     <Content Include="Global.asax" />
     <Content Include="Js\FindCityData.js" />
     <Content Include="Js\Validation.js" />

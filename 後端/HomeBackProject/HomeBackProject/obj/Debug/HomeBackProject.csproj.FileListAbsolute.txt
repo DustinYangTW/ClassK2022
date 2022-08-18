@@ -144,3 +144,7 @@ E:\Git2\後端\HomeBackProject\HomeBackProject\bin\roslyn\System.Buffers.dll
 E:\Git2\後端\HomeBackProject\HomeBackProject\bin\roslyn\System.Memory.dll
 E:\Git2\後端\HomeBackProject\HomeBackProject\bin\roslyn\System.Numerics.Vectors.dll
 E:\Git2\後端\HomeBackProject\HomeBackProject\bin\roslyn\System.Runtime.CompilerServices.Unsafe.dll
+D:\Git2\後端\HomeBackProject\HomeBackProject\bin\PagedList.dll
+D:\Git2\後端\HomeBackProject\HomeBackProject\bin\PagedList.Mvc.dll
+D:\Git2\後端\HomeBackProject\HomeBackProject\bin\PagedList.xml
+D:\Git2\後端\HomeBackProject\HomeBackProject\bin\PagedList.Mvc.xml

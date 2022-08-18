@@ -1,11 +1,13 @@
 ﻿using HomeBackProject.library;
 using HomeBackProject.Models;
+using PagedList;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 
 namespace HomeBackProject.Controllers
 {
@@ -20,29 +22,40 @@ namespace HomeBackProject.Controllers
 
         // GET: PeopleDatas
         [LoginCkeck]
-        public ActionResult Index()
+        public ActionResult Index(int page = 1)
         {
             var peopleData = db.PeopleData.Include(p => p.AccountData).Include(p => p.CityTypeData).Include(p => p.PeopleRankData).Include(p => p.ProgramData).OrderByDescending(p => p.PeopleID);
-            return View(peopleData.ToList());
+            int pagesize = 10;
+            var pagedList = peopleData.ToPagedList(page, pagesize);
+
+            return View(pagedList);
         }
+
         [LoginCkeck]
         [HttpPost]
-        public ActionResult Index(string name)
+        public ActionResult Index(string name, int page = 1)
         {
+            int pagesize = 10;
             if (name == "")
             {
                 var peopleData = db.PeopleData.Include(p => p.AccountData).Include(p => p.CityTypeData).Include(p => p.PeopleRankData).Include(p => p.ProgramData).OrderByDescending(p => p.PeopleID);
-                return View(peopleData.ToList());
+                var pagedList = peopleData.ToPagedList(page, pagesize);
+
+                return View(pagedList);
             }
             else if (name.Contains("09"))
             {
                 var peopleData = db.PeopleData.Include(p => p.AccountData).Include(p => p.CityTypeData).Include(p => p.PeopleRankData).Include(p => p.ProgramData).OrderByDescending(p => p.PeopleID).Where(p => p.PhoneNumber.Contains(name));
-                return View("Index", peopleData.ToList());
+                var pagedList = peopleData.ToPagedList(page, pagesize);
+
+                return View(pagedList);
             }
             else
             {
                 var peopleData = db.PeopleData.Include(p => p.AccountData).Include(p => p.CityTypeData).Include(p => p.PeopleRankData).Include(p => p.ProgramData).OrderByDescending(p => p.PeopleID).Where(p => p.PeopleName.Contains(name));
-                return View("Index", peopleData.ToList());
+                var pagedList = peopleData.ToPagedList(page, pagesize);
+
+                return View(pagedList);
             }
 
         }

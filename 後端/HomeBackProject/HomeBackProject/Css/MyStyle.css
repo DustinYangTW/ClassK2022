@@ -1,0 +1,20 @@
+﻿.pagination {
+    display: inline-block;
+    padding-left: 0;
+    margin: 20px 0;
+    border-radius: 4px;
+    transform: scale(1.2);
+}
+
+    .pagination > .active > a,
+    .pagination > .active > span,
+    .pagination > .active > a:hover,
+    .pagination > .active > span:hover,
+    .pagination > .active > a:focus,
+    .pagination > .active > span:focus {
+        z-index: 2;
+        color: #856254;
+        cursor: default;
+        background-color: #E6D4B9;
+        border-color: #E6D4B9;
+    }

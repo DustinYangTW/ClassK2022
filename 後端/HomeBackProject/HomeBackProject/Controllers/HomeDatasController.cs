@@ -9,6 +9,8 @@ using System.Web.Mvc;
 using HomeBackProject.library;
 using HomeBackProject.Models;
 using System.IO;
+using System.Web.UI;
+using PagedList;
 
 namespace HomeBackProject.Controllers
 {
@@ -22,10 +24,14 @@ namespace HomeBackProject.Controllers
 
         // GET: HomeDatas
         [LoginCkeck]
-        public ActionResult Index()
+        public ActionResult Index(int page = 1)
         {
             var homeData = db.HomeData.Include(h => h.ADTypeData).Include(h => h.CarTypeData).Include(h => h.CityTypeData).Include(h => h.HomeTypeData).Include(h => h.PeopleData).Include(h => h.SaleTypeData).OrderByDescending(h => h.HomeID);
-            return View(homeData.ToList());
+
+            int pagesize = 10;
+            var pagedList = homeData.ToPagedList(page, pagesize);
+
+            return View(pagedList);
         }
 
         // GET: HomeDatas/Details/5

@@ -1,139 +1,160 @@
-﻿@model IEnumerable<HomeBackProject.Models.HomeData>
+﻿@using PagedList;
+@using PagedList.Mvc;
+
+@*@model IEnumerable<HomeBackProject.Models.HomeData>*@
+@model IPagedList<HomeBackProject.Models.HomeData>
 
 @{
     ViewBag.Title = "房屋案件";
     Layout = "~/Views/Shared/_Layout_LogInOut.cshtml";
 }
 
-<h2>房屋案件</h2>
+<div class="container-fluid">
+    <div class="me-3 ms-3">
+        <h1 class="text-center text-lg-start ms-lg-2">房屋案件管理</h1>
+        <form class="d-flex flex-column  flex-lg-row justify-content-lg-end flex-lg-wrap" action="~/PeopleDatas/Index" method="post">
+            <input class="form-control mb-3 mb-lg-0 me-lg-3 col-lg-6" type="search" name="name" style="width:auto" placeholder="查詢使用姓名或電話" aria-label="Search">
+            <button class="btn btn-outline-success mb-3 mb-lg-0 me-lg-3" type="button">搜尋</button>
+            <a class="btn btn-outline-info mb-4 mb-lg-0 me-lg-3" href="#">清除</a> @*~/PeopleDatas/Index*@
+            @Html.ActionLink("建立新房屋案件", "Create", new { }, new { @class = "btn btn-outline-primary me-lg-3 mb-2 mb-lg-0" })
+        </form>
+        <div class="table-responsive mt-3 mt-lg-5 shadow border border-dark rounded-start">
+            <table class="table text-center table-striped table-hover" overflow="auto">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().HomeName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().HomeMoney)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().HomeSquareMeters)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().HomeMetersMoney)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().CityTypeData.CityTW)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().HomeTown)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().HomeStreet)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().HomeFloor)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().HomeHighFloor)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().HomeSaleAndLease)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().HomeAges)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().HomeRoom)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().ADTypeData.ADName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().CarTypeData.CarTypeName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().HomeTypeData.HomeTypeName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FirstOrDefault().SaleTypeData.SaleState)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
 
-<div class="d-flex justify-content-end">
-    @Html.ActionLink("建立新房屋案件", "Create", new { }, new { @class = "btn btn-primary me-4" })
+                    @foreach (var item in Model)
+                    {
+                        if (Session["userID"].ToString() == item.HomePeopleID)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.HomeName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.HomeMoney)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.HomeSquareMeters)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.HomeMetersMoney)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CityTypeData.CityTW)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.HomeTown)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.HomeStreet)
+                                </td>
+                                <td>
+                                    @if (item.HomeFloor != null)
+                                    {
+                                        @Html.DisplayFor(modelItem => item.HomeFloor)
+                                    }
+                                    else
+                                    {
+                                        <p>整棟</p>
+                                    }
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.HomeHighFloor)
+                                </td>
+                                <td>
+                                    @if (item.HomeSaleAndLease == true)
+                                    {
+                                        <p>售</p>
+                                    }
+                                    else
+                                    {
+                                        <p>租</p>
+                                    }
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.HomeAges)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.HomeRoom)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ADTypeData.ADName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CarTypeData.CarTypeName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.HomeTypeData.HomeTypeName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SaleTypeData.SaleState)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("查詢", "Details", new { id = item.HomeID }, new { @class = "btn btn-primary" })
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="d-flex justify-content-center">
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+        </div>
+    </div>
 </div>
-<table class="table text-center">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.HomeName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HomeMoney)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HomeSquareMeters)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HomeMetersMoney)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CityTypeData.CityTW)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HomeTown)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HomeStreet)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HomeFloor)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HomeHighFloor)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HomeSaleAndLease)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HomeAges)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HomeRoom)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ADTypeData.ADName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CarTypeData.CarTypeName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HomeTypeData.HomeTypeName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SaleTypeData.SaleState)
-        </th>
-        <th></th>
-    </tr>
 
-    @foreach (var item in Model)
-    {
-        if (Session["userID"].ToString() == item.HomePeopleID)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.HomeName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.HomeMoney)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.HomeSquareMeters)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.HomeMetersMoney)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CityTypeData.CityTW)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.HomeTown)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.HomeStreet)
-                </td>
-                <td>
-                    @if (item.HomeFloor != null) {
-                    @Html.DisplayFor(modelItem => item.HomeFloor)
-                    }
-                    else
-                    {
-                        <p>整棟</p>
-                    }
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.HomeHighFloor)
-                </td>
-                <td>
-                    @if (item.HomeSaleAndLease == true)
-                    {
-                        <p>售</p>
-                    }
-                    else
-                    {
-                        <p>租</p>
-                    }
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.HomeAges)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.HomeRoom)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ADTypeData.ADName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CarTypeData.CarTypeName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.HomeTypeData.HomeTypeName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SaleTypeData.SaleState)
-                </td>
-                <td>
-                    @Html.ActionLink("查詢", "Details", new { id = item.HomeID }, new { @class = "btn btn-primary" })
-                </td>
-            </tr>
-        }
-    }
 
-</table>
