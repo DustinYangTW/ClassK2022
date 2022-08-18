@@ -8,6 +8,7 @@ using HomeBackProject.Models;
 using System.IO;
 using HomeBackProject;
 using HomeBackProject.library;
+using System.Data.Entity.Validation;
 
 namespace HomeBackProject.Controllers
 {
@@ -16,7 +17,6 @@ namespace HomeBackProject.Controllers
         private  PostPhotos postPhotos = new PostPhotos();
         //private string goTitle = "E:/Git2/後端/HomeBackProject/HomeBackProject"; //Home
         //private string goTitle = "D:/Git2/後端/HomeBackProject/HomeBackProject"; //school
-
 
         /// <summary>
         /// 透過這個統一建立資料
@@ -58,7 +58,7 @@ namespace HomeBackProject.Controllers
             if (ModelState.IsValid)
             {
                 dbSet.Add(item);
-                db.SaveChanges();
+                db.SaveChanges();       
             }
             return RedirectToAction(actionName, cName);
         }

@@ -11,10 +11,10 @@ namespace HomeBackProject.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using MetaDataHomeBackProject.Models;
     [MetadataType(typeof(MetaHomeData))]
+
     public partial class HomeData
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -40,7 +40,7 @@ namespace HomeBackProject.Models
         public byte HomeBathroom { get; set; }
         public byte HomeBalcony { get; set; }
         public string HomeFeatures { get; set; }
-        public Nullable<long> HomeManageTip { get; set; }
+        public Nullable<decimal> HomeManageTip { get; set; }
         public byte HomeCarID { get; set; }
         public byte HomeSaleType { get; set; }
         public byte HomeType { get; set; }
