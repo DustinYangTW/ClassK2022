@@ -9,6 +9,8 @@ using System.Web.Mvc;
 using HomeBackProject.library;
 using HomeBackProject.Models;
 using System.IO;
+using System.Web.UI;
+using PagedList;
 
 namespace HomeBackProject.Controllers
 {
@@ -16,15 +18,20 @@ namespace HomeBackProject.Controllers
     {
         private HomeDataEntities db = new HomeDataEntities();
         private ActiondbController actiondbController = new ActiondbController();
+        private AccountData accountData = new AccountData();
         private ChangIDAuto changIDAuto = new ChangIDAuto();
         private PostPhotos postPhotos = new PostPhotos();
 
         // GET: HomeDatas
         [LoginCkeck]
-        public ActionResult Index()
+        public ActionResult Index(int page = 1)
         {
             var homeData = db.HomeData.Include(h => h.ADTypeData).Include(h => h.CarTypeData).Include(h => h.CityTypeData).Include(h => h.HomeTypeData).Include(h => h.PeopleData).Include(h => h.SaleTypeData).OrderByDescending(h => h.HomeID);
-            return View(homeData.ToList());
+
+            int pagesize = 10;
+            var pagedList = homeData.ToPagedList(page, pagesize);
+
+            return View(pagedList);
         }
 
         // GET: HomeDatas/Details/5
@@ -99,8 +106,8 @@ namespace HomeBackProject.Controllers
                 homeData.HomeManageTip = homeData.HomeManageTip > 0 ? homeData.HomeManageTip : 0;
                 homeData.HomeADLevel = 1;
                 actiondbController.Create(db, db.HomeData, homeData);
-
-                return actiondbController.SavePhoto(photoList, Session["userID"].ToString(), homeData.HomeID);
+                string autoFile = Server.MapPath("~/AllPhoto");
+                return actiondbController.SavePhoto(autoFile,photoList, Session["userID"].ToString(), homeData.HomeID);
             }
 
             ViewBag.HomeSaleType = db.SaleTypeData.ToList();

@@ -10,8 +10,7 @@ namespace HomeBackProject.Controllers
 {
     public class LogInOutController : Controller
     {
-        HomeDataEntities db = new HomeDataEntities();
-
+        private HomeDataEntities db = new HomeDataEntities();
         [LoginCkeck]
         public ActionResult Index()
         {

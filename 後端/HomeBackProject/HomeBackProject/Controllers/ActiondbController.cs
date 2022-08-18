@@ -15,7 +15,7 @@ namespace HomeBackProject.Controllers
     {
         private  PostPhotos postPhotos = new PostPhotos();
         //private string goTitle = "E:/Git2/後端/HomeBackProject/HomeBackProject"; //Home
-        private string goTitle = "D:/Git2/後端/HomeBackProject/HomeBackProject"; //school
+        //private string goTitle = "D:/Git2/後端/HomeBackProject/HomeBackProject"; //school
 
 
         /// <summary>
@@ -114,13 +114,14 @@ namespace HomeBackProject.Controllers
         /// <param name="peopleID"></param>
         /// <param name="caseID"></param>
         /// <returns></returns>
-        public ActionResult SavePhoto(List<HttpPostedFileBase> photo, string peopleID, string caseID)
+        public ActionResult SavePhoto(string autoFile, List<HttpPostedFileBase> photo, string peopleID, string caseID)
         {
             //string goTitle = "E:/Git2/後端/HomeBackProject/HomeBackProject"; //Home
             //string goTitle = "D:/Git2/後端/HomeBackProject/HomeBackProject"; //school
+
             string firstName = caseID.Substring(0, 1);
             string allName = postPhotos.ChangeAllName(firstName);
-            string filename = goTitle + "/AllPhoto/" + peopleID + "/" + allName + "/" + caseID;
+            string filename = autoFile + "/" + peopleID + "/" + allName + "/" + caseID;
             string checkid = "";
 
             if (Directory.Exists(@filename) == false)
@@ -128,7 +129,7 @@ namespace HomeBackProject.Controllers
                 Directory.CreateDirectory(@filename);
             }
 
-            filename = goTitle + "/AllPhoto/" + peopleID + "/" + allName + "/" + caseID + "/";
+            filename = autoFile + "/" + peopleID + "/" + allName + "/" + caseID + "/";
 
             for (int i = 0; i < photo.Count; i++)
             {
@@ -148,11 +149,12 @@ namespace HomeBackProject.Controllers
         /// <param name="actionName"></param>
         /// <param name="cName"></param>
         /// <returns></returns>
-        public ActionResult SavePhoto(List<HttpPostedFileBase> photo, string peopleID, string actionName, string cName)
+        public ActionResult SavePhoto(string autoFile,List<HttpPostedFileBase> photo, string peopleID, string actionName, string cName)
         {
             //string goTitle = "E:/Git2/後端/HomeBackProject/HomeBackProject"; //Home
             //string goTitle = "D:/Git2/後端/HomeBackProject/HomeBackProject"; //school
-            string filename = goTitle + "/AllPhoto/" + peopleID + "/" +"Peopleimage";
+            
+            string filename = autoFile + "/" + peopleID + "/" +"Peopleimage";
             string checkid = "";
 
             if (Directory.Exists(@filename) == false)
@@ -160,7 +162,7 @@ namespace HomeBackProject.Controllers
                 Directory.CreateDirectory(@filename);
             }
 
-            filename = goTitle + "/AllPhoto/" + peopleID + "/" + "Peopleimage";
+            filename = autoFile + "/" + peopleID + "/" + "Peopleimage";
 
             for (int i = 0; i < photo.Count; i++)
             {
