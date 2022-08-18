@@ -16,6 +16,7 @@ namespace HomeBackProject.Controllers
     {
         private HomeDataEntities db = new HomeDataEntities();
         private ActiondbController actiondbController = new ActiondbController();
+        private AccountData accountData = new AccountData();
         private ChangIDAuto changIDAuto = new ChangIDAuto();
         private PostPhotos postPhotos = new PostPhotos();
 
@@ -99,8 +100,8 @@ namespace HomeBackProject.Controllers
                 homeData.HomeManageTip = homeData.HomeManageTip > 0 ? homeData.HomeManageTip : 0;
                 homeData.HomeADLevel = 1;
                 actiondbController.Create(db, db.HomeData, homeData);
-
-                return actiondbController.SavePhoto(photoList, Session["userID"].ToString(), homeData.HomeID);
+                string autoFile = Server.MapPath("~/AllPhoto");
+                return actiondbController.SavePhoto(autoFile,photoList, Session["userID"].ToString(), homeData.HomeID);
             }
 
             ViewBag.HomeSaleType = db.SaleTypeData.ToList();

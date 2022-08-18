@@ -11,11 +11,12 @@ namespace HomeBackProject.Controllers
 {
     public class PeopleDatasController : Controller
     {
-        private  HomeDataEntities db = new HomeDataEntities();
-        private  ActiondbController actiondbController = new ActiondbController();
+        private HomeDataEntities db = new HomeDataEntities();
+        private ActiondbController actiondbController = new ActiondbController();
         private  AccountData accountData = new AccountData();
-        private  ChangIDAuto changIDAuto = new ChangIDAuto();
-        private  PostPhotos postPhotos = new PostPhotos();
+        private ChangIDAuto changIDAuto = new ChangIDAuto();
+        private PostPhotos postPhotos = new PostPhotos();
+
 
         // GET: PeopleDatas
         [LoginCkeck]
@@ -112,7 +113,9 @@ namespace HomeBackProject.Controllers
                 peopleData.PeopleCash = 0;
 
                 actiondbController.Create(db, db.PeopleData, peopleData, "Login", "LogInOut");
-                return actiondbController.SavePhoto(photoList, peopleData.PeopleID, "Login", "LogInOut");
+
+                string autoFile = Server.MapPath("~/AllPhoto");
+                return actiondbController.SavePhoto(autoFile, photoList, peopleData.PeopleID, "Login", "LogInOut");
             }
             else
             {
