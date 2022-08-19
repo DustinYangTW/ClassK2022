@@ -11,6 +11,7 @@ using HomeBackProject.Models;
 using System.IO;
 using System.Web.UI;
 using PagedList;
+using System.Xml.Linq;
 
 namespace HomeBackProject.Controllers
 {
@@ -26,11 +27,92 @@ namespace HomeBackProject.Controllers
         [LoginCkeck]
         public ActionResult Index(int page = 1)
         {
-            var homeData = db.HomeData.Include(h => h.ADTypeData).Include(h => h.CarTypeData).Include(h => h.CityTypeData).Include(h => h.HomeTypeData).Include(h => h.PeopleData).Include(h => h.SaleTypeData).OrderByDescending(h => h.HomeID);
+            var homeData = db.HomeData.Include(h => h.ADTypeData).Include(h => h.CarTypeData).Include(h => h.CityTypeData).Include(h => h.HomeTypeData).Include(h => h.PeopleData).Include(h => h.SaleTypeData).OrderByDescending(h => h.HomeID).Where(h => h.HomePeopleID == Session["userID"].ToString());
 
             int pagesize = 10;
             var pagedList = homeData.ToPagedList(page, pagesize);
+            ViewBag.countyID = db.CityTypeData.ToList();
+            ViewBag.HomeTypeData = db.HomeTypeData.ToList();
+            ViewBag.CarTypeData = db.CarTypeData.ToList();
 
+            return View(pagedList);
+        }
+        [LoginCkeck]
+        [HttpPost]
+        public ActionResult Index(string SearchFast, string County ,  string Town, int HomeSquareMeters,int HomeTypeDatas,int CarTypeDatas ,int AllMoney,int HomeAge,string HomeFlortDatas,int HomeRoomDatas,string HomeSaleDatas, int page = 1)
+        {          
+            var homeData = db.HomeData.Include(h => h.ADTypeData).Include(h => h.CarTypeData).Include(h => h.CityTypeData).Include(h => h.HomeTypeData).Include(h => h.PeopleData).Include(h => h.SaleTypeData).OrderByDescending(h => h.HomeID).OrderByDescending(h => h.HomeID).Where(h => h.HomePeopleID == Session["userID"].ToString());
+
+            //快速搜尋欄位
+            homeData = SearchFast != ""? homeData.Where(h=>h.HomeName.Contains(SearchFast) || h.HomeStreet.Contains(SearchFast)) : homeData;
+            //縣市的判斷
+            homeData = County != ""? homeData.Where(h=>h.HomeCity.Contains(County)) : homeData;
+            //鄉鎮判斷
+            homeData = Town != ""? homeData.Where(h=>h.HomeTown.Contains(Town)) : homeData;
+            //判斷屋型
+            homeData = HomeTypeDatas == 0? homeData.Where(h=>h.HomeType == HomeTypeDatas) : homeData;
+            //判斷車位
+            homeData = CarTypeDatas == 0? homeData.Where(h=>h.HomeCarID == CarTypeDatas) : homeData;
+
+
+
+            //判斷坪數的
+            if(HomeSquareMeters == 1)
+            {
+                homeData = homeData.Where(p => p.HomeSquareMeters < 20);
+            }else if(HomeSquareMeters == 2)
+            {
+                homeData = homeData.Where(p => p.HomeSquareMeters >= 20 && p.HomeSquareMeters < 30);
+            }else if(HomeSquareMeters == 3)
+            {
+                homeData = homeData.Where(p => p.HomeSquareMeters >= 30 && p.HomeSquareMeters < 40);
+            }else if(HomeSquareMeters == 4)
+            {
+                homeData = homeData.Where(p => p.HomeSquareMeters >= 40 && p.HomeSquareMeters < 50);
+            }else if(HomeSquareMeters == 5)
+            {
+                homeData = homeData.Where(p => p.HomeSquareMeters >= 50 && p.HomeSquareMeters < 60);
+            }else if(HomeSquareMeters == 6)
+            {
+                homeData = homeData.Where(p => p.HomeSquareMeters >= 60);
+            }
+
+            //計算錢的
+            if(AllMoney == 1)
+            {
+                homeData = homeData.Where(p => p.HomeMoney < 900);
+            }
+            else if (AllMoney == 2)
+            {
+                homeData = homeData.Where(p => p.HomeMoney >= 900 && p.HomeMoney < 1200);
+            }
+            else if (AllMoney == 3)
+            {
+                homeData = homeData.Where(p => p.HomeMoney >= 1200 && p.HomeMoney < 1500);
+            }
+            else if (AllMoney == 4)
+            {
+                homeData = homeData.Where(p => p.HomeMoney >= 1500 && p.HomeMoney < 2500);
+            }
+            else if (AllMoney == 5)
+            {
+                homeData = homeData.Where(p => p.HomeMoney >= 2500 && p.HomeMoney < 4000);
+            }
+            else if (AllMoney == 6)
+            {
+                homeData = homeData.Where(p => p.HomeMoney >= 4000 && p.HomeMoney < 5500);
+            }
+            else if (AllMoney == 7)
+            {
+                homeData = homeData.Where(p => p.HomeMoney >= 5500);
+            }
+
+
+            int pagesize = 10;
+            var pagedList = homeData.ToPagedList(page, pagesize);
+            ViewBag.countyID = db.CityTypeData.ToList();
+            ViewBag.HomeTypeData = db.HomeTypeData.ToList();
+            ViewBag.CarTypeData = db.CarTypeData.ToList();
             return View(pagedList);
         }
 

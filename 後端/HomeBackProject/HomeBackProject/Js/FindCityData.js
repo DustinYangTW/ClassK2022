@@ -8,7 +8,9 @@ function mainIdex() {
     var cityid = "";
     var cityadd = "";
     $('#selectCity').empty();
-    if (selecttwValue == "請先選擇城市") {
+    if (selecttwValue == "不拘") {
+        cityadd = `<option disabled style="display: none" selected value="all">不拘</option>`;
+    }else if (selecttwValue == "請先選擇城市") {
         cityadd = `<option disabled style="display: none" selected value>請選擇</option>`;
     } else {
         cityadd = `<option disabled style="display: none"  value>${selecttwValue}</option>`;

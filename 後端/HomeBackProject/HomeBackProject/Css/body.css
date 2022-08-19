@@ -1,9 +1,13 @@
-﻿@media (min-width: 1025px) {
+﻿input {
+    max-width: 100%;
+}
+
+@media (min-width: 1025px) {
     .h-custom {
         height: 110vh !important;
     }   
     .h-house {
-        height: 150vh !important;
+        height: 140vh !important;
     }
 }
 

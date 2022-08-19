@@ -26,7 +26,7 @@ namespace HomeBackProject.Controllers
         {
             var peopleData = db.PeopleData.Include(p => p.AccountData).Include(p => p.CityTypeData).Include(p => p.PeopleRankData).Include(p => p.ProgramData).OrderByDescending(p => p.PeopleID);
             int pagesize = 10;
-            var pagedList = peopleData.ToPagedList(page, pagesize);
+            var pagedList = peopleData.ToPagedList(page, pagesize);  
 
             return View(pagedList);
         }
@@ -40,21 +40,18 @@ namespace HomeBackProject.Controllers
             {
                 var peopleData = db.PeopleData.Include(p => p.AccountData).Include(p => p.CityTypeData).Include(p => p.PeopleRankData).Include(p => p.ProgramData).OrderByDescending(p => p.PeopleID);
                 var pagedList = peopleData.ToPagedList(page, pagesize);
-
                 return View(pagedList);
             }
             else if (name.Contains("09"))
             {
                 var peopleData = db.PeopleData.Include(p => p.AccountData).Include(p => p.CityTypeData).Include(p => p.PeopleRankData).Include(p => p.ProgramData).OrderByDescending(p => p.PeopleID).Where(p => p.PhoneNumber.Contains(name));
                 var pagedList = peopleData.ToPagedList(page, pagesize);
-
                 return View(pagedList);
             }
             else
             {
                 var peopleData = db.PeopleData.Include(p => p.AccountData).Include(p => p.CityTypeData).Include(p => p.PeopleRankData).Include(p => p.ProgramData).OrderByDescending(p => p.PeopleID).Where(p => p.PeopleName.Contains(name));
                 var pagedList = peopleData.ToPagedList(page, pagesize);
-
                 return View(pagedList);
             }
 
