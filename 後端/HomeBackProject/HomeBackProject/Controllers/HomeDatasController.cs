@@ -36,14 +36,15 @@ namespace HomeBackProject.Controllers
             ViewBag.countyID = db.CityTypeData.ToList();
             ViewBag.HomeTypeData = db.HomeTypeData.ToList();
             ViewBag.CarTypeData = db.CarTypeData.ToList();
+            ViewBag.HomeSaleType = db.SaleTypeData.ToList();
 
             return View(pagedList);
         }
 
-        
+
         [LoginCkeck]
         [HttpPost]
-        public ActionResult Index(string SearchFast, string County ,  string Town, int SquareMeters,int HomeTypeDatas,int CarTypeDatas ,int AllMoney,int HomeAge,int HomeFlortDatas,int HomeRoomDatas,bool HomeSaleDatas, int page = 1)
+        public ActionResult Index(string SearchFast, string County, string Town, int SquareMeters, int HomeTypeDatas, int CarTypeDatas, int AllMoney, int HomeAge, int HomeFlortDatas, int HomeRoomDatas, bool? HomeSaleDatas, int page = 1)
         {
             string userID = Session["userID"].ToString();
             var homeData = db.HomeData.Include(h => h.ADTypeData).Include(h => h.CarTypeData).Include(h => h.CityTypeData).Include(h => h.HomeTypeData).Include(h => h.PeopleData).Include(h => h.SaleTypeData).OrderByDescending(h => h.HomeID).OrderByDescending(h => h.HomeID).Where(h => h.HomePeopleID == userID);
@@ -51,36 +52,48 @@ namespace HomeBackProject.Controllers
             searchData.SquareMeters(SquareMeters);//0.1
             searchData.moneyGetData(AllMoney);//2,3
             searchData.ageHome(HomeAge);//4,5
-            
+
             List<int> changeInt = searchData.Flort(HomeFlortDatas);//6,7
 
 
             var SquareMetersLow = changeInt[0];
             var SquareMetersHigh = changeInt[1];
             var AllMoneyLow = changeInt[2];
-            var AllMoneyHigh = changeInt[3];      
+            var AllMoneyHigh = changeInt[3];
             var HomeAgeLow = changeInt[4];
-            var HomeAgeHigh = changeInt[5];   
+            var HomeAgeHigh = changeInt[5];
             var HomeFlortDatasLow = changeInt[6];
-            var HomeFlortDatasHigh = changeInt[7];      
+            var HomeFlortDatasHigh = changeInt[7];
 
             if (SearchFast != "")
             {
                 homeData = homeData.Where(p => p.HomeName.Contains(SearchFast) || p.HomeStreet.Contains(SearchFast));
             }
 
-            homeData = HomeTypeDatas != 0 ? homeData.Where(p => p.HomeType == HomeTypeDatas) : homeData;    
-            homeData = CarTypeDatas != 0 ? homeData.Where(p => p.HomeCarID == CarTypeDatas) : homeData;    
-            homeData = County != "all" ? homeData.Where(p => p.HomeCity == County) : homeData;    
-            homeData = Town != "all" ? homeData.Where(p => p.HomeTown == Town) : homeData;    
+            homeData = HomeSaleDatas != null ? homeData.Where(p => p.HomeSaleAndLease == HomeSaleDatas) : homeData;
+            
+            homeData = HomeTypeDatas != 0 ? homeData.Where(p => p.HomeType == HomeTypeDatas) : homeData;
+
+            homeData = CarTypeDatas != 0 ? homeData.Where(p => p.HomeCarID == CarTypeDatas) : homeData;
+
+            homeData = County != null ? homeData.Where(p => p.HomeCity == County) : homeData;
+
+            homeData = Town != "all" ? homeData.Where(p => p.HomeTown == Town) : homeData;
+
+            homeData = homeData.Where(p => p.HomeAges >= HomeAgeLow && p.HomeAges < HomeAgeHigh);
+
+            homeData = HomeFlortDatas < 6 ? homeData.Where(p => p.HomeFloor >= HomeFlortDatasLow && p.HomeFloor <= HomeFlortDatasHigh) : homeData;
+
+            homeData = homeData.Where(p => p.HomeHighFloor >= HomeFlortDatasLow && p.HomeHighFloor <= HomeFlortDatasHigh);
+
+            homeData = HomeRoomDatas != 0 ? homeData.Where(p => p.HomeRoom == HomeRoomDatas) : homeData;//沒有選的時候
+
+            homeData = HomeRoomDatas >= 5 ? homeData.Where(p => p.HomeRoom >= HomeRoomDatas) : homeData;//大於等於5層樓
+
             homeData = homeData.Where(p => p.HomeSquareMeters >= SquareMetersLow && p.HomeSquareMeters < SquareMetersHigh);
             homeData = homeData.Where(p => p.HomeMoney >= AllMoneyLow && p.HomeMoney < AllMoneyHigh);
-            homeData = homeData.Where(p => p.HomeAges >= HomeAgeLow && p.HomeAges < HomeAgeHigh);
-            homeData = HomeFlortDatas < 6? homeData.Where(p => p.HomeHighFloor >= HomeFlortDatasLow && p.HomeHighFloor <= HomeFlortDatasHigh): homeData;
-            homeData = homeData.Where(p => p.HomeHighFloor >= HomeFlortDatasLow && p.HomeFloor <= HomeFlortDatasHigh);
-            homeData = HomeRoomDatas != 0?homeData.Where(p => p.HomeRoom == HomeRoomDatas):homeData;//沒有選的時候
-            homeData = HomeRoomDatas >= 5?homeData.Where(p => p.HomeRoom >= HomeRoomDatas):homeData;//大於等於5層樓
-            homeData = homeData.Where(p => p.HomeSaleAndLease == HomeSaleDatas);
+
+
 
 
 
@@ -89,6 +102,7 @@ namespace HomeBackProject.Controllers
             ViewBag.countyID = db.CityTypeData.ToList();
             ViewBag.HomeTypeData = db.HomeTypeData.ToList();
             ViewBag.CarTypeData = db.CarTypeData.ToList();
+            ViewBag.HomeSaleType = db.SaleTypeData.ToList();
             return View(pagedList);
         }
 
@@ -149,7 +163,7 @@ namespace HomeBackProject.Controllers
                         ViewBag.homeTypeData = db.HomeTypeData.ToList();
                         return View(homeData);
                     }
-                    
+
                     photoList.Add(photo[i]);
                 }
             }
@@ -165,7 +179,7 @@ namespace HomeBackProject.Controllers
                 homeData.HomeADLevel = 1;
                 actiondbController.Create(db, db.HomeData, homeData);
                 string autoFile = Server.MapPath("~/AllPhoto");
-                return actiondbController.SavePhoto(autoFile,photoList, Session["userID"].ToString(), homeData.HomeID);
+                return actiondbController.SavePhoto(autoFile, photoList, Session["userID"].ToString(), homeData.HomeID);
             }
 
             ViewBag.HomeSaleType = db.SaleTypeData.ToList();
