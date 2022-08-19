@@ -181,7 +181,7 @@
                                     <div class="form-outline form-white">
                                         <label class="form-label fs-6" for="selectCounty">縣市</label>
                                         <select class="form-select form-select-lg" name="County" id="selectCounty" onchange="mainIdex()">
-                                            <option selected disabled style="display: none" value="0">不拘</option>
+                                            <option selected disabled style="display: none" value="all">不拘</option>
                                             @foreach (var item in ViewBag.countyID)
                                             {
                                                 <option value="@item.CityIDTW">@item.CityTW</option>
@@ -193,7 +193,7 @@
                                     <div class="form-outline form-white">
                                         <label class="form-label fs-6" for="selectCity">鄉鎮區</label>
                                         <select class="form-select form-select-lg" name="Town" id="selectCity">
-                                            <option selected disabled style="display: none" value="0">不拘</option>
+                                            <option selected disabled style="display: none" value="all">不拘</option>
                                             <option disabled value="">請先選擇縣市</option>
                                         </select>
                                     </div>
@@ -220,8 +220,8 @@
 
                                 <div class="col-md-6 mb-4 pb-2">
                                     <div class="form-outline form-white">
-                                        <label class="form-label fs-6" for="HomeSquareMeters">坪數</label>
-                                        <select class="form-select form-select-lg" name="HomeSquareMeters" id="HomeSquareMeters">
+                                        <label class="form-label fs-6" for="SquareMeters">坪數</label>
+                                        <select class="form-select form-select-lg" name="SquareMeters" id="SquareMeters">
                                             <option selected value="0">坪數不限</option>
                                             <option value="1">20坪以下</option>
                                             <option value="2">20坪 ~ 30坪</option>
@@ -315,7 +315,6 @@
                                     <div class="form-outline form-white">
                                         <label class="form-label fs-6" for="HomeSaleDatas">售/租</label>
                                         <select class="form-select form-select-lg" name="HomeSaleDatas" id="HomeSaleData">
-                                            <option selected value="0">不拘</option>
                                             <option value="true">售</option>
                                             <option value="false">租</option>
                                         </select>

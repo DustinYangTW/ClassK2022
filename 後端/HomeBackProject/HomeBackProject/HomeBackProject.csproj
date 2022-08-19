@@ -245,6 +245,7 @@
     </Compile>
     <Compile Include="library\ChangIDAuto.cs" />
     <Compile Include="library\PostPhoto.cs" />
+    <Compile Include="library\Search.cs" />
     <Compile Include="Models\AccountData.cs">
       <DependentUpon>HomeDataModel.tt</DependentUpon>
     </Compile>
