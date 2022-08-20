@@ -25,8 +25,10 @@ namespace HomeBackProject.library
             return "OK";
         }
 
-        public string ChangeAllName(string firstName)
+        public string ChangeAllName(string id)
         {
+            //傳ID進來後，自動判別
+            string firstName = id[0].ToString();
             if (firstName == "P")
             {
                 return "Peopleimage";

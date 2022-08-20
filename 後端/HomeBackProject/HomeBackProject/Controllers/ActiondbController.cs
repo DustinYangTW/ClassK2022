@@ -116,11 +116,10 @@ namespace HomeBackProject.Controllers
         /// <returns></returns>
         public ActionResult SavePhoto(string autoFile, List<HttpPostedFileBase> photo, string peopleID, string caseID)
         {
-
-            string firstName = caseID.Substring(0, 1);
-            string allName = postPhotos.ChangeAllName(firstName);
+            string allName = postPhotos.ChangeAllName(caseID);
             string filename = autoFile + "/" + allName + "/" + caseID;
             string checkid = "";
+
 
             if (Directory.Exists(@filename) == false)
             {
