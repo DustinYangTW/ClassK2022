@@ -7,31 +7,39 @@ namespace HomeBackProject.library
 {
     public class PostPhotos
     {
-        public string checkPhoto(string fileName,int contentLength)
+        public string checkPhoto(string fileName, int contentLength)
         {
             string checkid = fileName.Substring(fileName.IndexOf(".")).ToUpper();
             if (checkid == "JPG" || checkid == "JPEG" || checkid == "GIF" || checkid == "PNG")
             {
                 return "檔案不正確，只能上傳JPG,JPEG,GIF,PNG檔案";
-            }else if(contentLength < 50000)
+            }
+            else if (contentLength < 50000)
             {
                 return "檔案只能上傳大於0.05MB的檔案";
-            }else if(contentLength > 15728640)
+            }
+            else if (contentLength > 15728640)
             {
                 return "檔案只能上傳小於15MB的檔案";
             }
-                return "OK";
+            return "OK";
         }
 
         public string ChangeAllName(string firstName)
         {
-            if(firstName == "H")
+            if (firstName == "P")
+            {
+                return "Peopleimage";
+            }
+            else if (firstName == "H")
             {
                 return "Home";
-            }else if(firstName == "F")
+            }
+            else if (firstName == "F")
             {
                 return "Factory";
-            }else if(firstName == "T")
+            }
+            else if (firstName == "T")
             {
                 return "Territory";
             }

@@ -12,6 +12,7 @@ using System.IO;
 using System.Web.UI;
 using PagedList;
 using System.Xml.Linq;
+using System.Drawing;
 
 namespace HomeBackProject.Controllers
 {
@@ -23,6 +24,7 @@ namespace HomeBackProject.Controllers
         private ChangIDAuto changIDAuto = new ChangIDAuto();
         private PostPhotos postPhotos = new PostPhotos();
         private searchData searchData = new searchData();
+        private SearchPhotos searchPhotos = new SearchPhotos();
 
         // GET: HomeDatas
         [LoginCkeck]
@@ -91,8 +93,7 @@ namespace HomeBackProject.Controllers
             return View(pagedList);
         }
 
-        // GET: HomeDatas/Details/5
-        [LoginCkeck]
+        // GET: HomeDatas/Details/H0000000006
         public ActionResult Details(string id)
         {
             if (id == null)
@@ -100,6 +101,20 @@ namespace HomeBackProject.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             HomeData homeData = db.HomeData.Find(id);
+
+            string autoFile = Server.MapPath("~/AllPhoto/Home"+"/"+id);
+            List<string> photo = searchPhotos.searchPhotos(autoFile,id);
+
+            int count = photo.Count();
+            ViewBag.photo0= count > 0?photo[0]:"";
+            ViewBag.photo1= count > 1?photo[1]:"";
+            ViewBag.photo2= count > 2?photo[2]:"";
+            ViewBag.photo3= count > 3?photo[3]:"";
+            ViewBag.photo4= count > 4?photo[4]:"";
+            ViewBag.photo5= count > 5?photo[5]:"";
+
+
+
             if (homeData == null)
             {
                 return HttpNotFound();
