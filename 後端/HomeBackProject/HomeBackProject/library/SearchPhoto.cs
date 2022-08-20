@@ -8,6 +8,7 @@ namespace HomeBackProject.library
 {
     public class SearchPhotos
     {
+        //自動抓取資料夾檔案
         public List<string> searchPhotos(string autoFile, string id)
         {
             PostPhotos postPhotos = new PostPhotos();
@@ -16,8 +17,8 @@ namespace HomeBackProject.library
 
             string allName = postPhotos.ChangeAllName(id[0].ToString());
 
-            string directory = id[0].ToString() != "P" ? "../../AllPhoto/" + allName + "/" + id + "/" : 
-                                                    "../../AllPhoto/" + id + "/" + "Peopleimage" + "/";
+            string directory = "../../AllPhoto/" + allName + "/" + id + "/";
+                                                         //"../../AllPhoto/" + "Peopleimage" + "/" + id + "/";
 
             List<string> lstImg = new List<string>();
 

@@ -109,16 +109,16 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.HomeHighFloor)
                             </td>
-                            <td>
-                                @if (item.HomeSaleAndLease == true)
-                                {
-                                    <p>售</p>
-                                }
-                                else
-                                {
-                                    <p>租</p>
-                                }
-                            </td>
+
+                            @if (item.HomeSaleAndLease == true)
+                            {
+                                <td>售</td>
+                            }
+                            else
+                            {
+                                <td>租</td>
+                            }
+
                             <td>
                                 @Html.DisplayFor(modelItem => item.HomeAges)
                             </td>

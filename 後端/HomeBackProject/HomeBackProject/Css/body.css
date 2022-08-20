@@ -2,6 +2,10 @@
     max-width: 100%;
 }
 
+td {
+    vertical-align: middle;
+}
+
 @media (min-width: 1025px) {
     .h-custom {
         height: 110vh !important;

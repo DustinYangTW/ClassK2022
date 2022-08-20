@@ -17,7 +17,8 @@ namespace HomeBackProject.Controllers
         private ActiondbController actiondbController = new ActiondbController();
         private  AccountData accountData = new AccountData();
         private ChangIDAuto changIDAuto = new ChangIDAuto();
-        private PostPhotos postPhotos = new PostPhotos();
+        private PostPhotos postPhotos = new PostPhotos(); 
+        private SearchPhotos searchPhotos = new SearchPhotos();
 
 
         // GET: PeopleDatas
@@ -66,6 +67,12 @@ namespace HomeBackProject.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             PeopleData peopleData = db.PeopleData.Find(id);
+            string autoFile = Server.MapPath("~/AllPhoto/PeopleImage/" + id);
+            List<string> photo = searchPhotos.searchPhotos(autoFile, id);
+
+            int count = photo.Count();
+            ViewBag.photoHeadShot = count > 0 ? photo[0] : "../../AllPhoto/PeopleImage/all/people.jpg";
+
             if (peopleData == null)
             {
                 return HttpNotFound();

@@ -11,8 +11,6 @@ using HomeBackProject.Models;
 using System.IO;
 using System.Web.UI;
 using PagedList;
-using System.Xml.Linq;
-using System.Drawing;
 
 namespace HomeBackProject.Controllers
 {

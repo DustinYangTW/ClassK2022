@@ -31,7 +31,7 @@ namespace HomeBackProject.library
             string firstName = id[0].ToString();
             if (firstName == "P")
             {
-                return "Peopleimage";
+                return "PeopleImage";
             }
             else if (firstName == "H")
             {

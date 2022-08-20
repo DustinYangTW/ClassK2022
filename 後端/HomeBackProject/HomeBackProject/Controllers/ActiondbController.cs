@@ -151,7 +151,7 @@ namespace HomeBackProject.Controllers
             //string goTitle = "E:/Git2/後端/HomeBackProject/HomeBackProject"; //Home
             //string goTitle = "D:/Git2/後端/HomeBackProject/HomeBackProject"; //school
             
-            string filename = autoFile + "/" + peopleID + "/" +"Peopleimage";
+            string filename = autoFile + "/" + "PeopleImage" + "/" +peopleID;
             string checkid = "";
 
             if (Directory.Exists(@filename) == false)
@@ -159,7 +159,7 @@ namespace HomeBackProject.Controllers
                 Directory.CreateDirectory(@filename);
             }
 
-            filename = autoFile + "/" + peopleID + "/" + "Peopleimage";
+            filename = autoFile + "/" + peopleID + "/" + "PeopleImage";
 
             for (int i = 0; i < photo.Count; i++)
             {
