@@ -73,6 +73,8 @@ namespace HomeBackProject.Controllers
             int count = photo.Count();
             ViewBag.photoHeadShot = count > 0 ? photo[0] : "../../AllPhoto/PeopleImage/all/people.jpg";
 
+            ViewBag.CompanyName = peopleData.CompanyName != null ? peopleData.CompanyName :"無";
+
             if (peopleData == null)
             {
                 return HttpNotFound();
