@@ -70,7 +70,7 @@
                             </td>
                             <td>
                                 @*@Html.ActionLink("詳細資料", "Details", new { id = item.PeopleID }, new { @class = "btn btn-outline-primary" })*@
-                                <button type="button" title="@item.PeopleID" class="btn btn-outline-primary btnDetail" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <button type="button" id="@item.PeopleID" class="btn btn-outline-primary btnDetail" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                     詳細資料
                                 </button>
                             </td>
@@ -91,14 +91,14 @@
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" style="background-color:#FFF2E7">
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+                @*<a href="'~/PeopleDatas/Edit/'+id" class="btn btn-outline-danger">修改</a>*@
             </div>
         </div>
     </div>
@@ -107,8 +107,14 @@
 @section Script {
     <script>
         $('.btnDetail').click(function (evt) {
-            console.log("/PeopleDatas/Details/" + evt.target.title);
-            $('#exampleModal .modal-body').load("/PeopleDatas/Details/" + evt.target.title);
+            console.log("/PeopleDatas/Details/" + evt.target.id);
+            $('#exampleModal .modal-body').load("/PeopleDatas/Details/" + evt.target.id);
+            $('#exampleModalLabel').empty();
+            $('#exampleModalLabel').append(evt.target.id + "  的詳細資料");
+            $('.modal-footer').empty();
+            $('.modal-footer').append(`<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>`);
+            $('.modal-footer').append(`<a href="../PeopleDatas/Edit/${evt.target.id}" class=" btn btn-outline-danger">修改</a>`);
+
         });
     </script>
 }

@@ -29,7 +29,7 @@ namespace HomeBackProject.library
         {
             //傳ID進來後，自動判別
             string firstName = id[0].ToString();
-            if (firstName == "P")
+            if (firstName == "A")
             {
                 return "PeopleImage";
             }
