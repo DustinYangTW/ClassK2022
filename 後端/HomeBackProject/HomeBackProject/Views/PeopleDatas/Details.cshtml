@@ -28,7 +28,7 @@
                             <div class="fs-4">
                                 身份證後4碼
                             </div>
-                            <div class="fs-5 ms-3 ps-5 mt-2">
+                            <div class="fs-5 ms-3 ps-4 mt-2">
                                 @Html.DisplayFor(model => model.IdebtityNumber).ToString().Substring(6)
                             </div>
                         </div>
@@ -48,7 +48,7 @@
                             <div class="fs-4">
                                 @Html.DisplayNameFor(model => model.PhoneNumber)
                             </div>
-                            <div class="fs-5 ms-3 ps-5 mt-2">
+                            <div class="fs-5 ms-3 ps-4 mt-2">
                                 @Html.DisplayFor(model => model.PhoneNumber)
                             </div>
                         </div>
@@ -124,7 +124,14 @@
                                 @Html.DisplayNameFor(model => model.ProgramData.ProgramName)
                             </div>
                             <div class="fs-5 ms-3 ps-4 mt-2">
-                                @Html.DisplayFor(model => model.ProgramData.ProgramName)
+                                @if (Model.SchemeName > 0)
+                                {
+                                    @Html.DisplayFor(model => model.ProgramData.ProgramName)
+                                }
+                                else
+                                {
+                                    <span>尚未購買相關方案</span>
+                                }
                             </div>
                         </div>
 
@@ -133,7 +140,15 @@
                                 @Html.DisplayNameFor(model => model.AuthorizationTime)
                             </div>
                             <div class="fs-5 ms-3 ps-4 mt-2">
-                                @Html.DisplayFor(model => model.AuthorizationTime)
+
+                                @if (Model.AuthorizationTime != null)
+                                {
+                                    @Html.DisplayFor(model => model.AuthorizationTime)
+                                }
+                                else
+                                {
+                                    <span>尚未購買相關方案</span>
+                                }
                             </div>
                         </div>
                     </div>
@@ -143,7 +158,7 @@
         </div>
 
         <div class="col-lg-4 d-flex justify-content-center justify-content-lg-start align-items-center">
-            <img src="@ViewBag.photoHeadShot" width="400px" class="rounded-3 shadow"/>
+            <img src="@ViewBag.photoHeadShot" width="400px" class="rounded-3 shadow" />
         </div>
 
     </div>
