@@ -69,18 +69,30 @@ namespace HomeBackProject.Controllers
             {
                 homeData = homeData.Where(p => p.HomeName.Contains(SearchFast) || p.HomeStreet.Contains(SearchFast));
             }
-            homeData = HomeSaleDatas != null ? homeData.Where(p => p.HomeSaleAndLease == HomeSaleDatas) : homeData;      
+            homeData = HomeSaleDatas != null ? homeData.Where(p => p.HomeSaleAndLease == HomeSaleDatas) : homeData;
+            //ViewBag.HomeSaleDatas = homeData.ToList();
             homeData = HomeTypeDatas != 0 ? homeData.Where(p => p.HomeType == HomeTypeDatas) : homeData;
+            //ViewBag.HomeHomeType = homeData.ToList();
             homeData = CarTypeDatas != 0 ? homeData.Where(p => p.HomeCarID == CarTypeDatas) : homeData;
+            //ViewBag.HomeHomeCarID = homeData.ToList();
             homeData = County != null ? homeData.Where(p => p.HomeCity == County) : homeData;
-            homeData = Town != "all" ? homeData.Where(p => p.HomeTown == Town) : homeData;
+            //ViewBag.HomeHomeCity = homeData.ToList();
+            homeData = Town != "" ? homeData.Where(p => p.HomeTown == Town) : homeData;
+            //ViewBag.HomeHomeTown = homeData.ToList();
             homeData = homeData.Where(p => p.HomeAges >= HomeAgeLow && p.HomeAges < HomeAgeHigh);
+            //ViewBag.HomeHomeAges = homeData.ToList();
             homeData = HomeFlortDatas < 6 ? homeData.Where(p => p.HomeFloor >= HomeFlortDatasLow && p.HomeFloor <= HomeFlortDatasHigh) : homeData;
+            //ViewBag.HomeHomeFloors = homeData.ToList();
             homeData = homeData.Where(p => p.HomeHighFloor >= HomeFlortDatasLow && p.HomeHighFloor <= HomeFlortDatasHigh);
+            //ViewBag.HomeHomeHighFloor = homeData.ToList();
             homeData = HomeRoomDatas != 0 ? homeData.Where(p => p.HomeRoom == HomeRoomDatas) : homeData;//沒有選的時候
+            //ViewBag.HomeHomeRoom01 = homeData.ToList();
             homeData = HomeRoomDatas >= 5 ? homeData.Where(p => p.HomeRoom >= HomeRoomDatas) : homeData;//大於等於5層樓
+            //ViewBag.HomeHomeRoom = homeData.ToList();
             homeData = homeData.Where(p => p.HomeSquareMeters >= SquareMetersLow && p.HomeSquareMeters < SquareMetersHigh);
+            //ViewBag.HomeHomeSquareMeters = homeData.ToList();
             homeData = homeData.Where(p => p.HomeMoney >= AllMoneyLow && p.HomeMoney < AllMoneyHigh);
+            //ViewBag.HomeHomeMoney = homeData.ToList();
 
             int pagesize = 10;
             var pagedList = homeData.ToPagedList(page, pagesize);

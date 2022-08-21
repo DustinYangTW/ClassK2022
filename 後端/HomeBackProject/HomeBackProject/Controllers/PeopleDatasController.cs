@@ -79,7 +79,7 @@ namespace HomeBackProject.Controllers
             {
                 return HttpNotFound();
             }
-            return View(peopleData);
+            return PartialView(peopleData);
         }
 
         // GET: PeopleDatas/Create

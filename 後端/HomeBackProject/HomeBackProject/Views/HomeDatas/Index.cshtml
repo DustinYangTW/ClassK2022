@@ -96,16 +96,18 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.HomeTown)
                             </td>
-                            <td>
-                                @if (item.HomeFloor != null || item.HomeFloor != 0)
-                                {
+
+                            @if (item.HomeFloor == 0)
+                            {
+                                <td>整棟</td>
+                            }
+                            else
+                            {
+                                <td>
                                     @Html.DisplayFor(modelItem => item.HomeFloor)
-                                }
-                                else
-                                {
-                                    <p>整棟</p>
-                                }
-                            </td>
+                                </td>
+                            }
+
                             <td>
                                 @Html.DisplayFor(modelItem => item.HomeHighFloor)
                             </td>
@@ -138,12 +140,16 @@
                                 @Html.DisplayFor(modelItem => item.SaleTypeData.SaleState)
                             </td>
                             <td>
-                                @Html.ActionLink("查詢", "Details", new { id = item.HomeID }, new { @class = "btn btn-primary" })
+                                @*@Html.ActionLink("查詢", "Details", new { id = item.HomeID }, new { @class = "btn btn-primary" })*@
+                                <button type="button" title="@item.HomeID" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                    詳細資料
+                                </button>
                             </td>
                         </tr>
 
                     }
                 </tbody>
+
             </table>
         </div>
 
@@ -181,7 +187,7 @@
                                     <div class="form-outline form-white">
                                         <label class="form-label fs-6" for="selectCounty">縣市</label>
                                         <select class="form-select form-select-lg" name="County" id="selectCounty" onchange="mainIdex()">
-                                            <option selected disabled style="display: none" value="all">不拘</option>
+                                            <option selected disabled style="display: none" value>不拘</option>
                                             @foreach (var item in ViewBag.countyID)
                                             {
                                                 <option value="@item.CityIDTW">@item.CityTW</option>
@@ -193,7 +199,7 @@
                                     <div class="form-outline form-white">
                                         <label class="form-label fs-6" for="selectCity">鄉鎮區</label>
                                         <select class="form-select form-select-lg" name="Town" id="selectCity">
-                                            <option selected disabled style="display: none" value="all">不拘</option>
+                                            <option selected disabled style="display: none" value="">不拘</option>
                                             <option disabled value="">請先選擇縣市</option>
                                         </select>
                                     </div>
@@ -336,6 +342,32 @@
     </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 @section Script {
     <script src="~/Js/FindCityData.js"></script>
+    <script>
+        $('.btnDetail').click(function (evt) {
+            //console.log("/Members/Details/" + evt.target.title);
+            $('#exampleModal .modal-body').load("/Members/Details/" + evt.target.title);
+        });
+    </script>
 }
