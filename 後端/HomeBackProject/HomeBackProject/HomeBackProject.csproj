@@ -7,7 +7,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{AC759218-5DDE-41E9-A13D-A73AC4FBB707}</ProjectGuid>
+    <ProjectGuid>{90827D98-8842-4BE7-87AB-E12951DAAD96}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -53,9 +53,10 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Web.Infrastructure, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Web.Infrastructure.2.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
     </Reference>
+<<<<<<< HEAD
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -69,6 +70,10 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.9\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+=======
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+>>>>>>> 6d669b8f9a6a990e254f8581850905404b86abd5
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -81,30 +86,6 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.Helpers.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Http, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.9\lib\net45\System.Web.Http.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Http.WebHost, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.9\lib\net45\System.Web.Http.WebHost.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Mvc, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.9\lib\net45\System.Web.Mvc.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.9\lib\net45\System.Web.Razor.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -112,8 +93,38 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Validate, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Validate.1.0.3\lib\net452\Validate.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.9\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.9\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.9\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.9\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.9\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.2.0.1\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.9\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AllPhoto\A000000001\Home\H000000008\0.jpg" />
+    <Content Include="AllPhoto\A000000001\Home\H000000008\1.jpg" />
+    <Content Include="AllPhoto\A000000001\Home\H000000011\0.jpg" />
+    <Content Include="AllPhoto\A000000001\Home\H000000011\1.jpeg" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -131,7 +142,10 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\PagedList.css" />
+<<<<<<< HEAD
     <Content Include="Content\Site.css" />
+=======
+>>>>>>> 6d669b8f9a6a990e254f8581850905404b86abd5
     <Content Include="Css\assets\css\style.css" />
     <Content Include="Css\assets\img\about-1.jpg" />
     <Content Include="Css\assets\img\about-2.jpg" />
@@ -185,15 +199,15 @@
     <Content Include="Global.asax" />
     <Content Include="Js\FindCityData.js" />
     <Content Include="Js\Validation.js" />
-    <Content Include="Models\HomeData.Context.tt">
+    <Content Include="Models\HomeDataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>HomeData.Context.cs</LastGenOutput>
-      <DependentUpon>HomeData.edmx</DependentUpon>
+      <DependentUpon>HomeDataModel.edmx</DependentUpon>
+      <LastGenOutput>HomeDataModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\HomeData.tt">
+    <Content Include="Models\HomeDataModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>HomeData.edmx</DependentUpon>
-      <LastGenOutput>HomeData1.cs</LastGenOutput>
+      <DependentUpon>HomeDataModel.edmx</DependentUpon>
+      <LastGenOutput>HomeDataModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -201,12 +215,6 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\bootstrap.min.js.map" />
-    <Content Include="Scripts\bootstrap.js.map" />
-    <Content Include="Scripts\bootstrap.esm.min.js.map" />
-    <Content Include="Scripts\bootstrap.esm.js.map" />
-    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
-    <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Content\bootstrap.rtl.min.css.map" />
     <Content Include="Content\bootstrap.rtl.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
@@ -223,7 +231,13 @@
     <Content Include="Content\bootstrap-grid.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
-    <Content Include=".editorconfig" />
+    <EntityDeploy Include="Models\HomeDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>HomeDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\HomeDataModel.edmx.diagram">
+      <DependentUpon>HomeDataModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.0.js" />
     <Content Include="Scripts\jquery-3.6.0.min.js" />
@@ -232,92 +246,100 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.bootstrap.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.bootstrap.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ActiondbController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HomeDatasController.cs" />
-    <Compile Include="Controllers\LogInOutController.cs" />
     <Compile Include="Controllers\LoginCkeck.cs" />
+    <Compile Include="Controllers\LogInOutController.cs" />
     <Compile Include="Controllers\PeopleDatasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="library\ChangIDAuto.cs" />
     <Compile Include="library\PostPhoto.cs" />
+    <Compile Include="library\Search.cs" />
+    <Compile Include="library\SearchPhoto.cs" />
     <Compile Include="Models\AccountData.cs">
-      <DependentUpon>HomeData.tt</DependentUpon>
+      <DependentUpon>HomeDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ADTypeData.cs">
-      <DependentUpon>HomeData.tt</DependentUpon>
+      <DependentUpon>HomeDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CarTypeData.cs">
-      <DependentUpon>HomeData.tt</DependentUpon>
+      <DependentUpon>HomeDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CheckDataFromDB.cs" />
     <Compile Include="Models\CityTypeData.cs">
-      <DependentUpon>HomeData.tt</DependentUpon>
+      <DependentUpon>HomeDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\FactoryadjacentTypeData.cs">
-      <DependentUpon>HomeData.tt</DependentUpon>
+      <DependentUpon>HomeDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\FactoryData.cs">
-      <DependentUpon>HomeData.tt</DependentUpon>
+      <DependentUpon>HomeDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HomeadjacentTypeData.cs">
-      <DependentUpon>HomeData.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\HomeData.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>HomeData.Context.tt</DependentUpon>
+      <DependentUpon>HomeDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HomeData.cs">
-      <DependentUpon>HomeData.tt</DependentUpon>
+      <DependentUpon>HomeDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\HomeData.Designer.cs">
+    <Compile Include="Models\HomeDataModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>HomeData.edmx</DependentUpon>
+      <DependentUpon>HomeDataModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\HomeData1.cs">
+    <Compile Include="Models\HomeDataModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>HomeData.tt</DependentUpon>
+      <DependentUpon>HomeDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HomeDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HomeDataModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\HomeTypeData.cs">
-      <DependentUpon>HomeData.tt</DependentUpon>
+      <DependentUpon>HomeDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MetaData.cs" />
     <Compile Include="Models\PeopleData.cs">
-      <DependentUpon>HomeData.tt</DependentUpon>
+      <DependentUpon>HomeDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PeopleRankData.cs">
-      <DependentUpon>HomeData.tt</DependentUpon>
+      <DependentUpon>HomeDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ProgramData.cs">
-      <DependentUpon>HomeData.tt</DependentUpon>
+      <DependentUpon>HomeDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SaleTypeData.cs">
-      <DependentUpon>HomeData.tt</DependentUpon>
+      <DependentUpon>HomeDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>HomeDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>HomeDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>HomeData.tt</DependentUpon>
+      <DependentUpon>HomeDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TerritoryadjacentTypeData.cs">
-      <DependentUpon>HomeData.tt</DependentUpon>
+      <DependentUpon>HomeDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TerritoryData.cs">
-      <DependentUpon>HomeData.tt</DependentUpon>
+      <DependentUpon>HomeDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TerritoryTypeData.cs">
-      <DependentUpon>HomeData.tt</DependentUpon>
+      <DependentUpon>HomeDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\VMCreatePeople.cs" />
@@ -325,33 +347,33 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
-    <EntityDeploy Include="Models\HomeData.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>HomeData.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\HomeData.edmx.diagram">
-      <DependentUpon>HomeData.edmx</DependentUpon>
-    </Content>
     <None Include="packages.config" />
-    <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Shared\_Layout_LogInOut.cshtml" />
-    <Content Include="Views\PeopleDatas\Create.cshtml" />
-    <Content Include="Views\PeopleDatas\Delete.cshtml" />
-    <Content Include="Views\PeopleDatas\Details.cshtml" />
-    <Content Include="Views\PeopleDatas\Edit.cshtml" />
-    <Content Include="Views\PeopleDatas\Index.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\LogInOut\Index.cshtml" />
-    <Content Include="Views\LogInOut\Login.cshtml" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.esm.js.map" />
+    <Content Include="Scripts\bootstrap.esm.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\jquery-3.6.0.min.map" />
+    <Content Include="Scripts\jquery-3.6.0.slim.min.map" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.bootstrap.min.js.map" />
     <Content Include="Views\HomeDatas\Create.cshtml" />
     <Content Include="Views\HomeDatas\Delete.cshtml" />
     <Content Include="Views\HomeDatas\Details.cshtml" />
     <Content Include="Views\HomeDatas\Edit.cshtml" />
     <Content Include="Views\HomeDatas\Index.cshtml" />
-    <Content Include="Scripts\jquery-3.6.0.slim.min.map" />
-    <Content Include="Scripts\jquery-3.6.0.min.map" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\LogInOut\Index.cshtml" />
+    <Content Include="Views\LogInOut\Login.cshtml" />
+    <Content Include="Views\PeopleDatas\Create.cshtml" />
+    <Content Include="Views\PeopleDatas\Delete.cshtml" />
+    <Content Include="Views\PeopleDatas\Details.cshtml" />
+    <Content Include="Views\PeopleDatas\Edit.cshtml" />
+    <Content Include="Views\PeopleDatas\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_Layout_LogInOut.cshtml" />
     <Content Include="Views\Shared\_Layout_LogInOutLast.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -360,7 +382,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="AllPhoto\" />
+    <Folder Include="AllPhoto\A000000001\Home\H000000003\" />
+    <Folder Include="AllPhoto\A000000001\Home\H000000004\" />
+    <Folder Include="AllPhoto\A000000001\Home\H000000005\" />
+    <Folder Include="AllPhoto\A000000003\Peopleimage\" />
+    <Folder Include="AllPhoto\A000000004\Peopleimage\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
@@ -379,9 +405,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>55341</DevelopmentServerPort>
+          <DevelopmentServerPort>56541</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:55341/</IISUrl>
+          <IISUrl>http://localhost:56541/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

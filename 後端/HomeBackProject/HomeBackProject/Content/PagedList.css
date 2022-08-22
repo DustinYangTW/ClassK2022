@@ -1,8 +1,15 @@
 .pagination {
+<<<<<<< HEAD
     display: inline-block;
     padding-left: 0;
     margin: 20px 0;
     border-radius: 4px;
+=======
+  display: inline-block;
+  padding-left: 0;
+  margin: 20px 0;
+  border-radius: 4px;
+>>>>>>> 6d669b8f9a6a990e254f8581850905404b86abd5
 }
 
 .pagination > li {
@@ -41,6 +48,7 @@
   background-color: #eeeeee;
 }
 
+<<<<<<< HEAD
     .pagination > .active > a,
     .pagination > .active > span,
     .pagination > .active > a:hover,
@@ -53,6 +61,20 @@
         background-color: #428bca;
         border-color: #428bca;
     }
+=======
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+  z-index: 2;
+  color: #ffffff;
+  cursor: default;
+  background-color: #428bca;
+  border-color: #428bca;
+}
+>>>>>>> 6d669b8f9a6a990e254f8581850905404b86abd5
 
 .pagination > .disabled > span,
 .pagination > .disabled > a,

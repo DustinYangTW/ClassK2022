@@ -8,6 +8,7 @@ using HomeBackProject.Models;
 using System.IO;
 using HomeBackProject;
 using HomeBackProject.library;
+using System.Data.Entity.Validation;
 
 namespace HomeBackProject.Controllers
 {
@@ -16,7 +17,10 @@ namespace HomeBackProject.Controllers
         private  PostPhotos postPhotos = new PostPhotos();
         //private string goTitle = "E:/Git2/後端/HomeBackProject/HomeBackProject"; //Home
         //private string goTitle = "D:/Git2/後端/HomeBackProject/HomeBackProject"; //school
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6d669b8f9a6a990e254f8581850905404b86abd5
 
         /// <summary>
         /// 透過這個統一建立資料
@@ -58,7 +62,7 @@ namespace HomeBackProject.Controllers
             if (ModelState.IsValid)
             {
                 dbSet.Add(item);
-                db.SaveChanges();
+                db.SaveChanges();       
             }
             return RedirectToAction(actionName, cName);
         }
@@ -116,20 +120,30 @@ namespace HomeBackProject.Controllers
         /// <returns></returns>
         public ActionResult SavePhoto(string autoFile, List<HttpPostedFileBase> photo, string peopleID, string caseID)
         {
+<<<<<<< HEAD
             //string goTitle = "E:/Git2/後端/HomeBackProject/HomeBackProject"; //Home
             //string goTitle = "D:/Git2/後端/HomeBackProject/HomeBackProject"; //school
 
             string firstName = caseID.Substring(0, 1);
             string allName = postPhotos.ChangeAllName(firstName);
             string filename = autoFile + "/" + peopleID + "/" + allName + "/" + caseID;
+=======
+            string allName = postPhotos.ChangeAllName(caseID);
+            string filename = autoFile + "/" + allName + "/" + caseID;
+>>>>>>> 6d669b8f9a6a990e254f8581850905404b86abd5
             string checkid = "";
+
 
             if (Directory.Exists(@filename) == false)
             {
                 Directory.CreateDirectory(@filename);
             }
 
+<<<<<<< HEAD
             filename = autoFile + "/" + peopleID + "/" + allName + "/" + caseID + "/";
+=======
+            filename = autoFile + "/" + allName + "/" + caseID + "/";
+>>>>>>> 6d669b8f9a6a990e254f8581850905404b86abd5
 
             for (int i = 0; i < photo.Count; i++)
             {
@@ -154,7 +168,11 @@ namespace HomeBackProject.Controllers
             //string goTitle = "E:/Git2/後端/HomeBackProject/HomeBackProject"; //Home
             //string goTitle = "D:/Git2/後端/HomeBackProject/HomeBackProject"; //school
             
+<<<<<<< HEAD
             string filename = autoFile + "/" + peopleID + "/" +"Peopleimage";
+=======
+            string filename = autoFile + "/" + "PeopleImage" + "/" +peopleID;
+>>>>>>> 6d669b8f9a6a990e254f8581850905404b86abd5
             string checkid = "";
 
             if (Directory.Exists(@filename) == false)
@@ -162,7 +180,11 @@ namespace HomeBackProject.Controllers
                 Directory.CreateDirectory(@filename);
             }
 
+<<<<<<< HEAD
             filename = autoFile + "/" + peopleID + "/" + "Peopleimage";
+=======
+            filename = autoFile + "/" + peopleID + "/" + "PeopleImage";
+>>>>>>> 6d669b8f9a6a990e254f8581850905404b86abd5
 
             for (int i = 0; i < photo.Count; i++)
             {

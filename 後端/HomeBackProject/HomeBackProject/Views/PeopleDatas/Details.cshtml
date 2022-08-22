@@ -1,139 +1,295 @@
 ﻿@model HomeBackProject.Models.PeopleData
 
-@{
+@*@{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout_LogInOut.cshtml";
-}
+}*@
 
-<h2>Details</h2>
 
-<div>
-    <h4>PeopleData</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.PeopleName)
-        </dt>
+<div class="container">
+    <div class="row">
 
-        <dd>
-            @Html.DisplayFor(model => model.PeopleName)
-        </dd>
+        <div class="col-lg-7 d-flex justify-content-center text-black">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.IdebtityNumber)
-        </dt>
+            <div class="row" style="width:100%">
+                <div class="p-3">
+                    <div class="row">
+                        <div class="col-md-6 mb-4 pb-2 bg-brown">
+                            <div class="fs-4">
+                                @Html.DisplayNameFor(model => model.PeopleName)
+                            </div>
+                            <div class="fs-5 ms-3 ps-4 mt-2">
+                                @Html.DisplayFor(model => model.PeopleName)
+                            </div>
+                        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.IdebtityNumber)
-        </dd>
+                        <div class="col-md-6 mb-4 pb-2">
+                            <div class="fs-4">
+                                身份證後4碼
+                            </div>
+                            <div class="fs-5 ms-3 ps-4 mt-2">
+                                @Html.DisplayFor(model => model.IdebtityNumber).ToString().Substring(6)
+                            </div>
+                        </div>
+                    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Birthday)
-        </dt>
+                    <div class="row">
+                        <div class="col-md-6 mb-4 pb-2">
+                            <div class="fs-4">
+                                @Html.DisplayNameFor(model => model.Birthday)
+                            </div>
+                            <div class="fs-5 ms-3 ps-4 mt-2">
+                                @Html.DisplayFor(model => model.Birthday)
+                            </div>
+                        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Birthday)
-        </dd>
+                        <div class="col-md-6 mb-4 pb-2 bg-brown">
+                            <div class="fs-4">
+                                @Html.DisplayNameFor(model => model.PhoneNumber)
+                            </div>
+                            <div class="fs-5 ms-3 ps-4 mt-2">
+                                @Html.DisplayFor(model => model.PhoneNumber)
+                            </div>
+                        </div>
+                    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Gender)
-        </dt>
+                    <div class="row">
 
-        <dd>
-            @Html.DisplayFor(model => model.Gender)
-        </dd>
+                        <div class="col-md-6 mb-4 pb-2 bg-brown">
+                            <div class="fs-4">
+                                @Html.DisplayNameFor(model => model.CityTypeData.CityTW)
+                            </div>
+                            <div class="fs-5 ms-3 ps-4 mt-2">
+                                @Html.DisplayFor(model => model.CityTypeData.CityTW)
+                            </div>
+                        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </dt>
+                        <div class="col-md-6 mb-4 pb-2">
+                            <div class="fs-4">
+                                @Html.DisplayNameFor(model => model.Town)
+                            </div>
+                            <div class="fs-5 ms-3 ps-4 mt-2">
+                                @Html.DisplayFor(model => model.Town)
+                            </div>
+                        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.PhoneNumber)
-        </dd>
+                    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Town)
-        </dt>
+                    <div class="row">
+                        <div class="col-md-6 mb-4 pb-2">
+                            <div class="fs-4">
+                                會員帳號(信箱)
+                            </div>
+                            <div class="fs-5 ms-3 ps-4 mt-2 text-primary">
+                                @Html.DisplayFor(model => model.EMail)
+                            </div>
+                        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Town)
-        </dd>
+                        <div class="col-md-6 mb-4 pb-2 bg-brown">
+                            <div class="fs-4">
+                                @Html.DisplayNameFor(model => model.PeopleCash)
+                            </div>
+                            <div class="fs-5 ms-3 ps-4 mt-2">
+                                @Html.DisplayFor(model => model.PeopleCash)
+                            </div>
+                        </div>
+                    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.RoadAndNumber)
-        </dt>
+                    <div class="row">
 
-        <dd>
-            @Html.DisplayFor(model => model.RoadAndNumber)
-        </dd>
+                        <div class="col-md-6 mb-4 pb-2  bg-brown">
+                            <div class="fs-4">
+                                @Html.DisplayNameFor(model => model.PeopleRankData.PeopleRank)
+                            </div>
+                            <div class="fs-5 ms-3 ps-4 mt-2">
+                                @Html.DisplayFor(model => model.PeopleRankData.PeopleRank)
+                            </div>
+                        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CompanyName)
-        </dt>
+                        <div class="col-md-6 mb-4 pb-2">
+                            <div class="fs-4">
+                                @Html.DisplayNameFor(model => model.CompanyName)
+                            </div>
+                            <div class="fs-5 ms-3 ps-4 mt-2">
+                                @ViewBag.CompanyName
+                            </div>
+                        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.CompanyName)
-        </dd>
+                    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PeopleAge)
-        </dt>
+                    <div class="row">
+                        <div class="col-md-6 pb-2">
+                            <div class="fs-4">
+                                @Html.DisplayNameFor(model => model.ProgramData.ProgramName)
+                            </div>
+                            <div class="fs-5 ms-3 ps-4 mt-2">
+                                @if (Model.SchemeName > 0)
+                                {
+                                    @Html.DisplayFor(model => model.ProgramData.ProgramName)
+                                }
+                                else
+                                {
+                                    <span>尚未購買相關方案</span>
+                                }
+                            </div>
+                        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.PeopleAge)
-        </dd>
+                        <div class="col-md-6 pb-2 bg-brown">
+                            <div class="fs-4">
+                                @Html.DisplayNameFor(model => model.AuthorizationTime)
+                            </div>
+                            <div class="fs-5 ms-3 ps-4 ">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PeopleCash)
-        </dt>
+                                @if (Model.AuthorizationTime != null)
+                                {
+                                    @Html.DisplayFor(model => model.AuthorizationTime)
+                                }
+                                else
+                                {
+                                    <span>尚未購買相關方案</span>
+                                }
+                            </div>
+                        </div>
+                    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.PeopleCash)
-        </dd>
+                </div>
+            </div>
+        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AuthorizationTime)
-        </dt>
+        <div class="col-lg-5 d-flex justify-content-center align-items-center">
+            <img src="@ViewBag.photoHeadShot" width="400px" class="rounded-3 shadow" />
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.AuthorizationTime)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AccountData.PassWord)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AccountData.PassWord)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CityTypeData.CityTW)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CityTypeData.CityTW)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PeopleRankData.PeopleRank)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PeopleRankData.PeopleRank)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ProgramData.ProgramName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ProgramData.ProgramName)
-        </dd>
-
-    </dl>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.PeopleID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+
+
+
+
+<!--<dl class="dl-horizontal">-->
+@*<dt>
+        @Html.DisplayNameFor(model => model.PeopleName)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.PeopleName)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.IdebtityNumber)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.IdebtityNumber)
+    </dd>*@
+
+@*<dt>
+        @Html.DisplayNameFor(model => model.Birthday)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Birthday)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.Gender)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Gender)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.PhoneNumber)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.PhoneNumber)
+    </dd>*@
+
+<!--<dt>
+        @Html.DisplayNameFor(model => model.Town)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Town)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.RoadAndNumber)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.RoadAndNumber)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.CompanyName)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.CompanyName)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.PeopleAge)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.PeopleAge)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.PeopleCash)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.PeopleCash)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.AuthorizationTime)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.AuthorizationTime)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.AccountData.PassWord)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.AccountData.PassWord)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.CityTypeData.CityTW)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.CityTypeData.CityTW)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.PeopleRankData.PeopleRank)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.PeopleRankData.PeopleRank)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.ProgramData.ProgramName)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.ProgramData.ProgramName)
+    </dd>
+
+</dl>-->
+@*<p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.PeopleID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@

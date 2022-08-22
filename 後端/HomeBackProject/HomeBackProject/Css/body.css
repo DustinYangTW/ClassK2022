@@ -1,9 +1,17 @@
-﻿@media (min-width: 1025px) {
+﻿input {
+    max-width: 100%;
+}
+
+td {
+    vertical-align: middle;
+}
+
+@media (min-width: 1025px) {
     .h-custom {
         height: 110vh !important;
     }   
     .h-house {
-        height: 150vh !important;
+        height: 140vh !important;
     }
 }
 
@@ -43,4 +51,9 @@
         border-bottom-left-radius: 15px;
         border-bottom-right-radius: 15px;
     }
+}
+
+.bg-brown {
+    background-color: #F0B890;
+    border-radius: 5px;
 }

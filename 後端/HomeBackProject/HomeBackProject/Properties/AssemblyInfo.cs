@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("HomeBackProject")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("SVTC")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("HomeBackProject")]
-[assembly: AssemblyCopyright("Copyright © SVTC 2022")]
+[assembly: AssemblyCopyright("Copyright ©  2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 下列 GUID 為專案公開 (Expose) 至 COM 時所要使用的 typelib ID
-[assembly: Guid("ac759218-5dde-41e9-a13d-a73ac4fbb707")]
+[assembly: Guid("90827d98-8842-4be7-87ab-e12951daad96")]
 
 // 組件的版本資訊是由下列四項值構成:
 //

@@ -4,25 +4,15 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-using System.Web.Security;
-using System.Web.SessionState;
-using System.Web.Http;
 
 namespace HomeBackProject
 {
-    public class Global : HttpApplication
+    public class MvcApplication : System.Web.HttpApplication
     {
-        void Application_Start(object sender, EventArgs e)
+        protected void Application_Start()
         {
-            // 應用程式啟動時執行的程式碼
             AreaRegistration.RegisterAllAreas();
-            GlobalConfiguration.Configure(WebApiConfig.Register);
-            RouteConfig.RegisterRoutes(RouteTable.Routes);            
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
-    }
-
-    public static class goconfig
-    {
-        public static readonly string go = "D:/Git2/後端/HomeBackProject/HomeBackProject";
     }
 }

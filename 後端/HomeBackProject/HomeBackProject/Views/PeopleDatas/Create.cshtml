@@ -12,8 +12,8 @@
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
 
-    <section class="h-100 h-custom gradient-custom-2">
-        <div class="container py-5 h-100">
+    <section class="h-90 h-custom gradient-custom-2">
+        <div class="container py-5 h-90">
             <div class="row d-flex justify-content-center align-items-center h-90">
                 <div class="col-12">
 
@@ -141,7 +141,7 @@
 
                                 <div class="col-lg-6 bg-indigo text-white">
                                     <div class="p-5">
-                                        <h3 class="fw-normal mb-5  fs-2" style="color: #ffffff; text-shadow: 0.1em 0.05em 0.1em #ffffff; ">聯絡資料</h3>
+                                        <h3 class="fw-normal mb-5  fs-2" style="color: #ffffff; text-shadow: 0.1em 0.0025em 0.1em #ffffff; ">聯絡資料</h3>
 
                                         <div class="row">
 
@@ -167,6 +167,7 @@
                                                     <label class="form-label fs-5" for="selectCity">鄉鎮區</label>
                                                     <select class="form-select form-select-lg" name="Town" id="selectCity" required>
                                                         <option selected disabled style="display: none" value="">請先選擇縣市</option>
+                                                        <option disabled value="">請先選擇縣市</option>
                                                     </select>
                                                     <div class="invalid-feedback">
                                                         **必填欄位
