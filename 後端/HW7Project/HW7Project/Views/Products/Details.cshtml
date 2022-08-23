@@ -1,83 +1,46 @@
 ﻿@model HW7Project.Models.Products
 
-@{
+@*@{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout_Manager.cshtml";
-}
+}*@
 
-<h2>Details</h2>
 
-<div>
-    <h4>Products</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductName)
-        </dt>
+<div class="card border-info">
 
-        <dd>
-            @Html.DisplayFor(model => model.ProductName)
-        </dd>
+    <div class="card-header bg-info text-white">
+        <h3>@Html.DisplayFor(model => model.ProductName)</h3>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PhotoFile)
-        </dt>
+    <div class="card-body row">
+        <div class="col-4">
+            <img src="@Url.Action("GetImage", new {id=Model.ProductID})" class="img-thumbnail" />
+        </div>
+        <div class="col-8">
+            <p>
+                價格 : @Html.DisplayFor(model => model.UnitPrice)
+            </p>
+            <p>
+                詳細資料 :<br/>
+                @Html.Raw(@Model.Description.ToString().Replace("\n", "<br />"))
+            </p>
 
-        <dd>
-            @Html.DisplayFor(model => model.PhotoFile)
-        </dd>
+            <p>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ImageMimeType)
-        </dt>
+            </p>
+            <p>
 
-        <dd>
-            @Html.DisplayFor(model => model.ImageMimeType)
-        </dd>
+            </p>
+            <p>
+                庫存量 : @Html.DisplayFor(model => model.UnitsInStock) <br />
+                是否沒貨 : @Html.DisplayFor(model => model.Discontinued) <br />
+                創建時間 : @Html.DisplayFor(model => model.CreatedDate)
+            </p>
+        </div>
+    </div>
+    <div class="card-footer text-right">
+        @Html.ActionLink("修改", "Edit", new { id = Model.ProductID }, new { @class = "btn btn-info" })
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.UnitPrice)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UnitPrice)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UnitsInStock)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UnitsInStock)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Discontinued)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Discontinued)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CreatedDate)
-        </dd>
-
-    </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+

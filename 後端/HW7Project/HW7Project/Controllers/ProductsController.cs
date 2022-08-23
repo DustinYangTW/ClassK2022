@@ -42,7 +42,7 @@ namespace HW7Project.Controllers
             {
                 return HttpNotFound();
             }
-            return View(products);
+            return PartialView(products);
         }
 
         // GET: Products/Create
