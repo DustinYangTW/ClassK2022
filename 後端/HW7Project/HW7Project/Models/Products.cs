@@ -18,7 +18,7 @@ namespace HW7Project.Models
 
         [DisplayName("商品名稱")]
         [Required(ErrorMessage = "請輸入商品名稱")]
-        [StringLength(40, ErrorMessage = "商品名稱最多40個字")]
+        [StringLength(100, ErrorMessage = "商品名稱最多100個字")]
         public string ProductName { get; set; }
 
         [DisplayName("商品照片")]
