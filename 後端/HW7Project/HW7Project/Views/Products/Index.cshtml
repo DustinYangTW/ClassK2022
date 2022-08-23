@@ -18,9 +18,9 @@
         <th>
             @Html.DisplayNameFor(model => model.PhotoFile)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.ImageMimeType)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.UnitPrice)
         </th>
@@ -45,11 +45,12 @@
             @Html.DisplayFor(modelItem => item.ProductName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.PhotoFile)
+            <img src="@Url.Action("GetImage", new {id=item.ProductID})" width="100" />
+            @*@Html.DisplayFor(modelItem => item.PhotoFile)*@
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.ImageMimeType)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.UnitPrice)
         </td>

@@ -20,6 +20,16 @@ namespace HW7Project.Controllers
             return View(db.Products.ToList());
         }
 
+        public FileContentResult GetImage(string id)
+        {
+            var photo = db.Products.Find(id);
+            if(photo == null)
+            {
+                return null;
+            }
+            return File(photo.PhotoFile, photo.ImageMimeType);
+        }
+
         // GET: Products/Details/5
         public ActionResult Details(string id)
         {
