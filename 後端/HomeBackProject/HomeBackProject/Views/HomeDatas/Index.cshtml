@@ -11,20 +11,12 @@
 
 <div class="container-fluid">
     <div class="me-3 ms-3">
-<<<<<<< HEAD
-        <h1 class="text-center text-lg-start ms-lg-2">房屋案件管理</h1>
-        <div class="d-flex flex-column  flex-lg-row justify-content-lg-end flex-lg-wrap">
-            <button class="d-flex justify-content-center align-items-center mt-2 mt-lg-0 me-lg-3 p-1 ps-3 pe-3 btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#SearchBtn">
-                <i class="bi bi-search"></i>
-            </button>
-=======
         <h1 class="text-center text-lg-start ms-lg-2 mt-lg-4">房屋案件管理</h1>
         <div class="d-flex flex-column  flex-lg-row justify-content-lg-end flex-lg-wrap">
             <button class="d-flex justify-content-center align-items-center mt-2 mt-lg-0 mb-4 mb-lg-0 me-lg-3 p-1 ps-3 pe-3 btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#SearchBtn">
                 <i class="bi bi-search"></i>
             </button>
             <a class="btn btn-outline-info mb-4 mb-lg-0 me-lg-3" href="~/HomeDatas/Index">清除</a>
->>>>>>> 6d669b8f9a6a990e254f8581850905404b86abd5
             @Html.ActionLink("建立新房屋案件", "Create", new { }, new { @class = "btn btn-outline-primary me-lg-3 mb-2 mb-lg-0 text-center" })
         </div>
 
@@ -82,79 +74,6 @@
                 </thead>
                 <tbody>
 
-<<<<<<< HEAD
-                    @foreach (var item in Model)
-                    {
-                        if (Session["userID"].ToString() == item.HomePeopleID)
-                        {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.HomeName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.HomeMoney)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.HomeSquareMeters)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.HomeMetersMoney)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.CityTypeData.CityTW)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.HomeTown)
-                                </td>
-                                <td>
-                                    @if (item.HomeFloor != null || item.HomeFloor != 0)
-                                    {
-                                        @Html.DisplayFor(modelItem => item.HomeFloor)
-                                    }
-                                    else
-                                    {
-                                        <p>整棟</p>
-                                    }
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.HomeHighFloor)
-                                </td>
-                                <td>
-                                    @if (item.HomeSaleAndLease == true)
-                                    {
-                                        <p>售</p>
-                                    }
-                                    else
-                                    {
-                                        <p>租</p>
-                                    }
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.HomeAges)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.HomeRoom)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.ADTypeData.ADName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.CarTypeData.CarTypeName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.HomeTypeData.HomeTypeName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.SaleTypeData.SaleState)
-                                </td>
-                                <td>
-                                    @Html.ActionLink("查詢", "Details", new { id = item.HomeID }, new { @class = "btn btn-primary" })
-                                </td>
-                            </tr>
-                        }
-                    }
-                </tbody>
-=======
 
                     @foreach (var item in Model)
                     {
@@ -231,7 +150,6 @@
                     }
                 </tbody>
 
->>>>>>> 6d669b8f9a6a990e254f8581850905404b86abd5
             </table>
         </div>
 
@@ -242,38 +160,6 @@
         </div>
 
     </div>
-<<<<<<< HEAD
-</div>
-
-<div class="modal fade" id="SearchBtn" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="~/PeopleDatas/Index" method="post">
-                <div class="modal-body">
-                    <section class="row">
-                        <div class="col-lg-6">
-                            123
-                        </div>
-                        <div class="col-lg-6">
-                            132
-                        </div>
-                    </section>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
-                    <button type="submit" class="btn btn-primary">查詢</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-
-=======
 </div>
 
 <div class="modal fade" id="SearchBtn" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -485,4 +371,3 @@
         });
     </script>
 }
->>>>>>> 6d669b8f9a6a990e254f8581850905404b86abd5

@@ -136,18 +136,3 @@ E:\Git2\後端\HomeBackProject\HomeBackProject\obj\Debug\HomeBackProject.csproj.
 E:\Git2\後端\HomeBackProject\HomeBackProject\obj\Debug\HomeBackProject.csproj.CopyComplete
 E:\Git2\後端\HomeBackProject\HomeBackProject\obj\Debug\HomeBackProject.dll
 E:\Git2\後端\HomeBackProject\HomeBackProject\obj\Debug\HomeBackProject.pdb
-<<<<<<< HEAD
-D:\Git2\後端\HomeBackProject\HomeBackProject\bin\roslyn\System.Buffers.dll
-D:\Git2\後端\HomeBackProject\HomeBackProject\bin\roslyn\System.Memory.dll
-D:\Git2\後端\HomeBackProject\HomeBackProject\bin\roslyn\System.Numerics.Vectors.dll
-D:\Git2\後端\HomeBackProject\HomeBackProject\bin\roslyn\System.Runtime.CompilerServices.Unsafe.dll
-E:\Git2\後端\HomeBackProject\HomeBackProject\bin\roslyn\System.Buffers.dll
-E:\Git2\後端\HomeBackProject\HomeBackProject\bin\roslyn\System.Memory.dll
-E:\Git2\後端\HomeBackProject\HomeBackProject\bin\roslyn\System.Numerics.Vectors.dll
-E:\Git2\後端\HomeBackProject\HomeBackProject\bin\roslyn\System.Runtime.CompilerServices.Unsafe.dll
-D:\Git2\後端\HomeBackProject\HomeBackProject\bin\PagedList.dll
-D:\Git2\後端\HomeBackProject\HomeBackProject\bin\PagedList.Mvc.dll
-D:\Git2\後端\HomeBackProject\HomeBackProject\bin\PagedList.xml
-D:\Git2\後端\HomeBackProject\HomeBackProject\bin\PagedList.Mvc.xml
-=======
->>>>>>> 6d669b8f9a6a990e254f8581850905404b86abd5

@@ -28,12 +28,6 @@ namespace HomeBackProject.Controllers
         [LoginCkeck]
         public ActionResult Index(int page = 1)
         {
-<<<<<<< HEAD
-            var homeData = db.HomeData.Include(h => h.ADTypeData).Include(h => h.CarTypeData).Include(h => h.CityTypeData).Include(h => h.HomeTypeData).Include(h => h.PeopleData).Include(h => h.SaleTypeData).OrderByDescending(h => h.HomeID);
-
-            int pagesize = 10;
-            var pagedList = homeData.ToPagedList(page, pagesize);
-=======
             string userID = Session["userID"].ToString();
             var homeData = db.HomeData.Include(h => h.ADTypeData).Include(h => h.CarTypeData).Include(h => h.CityTypeData).Include(h => h.HomeTypeData).Include(h => h.PeopleData).Include(h => h.SaleTypeData).OrderByDescending(h => h.HomeID).OrderByDescending(h => h.HomeSaleType).Where(h => h.HomePeopleID == userID);
 
@@ -43,7 +37,6 @@ namespace HomeBackProject.Controllers
             ViewBag.HomeTypeData = db.HomeTypeData.ToList();
             ViewBag.CarTypeData = db.CarTypeData.ToList();
             ViewBag.HomeSaleType = db.SaleTypeData.ToList();
->>>>>>> 6d669b8f9a6a990e254f8581850905404b86abd5
 
             return View(pagedList);
         }
@@ -196,11 +189,7 @@ namespace HomeBackProject.Controllers
                 homeData.HomeADLevel = 1;
                 actiondbController.Create(db, db.HomeData, homeData);
                 string autoFile = Server.MapPath("~/AllPhoto");
-<<<<<<< HEAD
-                return actiondbController.SavePhoto(autoFile,photoList, Session["userID"].ToString(), homeData.HomeID);
-=======
                 return actiondbController.SavePhoto(autoFile, photoList, Session["userID"].ToString(), homeData.HomeID);
->>>>>>> 6d669b8f9a6a990e254f8581850905404b86abd5
             }
 
             ViewBag.HomeSaleType = db.SaleTypeData.ToList();
