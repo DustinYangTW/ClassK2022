@@ -1,0 +1,46 @@
+﻿@model HW7Project.Models.Products
+
+@*@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout_Manager.cshtml";
+}*@
+
+
+<div class="card border-info">
+
+    <div class="card-header bg-info text-white">
+        <h3>@Html.DisplayFor(model => model.ProductName)</h3>
+    </div>
+
+    <div class="card-body row">
+        <div class="col-4">
+            <img src="@Url.Action("GetImage", new {id=Model.ProductID})" class="img-thumbnail" />
+        </div>
+        <div class="col-8">
+            <p>
+                價格 : @Html.DisplayFor(model => model.UnitPrice)
+            </p>
+            <p>
+                詳細資料 :<br/>
+                @Html.Raw(@Model.Description.ToString().Replace("\n", "<br />"))
+            </p>
+
+            <p>
+
+            </p>
+            <p>
+
+            </p>
+            <p>
+                庫存量 : @Html.DisplayFor(model => model.UnitsInStock) <br />
+                是否沒貨 : @Html.DisplayFor(model => model.Discontinued) <br />
+                創建時間 : @Html.DisplayFor(model => model.CreatedDate)
+            </p>
+        </div>
+    </div>
+    <div class="card-footer text-right">
+        @Html.ActionLink("修改", "Edit", new { id = Model.ProductID }, new { @class = "btn btn-info" })
+    </div>
+
+</div>
+
