@@ -110,8 +110,18 @@ namespace HW7Project.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductID,ProductName,PhotoFile,ImageMimeType,UnitPrice,Description,UnitsInStock,Discontinued,CreatedDate")] Products products)
+        public ActionResult Edit(Products products, HttpPostedFileBase photo)
         {
+            if (photo != null)
+            {
+                products.ImageMimeType = photo.ContentType;
+                products.PhotoFile = new byte[photo.ContentLength];
+                photo.InputStream.Read(products.PhotoFile, 0, photo.ContentLength);
+                //Read,讀哪個檔案陣列,起始位置,最後位置
+            }
+
+
+            ModelState.Remove("PhotoFile");
             if (ModelState.IsValid)
             {
                 db.Entry(products).State = EntityState.Modified;
