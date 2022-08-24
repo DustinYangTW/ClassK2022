@@ -25,7 +25,7 @@
                             <div class="row g-0">
 
                                 <div class="col-lg-3 d-flex justify-content-center align-items-center mt-4 mb-4">
-                                    <img src="@ViewBag.photoHeadShot" width="300px" class="rounded-3 shadow" />
+                                    <img src="@ViewBag.photoHeadShot" width="300" class="rounded-3 shadow" />
                                 </div>
 
                                 <article class="col-lg-9">
@@ -130,6 +130,45 @@
                                                     </div>
                                                 </div>
                                             </div>
+
+                                            <div class="col-md-4 mb-4 pb-2">
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "form-label fs-5" })
+                                                    @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control form-control-lg", name = "EMail", type = "text", id = "EMail", required = "required" } })
+                                                    @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                                                    <div class="invalid-feedback">
+                                                        **必填欄位
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+
+                                            <div class="col-md-4 mb-4 pb-2">
+                                                <div class="form-group">
+                                                    縣市
+                                                    <select class="form-control" name="County" id="selectCounty" onchange="mainIdex()">
+                                                        <option style="display: none" value="@ViewBag.countyIDlast">@ViewBag.countyTWlast</option>
+                                                        @foreach (var item in ViewBag.countyID)
+                                                        {
+                                                            <option value="@item.CityIDTW">@item.CityTW</option>
+                                                        }
+                                                    </select>
+                                                    @Html.ValidationMessageFor(model => model.County, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4 mb-4 pb-2">
+                                                <div class="form-group">
+                                                    鄉鎮
+                                                    <select class="form-control" name="Town" id="selectCity">
+                                                        <option selected value="@ViewBag.Townlast">@ViewBag.Townlast</option>
+                                                    </select>
+                                                    @Html.ValidationMessageFor(model => model.Town, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
 
                                         </div>
 

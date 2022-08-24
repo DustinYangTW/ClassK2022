@@ -162,15 +162,20 @@ namespace HomeBackProject.Controllers
             {
                 return HttpNotFound();
             }
-            var peopleDatas = db.PeopleData.Where(m => m.PeopleID == id.ToString()).FirstOrDefault();
+
             string adnimID = Session["userID"].ToString();
-            ViewBag.BirthDay = peopleDatas.Birthday;
+            ViewBag.BirthDay = peopleData.Birthday;
             ViewBag.EMail = new SelectList(db.AccountData, "EmailAccount", "PassWord", peopleData.EMail);
             ViewBag.County = new SelectList(db.CityTypeData, "CityIDTW", "CityTW", peopleData.County);
             ViewBag.SaleStateID = new SelectList(db.PeopleRankData, "HomeTSaleStateID", "PeopleRank", peopleData.SaleStateID);
             ViewBag.SchemeName = new SelectList(db.ProgramData, "ProgramSerialID", "ProgramName", peopleData.SchemeName);
             ViewBag.Rank = db.PeopleData.Where(m => m.PeopleID == adnimID).FirstOrDefault().SaleStateID;
-            ViewBag.Gender = peopleDatas.Gender == true ? "男" : "女";
+            ViewBag.Gender = peopleData.Gender == true ? "男" : "女";
+            ViewBag.countyID = db.CityTypeData.ToList();
+            var countyTownlast = db.PeopleData.Where(p => p.PeopleID == id.ToString()).FirstOrDefault();
+            ViewBag.Townlast = countyTownlast.Town;
+            var countyCountylast = db.CityTypeData.Where(p => p.CityIDTW == peopleData.County).FirstOrDefault();
+            ViewBag.countyTWlast = countyCountylast.CityTW;
 
             return View(peopleData);
         }

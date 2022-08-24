@@ -3,13 +3,17 @@
 @{
     ViewBag.Title = "商品管理";
     Layout = "~/Views/Shared/_Layout_Manager.cshtml";
+    string a = "";
 }
 
 <h2>商品管理</h2>
 
-<p>
+@*<p>
     @Html.ActionLink("新增商品", "Create")
-</p>
+</p>*@
+<a class="btn btn-success" data-toggle="modal" data-target="#exampleModal" id="btnCreate">
+    管理
+</a>
 <table class="table">
     <tr>
         <th>
@@ -69,10 +73,12 @@
                 @if (item.Discontinued)
                 {
                     <i class="bi bi-bag-x text-danger"></i>
+                    a = "上";
                 }
                 else
                 {
                     <i class="bi bi-bag-check text-success"></i>
+                    a = "下";
                 }
 
                 @*@Html.DisplayFor(modelItem => item.Discontinued)*@
@@ -82,8 +88,9 @@
                 </td>*@
             <td>
                 @*@Html.ActionLink("修改", "Edit", new { id=item.ProductID }) |*@
-                @Html.ActionLink("管理", "Details", new { id = item.ProductID })
-                <button type="button" class="btn btn-link btnDetail" data-toggle="modal" data-target="#exampleModal" title="@item.ProductID">
+                @*@Html.ActionLink("管理", "Details", new { id = item.ProductID })*@
+                @Html.ActionLink("商品"+a+"架", "ProcductStatusChange", new {id = @item.ProductID }, new { @class = "btn btn-info mr-3" })
+                <button type="button" class="btn btn-info btnDetail" data-toggle="modal" data-target="#exampleModal" title="@item.ProductID">
                     管理
                 </button>
 
@@ -112,7 +119,6 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>
@@ -123,5 +129,23 @@
     $('.btnDetail').click(function (evt) {
         //console.log("/Members/Details/" + evt.target.title);*/
         $('#exampleModal .modal-body').load("/Products/Details/" + evt.target.title);
+        $('#exampleModal .modal-footer').empty();
+        $('#exampleModal .modal-footer').append(`<button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>`);
+        $('#exampleModal .modal-footer').append(`<a href="/Products/Edit/${evt.target.title}" class="btn btn-primary">修改</a>`);
+    });
+    $('#btnCreate').click(function () {
+        //console.log(evt.target.id);
+        $('#exampleModalLabel').text("新增商品資料");
+        $('#exampleModal .modal-body').load("/Products/Create");
+    });
+
+    $("#photo").change(() => {
+        var oFReader = new FileReader();
+        var file = document.getElementById('photo').files[0];
+        oFReader.readAsDataURL(file);
+        oFReader.onloadend = function (oFRevent) {
+            var src = oFRevent.target.result;
+            $('#NewPhoto').attr('src', src);
+        }
     });
 </script>

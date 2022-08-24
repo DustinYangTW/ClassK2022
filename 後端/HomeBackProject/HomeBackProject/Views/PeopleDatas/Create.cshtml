@@ -17,7 +17,7 @@
             <div class="row d-flex justify-content-center align-items-center h-90">
                 <div class="col-12">
 
-                    <h1 class="mb-md-5 text-center" style="text-shadow: 0.3em 0.2em 0.2em #ffffff ;">
+                    <h1 class="mb-md-5 text-center fw-bolder fst-italic">
                         加入會員
                     </h1>
 
@@ -27,7 +27,7 @@
 
                                 <div class="col-lg-6">
                                     <div class="p-5">
-                                        <h3 class="fw-normal mb-5 fs-2" style="color: #4835d4; text-shadow: 0.1em 0.05em 0.1em #4835d4; ">個人資料</h3>
+                                        <h3 class="fw-normal mb-5 fs-2 text-success">個人資料</h3>
 
                                         <div class="row">
                                             <div class="col-md-6 mb-4 pb-2">
@@ -129,8 +129,13 @@
                                                 </div>
 
                                                 <div class="col-md-6 mb-4 pb-2">
-                                                    <label for="inputGroupFile01" class="form-label fs-5">上傳會員照片</label>
-                                                    <input type="file" class="form-control form-control-lg" id="inputGroupFile01" name="photo" style="max-width: 100%">
+                                                    <div class="col-md-12">
+                                                        <label for="inputGroupFile01" class="form-label fs-5">上傳會員照片</label>
+                                                        <input type="file" class="form-control form-control-lg" id="Photo01" name="photo" style="max-width: 100%">
+                                                    </div>
+                                                    <div class="d-flex justify-content-center mt-4">
+                                                        <img width="200" id="NewPhoto01" class="rounded-3 shadow-lg"/>
+                                                    </div>
                                                 </div>
                                             </div>
 
@@ -139,14 +144,14 @@
                                 </div>
 
 
-                                <div class="col-lg-6 bg-indigo text-white">
+                                <div class="col-lg-6 text-black" style="background-color:#DBEDBD">
                                     <div class="p-5">
-                                        <h3 class="fw-normal mb-5  fs-2" style="color: #ffffff; text-shadow: 0.1em 0.0025em 0.1em #ffffff; ">聯絡資料</h3>
+                                        <h3 class="fw-normal mb-5 fs-2">聯絡資料</h3>
 
                                         <div class="row">
 
                                             <div class="col-md-6 mb-4 pb-2">
-                                                <div class="form-outline form-white">
+                                                <div class="form-outline">
                                                     <label class="form-label fs-5" for="selectCounty">縣市</label>
                                                     <select class="form-select form-select-lg" name="County" id="selectCounty" onchange="mainIdex()" required>
                                                         <option selected disabled style="display: none" value="">請選擇</option>
@@ -163,7 +168,7 @@
 
 
                                             <div class="col-md-6 mb-4 pb-2">
-                                                <div class="form-outline form-white">
+                                                <div class="form-outline">
                                                     <label class="form-label fs-5" for="selectCity">鄉鎮區</label>
                                                     <select class="form-select form-select-lg" name="Town" id="selectCity" required>
                                                         <option selected disabled style="display: none" value="">請先選擇縣市</option>
@@ -177,7 +182,7 @@
                                         </div>
 
                                         <div class="col-md-12 mb-4 pb-2">
-                                            <div class="form-outline form-white">
+                                            <div class="form-outline">
                                                 @Html.LabelFor(model => model.RoadAndNumber, htmlAttributes: new { @class = "form-label fs-5" })
                                                 <div class="col-md-12">
                                                     @Html.EditorFor(model => model.RoadAndNumber, new { htmlAttributes = new { @class = "form-control form-control-lg", required = "required", style = "max-width:100%" } })
@@ -190,7 +195,7 @@
                                         </div>
 
                                         <div class="col-md-12 mb-4 pb-2">
-                                            <div class="form-outline form-white">
+                                            <div class="form-outline">
                                                 @Html.LabelFor(model => model.CompanyName, htmlAttributes: new { @class = "form-label fs-5" })
                                                 <div class="col-md-12">
                                                     @Html.EditorFor(model => model.CompanyName, new { htmlAttributes = new { @class = "form-control form-control-lg", style = "max-width:100%" } })
@@ -200,7 +205,7 @@
 
                                         <div class="col-md-12 mb-4 pb-2">
 
-                                            <div class="form-outline form-white">
+                                            <div class="form-outline">
 
                                                 <label class="form-label fs-5" for="SaleStateID">會員身分</label>
                                                 <select class="form-select form-select-lg" name="SaleStateID" id="SaleStateID" required style="max-width:100%">
@@ -222,15 +227,15 @@
 
                                         <div class="form-check d-flex justify-content-start mb-4 pb-1 " style="max-width: 100%">
                                             <input class="form-check-input me-3 col-2" type="checkbox" value="" id="checkAllRow" required />
-                                            <label class="form-check-label text-white col-4" for="checkAllRow">
-                                                我同意本網站 <a href="#!" class="text-white"><u>相關規定</u></a>
+                                            <label class="form-check-label text-black col-4" for="checkAllRow">
+                                                我同意本網站 <a href="#!" class="text-primary"><u>相關規定</u></a>
                                             </label>
                                             <div class="invalid-feedback">
                                                 **必填欄位
                                             </div>
                                         </div>
 
-                                        <button type="submit" class="btn btn-light btn-lg"
+                                        <button type="submit" class="btn btn-secondary btn-lg"
                                                 data-mdb-ripple-color="dark">
                                             送出
                                         </button>
@@ -251,5 +256,15 @@
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/Js/FindCityData.js"></script>
     <script src="~/Js/Validation.js"></script>
+    <script>
+        $("#Photo01").change(() => {
+            var oFReader = new FileReader();
+            var file = document.getElementById('Photo01').files[0];
+            oFReader.readAsDataURL(file);
+            oFReader.onloadend = function (oFRevent) {
+                var src = oFRevent.target.result;
+                $('#NewPhoto01').attr('src', src);
+            }
+        });
+    </script>
 }
-
