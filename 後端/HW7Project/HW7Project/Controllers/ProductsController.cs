@@ -131,6 +131,19 @@ namespace HW7Project.Controllers
             return View(products);
         }
 
+        public ActionResult ProcductStatusChange(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Products products = db.Products.Find(id);
+            products.Discontinued = !products.Discontinued;
+            db.Entry(products).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
         // GET: Products/Delete/5
         public ActionResult Delete(string id)
         {

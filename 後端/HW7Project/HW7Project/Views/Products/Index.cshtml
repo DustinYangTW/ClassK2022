@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "商品管理";
     Layout = "~/Views/Shared/_Layout_Manager.cshtml";
+    string a = "";
 }
 
 <h2>商品管理</h2>
@@ -72,10 +73,12 @@
                 @if (item.Discontinued)
                 {
                     <i class="bi bi-bag-x text-danger"></i>
+                    a = "上";
                 }
                 else
                 {
                     <i class="bi bi-bag-check text-success"></i>
+                    a = "下";
                 }
 
                 @*@Html.DisplayFor(modelItem => item.Discontinued)*@
@@ -86,6 +89,7 @@
             <td>
                 @*@Html.ActionLink("修改", "Edit", new { id=item.ProductID }) |*@
                 @*@Html.ActionLink("管理", "Details", new { id = item.ProductID })*@
+                @Html.ActionLink("商品"+a+"架", "ProcductStatusChange", new {id = @item.ProductID }, new { @class = "btn btn-info mr-3" })
                 <button type="button" class="btn btn-info btnDetail" data-toggle="modal" data-target="#exampleModal" title="@item.ProductID">
                     管理
                 </button>
