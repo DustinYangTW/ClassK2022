@@ -163,13 +163,11 @@
                                                 <div class="form-group">
                                                     鄉鎮
                                                     <select class="form-control" name="Town" id="selectCity">
-                                                        <option selected value="@ViewBag.Townlast">@ViewBag.Townlast</option>
+                                                        <option selected value="@ViewBag.Townlast" title="@ViewBag.Townlast">@ViewBag.Townlast</option>
                                                     </select>
                                                     @Html.ValidationMessageFor(model => model.Town, "", new { @class = "text-danger" })
                                                 </div>
                                             </div>
-
-
                                         </div>
 
                                     </div>
@@ -328,4 +326,5 @@
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/Js/FindCityData.js"></script>
     <script src="~/Js/Validation.js"></script>
+
 }
