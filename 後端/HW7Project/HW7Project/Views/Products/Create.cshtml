@@ -5,15 +5,15 @@
     Layout = "~/Views/Shared/_Layout_Manager.cshtml";
 }
 
-<h2>Create</h2>
+<h2>新增資料</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>Products</h4>
+        <h4>商品</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -35,8 +35,11 @@
         <div class="form-group">
             @Html.LabelFor(model => model.PhotoFile, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.PhotoFile, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PhotoFile, "", new { @class = "text-danger" })
+
+                <img width="200" id="NewPhoto" />
+
+                <input id="photo" name="photo" type="file" class="form-control" data-val="true" data-val-required="請上傳照片" />
+                <span class="field-validation-valid text-danger" data-valmsg-for="photo" data-valmsg-replace="true"></span>
             </div>
         </div>
 
@@ -59,7 +62,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", row = "5" } })
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -73,26 +76,8 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Discontinued, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.Discontinued)
-                    @Html.ValidationMessageFor(model => model.Discontinued, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CreatedDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CreatedDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CreatedDate, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="確定新增" class="btn btn-success" />
             </div>
         </div>
     </div>
@@ -105,3 +90,15 @@
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+<script>
+    $("#photo").change(() => {
+        var oFReader = new FileReader();
+        var file = document.getElementById('photo').files[0];
+        oFReader.readAsDataURL(file);
+        oFReader.onloadend = function (oFRevent) {
+            var src = oFRevent.target.result;
+            $('#newPhoto').attr('src', src);
+        }
+    });
+</script>
