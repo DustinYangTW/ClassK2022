@@ -159,7 +159,7 @@ namespace HomeBackProject.Controllers
                 Directory.CreateDirectory(@filename);
             }
 
-            filename = autoFile + "/" + peopleID + "/" + "PeopleImage";
+            filename = autoFile + "/" + "PeopleImage" + "/" + peopleID + "/";
 
             for (int i = 0; i < photo.Count; i++)
             {

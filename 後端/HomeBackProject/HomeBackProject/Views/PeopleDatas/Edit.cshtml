@@ -3,14 +3,19 @@
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout_LogInOut.cshtml";
-    var checkGender = @ViewBag.Gender == "男" ? true : false;
+    var checkGender = @ViewBag.Gender == "男" ? 1 : 0;
 }
 
 
 @using (Html.BeginForm("Edit", "PeopleDatas", FormMethod.Post, new { enctype = "multipart/form-data", @class = "needs-validation" }))
 {
+    @Html.AntiForgeryToken()
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.PeopleID)
+    @Html.HiddenFor(model => model.AuthorizationTime)
+    @Html.HiddenFor(model => model.PeopleCash)
+    @Html.HiddenFor(model => model.SchemeName)
+
     <section class="h-90 h-custom gradient-custom-2">
         <div class="container py-5 h-90">
             <div class="row d-flex justify-content-center align-items-center h-90">
@@ -25,7 +30,22 @@
                             <div class="row g-0">
 
                                 <div class="col-lg-3 d-flex justify-content-center align-items-center mt-4 mb-4">
-                                    <img src="@ViewBag.photoHeadShot" width="300" class="rounded-3 shadow" />
+                                    <div class="row  ms-5">
+                                        <div class="col-12 ms-2 mb-3">
+                                            <span class="fs-5">現在照片 : </span>
+                                        </div>
+                                        <div class="col-12 ms-2 mb-3">
+                                            <img src="@ViewBag.photoHeadShot" width="150" class="rounded-3 shadow" />
+                                        </div>
+                                        <div class="col-12 ms-2 mb-3" id="ChangePhoto">
+
+                                        </div>
+                                        <div class="col-12 ms-2 mb-3" id="ChangeNewPhoto">
+
+                                        </div>
+                                        <label for="inputGroupFile01" class="form-label fs-5">上傳修改會員照片</label>
+                                        <input type="file" class="form-control form-control-lg mb-2" id="Photo01" name="photo" style="max-width: 100%">
+                                    </div>
                                 </div>
 
                                 <article class="col-lg-9">
@@ -110,7 +130,7 @@
                                                     <label class="form-label fs-5" for="Gender">性別</label>
                                                     @if (@ViewBag.Rank != 4)
                                                     {
-                                                        <select class="form-select form-select-lg" name="Gender" id="Gender" required disabled>
+                                                        <select class="form-select form-select-lg" name="Gender" id="Gender" disabled>
                                                             <option selected disabled style="display: none" value="@checkGender">@ViewBag.Gender</option>
                                                             <option value="true">男</option>
                                                             <option value="false">女</option>
@@ -118,7 +138,7 @@
                                                     }
                                                     else
                                                     {
-                                                        <select class="form-select form-select-lg" name="Gender" id="Gender" required>
+                                                        <select class="form-select form-select-lg" name="Gender" id="Gender">
                                                             <option selected disabled style="display: none" value="@checkGender">@ViewBag.Gender</option>
                                                             <option value="true">男</option>
                                                             <option value="false">女</option>
@@ -134,7 +154,7 @@
                                             <div class="col-md-4 mb-4 pb-2">
                                                 <div class="form-group">
                                                     @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "form-label fs-5" })
-                                                    @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control form-control-lg", name = "EMail", type = "text", id = "EMail", required = "required" } })
+                                                    @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control form-control-lg", name = "PhoneNumber", type = "text", id = "PhoneNumber", required = "required" } })
                                                     @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
                                                     <div class="invalid-feedback">
                                                         **必填欄位
@@ -147,9 +167,9 @@
 
                                             <div class="col-md-4 mb-4 pb-2">
                                                 <div class="form-group">
-                                                    縣市
-                                                    <select class="form-control" name="County" id="selectCounty" onchange="mainIdex()">
-                                                        <option style="display: none" value="@ViewBag.countyIDlast">@ViewBag.countyTWlast</option>
+                                                    <label class="form-label fs-5" for="selectCounty">縣市</label>
+                                                    <select class="form-select form-select-lg" name="County" id="selectCounty" onchange="mainIdex()">
+                                                        <option value="@ViewBag.countyIDlast">@ViewBag.countyTWlast</option>
                                                         @foreach (var item in ViewBag.countyID)
                                                         {
                                                             <option value="@item.CityIDTW">@item.CityTW</option>
@@ -161,15 +181,83 @@
 
                                             <div class="col-md-4 mb-4 pb-2">
                                                 <div class="form-group">
-                                                    鄉鎮
-                                                    <select class="form-control" name="Town" id="selectCity">
+                                                    <label class="form-label fs-5" for="selectCity">鄉鎮</label>
+                                                    <select class="form-select form-select-lg" name="Town" id="selectCity">
                                                         <option selected value="@ViewBag.Townlast" title="@ViewBag.Townlast">@ViewBag.Townlast</option>
                                                     </select>
                                                     @Html.ValidationMessageFor(model => model.Town, "", new { @class = "text-danger" })
                                                 </div>
                                             </div>
+
+                                            <div class="col-md-4 mb-4 pb-2">
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.CompanyName, htmlAttributes: new { @class = "form-label fs-5" })
+                                                    @Html.EditorFor(model => model.CompanyName, new { htmlAttributes = new { @class = "form-control form-control-lg", name = "CompanyName", type = "text", id = "CompanyName" } })
+                                                    @Html.ValidationMessageFor(model => model.CompanyName, "", new { @class = "text-danger" })
+                                                    <div class="invalid-feedback">
+                                                        **必填欄位
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
 
+                                        <div class="row">
+                                            <div class="col-md-8 mb-4 pb-2">
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.RoadAndNumber, htmlAttributes: new { @class = "form-label fs-5" })
+                                                    @Html.EditorFor(model => model.RoadAndNumber, new { htmlAttributes = new { @class = "form-control form-control-lg", name = "RoadAndNumber", type = "text", id = "RoadAndNumber", required = "required" } })
+                                                    @Html.ValidationMessageFor(model => model.RoadAndNumber, "", new { @class = "text-danger" })
+                                                    <div class="invalid-feedback">
+                                                        **必填欄位
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 mb-4 pb-2">
+                                                <div class="form-group">
+                                                    <label class="form-label fs-5" for="SaleStateID">會員身分</label>
+                                                    @if (@ViewBag.Rank != 4)
+                                                    {
+                                                        <select class="form-select form-select-lg" name="SaleStateID" id="SaleStateID" required style="max-width:100%" disabled>
+                                                            @foreach (var peopleRankData in ViewBag.SaleStateID)
+                                                            {
+                                                                if (peopleRankData.HomeTSaleStateID == @ViewBag.NowSaleStateID)
+                                                                {
+                                                                    <option value="@ViewBag.NowSaleStateID">@peopleRankData.PeopleRank</option>
+                                                                }
+                                                                if (@peopleRankData.PeopleRank != "管理員" && peopleRankData.HomeTSaleStateID != @ViewBag.NowSaleStateID)
+                                                                {
+                                                                    <option value="@peopleRankData.HomeTSaleStateID">@peopleRankData.PeopleRank</option>
+                                                                }
+                                                            }
+                                                        </select>
+                                                    }
+                                                    else
+                                                    {
+                                                        <select class="form-select form-select-lg" name="SaleStateID" id="SaleStateID" required style="max-width:100%">
+                                                            @foreach (var peopleRankData in ViewBag.SaleStateID)
+                                                            {
+                                                                if (peopleRankData.HomeTSaleStateID == @ViewBag.NowSaleStateID)
+                                                                {
+                                                                    <option value="@ViewBag.NowSaleStateID">@peopleRankData.PeopleRank</option>
+                                                                }
+                                                                if (@peopleRankData.PeopleRank != "管理員" && peopleRankData.HomeTSaleStateID != @ViewBag.NowSaleStateID)
+                                                                {
+                                                                    <option value="@peopleRankData.HomeTSaleStateID">@peopleRankData.PeopleRank</option>
+                                                                }
+                                                            }
+                                                        </select>
+                                                    }
+
+                                                    <div class="invalid-feedback">
+                                                        **必填欄位
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="submit" value="修改" class="btn btn-outline-danger btn-lg" />
+                                        </div>
                                     </div>
                                 </article>
                             </div>
@@ -326,5 +414,22 @@
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/Js/FindCityData.js"></script>
     <script src="~/Js/Validation.js"></script>
+    <script>
+        $("#Photo01").change(() => {
+            var oFReader = new FileReader();
+            var file = document.getElementById('Photo01').files[0];
+            oFReader.readAsDataURL(file);
+            oFReader.onloadend = function (oFRevent) {
+                var src = oFRevent.target.result;
+                $('#NewPhoto01').attr('src', src);
+                $('#ChangePhoto').empty();
+                $('#ChangePhoto').append(`<span class="fs-5">更換照片 : </span>`);
+                //ChangeNewPhoto
+                //<img src="@ViewBag.photoHeadShot" width="150" class="rounded-3 shadow" id="NewPhoto01" />
+                $('#ChangeNewPhoto').empty();
+                $('#ChangeNewPhoto').append(`<img src="${src}" width="150" class="rounded-3 shadow" id="NewPhoto01" />`);
+            }
+        });
+    </script>
 
 }
