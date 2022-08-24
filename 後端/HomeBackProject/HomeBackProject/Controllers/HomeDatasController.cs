@@ -219,11 +219,10 @@ namespace HomeBackProject.Controllers
             ViewBag.HomeSaleType = new SelectList(db.SaleTypeData, "SaleStateID", "SaleState", homeData.HomeSaleType);
             ViewBag.countyID = db.CityTypeData.ToList();
             ViewBag.countyIDlast = homeData.HomeCity;
-            var countyTWlast = db.CityTypeData.Where(m => m.CityIDTW == homeData.HomeCity).FirstOrDefault();
-            ViewBag.countyTWlast = countyTWlast.CityTW;
             var countyTownlast = db.HomeData.Where(p => p.HomeID == homeData.HomeID).FirstOrDefault();
             ViewBag.HomeTownlast = countyTownlast.HomeTown;
-
+            var countyCountylast = db.CityTypeData.Where(p => p.CityIDTW == homeData.HomeCity).FirstOrDefault();
+            ViewBag.countyTWlast = countyTownlast.HomeCity;
 
             return View(homeData);
         }
