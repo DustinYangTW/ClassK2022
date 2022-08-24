@@ -3,16 +3,148 @@
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout_LogInOut.cshtml";
+    var checkGender = @ViewBag.Gender == "男" ? true : false;
 }
 
-<h2>Edit</h2>
 
-
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "PeopleDatas", FormMethod.Post, new { enctype = "multipart/form-data", @class = "needs-validation" }))
 {
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.PeopleID)
+    <section class="h-90 h-custom gradient-custom-2">
+        <div class="container py-5 h-90">
+            <div class="row d-flex justify-content-center align-items-center h-90">
+                <div class="col-12">
+
+                    <h1 class="mb-md-5 text-center" style="text-shadow: 0.3em 0.2em 0.2em #FFAAAA ;">
+                        修改 @Model.PeopleName 會員資料
+                    </h1>
+
+                    <div class="card card-registration card-registration-2 shadow-lg" style="border-radius: 15px;">
+                        <div class="card-body p-0">
+                            <div class="row g-0">
+
+                                <div class="col-lg-3 d-flex justify-content-center align-items-center mt-4 mb-4">
+                                    <img src="@ViewBag.photoHeadShot" width="300px" class="rounded-3 shadow" />
+                                </div>
+
+                                <article class="col-lg-9">
+                                    <div class="p-5">
+                                        <div class="row">
+                                            <div class="col-md-4 mb-4 pb-2">
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.PeopleName, htmlAttributes: new { @class = "form-label fs-5" })
+                                                    @if (@ViewBag.Rank != 4)
+                                                    {
+                                                        @Html.EditorFor(model => model.PeopleName, new { htmlAttributes = new { @class = "form-control form-control-lg", name = "PeopleName", type = "text", id = "PeopleName", required = "required", @readonly = "readonly" } })
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.EditorFor(model => model.PeopleName, new { htmlAttributes = new { @class = "form-control form-control-lg", name = "PeopleName", type = "text", id = "PeopleName", required = "required" } })
+                                                    }
+                                                    @Html.ValidationMessageFor(model => model.PeopleName, "", new { @class = "text-danger" })
+                                                    <div class="invalid-feedback">
+                                                        **必填欄位
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4 mb-4 pb-2">
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.IdebtityNumber, htmlAttributes: new { @class = "form-label fs-5" })
+                                                    @if (@ViewBag.Rank != 4)
+                                                    {
+                                                        @Html.EditorFor(model => model.IdebtityNumber, new { htmlAttributes = new { @class = "form-control form-control-lg", name = "IdebtityNumber", type = "text", id = "IdebtityNumber", required = "required", @readonly = "readonly" } })
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.EditorFor(model => model.IdebtityNumber, new { htmlAttributes = new { @class = "form-control form-control-lg", name = "IdebtityNumber", type = "text", id = "IdebtityNumber", required = "required" } })
+                                                    }
+                                                    @Html.ValidationMessageFor(model => model.IdebtityNumber, "", new { @class = "text-danger" })
+                                                    <div class="invalid-feedback">
+                                                        **必填欄位
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4 mb-4 pb-2">
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.Birthday, htmlAttributes: new { @class = "form-label fs-5" })
+                                                    @if (@ViewBag.Rank != 4)
+                                                    {
+                                                        @Html.EditorFor(model => model.Birthday, new { htmlAttributes = new { @class = "form-control form-control-lg", name = "Birthday", type = "Date", id = "Birthday", required = "required", @readonly = "readonly" } })
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.EditorFor(model => model.Birthday, new { htmlAttributes = new { @class = "form-control form-control-lg", name = "Birthday", type = "Date", id = "Birthday", required = "required" } })
+                                                    }
+                                                    @Html.ValidationMessageFor(model => model.Birthday, "", new { @class = "text-danger" })
+                                                    <div class="invalid-feedback">
+                                                        **必填欄位
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-4 mb-4 pb-2">
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.EMail, htmlAttributes: new { @class = "form-label fs-5" })
+                                                    @if (@ViewBag.Rank != 4)
+                                                    {
+                                                        @Html.EditorFor(model => model.EMail, new { htmlAttributes = new { @class = "form-control form-control-lg", name = "EMail", type = "text", id = "EMail", required = "required", @readonly = "readonly" } })
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.EditorFor(model => model.EMail, new { htmlAttributes = new { @class = "form-control form-control-lg", name = "EMail", type = "text", id = "EMail", required = "required" } })
+                                                    }
+                                                    @Html.ValidationMessageFor(model => model.EMail, "", new { @class = "text-danger" })
+                                                    <div class="invalid-feedback">
+                                                        **必填欄位
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 mb-4 pb-2">
+                                                <div class="form-group">
+                                                    <label class="form-label fs-5" for="Gender">性別</label>
+                                                    @if (@ViewBag.Rank != 4)
+                                                    {
+                                                        <select class="form-select form-select-lg" name="Gender" id="Gender" required disabled>
+                                                            <option selected disabled style="display: none" value="@checkGender">@ViewBag.Gender</option>
+                                                            <option value="true">男</option>
+                                                            <option value="false">女</option>
+                                                        </select>
+                                                    }
+                                                    else
+                                                    {
+                                                        <select class="form-select form-select-lg" name="Gender" id="Gender" required>
+                                                            <option selected disabled style="display: none" value="@checkGender">@ViewBag.Gender</option>
+                                                            <option value="true">男</option>
+                                                            <option value="false">女</option>
+                                                        </select>
+                                                    }
+                                                    @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                                                    <div class="invalid-feedback">
+                                                        **必填欄位
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+@*<div class="form-horizontal">
         <h4>PeopleData</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -29,7 +161,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.IdebtityNumber, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.IdebtityNumber, new { htmlAttributes = new { @class = "form-control"} })
+                @Html.EditorFor(model => model.IdebtityNumber, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.IdebtityNumber, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -37,8 +169,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Birthday, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.Birthday, new { @class = "form-control", value = @ViewBag.BirthDay})
-                @Html.EditorFor(model => model.Birthday, new { htmlAttributes = new { @class = "form-control", value = @ViewBag.BirthDay,type="Date" } })
+                @Html.TextBoxFor(model => model.Birthday, new { @class = "form-control", value = @ViewBag.BirthDay })
+                @Html.EditorFor(model => model.Birthday, new { htmlAttributes = new { @class = "form-control", value = @ViewBag.BirthDay, type = "Date" } })
                 @Html.ValidationMessageFor(model => model.Birthday, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -146,13 +278,15 @@
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
-    </div>
-}
+    </div>*@
 
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
 
-<script src="~/Scripts/jquery-3.6.0.min.js"></script>
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+@section Script {
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Js/FindCityData.js"></script>
+    <script src="~/Js/Validation.js"></script>
+}

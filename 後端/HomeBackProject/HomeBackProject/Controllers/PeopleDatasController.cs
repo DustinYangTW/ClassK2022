@@ -67,11 +67,11 @@ namespace HomeBackProject.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             PeopleData peopleData = db.PeopleData.Find(id);
+            //找照片
             string autoFile = Server.MapPath("~/AllPhoto/PeopleImage/" + id);
             List<string> photo = searchPhotos.searchPhotos(autoFile, id);
-
-            int count = photo.Count();
-            ViewBag.photoHeadShot = count > 0 ? photo[0] : "../../AllPhoto/PeopleImage/all/people.jpg";
+            ViewBag.photoHeadShot = photo.Count() > 0 ? photo[0] : "../../AllPhoto/PeopleImage/all/people.jpg";
+            //找照片
 
             ViewBag.CompanyName = peopleData.CompanyName != null ? peopleData.CompanyName :"無";
 
@@ -152,15 +152,26 @@ namespace HomeBackProject.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             PeopleData peopleData = db.PeopleData.Find(id);
+            //找照片
+            string autoFile = Server.MapPath("~/AllPhoto/PeopleImage/" + id);
+            List<string> photo = searchPhotos.searchPhotos(autoFile, id);
+            ViewBag.photoHeadShot = photo.Count() > 0 ? photo[0] : "../../AllPhoto/PeopleImage/all/people.jpg";
+            //找照片
+
             if (peopleData == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.BirthDay = db.PeopleData.Where(m => m.PeopleID == id.ToString()).FirstOrDefault().Birthday;
+            var peopleDatas = db.PeopleData.Where(m => m.PeopleID == id.ToString()).FirstOrDefault();
+            string adnimID = Session["userID"].ToString();
+            ViewBag.BirthDay = peopleDatas.Birthday;
             ViewBag.EMail = new SelectList(db.AccountData, "EmailAccount", "PassWord", peopleData.EMail);
             ViewBag.County = new SelectList(db.CityTypeData, "CityIDTW", "CityTW", peopleData.County);
             ViewBag.SaleStateID = new SelectList(db.PeopleRankData, "HomeTSaleStateID", "PeopleRank", peopleData.SaleStateID);
             ViewBag.SchemeName = new SelectList(db.ProgramData, "ProgramSerialID", "ProgramName", peopleData.SchemeName);
+            ViewBag.Rank = db.PeopleData.Where(m => m.PeopleID == adnimID).FirstOrDefault().SaleStateID;
+            ViewBag.Gender = peopleDatas.Gender == true ? "男" : "女";
+
             return View(peopleData);
         }
 

@@ -224,6 +224,7 @@ namespace HomeBackProject.Controllers
             var countyTownlast = db.HomeData.Where(p => p.HomeID == homeData.HomeID).FirstOrDefault();
             ViewBag.HomeTownlast = countyTownlast.HomeTown;
 
+
             return View(homeData);
         }
 
