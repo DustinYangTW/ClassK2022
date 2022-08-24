@@ -7,9 +7,12 @@
 
 <h2>商品管理</h2>
 
-<p>
+@*<p>
     @Html.ActionLink("新增商品", "Create")
-</p>
+</p>*@
+<button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModal" id="btnCreate">
+    管理
+</button>
 <table class="table">
     <tr>
         <th>
@@ -123,5 +126,10 @@
     $('.btnDetail').click(function (evt) {
         //console.log("/Members/Details/" + evt.target.title);*/
         $('#exampleModal .modal-body').load("/Products/Details/" + evt.target.title);
+    });
+    $('#btnCreate').click(function () {
+        //console.log(evt.target.id);
+        $('#exampleModalLabel').text("新增商品資料");
+        $('#exampleModal .modal-body').load("Products/Create");
     });
 </script>

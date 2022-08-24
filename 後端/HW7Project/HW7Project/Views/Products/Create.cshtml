@@ -8,7 +8,7 @@
 <h2>新增資料</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Create", "Products", FormMethod.Post, new {enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
@@ -21,6 +21,7 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.ProductID, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.ProductID, "", new { @class = "text-danger" })
+                <span class = "text-danger"> @ViewBag.ErrMessageID</span>
             </div>
         </div>
 
@@ -40,6 +41,7 @@
 
                 <input id="photo" name="photo" type="file" class="form-control" data-val="true" data-val-required="請上傳照片" />
                 <span class="field-validation-valid text-danger" data-valmsg-for="photo" data-valmsg-replace="true"></span>
+                <span class="text-danger">@ViewBag.ErrMessage</span>
             </div>
         </div>
 
@@ -62,7 +64,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", row = "5" } })
+                @Html.TextAreaFor(model => model.Description, new { @class = "form-control", row = "7" ,col="50" })
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
         </div>
