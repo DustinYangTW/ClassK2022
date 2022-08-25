@@ -140,10 +140,10 @@
                                 @Html.DisplayFor(modelItem => item.SaleTypeData.SaleState)
                             </td>
                             <td>
-                                @*@Html.ActionLink("查詢", "Details", new { id = item.HomeID }, new { @class = "btn btn-primary" })*@
-                                <button type="button" title="@item.HomeID" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                @Html.ActionLink("查詢", "Details", new { id = item.HomeID }, new { @class = "btn btn-primary" })
+                                @*<button type="button" title="@item.HomeID" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                     詳細資料
-                                </button>
+                                </button>*@
                             </td>
                         </tr>
 
@@ -343,7 +343,7 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!--<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
@@ -359,15 +359,15 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
 
 
 @section Script {
     <script src="~/Js/FindCityData.js"></script>
-    <script>
+    @*<script>
         $('.btnDetail').click(function (evt) {
             //console.log("/Members/Details/" + evt.target.title);
             $('#exampleModal .modal-body').load("/Members/Details/" + evt.target.title);
         });
-    </script>
+    </script>*@
 }
