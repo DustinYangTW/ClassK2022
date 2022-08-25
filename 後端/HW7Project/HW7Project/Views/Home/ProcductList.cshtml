@@ -28,51 +28,62 @@
 
 @section scripts{
     <script>
+
         var cart = [];
+
         if (localStorage.getItem("cart")) {
             cart = JSON.parse(localStorage.getItem("cart"));
         }
 
+
         $('.addCart').click(function () {
 
             let product = $(this).closest('.card');
+
             let newPID = product.find(".PID").val();
-            let pName = product.find(".PName").text();
-            let price = product.find(".Price").attr("title");
-            let amount = 1;
-            console.log(product);
-            console.log(newPID);
-            console.log(pName);
-            console.log(price);
-            console.log(amount);
+            //let pName = product.find(".PName").text();
+            //let price = product.find(".Price").attr("title");
+            //let amount = 1;
 
-            for (let index in cart) {
-                console.log(index)
 
-                if (newPID == cart[index]["PID"]) {
-                    cart[index]["Amount"] += 1;
-                    localStorage.setItem("cart", JSON.stringify(cart));
-                    alert('商品數量已更新');
-                    break;
-                }
-                else if (cart.length - 1 == index) {
-                    let newItem = {
-                        PID: newPID,
-                        PName: pName,
-                        Price: price,
-                        Amount: amount
+            if (cart.length > 0) {
+
+                for (let index in cart) {
+
+                    if (newPID == cart[index]["PID"]) {
+                        cart[index]["Amount"] += 1;
+                        localStorage.setItem("cart", JSON.stringify(cart));
+                        alert('商品數量已更新');
+                        break;
                     }
-                    console.log(newItem);
-
-                    cart.push(newItem);
-                    console.log(cart);
-
-                    localStorage.setItem("cart", JSON.stringify(cart));
-                    alert('已加入購物車');
+                    else if (cart.length - 1 == index) {
+                        setCart(product);
+                    }
                 }
+
+            }
+            else {
+                setCart(product);
             }
 
+
         });
+
+        function setCart(product) {
+            let newItem = {
+                PID: product.find(".PID").val(),
+                PName: product.find(".PName").text(),
+                Price: product.find(".Price").attr("title"),
+                Amount: 1
+            }
+
+            cart.push(newItem);
+
+            localStorage.setItem("cart", JSON.stringify(cart));
+            alert('已加入購物車');
+        }
+
+
 
     </script>
 }
