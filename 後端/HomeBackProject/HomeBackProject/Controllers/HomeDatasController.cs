@@ -221,7 +221,7 @@ namespace HomeBackProject.Controllers
             ViewBag.countyIDlast = homeData.HomeCity;
             var countyTownlast = db.HomeData.Where(p => p.HomeID == homeData.HomeID).FirstOrDefault();
             ViewBag.HomeTownlast = countyTownlast.HomeTown;
-            var countyCountylast = db.CityTypeData.Where(p => p.CityIDTW == homeData.HomeCity).FirstOrDefault();
+            //var countyCountylast = db.CityTypeData.Where(p => p.CityIDTW == homeData.HomeCity).FirstOrDefault();
             ViewBag.countyTWlast = countyTownlast.HomeCity;
 
             return View(homeData);

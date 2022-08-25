@@ -120,6 +120,15 @@ namespace HomeBackProject.Controllers
                 }
             }
 
+            var account = db.AccountData.Find(peopleData.EMail);
+            if (account != null)
+            {
+                ViewBag.countyID = db.CityTypeData.ToList();
+                ViewBag.SaleStateID = db.PeopleRankData.ToList();
+                ViewBag.EmailErrorMessage = "**此帳號(E-mail)有人使用";
+                return View();
+            }
+
             if (ModelState.IsValid)
             {
                 accountData.EmailAccount = peopleData.EMail;
@@ -158,6 +167,7 @@ namespace HomeBackProject.Controllers
             ViewBag.photoHeadShot = photo.Count() > 0 ? photo[0] : "../../AllPhoto/PeopleImage/all/people.jpg";
             //找照片
 
+
             if (peopleData == null)
             {
                 return HttpNotFound();
@@ -165,17 +175,16 @@ namespace HomeBackProject.Controllers
 
             string adnimID = Session["userID"].ToString();
             ViewBag.BirthDay = peopleData.Birthday;
-            ViewBag.EMail = new SelectList(db.AccountData, "EmailAccount", "PassWord", peopleData.EMail);
-            ViewBag.County = new SelectList(db.CityTypeData, "CityIDTW", "CityTW", peopleData.County);
-            ViewBag.SaleStateID = new SelectList(db.PeopleRankData, "HomeTSaleStateID", "PeopleRank", peopleData.SaleStateID);
-            ViewBag.SchemeName = new SelectList(db.ProgramData, "ProgramSerialID", "ProgramName", peopleData.SchemeName);
             ViewBag.Rank = db.PeopleData.Where(m => m.PeopleID == adnimID).FirstOrDefault().SaleStateID;
             ViewBag.Gender = peopleData.Gender == true ? "男" : "女";
             ViewBag.countyID = db.CityTypeData.ToList();
             var countyTownlast = db.PeopleData.Where(p => p.PeopleID == id.ToString()).FirstOrDefault();
             ViewBag.Townlast = countyTownlast.Town;
             var countyCountylast = db.CityTypeData.Where(p => p.CityIDTW == peopleData.County).FirstOrDefault();
+            ViewBag.countyIDlast = peopleData.County;
             ViewBag.countyTWlast = countyCountylast.CityTW;
+            ViewBag.NowSaleStateID = peopleData.SaleStateID;
+            ViewBag.SaleStateID = db.PeopleRankData.ToList();
 
             return View(peopleData);
         }
@@ -185,16 +194,53 @@ namespace HomeBackProject.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(PeopleData peopleData)
+        public ActionResult Edit(PeopleData peopleData, HttpPostedFileBase[] photo)
         {
+            List<HttpPostedFileBase> photoList = new List<HttpPostedFileBase>();
+            string checkdataPhoto = "";
+            if (photo[0] != null)
+            {
+                for (int i = 0; i < photo.Length; i++)
+                {
+                    if (photo[i] == null)
+                    {
+                        break;
+                    }
+                    checkdataPhoto = postPhotos.checkPhoto(photo[i].FileName, photo[i].ContentLength);
+                    if (checkdataPhoto != "OK")
+                    {
+                        ViewBag.countyID = db.CityTypeData.ToList();
+                        ViewBag.SaleStateID = db.PeopleRankData.ToList();
+                        return View();
+                    }
+
+                    photoList.Add(photo[i]);
+                }
+            }
+            //ModelState.Remove("EMail");
             if (ModelState.IsValid)
             {
-                return actiondbController.Edit(db, peopleData);
+                db.Entry(peopleData).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+
+                string autoFile = Server.MapPath("~/AllPhoto");
+                return actiondbController.SavePhoto(autoFile, photoList, peopleData.PeopleID, "Index", "PeopleDatas");
             }
-            ViewBag.EMail = new SelectList(db.AccountData, "EmailAccount", "PassWord", peopleData.EMail);
-            ViewBag.County = new SelectList(db.CityTypeData, "CityIDTW", "CityTW", peopleData.County);
-            ViewBag.SaleStateID = new SelectList(db.PeopleRankData, "HomeTSaleStateID", "PeopleRank", peopleData.SaleStateID);
-            ViewBag.SchemeName = new SelectList(db.ProgramData, "ProgramSerialID", "ProgramName", peopleData.SchemeName);
+
+            string id = peopleData.PeopleID;
+            string adnimID = Session["userID"].ToString();
+            ViewBag.BirthDay = peopleData.Birthday;
+            ViewBag.Rank = db.PeopleData.Where(m => m.PeopleID == adnimID).FirstOrDefault().SaleStateID;
+            ViewBag.Gender = peopleData.Gender == true ? "男" : "女";
+            ViewBag.countyID = db.CityTypeData.ToList();
+            var countyTownlast = db.PeopleData.Where(p => p.PeopleID == id.ToString()).FirstOrDefault();
+            ViewBag.Townlast = countyTownlast.Town;
+            var countyCountylast = db.CityTypeData.Where(p => p.CityIDTW == peopleData.County).FirstOrDefault();
+            ViewBag.countyIDlast = peopleData.County;
+            ViewBag.countyTWlast = countyCountylast.CityTW;
+            ViewBag.NowSaleStateID = peopleData.SaleStateID;
+            ViewBag.SaleStateID = db.PeopleRankData.ToList();
+
             return View(peopleData);
         }
 
