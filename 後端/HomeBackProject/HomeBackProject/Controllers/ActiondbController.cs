@@ -15,6 +15,7 @@ namespace HomeBackProject.Controllers
     public class ActiondbController : Controller
     {
         private  PostPhotos postPhotos = new PostPhotos();
+        private SearchPhotos searchPhotos = new SearchPhotos();
         //private string goTitle = "E:/Git2/後端/HomeBackProject/HomeBackProject"; //Home
         //private string goTitle = "D:/Git2/後端/HomeBackProject/HomeBackProject"; //school
 
@@ -124,6 +125,10 @@ namespace HomeBackProject.Controllers
             if (Directory.Exists(@filename) == false)
             {
                 Directory.CreateDirectory(@filename);
+            }
+            else
+            {
+                List<string> allphotos =searchPhotos.searchPhotos(autoFile, caseID);
             }
 
             filename = autoFile + "/" + allName + "/" + caseID + "/";

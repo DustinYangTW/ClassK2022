@@ -115,14 +115,7 @@ namespace HomeBackProject.Controllers
             string autoFile = Server.MapPath("~/AllPhoto/Home"+"/"+id);
             List<string> photo = searchPhotos.searchPhotos(autoFile,id);
 
-            int count = photo.Count();
-            ViewBag.photo0= count > 0?photo[0]:"";
-            ViewBag.photo1= count > 1?photo[1]:"";
-            ViewBag.photo2= count > 2?photo[2]:"";
-            ViewBag.photo3= count > 3?photo[3]:"";
-            ViewBag.photo4= count > 4?photo[4]:"";
-            ViewBag.photo5= count > 5?photo[5]:"";
-
+            ViewBag.allPhoto = photo;
 
 
             if (homeData == null)

@@ -180,16 +180,15 @@
         <dd>
             @Html.DisplayFor(model => model.SaleTypeData.SaleState)
         </dd>
-        
+
     </dl>
 </div>
 
-<img src="@ViewBag.photo0"/>
-<img src="@ViewBag.photo1"/>
-<img src="@ViewBag.photo2"/>
-<img src="@ViewBag.photo3"/>
-<img src="@ViewBag.photo4"/>
-<img src="@ViewBag.photo5"/>
+@foreach (var photo in @ViewBag.allPhoto)
+{
+    <img src="@photo" />
+}
+
 
 <div>
     @Html.ActionLink("編輯", "Edit", new { id = Model.HomeID }, new { @class = "btn btn-primary" })
