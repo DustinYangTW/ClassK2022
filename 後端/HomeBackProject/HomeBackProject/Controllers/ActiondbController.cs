@@ -14,7 +14,7 @@ namespace HomeBackProject.Controllers
     {
         private PostPhotos postPhotos = new PostPhotos();
         private SearchPhotos searchPhotos = new SearchPhotos();
-        private List<string> allphotos = new List<string>();
+        private List<string> searchPhotosName = new List<string>();
         //private string goTitle = "E:/Git2/後端/HomeBackProject/HomeBackProject"; //Home
         //private string goTitle = "D:/Git2/後端/HomeBackProject/HomeBackProject"; //school
 
@@ -154,7 +154,6 @@ namespace HomeBackProject.Controllers
             string filename = autoFile + "/" + allName + "/" + caseID;
             string checkid = "";
 
-            List<string> searchPhotosName = searchPhotos.searchPhotos(filename);
 
             //如果沒有這個路徑就是要新增路徑
             if (Directory.Exists(@filename) == false)
@@ -164,7 +163,7 @@ namespace HomeBackProject.Controllers
             else
             {
                 //如果有這路徑，去查詢裡面有幾個檔案
-                this.allphotos = searchPhotos.searchPhotos(filename, caseID);
+                this.searchPhotosName = searchPhotos.searchPhotos(filename);
             }
 
             //當圖片>6張時，重第一章開始做刪除
@@ -177,8 +176,8 @@ namespace HomeBackProject.Controllers
             }
 
             filename = autoFile + "/" + allName + "/" + caseID + "/";
-
-            int lastPhotoNumber = this.allphotos.Count() == 0 ? 0 : Int16.Parse(photo[photo.Count - 1].ToString().Substring(0, photo[photo.Count - 1].ToString().IndexOf("."))) + 1;
+                                                                                            //抓取最後一個檔案名子2.jpg            轉換成字串       從0開始到.結束的文字擷取        最後再轉成int       
+            int lastPhotoNumber = this.searchPhotosName.Count() == 0 ? 0 : Int16.Parse(searchPhotosName[searchPhotosName.Count - 1].ToString().Substring(0, photo[photo.Count - 1].ToString().IndexOf("."))) + 1;
             //後面是做抓取最後一筆相片的編號!!!
 
             for (int i = lastPhotoNumber; i < photo.Count; i++)
