@@ -6,16 +6,15 @@ using System.Web.Mvc;
 using System.Data.Entity;
 using HomeBackProject.Models;
 using System.IO;
-using HomeBackProject;
 using HomeBackProject.library;
-using System.Data.Entity.Validation;
 
 namespace HomeBackProject.Controllers
 {
     public class ActiondbController : Controller
     {
-        private  PostPhotos postPhotos = new PostPhotos();
+        private PostPhotos postPhotos = new PostPhotos();
         private SearchPhotos searchPhotos = new SearchPhotos();
+        private List<string> allphotos = new List<string>();
         //private string goTitle = "E:/Git2/後端/HomeBackProject/HomeBackProject"; //Home
         //private string goTitle = "D:/Git2/後端/HomeBackProject/HomeBackProject"; //school
 
@@ -59,7 +58,7 @@ namespace HomeBackProject.Controllers
             if (ModelState.IsValid)
             {
                 dbSet.Add(item);
-                db.SaveChanges();       
+                db.SaveChanges();
             }
             return RedirectToAction(actionName, cName);
         }
@@ -108,39 +107,6 @@ namespace HomeBackProject.Controllers
             return RedirectToAction("Index");
         }
 
-        /// <summary>
-        /// 透過傳入的值來達成，上傳照片
-        /// </summary>
-        /// <param name="photo"></param>
-        /// <param name="peopleID"></param>
-        /// <param name="caseID"></param>
-        /// <returns></returns>
-        public ActionResult SavePhoto(string autoFile, List<HttpPostedFileBase> photo, string peopleID, string caseID)
-        {
-            string allName = postPhotos.ChangeAllName(caseID);
-            string filename = autoFile + "/" + allName + "/" + caseID;
-            string checkid = "";
-
-
-            if (Directory.Exists(@filename) == false)
-            {
-                Directory.CreateDirectory(@filename);
-            }
-            else
-            {
-                List<string> allphotos =searchPhotos.searchPhotos(autoFile, caseID);
-            }
-
-            filename = autoFile + "/" + allName + "/" + caseID + "/";
-
-            for (int i = 0; i < photo.Count; i++)
-            {
-                checkid = photo[i].FileName.Substring(photo[i].FileName.IndexOf("."));
-                photo[i].SaveAs(filename + string.Concat(i, checkid));
-            }
-            return RedirectToAction("Index");
-        }
-
 
 
         /// <summary>
@@ -151,12 +117,12 @@ namespace HomeBackProject.Controllers
         /// <param name="actionName"></param>
         /// <param name="cName"></param>
         /// <returns></returns>
-        public ActionResult SavePhoto(string autoFile,List<HttpPostedFileBase> photo, string peopleID, string actionName, string cName)
+        public ActionResult SavePhoto(string autoFile, List<HttpPostedFileBase> photo, string peopleID, string actionName, string cName)
         {
             //string goTitle = "E:/Git2/後端/HomeBackProject/HomeBackProject"; //Home
             //string goTitle = "D:/Git2/後端/HomeBackProject/HomeBackProject"; //school
-            
-            string filename = autoFile + "/" + "PeopleImage" + "/" +peopleID;
+
+            string filename = autoFile + "/" + "PeopleImage" + "/" + peopleID;
             string checkid = "";
 
             if (Directory.Exists(@filename) == false)
@@ -174,5 +140,55 @@ namespace HomeBackProject.Controllers
             return RedirectToAction(actionName, cName);
         }
 
+
+        /// <summary>
+        /// 透過傳入的值來達成，上傳照片
+        /// </summary>
+        /// <param name="photo"></param>
+        /// <param name="peopleID"></param>
+        /// <param name="caseID"></param>
+        /// <returns></returns>
+        public ActionResult SavePhoto(string autoFile, List<HttpPostedFileBase> photo, string peopleID, string caseID)
+        {
+            string allName = postPhotos.ChangeAllName(caseID);
+            string filename = autoFile + "/" + allName + "/" + caseID;
+            string checkid = "";
+
+            List<string> searchPhotosName = searchPhotos.searchPhotos(filename);
+
+            //如果沒有這個路徑就是要新增路徑
+            if (Directory.Exists(@filename) == false)
+            {
+                Directory.CreateDirectory(@filename);
+            }
+            else
+            {
+                //如果有這路徑，去查詢裡面有幾個檔案
+                this.allphotos = searchPhotos.searchPhotos(filename, caseID);
+            }
+
+            //當圖片>6張時，重第一章開始做刪除
+            if ((searchPhotosName.Count + photo.Count) > 6)
+            {
+                for (int i = 0; i < (searchPhotosName.Count + photo.Count - 6); i++)
+                {
+                    searchPhotos.DeletePhoto(filename, searchPhotosName[i], caseID);
+                }
+            }
+
+            filename = autoFile + "/" + allName + "/" + caseID + "/";
+
+            int lastPhotoNumber = this.allphotos.Count() == 0 ? 0 : Int16.Parse(photo[photo.Count - 1].ToString().Substring(0, photo[photo.Count - 1].ToString().IndexOf("."))) + 1;
+            //後面是做抓取最後一筆相片的編號!!!
+
+            for (int i = lastPhotoNumber; i < photo.Count; i++)
+            {
+                checkid = photo[i].FileName.Substring(photo[i].FileName.IndexOf("."));
+                photo[i].SaveAs(filename + string.Concat(i, checkid));
+            }
+
+            return RedirectToAction("Index");
+
+        }
     }
 }

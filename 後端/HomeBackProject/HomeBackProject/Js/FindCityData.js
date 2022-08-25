@@ -1,10 +1,10 @@
 ﻿
 function mainIdex() {
     var selectCountyValue = $('#selectCounty').val();
-    //console.log(selectCountyValue);
+    console.log(selectCountyValue);
     //var selecttwValue = $('#selectCity').children().text();
     var selecttwValue = $('#selectCity').children().val();
-    //console.log(selecttwValue);
+    console.log(selecttwValue);
     
     var cityid = "";
     var cityadd = "";
@@ -12,8 +12,8 @@ function mainIdex() {
     if (selecttwValue == "不拘") {
         cityadd = `<option value="">不拘</option>`;
     }else if (selecttwValue == "請先選擇城市") {
-        cityadd = `<option disabled style="display: none" selected value>請選擇</option>`;
-    } else {
+        cityadd = `<option disabled style="display: none" selected value="請先選擇城市">請選擇</option>`;
+    }else {
         cityadd = `<option  value="${selecttwValue}">${selecttwValue}</option>`;
     }
     $('#selectCity').append(cityadd);
