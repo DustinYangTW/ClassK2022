@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout_LogInOut.cshtml";
-    var test = @ViewBag.CheckData;
+    var idNmae = @ViewBag.CheckData;
 }
 
 
@@ -27,6 +27,7 @@
         <div class="col-lg-10">
             @*href="/OthersSet/Create?idNmae=@ViewBag.CheckData"*@
             <h3 class="text-black fs-3 d-flex justify-content-center bg-opacity-75 fw-bolder rounded-3 m-2 p-2 mt-4 mt-lg-2">@ViewBag.CheckView</h3>
+
             <div class="d-flex justify-content-end" id="form">
                 <a class="btn btn-blue-n rounded-3 shadow mb-2 ms-2" id="Create" onclick="create()">新增</a>
             </div>
@@ -319,7 +320,7 @@
 
 @section Script {
     <script>
-        var test = "@test";
+        var idNmae = "@idNmae";
         //$('#Create').click(() => {
         //    $('#form').empty();
         //    var tttt = `<form action="/OthersSet/Create?idNmae=${test}" method="post">
@@ -336,21 +337,20 @@
         //    var tttt = `<a class="btn btn-blue-n rounded-3 shadow mb-2 ms-2" id="Create">新增</a>`
         //    $('#form').append(tttt);
         //});
-
         function create() {
             $('#form').empty();
-            var tttt = `<form action="/OthersSet/Create?idNmae=${test}" method="post">
+            var form = `<form action="/OthersSet/Create?idNmae=${idNmae}" method="post">
                            <input id="Text1" type="text" name="toDBName"/>
                            <button class="btn  btn-warning rounded-3 shadow mb-2 ms-2" type="submit">新增</button>
                         </form>`
-            $('#form').append(tttt);
+            $('#form').append(form);
             $('#form').append(`<a class="btn btn-blue-n rounded-3 shadow mb-2 ms-2" onclick="reset()">返回</a>`);
         }
 
         function reset() {
             $('#form').empty();
-            var tttt = `<a class="btn btn-blue-n rounded-3 shadow mb-2 ms-2" id="Create" onclick="create()">新增</a>`
-            $('#form').append(tttt);
+            var form = `<a class="btn btn-blue-n rounded-3 shadow mb-2 ms-2" id="Create" onclick="create()">新增</a>`
+            $('#form').append(form);
         }
 
     </script>
