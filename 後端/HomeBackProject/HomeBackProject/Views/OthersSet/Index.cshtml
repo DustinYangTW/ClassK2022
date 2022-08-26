@@ -3,15 +3,16 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout_LogInOut.cshtml";
+    var test = @ViewBag.CheckData;
 }
 
 
 <div class="container p-4">
-    <div class="row">
+    <div class="row ms-2  me-4">
         <div class="col-lg-2">
             <div class="list-group">
                 <a class="list-group-item list-group-item-primary active disabled text-center p-3 fs-4" aria-current="true">
-                    其他相關設定
+                    相關設定
                 </a>
                 <a class="list-group-item list-group-item-action list-group-item-light text-center p-3" href="/OthersSet/index?idNmae=Rank">會員身份設定</a>
                 <a class="list-group-item list-group-item-action list-group-item-secondary text-center p-3" href="/OthersSet/index?idNmae=Program">會員方案設定</a>
@@ -24,17 +25,23 @@
             </div>
         </div>
         <div class="col-lg-10">
-            <h3 class="text-black fs-3 d-flex justify-content-center bg-opacity-75 fw-bolder rounded-3 m-2 p-2">@ViewBag.CheckView</h3>
+            @*href="/OthersSet/Create?idNmae=@ViewBag.CheckData"*@
+            <h3 class="text-black fs-3 d-flex justify-content-center bg-opacity-75 fw-bolder rounded-3 m-2 p-2 mt-4 mt-lg-2">@ViewBag.CheckView</h3>
+            <div class="d-flex justify-content-end" id="form">
+                <a class="btn btn-blue-n rounded-3 shadow mb-2 ms-2" id="Create" onclick="create()">新增</a>
+            </div>
+
             @if (@ViewBag.CheckData == "Rank")
             {
+
                 <div class="table-responsive shadow border border-dark rounded-start">
                     <table class="table text-center table-striped table-hover" overflow="auto">
                         <thead>
                             <tr>
-                                <th>
+                                <th class="col-lg-2">
                                     編號
                                 </th>
-                                <th>
+                                <th class="col-lg-6">
                                     名稱
                                 </th>
                                 <th>詳細資料</th>
@@ -52,16 +59,299 @@
                                     </td>
                                     <td>
                                         @Html.ActionLink("詳細資料", "Details", new { id = item.HomeTSaleStateID }, new { @class = "btn btn-outline-primary" })
-                                        @Html.ActionLink("刪除", "Details", new { id = item.HomeTSaleStateID }, new { @class = "btn btn-outline-primary" })
+                                        @Html.ActionLink("刪除", "Details", new { id = item.HomeTSaleStateID }, new { @class = "btn btn-outline-danger ms-2" })
                                     </td>
                                 </tr>
                             }
                         </tbody>
                     </table>
-
                 </div>
             }
+            else if (@ViewBag.CheckData == "Program")
+            {
+                <div class="table-responsive shadow border border-dark rounded-start">
+                    <table class="table text-center table-striped table-hover" overflow="auto">
+                        <thead>
+                            <tr>
+                                <th class="col-lg-2">
+                                    編號
+                                </th>
+                                <th class="col-lg-6">
+                                    名稱
+                                </th>
+                                <th>詳細資料</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.ProgramData)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ProgramSerialID)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ProgramName)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("詳細資料", "Details", new { id = item.ProgramSerialID }, new { @class = "btn btn-outline-primary" })
+                                        @Html.ActionLink("刪除", "Details", new { id = item.ProgramSerialID }, new { @class = "btn btn-outline-danger ms-2" })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else if (@ViewBag.CheckData == "Home")
+            {
+                <div class="table-responsive shadow border border-dark rounded-start">
+                    <table class="table text-center table-striped table-hover" overflow="auto">
+                        <thead>
+                            <tr>
+                                <th class="col-lg-2">
+                                    編號
+                                </th>
+                                <th class="col-lg-6">
+                                    名稱
+                                </th>
+                                <th>詳細資料</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.HomeTypeData)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.HomeTypeID)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.HomeTypeName)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("詳細資料", "Details", new { id = item.HomeTypeID }, new { @class = "btn btn-outline-primary" })
+                                        @Html.ActionLink("刪除", "Details", new { id = item.HomeTypeID }, new { @class = "btn btn-outline-danger ms-2" })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else if (@ViewBag.CheckData == "Car")
+            {
+                <div class="table-responsive shadow border border-dark rounded-start">
+                    <table class="table text-center table-striped table-hover" overflow="auto">
+                        <thead>
+                            <tr>
+                                <th class="col-lg-2">
+                                    編號
+                                </th>
+                                <th class="col-lg-6">
+                                    名稱
+                                </th>
+                                <th>詳細資料</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.CarTypeData)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CarTypeID)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CarTypeName)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("詳細資料", "Details", new { id = item.CarTypeID }, new { @class = "btn btn-outline-primary" })
+                                        @Html.ActionLink("刪除", "Details", new { id = item.CarTypeID }, new { @class = "btn btn-outline-danger ms-2" })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else if (@ViewBag.CheckData == "Territory")
+            {
+                <div class="table-responsive shadow border border-dark rounded-start">
+                    <table class="table text-center table-striped table-hover" overflow="auto">
+                        <thead>
+                            <tr>
+                                <th class="col-lg-2">
+                                    編號
+                                </th>
+                                <th class="col-lg-6">
+                                    名稱
+                                </th>
+                                <th>詳細資料</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.TerritoryTypeData)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TerritorySerialID)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TerritoryTypeSelect)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("詳細資料", "Details", new { id = item.TerritorySerialID }, new { @class = "btn btn-outline-primary" })
+                                        @Html.ActionLink("刪除", "Details", new { id = item.TerritorySerialID }, new { @class = "btn btn-outline-danger ms-2" })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else if (@ViewBag.CheckData == "Sale")
+            {
+                <div class="table-responsive shadow border border-dark rounded-start">
+                    <table class="table text-center table-striped table-hover" overflow="auto">
+                        <thead>
+                            <tr>
+                                <th class="col-lg-2">
+                                    編號
+                                </th>
+                                <th class="col-lg-6">
+                                    名稱
+                                </th>
+                                <th>詳細資料</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.SaleTypeData)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.SaleStateID)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.SaleState)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("詳細資料", "Details", new { id = item.SaleStateID }, new { @class = "btn btn-outline-primary" })
+                                        @Html.ActionLink("刪除", "Details", new { id = item.SaleStateID }, new { @class = "btn btn-outline-danger ms-2" })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else if (@ViewBag.CheckData == "AD")
+            {
+                <div class="table-responsive shadow border border-dark rounded-start">
+                    <table class="table text-center table-striped table-hover" overflow="auto">
+                        <thead>
+                            <tr>
+                                <th class="col-lg-2">
+                                    編號
+                                </th>
+                                <th class="col-lg-6">
+                                    名稱
+                                </th>
+                                <th>詳細資料</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.ADTypeData)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ADID)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ADName)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("詳細資料", "Details", new { id = item.ADID }, new { @class = "btn btn-outline-primary" })
+                                        @Html.ActionLink("刪除", "Details", new { id = item.ADID }, new { @class = "btn btn-outline-danger ms-2" })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else if (@ViewBag.CheckData == "City")
+            {
+                <div class="table-responsive shadow border border-dark rounded-start">
+                    <table class="table text-center table-striped table-hover" overflow="auto">
+                        <thead>
+                            <tr>
+                                <th class="col-lg-2">
+                                    編號
+                                </th>
+                                <th class="col-lg-6">
+                                    名稱
+                                </th>
+                                <th>詳細資料</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.CityTypeData)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CityIDTW)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CityTW)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("詳細資料", "Details", new { id = item.CityIDTW }, new { @class = "btn btn-outline-primary" })
+                                        @Html.ActionLink("刪除", "Details", new { id = item.CityIDTW }, new { @class = "btn btn-outline-danger ms-2" })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+
         </div>
     </div>
 </div>
 
+@section Script {
+    <script>
+        var test = "@test";
+        //$('#Create').click(() => {
+        //    $('#form').empty();
+        //    var tttt = `<form action="/OthersSet/Create?idNmae=${test}" method="post">
+        //                   <input id="Text1" type="text" />
+        //                   <button class="btn btn-blue-n rounded-3 shadow mb-2 ms-2" type="submit">送出</button>
+        //                </form>`
+        //    $('#form').append(tttt);
+        //    $('#form').append(`<a class="btn btn-blue-n rounded-3 shadow mb-2 ms-2" onclick=reset();>返回</a>`);
+        //});
+
+        //$('#Reset').click(() => {
+        //    console.log(1)
+        //    $('#form').empty();
+        //    var tttt = `<a class="btn btn-blue-n rounded-3 shadow mb-2 ms-2" id="Create">新增</a>`
+        //    $('#form').append(tttt);
+        //});
+
+        function create() {
+            $('#form').empty();
+            var tttt = `<form action="/OthersSet/Create?idNmae=${test}" method="post">
+                           <input id="Text1" type="text" name="toDBName"/>
+                           <button class="btn  btn-warning rounded-3 shadow mb-2 ms-2" type="submit">新增</button>
+                        </form>`
+            $('#form').append(tttt);
+            $('#form').append(`<a class="btn btn-blue-n rounded-3 shadow mb-2 ms-2" onclick="reset()">返回</a>`);
+        }
+
+        function reset() {
+            $('#form').empty();
+            var tttt = `<a class="btn btn-blue-n rounded-3 shadow mb-2 ms-2" id="Create" onclick="create()">新增</a>`
+            $('#form').append(tttt);
+        }
+
+    </script>
+}

@@ -1,0 +1,27 @@
+﻿@model HomeBackProject.Models.PeopleRankData
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout_LogInOut.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PeopleRankData</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PeopleRank)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PeopleRank)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.HomeTSaleStateID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

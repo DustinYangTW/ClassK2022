@@ -105,10 +105,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AllPhoto\A000000001\Home\H000000008\0.jpg" />
-    <Content Include="AllPhoto\A000000001\Home\H000000008\1.jpg" />
-    <Content Include="AllPhoto\A000000001\Home\H000000011\0.jpg" />
-    <Content Include="AllPhoto\A000000001\Home\H000000011\1.jpeg" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -241,6 +237,7 @@
     <Compile Include="Controllers\LogInOutController.cs" />
     <Compile Include="Controllers\PeopleDatasController.cs" />
     <Compile Include="Controllers\OthersSetController.cs" />
+    <Compile Include="Controllers\PeopleRankDatasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -356,8 +353,12 @@
     <Content Include="Views\Shared\_Layout_LogInOut.cshtml" />
     <Content Include="Views\Shared\_Layout_LogInOutLast.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\VMOthersSet\Index.cshtml" />
     <Content Include="Views\OthersSet\Index.cshtml" />
+    <Content Include="Views\PeopleRankDatas\Create.cshtml" />
+    <Content Include="Views\PeopleRankDatas\Delete.cshtml" />
+    <Content Include="Views\PeopleRankDatas\Details.cshtml" />
+    <Content Include="Views\PeopleRankDatas\Edit.cshtml" />
+    <Content Include="Views\PeopleRankDatas\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -366,11 +367,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="AllPhoto\A000000001\Home\H000000003\" />
-    <Folder Include="AllPhoto\A000000001\Home\H000000004\" />
-    <Folder Include="AllPhoto\A000000001\Home\H000000005\" />
-    <Folder Include="AllPhoto\A000000003\Peopleimage\" />
-    <Folder Include="AllPhoto\A000000004\Peopleimage\" />
+    <Folder Include="AllPhoto\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
