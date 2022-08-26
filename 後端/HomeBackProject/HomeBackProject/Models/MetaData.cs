@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using static HomeBackProject.Models.CheckDataFromDB;
 
 namespace MetaDataHomeBackProject.Models
 {

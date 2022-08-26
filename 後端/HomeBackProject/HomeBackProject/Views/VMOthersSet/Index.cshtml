@@ -1,0 +1,71 @@
+﻿@model HomeBackProject.ViewModel.VMOthersSet
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_LogInOut.cshtml";
+}
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-3">
+            <ul>
+                <li><a href="OthersSet/index?xxx=1">test</a></li>
+            </ul>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="table-responsive mt-3 mt-lg-5 shadow border border-dark rounded-start">
+    <table class="table text-center table-striped table-hover" overflow="auto">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.PeopleRankData)
+                </th>
+                <th>詳細資料</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.@PeopleRankData)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HomeTSaleStateID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PeopleRank)
+                    </td>
+                    <td>
+                        @*@Html.ActionLink("詳細資料", "Details", new { id = item.PeopleID }, new { @class = "btn btn-outline-primary" })*@
+                        <button type="button" class="btn btn-outline-primary btnDetail" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            詳細資料
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<tr>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+    </td>
+</tr>
+
+</table>
