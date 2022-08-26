@@ -240,6 +240,7 @@
     <Compile Include="Controllers\LoginCkeck.cs" />
     <Compile Include="Controllers\LogInOutController.cs" />
     <Compile Include="Controllers\PeopleDatasController.cs" />
+    <Compile Include="Controllers\OthersSetController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -355,6 +356,8 @@
     <Content Include="Views\Shared\_Layout_LogInOut.cshtml" />
     <Content Include="Views\Shared\_Layout_LogInOutLast.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\VMOthersSet\Index.cshtml" />
+    <Content Include="Views\OthersSet\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

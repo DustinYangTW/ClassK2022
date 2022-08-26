@@ -25,7 +25,7 @@ function mainIdex() {
     }
     var arr = [];
     $.ajax({
-        url: `https://api.nlsc.gov.tw/other/ListTown1/${selectCountyValue}`,
+        url: `https://api.nlsc.gov.tw/other/ListTown/${selectCountyValue}`,
         type: 'GET',
         timeout: 1000,
         success: function (data) {
@@ -38,7 +38,7 @@ function mainIdex() {
                 //console.log(arr);
                 //console.log(arr.indexOf("縣"));
                 //console.log(arr.indexOf("市"));
-                //console.log(selecttwValue);
+                console.log(selecttwValue);
 
                 if (arr.indexOf("縣") == -1 && arr.indexOf("市") == -1) {
                     cityadd = `<option value="${cityid}">${cityid}</option>`;

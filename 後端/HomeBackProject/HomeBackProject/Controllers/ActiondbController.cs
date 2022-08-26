@@ -166,24 +166,28 @@ namespace HomeBackProject.Controllers
                 this.searchPhotosName = searchPhotos.searchPhotos(filename);
             }
 
-            //當圖片>6張時，重第一章開始做刪除
-            if ((searchPhotosName.Count + photo.Count) > 6)
-            {
-                for (int i = 0; i < (searchPhotosName.Count + photo.Count - 6); i++)
-                {
-                    searchPhotos.DeletePhoto(filename, searchPhotosName[i], caseID);
-                }
-            }
+            //當圖片 > 6張時，重第一章開始做刪除
+            //if ((searchPhotosName.Count + photo.Count) > 6)
+            //{
+            //    for (int i = 0; i < (searchPhotosName.Count + photo.Count - 6); i++)
+            //    {
+            //        searchPhotos.DeletePhoto(filename, searchPhotosName[i], caseID);
+            //    }
+            //}
 
             filename = autoFile + "/" + allName + "/" + caseID + "/";
-                                                                                            //抓取最後一個檔案名子2.jpg            轉換成字串       從0開始到.結束的文字擷取        最後再轉成int       
-            int lastPhotoNumber = this.searchPhotosName.Count() == 0 ? 0 : Int16.Parse(searchPhotosName[searchPhotosName.Count - 1].ToString().Substring(0, photo[photo.Count - 1].ToString().IndexOf("."))) + 1;
+            string test = this.searchPhotosName[searchPhotosName.Count - 1].ToString();
+            int testtt = test.ToString().IndexOf(".");
+            //抓取最後一個檔案名子2.jpg            轉換成字串       從0開始到.結束的文字擷取        最後再轉成int       
+            int lastPhotoNumber = this.searchPhotosName.Count() == 0 ? 0 : Int16.Parse(test.Substring(0, testtt)) + 1;
             //後面是做抓取最後一筆相片的編號!!!
 
-            for (int i = lastPhotoNumber; i < photo.Count; i++)
+            int getData;
+            for (int i = lastPhotoNumber; i <= photo.Count; i++)
             {
-                checkid = photo[i].FileName.Substring(photo[i].FileName.IndexOf("."));
-                photo[i].SaveAs(filename + string.Concat(i, checkid));
+                getData = lastPhotoNumber == 0 ? i :i-1;
+                checkid = photo[getData].FileName.Substring(photo[getData].FileName.IndexOf("."));
+                photo[getData].SaveAs(filename + string.Concat(i, checkid));
             }
 
             return RedirectToAction("Index");
