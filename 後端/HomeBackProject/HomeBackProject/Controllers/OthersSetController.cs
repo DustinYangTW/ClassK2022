@@ -24,7 +24,8 @@ namespace HomeBackProject.Controllers
                 {
                     PeopleRankData = db.PeopleRankData.ToList()
                 };
-                ViewBag.CheckData = "會員身份設定";
+                ViewBag.CheckData = idNmae;
+                ViewBag.CheckView = "會員身份設定";
                 return View(vMOthersSet);
             }
             //VMOthersSet vMOthersSet = new VMOthersSet()
@@ -38,7 +39,7 @@ namespace HomeBackProject.Controllers
             //    //CarTypeData = db.CarTypeData.ToList(),
             //    //ADTypeData = db.ADTypeData.ToList()
             //};
-            ViewBag.CheckData = "請在左側選擇要操作的系統";
+            ViewBag.CheckView = "請在左側選擇要操作的系統";
             return View();
         }
     }

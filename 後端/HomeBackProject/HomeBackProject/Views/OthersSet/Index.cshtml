@@ -10,21 +10,21 @@
     <div class="row">
         <div class="col-lg-2">
             <div class="list-group">
-                <a class="list-group-item list-group-item-info active disabled text-center p-3 fs-4" aria-current="true">
+                <a class="list-group-item list-group-item-primary active disabled text-center p-3 fs-4" aria-current="true">
                     其他相關設定
                 </a>
-                <a class="list-group-item list-group-item-action text-center p-3" href="/OthersSet/index?idNmae=Rank">會員身份設定</a>
-                <a class="list-group-item list-group-item-action text-center p-3" href="/OthersSet/index?idNmae=Program">會員方案設定</a>
-                <a class="list-group-item list-group-item-action text-center p-3" href="/OthersSet/index?idNmae=Home">房屋類型設定</a>
-                <a class="list-group-item list-group-item-action text-center p-3" href="/OthersSet/index?idNmae=Territory">土地類型設定</a>
-                <a class="list-group-item list-group-item-action text-center p-3" href="/OthersSet/index?idNmae=Car">車位類型設定</a>
-                <a class="list-group-item list-group-item-action text-center p-3" href="/OthersSet/index?idNmae=Sale">銷售類型設定</a>
-                <a class="list-group-item list-group-item-action text-center p-3" href="/OthersSet/index?idNmae=AD">廣告設定</a>
-                <a class="list-group-item list-group-item-action text-center p-3" href="/OthersSet/index?idNmae=City">縣市設定</a>
+                <a class="list-group-item list-group-item-action list-group-item-light text-center p-3" href="/OthersSet/index?idNmae=Rank">會員身份設定</a>
+                <a class="list-group-item list-group-item-action list-group-item-secondary text-center p-3" href="/OthersSet/index?idNmae=Program">會員方案設定</a>
+                <a class="list-group-item list-group-item-action list-group-item-light text-center p-3" href="/OthersSet/index?idNmae=Home">房屋類型設定</a>
+                <a class="list-group-item list-group-item-action list-group-item-secondary text-center p-3" href="/OthersSet/index?idNmae=Territory">土地類型設定</a>
+                <a class="list-group-item list-group-item-action list-group-item-light text-center p-3" href="/OthersSet/index?idNmae=Car">車位類型設定</a>
+                <a class="list-group-item list-group-item-action list-group-item-secondary text-center p-3" href="/OthersSet/index?idNmae=Sale">銷售類型設定</a>
+                <a class="list-group-item list-group-item-action list-group-item-light text-center p-3" href="/OthersSet/index?idNmae=AD">廣告設定</a>
+                <a class="list-group-item list-group-item-action list-group-item-secondary text-center p-3" href="/OthersSet/index?idNmae=City">縣市設定</a>
             </div>
         </div>
         <div class="col-lg-10">
-            <h3 class="text-black fs-3 d-flex justify-content-center bg-opacity-75 fw-bolder rounded-3 m-2 p-2">@ViewBag.CheckData</h3>
+            <h3 class="text-black fs-3 d-flex justify-content-center bg-opacity-75 fw-bolder rounded-3 m-2 p-2">@ViewBag.CheckView</h3>
             @if (@ViewBag.CheckData == "Rank")
             {
                 <div class="table-responsive shadow border border-dark rounded-start">
@@ -51,10 +51,8 @@
                                         @Html.DisplayFor(modelItem => item.PeopleRank)
                                     </td>
                                     <td>
-                                        @*@Html.ActionLink("詳細資料", "Details", new { id = item.PeopleID }, new { @class = "btn btn-outline-primary" })*@
-                                        <button type="button" class="btn btn-outline-primary btnDetail">
-                                            詳細資料
-                                        </button>
+                                        @Html.ActionLink("詳細資料", "Details", new { id = item.HomeTSaleStateID }, new { @class = "btn btn-outline-primary" })
+                                        @Html.ActionLink("刪除", "Details", new { id = item.HomeTSaleStateID }, new { @class = "btn btn-outline-primary" })
                                     </td>
                                 </tr>
                             }
