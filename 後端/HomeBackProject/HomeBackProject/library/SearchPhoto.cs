@@ -38,7 +38,9 @@ namespace HomeBackProject.library
                 phtotoName.Add(fileName.Name);
             }
 
-            return lstImg;
+            
+
+            return lstImg.OrderBy(m => m).Skip(lstImg.Count() - 6).OrderByDescending(m => m).ToList();
         }    
         
         /// <summary>
