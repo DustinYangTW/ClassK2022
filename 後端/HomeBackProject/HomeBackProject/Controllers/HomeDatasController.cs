@@ -47,7 +47,7 @@ namespace HomeBackProject.Controllers
         public ActionResult Index(string SearchFast, string County, string Town, int SquareMeters, int HomeTypeDatas, int CarTypeDatas, int AllMoney, int HomeAge, int HomeFlortDatas, int HomeRoomDatas, bool? HomeSaleDatas, int page = 1)
         {
             string userID = Session["userID"].ToString();
-            var homeData = db.HomeData.Include(h => h.ADTypeData).Include(h => h.CarTypeData).Include(h => h.CityTypeData).Include(h => h.HomeTypeData).Include(h => h.PeopleData).Include(h => h.SaleTypeData).OrderByDescending(h => h.HomeID).OrderByDescending(h => h.HomeID).OrderByDescending(h=>h.HomeSaleType).Where(h => h.HomePeopleID == userID);
+            var homeData = db.HomeData.Include(h => h.ADTypeData).Include(h => h.CarTypeData).Include(h => h.CityTypeData).Include(h => h.HomeTypeData).Include(h => h.PeopleData).Include(h => h.SaleTypeData).OrderByDescending(h => h.HomeID).OrderByDescending(h => h.HomeID).OrderByDescending(h => h.HomeSaleType).Where(h => h.HomePeopleID == userID);
 
             searchData.SquareMeters(SquareMeters);//0.1
             searchData.moneyGetData(AllMoney);//2,3
@@ -77,14 +77,11 @@ namespace HomeBackProject.Controllers
             ViewBag.HomeHomeCarID = homeData.ToList();
             homeData = County != null ? homeData.Where(p => p.HomeCity == County) : homeData;
             ViewBag.HomeHomeCity = homeData.ToList();
-            if (County != null)
-            {
-                homeData = Town != "" ? homeData.Where(p => p.HomeTown == Town) : homeData;
-            }
-            else
-            {
-                homeData = Town != null ? homeData.Where(p => p.HomeTown == Town) : homeData;
-            }
+
+            homeData = County != null && Town != "" ? homeData.Where(p => p.HomeTown == Town) : homeData;
+
+            homeData = County == null && Town != null ? homeData.Where(p => p.HomeTown == Town) : homeData;
+
             ViewBag.HomeHomeTown = homeData.ToList();
             homeData = homeData.Where(p => p.HomeAges >= HomeAgeLow && p.HomeAges < HomeAgeHigh);
             ViewBag.HomeHomeAges = homeData.ToList();
@@ -119,12 +116,12 @@ namespace HomeBackProject.Controllers
             }
             HomeData homeData = db.HomeData.Find(id);
 
-            string autoFile = Server.MapPath("~/AllPhoto/Home"+"/"+id);
-            List<string> photo = searchPhotos.searchPhotos(autoFile,id);
-            
-            ViewBag.allPhoto = photo.OrderBy(m=>m).Skip(photo.Count()-6).OrderByDescending(m=>m).ToList();
+            string autoFile = Server.MapPath("~/AllPhoto/Home" + "/" + id);
+            List<string> photo = searchPhotos.searchPhotos(autoFile, id);
+
+            ViewBag.allPhoto = photo.OrderBy(m => m).Skip(photo.Count() - 6).OrderByDescending(m => m).ToList();
             //ViewBag.allPhoto = photo;
-            
+
 
             if (homeData == null)
             {
