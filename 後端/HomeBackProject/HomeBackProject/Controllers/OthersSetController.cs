@@ -11,24 +11,35 @@ namespace HomeBackProject.Controllers
     public class OthersSetController : Controller
     {
         private HomeDataEntities db = new HomeDataEntities();
+        //public ActionResult Index()
+        //{
+        //    return View();
+        //}
 
-        public ActionResult Index()
+        public ActionResult Index(string idNmae)
         {
-            VMOthersSet vMOthersSet = new VMOthersSet()
+            if (idNmae == "Rank")
             {
-                TerritoryTypeData = db.TerritoryTypeData.ToList(),
-                SaleTypeData = db.SaleTypeData.ToList(),
-                ProgramData = db.ProgramData.ToList(),
-                PeopleRankData = db.PeopleRankData.ToList(),
-                HomeTypeData = db.HomeTypeData.ToList(),
-                CityTypeData = db.CityTypeData.ToList(),
-                CarTypeData = db.CarTypeData.ToList(),
-                ADTypeData = db.ADTypeData.ToList()
-            };
-
-            
-
-            return View(vMOthersSet);
+                VMOthersSet vMOthersSet = new VMOthersSet()
+                {
+                    PeopleRankData = db.PeopleRankData.ToList()
+                };
+                ViewBag.CheckData = "會員身份設定";
+                return View(vMOthersSet);
+            }
+            //VMOthersSet vMOthersSet = new VMOthersSet()
+            //{
+            //    //TerritoryTypeData = db.TerritoryTypeData.ToList(),
+            //    //SaleTypeData = db.SaleTypeData.ToList(),
+            //    //ProgramData = db.ProgramData.ToList(),
+            //    //PeopleRankData = db.PeopleRankData.ToList(),
+            //    //HomeTypeData = db.HomeTypeData.ToList(),
+            //    //CityTypeData = db.CityTypeData.ToList(),
+            //    //CarTypeData = db.CarTypeData.ToList(),
+            //    //ADTypeData = db.ADTypeData.ToList()
+            //};
+            ViewBag.CheckData = "請在左側選擇要操作的系統";
+            return View();
         }
     }
 }

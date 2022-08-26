@@ -10,8 +10,10 @@ function mainIdex() {
     var cityadd = "";
     $('#selectCity').empty();
     if (selecttwValue == "不拘") {
-        cityadd = `<option value="">不拘</option>`;
-    }else if (selecttwValue == "請先選擇城市") {
+        cityadd = `<option value>不拘</option>`;
+    } else if (selecttwValue == "") {
+        cityadd = `<option value>不拘</option>`;
+    } else if (selecttwValue == "請先選擇城市") {
         cityadd = `<option disabled style="display: none" selected value="請先選擇城市">請選擇</option>`;
     }else {
         cityadd = `<option  value="${selecttwValue}">${selecttwValue}</option>`;
@@ -20,7 +22,7 @@ function mainIdex() {
 
     //下面這個判斷使用在search用的
     if (selecttwValue == "不拘請先選擇縣市") {
-        cityadd = `<option selected value="">不拘</option>`;
+        cityadd = `<option selected value>不拘</option>`;
         $('#selectCity').append(cityadd);
     }
     var arr = [];

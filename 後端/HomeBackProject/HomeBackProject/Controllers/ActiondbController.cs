@@ -129,6 +129,11 @@ namespace HomeBackProject.Controllers
             {
                 Directory.CreateDirectory(@filename);
             }
+            else
+            {
+                this.searchPhotosName = searchPhotos.searchPhotos(filename);
+                searchPhotos.DeletePhoto(filename, this.searchPhotosName[0], "A000000001");
+            }
 
             filename = autoFile + "/" + "PeopleImage" + "/" + peopleID + "/";
 
