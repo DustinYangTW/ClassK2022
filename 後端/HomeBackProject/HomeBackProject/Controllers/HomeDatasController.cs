@@ -99,6 +99,8 @@ namespace HomeBackProject.Controllers
             homeData = homeData.Where(p => p.HomeMoney >= AllMoneyLow && p.HomeMoney < AllMoneyHigh);
             ViewBag.HomeHomeMoney = homeData.ToList();
 
+            ViewBag.Errorr = homeData.ToList().Count() == 0 ? "查無資料，請重新查詢" : "";
+
             int pagesize = 10;
             var pagedList = homeData.ToPagedList(page, pagesize);
             ViewBag.countyID = db.CityTypeData.ToList();
