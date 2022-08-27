@@ -65,12 +65,12 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => item.HomeTSaleStateID)
                                     </td>
-                                    <td>
+                                    <td id="@item.HomeTSaleStateID">
                                         @Html.DisplayFor(modelItem => item.PeopleRank)
                                     </td>
-                                    <td>
+                                    <td id="changeBtn">
                                         @Html.ActionLink("詳細資料", "Details", new { id = item.HomeTSaleStateID }, new { @class = "btn btn-outline-primary" })
-                                        @Html.ActionLink("刪除", "Details", new { id = item.HomeTSaleStateID }, new { @class = "btn btn-outline-danger ms-2" })
+                                        @Html.ActionLink("刪除", "DeleteConfirmed", new { id = item.HomeTSaleStateID }, new { @class = "btn btn-outline-danger ms-2" })
                                     </td>
                                 </tr>
                             }
@@ -100,12 +100,12 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => item.ProgramSerialID)
                                     </td>
-                                    <td>
+                                    <td id="@item.ProgramSerialID">
                                         @Html.DisplayFor(modelItem => item.ProgramName)
                                     </td>
-                                    <td>
+                                    <td id="changeBtn">
                                         @Html.ActionLink("詳細資料", "Details", new { id = item.ProgramSerialID }, new { @class = "btn btn-outline-primary" })
-                                        @Html.ActionLink("刪除", "Details", new { id = item.ProgramSerialID }, new { @class = "btn btn-outline-danger ms-2" })
+                                        @Html.ActionLink("刪除", "DeleteConfirmed", new { id = item.ProgramSerialID }, new { @class = "btn btn-outline-danger ms-2" })
                                     </td>
                                 </tr>
                             }
@@ -135,12 +135,12 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => item.HomeTypeID)
                                     </td>
-                                    <td>
+                                    <td id="@item.HomeTypeID">
                                         @Html.DisplayFor(modelItem => item.HomeTypeName)
                                     </td>
-                                    <td>
+                                    <td id="changeBtn">
                                         @Html.ActionLink("詳細資料", "Details", new { id = item.HomeTypeID }, new { @class = "btn btn-outline-primary" })
-                                        @Html.ActionLink("刪除", "Details", new { id = item.HomeTypeID }, new { @class = "btn btn-outline-danger ms-2" })
+                                        @Html.ActionLink("刪除", "DeleteConfirmed", new { id = item.HomeTypeID }, new { @class = "btn btn-outline-danger ms-2" })
                                     </td>
                                 </tr>
                             }
@@ -170,12 +170,12 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => item.CarTypeID)
                                     </td>
-                                    <td>
+                                    <td id="@item.CarTypeID">
                                         @Html.DisplayFor(modelItem => item.CarTypeName)
                                     </td>
-                                    <td>
+                                    <td id="changeBtn">
                                         @Html.ActionLink("詳細資料", "Details", new { id = item.CarTypeID }, new { @class = "btn btn-outline-primary" })
-                                        @Html.ActionLink("刪除", "Details", new { id = item.CarTypeID }, new { @class = "btn btn-outline-danger ms-2" })
+                                        @Html.ActionLink("刪除", "DeleteConfirmed", new { id = item.CarTypeID }, new { @class = "btn btn-outline-danger ms-2" })
                                     </td>
                                 </tr>
                             }
@@ -205,12 +205,12 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => item.TerritorySerialID)
                                     </td>
-                                    <td>
+                                    <td id="@item.TerritorySerialID">
                                         @Html.DisplayFor(modelItem => item.TerritoryTypeSelect)
                                     </td>
-                                    <td>
+                                    <td id="changeBtn">
                                         @Html.ActionLink("詳細資料", "Details", new { id = item.TerritorySerialID }, new { @class = "btn btn-outline-primary" })
-                                        @Html.ActionLink("刪除", "Details", new { id = item.TerritorySerialID }, new { @class = "btn btn-outline-danger ms-2" })
+                                        @Html.ActionLink("刪除", "DeleteConfirmed", new { id = item.TerritorySerialID }, new { @class = "btn btn-outline-danger ms-2" })
                                     </td>
                                 </tr>
                             }
@@ -240,12 +240,12 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => item.SaleStateID)
                                     </td>
-                                    <td>
+                                    <td id="@item.SaleStateID">
                                         @Html.DisplayFor(modelItem => item.SaleState)
                                     </td>
-                                    <td>
+                                    <td id="changeBtn">
                                         @Html.ActionLink("詳細資料", "Details", new { id = item.SaleStateID }, new { @class = "btn btn-outline-primary" })
-                                        @Html.ActionLink("刪除", "Details", new { id = item.SaleStateID }, new { @class = "btn btn-outline-danger ms-2" })
+                                        @Html.ActionLink("刪除", "DeleteConfirmed", new { id = item.SaleStateID }, new { @class = "btn btn-outline-danger ms-2" })
                                     </td>
                                 </tr>
                             }
@@ -275,12 +275,14 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => item.ADID)
                                     </td>
-                                    <td>
+                                    <td id="@item.ADID">
                                         @Html.DisplayFor(modelItem => item.ADName)
                                     </td>
-                                    <td>
-                                        @Html.ActionLink("詳細資料", "Details", new { id = item.ADID }, new { @class = "btn btn-outline-primary" })
-                                        @Html.ActionLink("刪除", "Details", new { id = item.ADID }, new { @class = "btn btn-outline-danger ms-2" })
+                                    <td id="changeBtn">
+                                        @*@Html.ActionLink("修改", "Details", new { id = item.ADID }, new { @class = "btn btn-outline-primary" })*@
+                                        <a href="#" class="btn btn-outline-primary" id="Edit">修改</a>
+                                        @*@Html.ActionLink("刪除", "DeleteConfirmed", new { id = item.ADID }, new { @class = "btn btn-outline-danger ms-2" })*@
+                                        <a href="/OthersSet/DeleteConfirmed?idNmae=@ViewBag.CheckData&id=@item.ADID" class="btn btn-outline-danger ms-2">刪除</a>
                                     </td>
                                 </tr>
                             }
@@ -315,7 +317,7 @@
                                     </td>
                                     <td>
                                         @Html.ActionLink("詳細資料", "Details", new { id = item.CityIDTW }, new { @class = "btn btn-outline-primary" })
-                                        @Html.ActionLink("刪除", "Details", new { id = item.CityIDTW }, new { @class = "btn btn-outline-danger ms-2" })
+                                        @*@Html.ActionLink("刪除", "DeleteConfirmed", new { id = item.CityIDTW }, new { @class = "btn btn-outline-danger ms-2" })*@
                                     </td>
                                 </tr>
                             }

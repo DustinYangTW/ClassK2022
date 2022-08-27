@@ -182,5 +182,15 @@ namespace HomeBackProject.Controllers
 
             return View();
         }
+
+        
+        public ActionResult DeleteConfirmed(string idNmae, string id)
+        {
+            ADTypeData aDTypeData = db.ADTypeData.Find(Int16.Parse(id));
+            actiondbController.DeleteConfirmed(db, db.ADTypeData, aDTypeData, id);
+
+            return RedirectToAction("Index", new { idNmae = idNmae });
+        }
+
     }
 }

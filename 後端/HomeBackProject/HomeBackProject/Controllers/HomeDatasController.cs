@@ -236,7 +236,7 @@ namespace HomeBackProject.Controllers
             if (ModelState.IsValid)
             {
                 homeData.HomePeopleID = Session["userID"].ToString();
-                return actiondbController.Edit(db, homeData);
+                //return actiondbController.Edit(db, homeData);
             }
             ViewBag.HomeADLevel = new SelectList(db.ADTypeData, "ADID", "ADName", homeData.HomeADLevel);
             ViewBag.HomeCarID = new SelectList(db.CarTypeData, "CarTypeID", "CarTypeName", homeData.HomeCarID);
@@ -249,7 +249,7 @@ namespace HomeBackProject.Controllers
         }
 
         // GET: HomeDatas/Delete/5
-        [LoginCkeck]
+      
         public ActionResult Delete(string id)
         {
             if (id == null)
@@ -264,14 +264,15 @@ namespace HomeBackProject.Controllers
             return View(homeData);
         }
 
-        // POST: HomeDatas/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
-        {
-            HomeData homeData = db.HomeData.Find(id);
-            return actiondbController.Delete(db, db.PeopleData, homeData);
-        }
+        //// POST: HomeDatas/Delete/5
+        //[LoginCkeck]
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteConfirmed(string id)
+        //{
+        //    HomeData homeData = db.HomeData.Find(id);
+        //    return actiondbController.Delete(db, db.PeopleData, homeData);
+        //}
 
         protected override void Dispose(bool disposing)
         {
