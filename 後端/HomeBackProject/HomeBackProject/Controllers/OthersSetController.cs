@@ -116,11 +116,68 @@ namespace HomeBackProject.Controllers
         [HttpPost]
         public ActionResult Create(string idNmae,string toDBName)
         {
-            if (ModelState.IsValid)
-            {
+            if (idNmae == "Rank") {
                 PeopleRankData peopleRankData = new PeopleRankData();
                 peopleRankData.PeopleRank = toDBName;
-                return actiondbController.Create(db, db.PeopleRankData, peopleRankData);
+                if (ModelState.IsValid)
+                {
+                    actiondbController.Create(db, db.PeopleRankData, peopleRankData);
+                    return RedirectToAction("Index", new { idNmae = idNmae });
+                } 
+            }
+            else if (idNmae == "Program") {
+                ProgramData programData = new ProgramData();
+                programData.ProgramName = toDBName;
+                if (ModelState.IsValid)
+                {
+                    actiondbController.Create(db, db.ProgramData, programData);
+                    return RedirectToAction("Index", new { idNmae = idNmae });
+                } 
+            }
+            else if (idNmae == "Home") {
+                HomeTypeData homeTypeData = new HomeTypeData();
+                homeTypeData.HomeTypeName = toDBName;
+                if (ModelState.IsValid)
+                {
+                    actiondbController.Create(db, db.HomeTypeData, homeTypeData);
+                    return RedirectToAction("Index", new { idNmae = idNmae });
+                } 
+            }
+            else if (idNmae == "Territory") {
+                TerritoryTypeData territoryTypeData = new TerritoryTypeData();
+                territoryTypeData.TerritoryTypeSelect = toDBName;
+                if (ModelState.IsValid)
+                {
+                    actiondbController.Create(db, db.TerritoryTypeData, territoryTypeData);
+                    return RedirectToAction("Index", new { idNmae = idNmae });
+                } 
+            }
+            else if (idNmae == "Car") {
+                CarTypeData carTypeData = new CarTypeData();
+                carTypeData.CarTypeName = toDBName;
+                if (ModelState.IsValid)
+                {
+                    actiondbController.Create(db, db.CarTypeData, carTypeData);
+                    return RedirectToAction("Index", new { idNmae = idNmae });
+                } 
+            }
+            else if (idNmae == "Sale") {
+                SaleTypeData saleTypeData = new SaleTypeData();
+                saleTypeData.SaleState = toDBName;
+                if (ModelState.IsValid)
+                {
+                    actiondbController.Create(db, db.SaleTypeData, saleTypeData);
+                    return RedirectToAction("Index", new { idNmae = idNmae });
+                } 
+            }
+            else if (idNmae == "AD") {
+                ADTypeData aDTypeData = new ADTypeData();
+                aDTypeData.ADName = toDBName;
+                if (ModelState.IsValid)
+                {
+                    actiondbController.Create(db, db.ADTypeData, aDTypeData);
+                    return RedirectToAction("Index", new { idNmae = idNmae });
+                } 
             }
 
             return View();
