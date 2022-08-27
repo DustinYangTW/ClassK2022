@@ -238,7 +238,6 @@
     <Compile Include="Controllers\LogInOutController.cs" />
     <Compile Include="Controllers\PeopleDatasController.cs" />
     <Compile Include="Controllers\OthersSetController.cs" />
-    <Compile Include="Controllers\PeopleRankDatasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -355,11 +354,7 @@
     <Content Include="Views\Shared\_Layout_LogInOutLast.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\OthersSet\Index.cshtml" />
-    <Content Include="Views\PeopleRankDatas\Create.cshtml" />
-    <Content Include="Views\PeopleRankDatas\Delete.cshtml" />
-    <Content Include="Views\PeopleRankDatas\Details.cshtml" />
-    <Content Include="Views\PeopleRankDatas\Edit.cshtml" />
-    <Content Include="Views\PeopleRankDatas\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout_admin.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

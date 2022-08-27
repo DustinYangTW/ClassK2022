@@ -24,6 +24,7 @@ function chageformEdit(evt) {
     $(`#${Edit_id}`).empty();
     console.log(Edit_id);
     var form = `<form action="/OthersSet/Edit?idNmae=${idNmae}" method="post">
+                            <input id="id" type="hidden" name="id" value="${id}"/>
                               <div class="d-flex justify-content-around align-items-center">
                                  <div class="col-9">
                                      <input id="toDBNameEdit" type="text" name="toDBNameEdit" value="${Create_id_text}" class="form-control form-control-lg"/>

@@ -64,6 +64,7 @@ namespace HomeBackProject.Controllers
             return RedirectToAction(actionName, cName);
         }
 
+
         /// <summary>
         /// 透過這個統一刪除資料
         /// db，是資料庫實體化;
