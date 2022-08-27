@@ -18,6 +18,7 @@ namespace HomeBackProject.Controllers
         private ActiondbController actiondbController = new ActiondbController();
 
         [LoginCkeck]
+        [LoginCkeckRank]
         public ActionResult Index(string idNmae)
         {
             if (idNmae == "Rank")
@@ -117,6 +118,7 @@ namespace HomeBackProject.Controllers
         }
 
         [LoginCkeck]
+        [LoginCkeckRank]
         [HttpPost]
         public ActionResult Create(string idNmae, string toDBName)
         {
@@ -195,6 +197,7 @@ namespace HomeBackProject.Controllers
         }
 
         [LoginCkeck]
+        [LoginCkeckRank]
         public ActionResult DeleteConfirmed(string idNmae, string id)
         {
             ADTypeData aDTypeData = db.ADTypeData.Find(Int16.Parse(id));
@@ -204,6 +207,7 @@ namespace HomeBackProject.Controllers
         }
 
         [LoginCkeck]
+        [LoginCkeckRank]
         [HttpPost]
         public ActionResult Edit(string idNmae, string toDBNameEdit, string id)
         {

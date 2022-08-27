@@ -170,14 +170,15 @@ namespace HomeBackProject.Controllers
             //}
 
             filename = autoFile + "/" + allName + "/" + caseID + "/";
-            string test = this.searchPhotosName[searchPhotosName.Count - 1].ToString();
+            var searchPhotosNameCount = this.searchPhotosName.Count();
+            string test = searchPhotosNameCount == 0? "0.jpg" : this.searchPhotosName[searchPhotosName.Count - 1].ToString();
             int testtt = test.ToString().IndexOf(".");
             //抓取最後一個檔案名子2.jpg            轉換成字串       從0開始到.結束的文字擷取        最後再轉成int       
             int lastPhotoNumber = this.searchPhotosName.Count() == 0 ? 0 : Int16.Parse(test.Substring(0, testtt)) + 1;
             //後面是做抓取最後一筆相片的編號!!!
 
             int getData;
-            for (int i = lastPhotoNumber; i <= photo.Count; i++)
+            for (int i = lastPhotoNumber; i < photo.Count; i++)
             {
                 getData = lastPhotoNumber == 0 ? i :i-1;
                 checkid = photo[getData].FileName.Substring(photo[getData].FileName.IndexOf("."));
