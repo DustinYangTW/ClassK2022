@@ -65,12 +65,11 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => item.HomeTSaleStateID)
                                     </td>
-                                    <td id="@item.HomeTSaleStateID">
+                                    <td id="Create_@item.HomeTSaleStateID">
                                         @Html.DisplayFor(modelItem => item.PeopleRank)
                                     </td>
-                                    <td id="changeBtn">
-                                        @Html.ActionLink("詳細資料", "Details", new { id = item.HomeTSaleStateID }, new { @class = "btn btn-outline-primary" })
-                                        @Html.ActionLink("刪除", "DeleteConfirmed", new { id = item.HomeTSaleStateID }, new { @class = "btn btn-outline-danger ms-2" })
+                                    <td id="Edit_@item.HomeTSaleStateID">
+                                        <button type="button" class="btn btn-outline-primary" id="@item.HomeTSaleStateID" onclick="chageformEdit(event)">修改</button>
                                     </td>
                                 </tr>
                             }
@@ -100,12 +99,11 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => item.ProgramSerialID)
                                     </td>
-                                    <td id="@item.ProgramSerialID">
+                                    <td id="Create_@item.ProgramSerialID">
                                         @Html.DisplayFor(modelItem => item.ProgramName)
                                     </td>
-                                    <td id="changeBtn">
-                                        @Html.ActionLink("詳細資料", "Details", new { id = item.ProgramSerialID }, new { @class = "btn btn-outline-primary" })
-                                        @Html.ActionLink("刪除", "DeleteConfirmed", new { id = item.ProgramSerialID }, new { @class = "btn btn-outline-danger ms-2" })
+                                    <td id="Edit_@item.ProgramSerialID">
+                                        <button type="button" class="btn btn-outline-primary" id="@item.ProgramSerialID" onclick="chageformEdit(event)">修改</button>
                                     </td>
                                 </tr>
                             }
@@ -135,12 +133,11 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => item.HomeTypeID)
                                     </td>
-                                    <td id="@item.HomeTypeID">
+                                    <td id="Create_@item.HomeTypeID">
                                         @Html.DisplayFor(modelItem => item.HomeTypeName)
                                     </td>
-                                    <td id="changeBtn">
-                                        @Html.ActionLink("詳細資料", "Details", new { id = item.HomeTypeID }, new { @class = "btn btn-outline-primary" })
-                                        @Html.ActionLink("刪除", "DeleteConfirmed", new { id = item.HomeTypeID }, new { @class = "btn btn-outline-danger ms-2" })
+                                    <td id="Edit_@item.HomeTypeID">
+                                        <button type="button" class="btn btn-outline-primary" id="@item.HomeTypeID" onclick="chageformEdit(event)">修改</button>
                                     </td>
                                 </tr>
                             }
@@ -170,12 +167,11 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => item.CarTypeID)
                                     </td>
-                                    <td id="@item.CarTypeID">
+                                    <td id="Create_@item.CarTypeID">
                                         @Html.DisplayFor(modelItem => item.CarTypeName)
                                     </td>
-                                    <td id="changeBtn">
-                                        @Html.ActionLink("詳細資料", "Details", new { id = item.CarTypeID }, new { @class = "btn btn-outline-primary" })
-                                        @Html.ActionLink("刪除", "DeleteConfirmed", new { id = item.CarTypeID }, new { @class = "btn btn-outline-danger ms-2" })
+                                    <td id="Edit_@item.CarTypeID">
+                                        <button type="button" class="btn btn-outline-primary" id="@item.CarTypeID" onclick="chageformEdit(event)">修改</button>
                                     </td>
                                 </tr>
                             }
@@ -205,12 +201,11 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => item.TerritorySerialID)
                                     </td>
-                                    <td id="@item.TerritorySerialID">
+                                    <td id="Create_@item.TerritorySerialID">
                                         @Html.DisplayFor(modelItem => item.TerritoryTypeSelect)
                                     </td>
-                                    <td id="changeBtn">
-                                        @Html.ActionLink("詳細資料", "Details", new { id = item.TerritorySerialID }, new { @class = "btn btn-outline-primary" })
-                                        @Html.ActionLink("刪除", "DeleteConfirmed", new { id = item.TerritorySerialID }, new { @class = "btn btn-outline-danger ms-2" })
+                                    <td id="Edit_@item.TerritorySerialID">
+                                        <button type="button" class="btn btn-outline-primary" id="@item.TerritorySerialID" onclick="chageformEdit(event)">修改</button>
                                     </td>
                                 </tr>
                             }
@@ -240,12 +235,11 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => item.SaleStateID)
                                     </td>
-                                    <td id="@item.SaleStateID">
+                                    <td id="Create_@item.SaleStateID">
                                         @Html.DisplayFor(modelItem => item.SaleState)
                                     </td>
-                                    <td id="changeBtn">
-                                        @Html.ActionLink("詳細資料", "Details", new { id = item.SaleStateID }, new { @class = "btn btn-outline-primary" })
-                                        @Html.ActionLink("刪除", "DeleteConfirmed", new { id = item.SaleStateID }, new { @class = "btn btn-outline-danger ms-2" })
+                                    <td id="Edit_@item.SaleStateID">
+                                        <button type="button" class="btn btn-outline-primary" id="@item.SaleStateID" onclick="chageformEdit(event)">修改</button>
                                     </td>
                                 </tr>
                             }
@@ -275,14 +269,12 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => item.ADID)
                                     </td>
-                                    <td id="@item.ADID">
+                                    <td id="Create_@item.ADID">
                                         @Html.DisplayFor(modelItem => item.ADName)
                                     </td>
-                                    <td id="changeBtn">
-                                        @*@Html.ActionLink("修改", "Details", new { id = item.ADID }, new { @class = "btn btn-outline-primary" })*@
-                                        <a href="#" class="btn btn-outline-primary" id="Edit">修改</a>
-                                        @*@Html.ActionLink("刪除", "DeleteConfirmed", new { id = item.ADID }, new { @class = "btn btn-outline-danger ms-2" })*@
-                                        <a href="/OthersSet/DeleteConfirmed?idNmae=@ViewBag.CheckData&id=@item.ADID" class="btn btn-outline-danger ms-2">刪除</a>
+                                    <td id="Edit_@item.ADID">
+                                        <button type="button" class="btn btn-outline-primary" id="@item.ADID" onclick="chageformEdit(event)">修改</button>
+                                        @*<a href="/OthersSet/DeleteConfirmed?idNmae=@ViewBag.CheckData&id=@item.ADID" class="btn btn-outline-danger ms-2">刪除</a>*@
                                     </td>
                                 </tr>
                             }
@@ -333,37 +325,6 @@
 @section Script {
     <script>
         var idNmae = "@idNmae";
-        //$('#Create').click(() => {
-        //    $('#form').empty();
-        //    var tttt = `<form action="/OthersSet/Create?idNmae=${test}" method="post">
-        //                   <input id="Text1" type="text" />
-        //                   <button class="btn btn-blue-n rounded-3 shadow mb-2 ms-2" type="submit">送出</button>
-        //                </form>`
-        //    $('#form').append(tttt);
-        //    $('#form').append(`<a class="btn btn-blue-n rounded-3 shadow mb-2 ms-2" onclick=reset();>返回</a>`);
-        //});
-
-        //$('#Reset').click(() => {
-        //    console.log(1)
-        //    $('#form').empty();
-        //    var tttt = `<a class="btn btn-blue-n rounded-3 shadow mb-2 ms-2" id="Create">新增</a>`
-        //    $('#form').append(tttt);
-        //});
-        function create() {
-            $('#form').empty();
-            var form = `<form action="/OthersSet/Create?idNmae=${idNmae}" method="post">
-                           <input id="Text1" type="text" name="toDBName"/>
-                           <button class="btn  btn-warning rounded-3 shadow mb-2 ms-2" type="submit">新增</button>
-                        </form>`
-            $('#form').append(form);
-            $('#form').append(`<a class="btn btn-blue-n rounded-3 shadow mb-2 ms-2" onclick="reset()">返回</a>`);
-        }
-
-        function reset() {
-            $('#form').empty();
-            var form = `<a class="btn btn-blue-n rounded-3 shadow mb-2 ms-2" id="Create" onclick="create()">新增</a>`
-            $('#form').append(form);
-        }
-
     </script>
+    <script src="~/Js/OthersSet.js"></script>
 }
