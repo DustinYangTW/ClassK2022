@@ -26,6 +26,7 @@
         </div>
         <div class="col-lg-10">
             @*href="/OthersSet/Create?idNmae=@ViewBag.CheckData"*@
+<<<<<<< HEAD
 
             @if (@ViewBag.CheckView != "請在左側選擇要操作的系統")
             {
@@ -39,6 +40,13 @@
             {
                 <h3 class="text-black fs-1 d-flex justify-content-center bg-opacity-75 fw-bolder bg-warning bg-opacity-75 p-5 rounded-3 m-2 p-2 mt-4 mt-lg-2">@ViewBag.CheckView</h3>
             }
+=======
+            <h3 class="text-black fs-3 d-flex justify-content-center bg-opacity-75 fw-bolder rounded-3 m-2 p-2 mt-4 mt-lg-2">@ViewBag.CheckView</h3>
+
+            <div class="d-flex justify-content-end" id="form">
+                <a class="btn btn-blue-n rounded-3 shadow mb-2 ms-2" id="Create" onclick="create()">新增</a>
+            </div>
+>>>>>>> ce4a80a32ab6c247fc54eaa2ad5acd8165bdeaf5
 
             @if (@ViewBag.CheckData == "Rank")
             {
