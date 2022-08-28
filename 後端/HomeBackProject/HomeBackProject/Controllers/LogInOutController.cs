@@ -39,12 +39,14 @@ namespace HomeBackProject.Controllers
 
             Session["userID"] = userID.PeopleID;
             Session["userNmae"] = userID.PeopleName;
+            Session["userRank"] = userID.SaleStateID;
             return RedirectToAction("Index");
         }
         public ActionResult Logout()
         {
             Session["userID"] = null;
             Session["userNmae"] = null;
+            Session["userRank"] = null;
             return RedirectToAction("Index", "Home");
         }
     }

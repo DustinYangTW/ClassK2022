@@ -4,18 +4,19 @@ function mainIdex() {
     console.log(selectCountyValue);
     //var selecttwValue = $('#selectCity').children().text();
     var selecttwValue = $('#selectCity').children().val();
-    console.log(selecttwValue);
-    
+    var selecttwText = $('#selectCity').children().text();
+    console.log(selecttwText);
+
     var cityid = "";
     var cityadd = "";
     $('#selectCity').empty();
     if (selecttwValue == "不拘") {
         cityadd = `<option value>不拘</option>`;
+    } else if (selecttwText == "請先選擇縣市請先選擇縣市") {
+        cityadd = `<option disabled style="display: none" selected value="請先選擇城市">請選擇</option>`;
     } else if (selecttwValue == "") {
         cityadd = `<option value>不拘</option>`;
-    } else if (selecttwValue == "請先選擇城市") {
-        cityadd = `<option disabled style="display: none" selected value="請先選擇城市">請選擇</option>`;
-    }else {
+    } else {
         cityadd = `<option  value="${selecttwValue}">${selecttwValue}</option>`;
     }
     $('#selectCity').append(cityadd);
@@ -49,4 +50,7 @@ function mainIdex() {
             }
         }
     });
+
 }
+
+

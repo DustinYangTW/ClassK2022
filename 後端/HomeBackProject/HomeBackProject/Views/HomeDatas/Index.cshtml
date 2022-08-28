@@ -6,7 +6,9 @@
 
 @{
     ViewBag.Title = "房屋案件";
-    Layout = "~/Views/Shared/_Layout_LogInOut.cshtml";
+    if (Session["userID"] == null) { Layout = "~/Views/Shared/_Layout.cshtml"; }
+    else if (Session["userRank"].ToString() != "4") { Layout = "~/Views/Shared/_Layout_LogInOut.cshtml"; }
+    else { Layout = "~/Views/Shared/_Layout_admin.cshtml"; }
 }
 
 <div class="container-fluid">
@@ -73,7 +75,6 @@
                     </tr>
                 </thead>
                 <tbody>
-
 
                     @foreach (var item in Model)
                     {
@@ -142,18 +143,17 @@
                             <td>
                                 @Html.ActionLink("查詢", "Details", new { id = item.HomeID }, new { @class = "btn btn-primary" })
                                 @*<button type="button" title="@item.HomeID" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    詳細資料
-                                </button>*@
+                        詳細資料
+                    </button>*@
                             </td>
                         </tr>
-
                     }
-                </tbody>
-
+                </tbody>                        
             </table>
         </div>
-
-
+        <div class="d-flex justify-content-center bg-danger bg-opacity-50 mt-1 p-3 rounded-3">
+            <span class="fs-1">@ViewBag.Errorr</span>
+        </div>
 
         <div class="d-flex justify-content-center">
             @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
@@ -342,32 +342,8 @@
     </div>
 </div>
 
-<!-- Modal -->
-<!--<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>-->
 
 
 @section Script {
     <script src="~/Js/FindCityData.js"></script>
-    @*<script>
-        $('.btnDetail').click(function (evt) {
-            //console.log("/Members/Details/" + evt.target.title);
-            $('#exampleModal .modal-body').load("/Members/Details/" + evt.target.title);
-        });
-    </script>*@
 }

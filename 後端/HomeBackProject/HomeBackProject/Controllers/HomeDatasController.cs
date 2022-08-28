@@ -29,8 +29,9 @@ namespace HomeBackProject.Controllers
         public ActionResult Index(int page = 1)
         {
             string userID = Session["userID"].ToString();
+            string userRank = Session["userRank"].ToString();
             var homeData = db.HomeData.Include(h => h.ADTypeData).Include(h => h.CarTypeData).Include(h => h.CityTypeData).Include(h => h.HomeTypeData).Include(h => h.PeopleData).Include(h => h.SaleTypeData).OrderByDescending(h => h.HomeID).OrderByDescending(h => h.HomeSaleType).Where(h => h.HomePeopleID == userID);
-
+            homeData = userRank == "4" ? db.HomeData.Include(h => h.ADTypeData).Include(h => h.CarTypeData).Include(h => h.CityTypeData).Include(h => h.HomeTypeData).Include(h => h.PeopleData).Include(h => h.SaleTypeData).OrderByDescending(h => h.HomeID).OrderByDescending(h => h.HomeSaleType) : homeData;
             int pagesize = 10;
             var pagedList = homeData.ToPagedList(page, pagesize);
             ViewBag.countyID = db.CityTypeData.ToList();
@@ -98,6 +99,8 @@ namespace HomeBackProject.Controllers
             homeData = homeData.Where(p => p.HomeMoney >= AllMoneyLow && p.HomeMoney < AllMoneyHigh);
             ViewBag.HomeHomeMoney = homeData.ToList();
 
+            ViewBag.Errorr = homeData.ToList().Count() == 0 ? "查無資料，請重新查詢" : "";
+
             int pagesize = 10;
             var pagedList = homeData.ToPagedList(page, pagesize);
             ViewBag.countyID = db.CityTypeData.ToList();
@@ -119,9 +122,11 @@ namespace HomeBackProject.Controllers
             string autoFile = Server.MapPath("~/AllPhoto/Home" + "/" + id);
             List<string> photo = searchPhotos.searchPhotos(autoFile, id);
 
-            ViewBag.allPhoto = photo.OrderBy(m => m).Skip(photo.Count() - 6).OrderByDescending(m => m).ToList();
-            //ViewBag.allPhoto = photo;
 
+            var allphoto = photo.OrderBy(m => m).Skip(photo.Count() - 6).OrderByDescending(m => m).ToList();
+            ViewBag.allPhoto = allphoto;
+            //ViewBag.allPhoto = photo;
+            ViewBag.allPhotoCount = allphoto.Count();
 
             if (homeData == null)
             {
@@ -236,7 +241,7 @@ namespace HomeBackProject.Controllers
             if (ModelState.IsValid)
             {
                 homeData.HomePeopleID = Session["userID"].ToString();
-                return actiondbController.Edit(db, homeData);
+                //return actiondbController.Edit(db, homeData);
             }
             ViewBag.HomeADLevel = new SelectList(db.ADTypeData, "ADID", "ADName", homeData.HomeADLevel);
             ViewBag.HomeCarID = new SelectList(db.CarTypeData, "CarTypeID", "CarTypeName", homeData.HomeCarID);
@@ -249,7 +254,7 @@ namespace HomeBackProject.Controllers
         }
 
         // GET: HomeDatas/Delete/5
-        [LoginCkeck]
+      
         public ActionResult Delete(string id)
         {
             if (id == null)
@@ -264,14 +269,15 @@ namespace HomeBackProject.Controllers
             return View(homeData);
         }
 
-        // POST: HomeDatas/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
-        {
-            HomeData homeData = db.HomeData.Find(id);
-            return actiondbController.Delete(db, db.PeopleData, homeData);
-        }
+        //// POST: HomeDatas/Delete/5
+        //[LoginCkeck]
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteConfirmed(string id)
+        //{
+        //    HomeData homeData = db.HomeData.Find(id);
+        //    return actiondbController.Delete(db, db.PeopleData, homeData);
+        //}
 
         protected override void Dispose(bool disposing)
         {

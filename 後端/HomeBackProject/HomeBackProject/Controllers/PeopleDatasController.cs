@@ -1,6 +1,7 @@
 ﻿using HomeBackProject.library;
 using HomeBackProject.Models;
 using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -25,11 +26,19 @@ namespace HomeBackProject.Controllers
         [LoginCkeck]
         public ActionResult Index(int page = 1)
         {
-            var peopleData = db.PeopleData.Include(p => p.AccountData).Include(p => p.CityTypeData).Include(p => p.PeopleRankData).Include(p => p.ProgramData).OrderByDescending(p => p.PeopleID);
-            int pagesize = 10;
-            var pagedList = peopleData.ToPagedList(page, pagesize);  
+            string data = Session["userRank"].ToString();
+            if (Int16.Parse(data) == 4)
+            {
+                var peopleData = db.PeopleData.Include(p => p.AccountData).Include(p => p.CityTypeData).Include(p => p.PeopleRankData).Include(p => p.ProgramData).OrderByDescending(p => p.PeopleID);
+                int pagesize = 10;
+                var pagedList = peopleData.ToPagedList(page, pagesize);
 
-            return View(pagedList);
+                return View(pagedList);
+            }
+            else
+            {
+                return RedirectToAction("DetailsMyself", new { id = Session["userID"].ToString() });
+            }
         }
 
         [LoginCkeck]
@@ -80,6 +89,28 @@ namespace HomeBackProject.Controllers
                 return HttpNotFound();
             }
             return PartialView(peopleData);
+        }     
+        [LoginCkeck]
+        public ActionResult DetailsMyself(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            PeopleData peopleData = db.PeopleData.Find(id);
+            //找照片
+            string autoFile = Server.MapPath("~/AllPhoto/PeopleImage/" + id);
+            List<string> photo = searchPhotos.searchPhotos(autoFile, id);
+            ViewBag.photoHeadShot = photo.Count() > 0 ? photo[0] : "../../AllPhoto/PeopleImage/all/people.jpg";
+            //找照片
+
+            ViewBag.CompanyName = peopleData.CompanyName != null ? peopleData.CompanyName :"無";
+
+            if (peopleData == null)
+            {
+                return HttpNotFound();
+            }
+            return View(peopleData);
         }
 
         // GET: PeopleDatas/Create
