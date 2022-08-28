@@ -7,7 +7,35 @@
     ViewBag.Title = @Model.HomeName;
 }
 
-<h2>Details</h2>
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" style="max-width:500px">
+    <div class="carousel-indicators">
+        @for (int i = 0; i <= @ViewBag.allPhotoCount; i++)
+        {
+            if (i == 0)
+            {
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="@i" class="active" aria-current="true" aria-label="Slide (@i+1)"></button>
+            }
+            else
+            {
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="@i" aria-label="Slide (@i+1)"></button>
+            }
+        }
+    </div>
+    <div class="carousel-inner">
+        @foreach (var photo in @ViewBag.allPhoto)
+        {
+            <img src="@photo" class="carousel-item w-100"/>
+        }
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
 
 <div>
     <h4>HomeData</h4>
@@ -186,10 +214,7 @@
     </dl>
 </div>
 
-@foreach (var photo in @ViewBag.allPhoto)
-{
-    <img src="@photo" />
-}
+
 
 
 <div>
@@ -197,3 +222,11 @@
     @Html.ActionLink("刪除", "Delete", new { id = Model.HomeID }, new { @class = "btn btn-danger ms-3" })
     @Html.ActionLink("回到上一頁", "Index", new { }, new { @class = "btn btn-primary" })
 </div>
+
+@section Script {
+    <script>
+        var dom = $(".carousel-inner").children().attr("class");
+        dom = $("img:nth-child(1)").addClass("active");
+        console.log(dom)
+    </script>
+}

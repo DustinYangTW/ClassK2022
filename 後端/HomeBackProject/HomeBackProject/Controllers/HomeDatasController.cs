@@ -122,9 +122,11 @@ namespace HomeBackProject.Controllers
             string autoFile = Server.MapPath("~/AllPhoto/Home" + "/" + id);
             List<string> photo = searchPhotos.searchPhotos(autoFile, id);
 
-            ViewBag.allPhoto = photo.OrderBy(m => m).Skip(photo.Count() - 6).OrderByDescending(m => m).ToList();
-            //ViewBag.allPhoto = photo;
 
+            var allphoto = photo.OrderBy(m => m).Skip(photo.Count() - 6).OrderByDescending(m => m).ToList();
+            ViewBag.allPhoto = allphoto;
+            //ViewBag.allPhoto = photo;
+            ViewBag.allPhotoCount = allphoto.Count();
 
             if (homeData == null)
             {
