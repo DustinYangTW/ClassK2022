@@ -30,8 +30,8 @@ namespace HomeBackProject.Controllers
         {
             string userID = Session["userID"].ToString();
             string userRank = Session["userRank"].ToString();
-            var homeData = db.HomeData.Include(h => h.ADTypeData).Include(h => h.CarTypeData).Include(h => h.CityTypeData).Include(h => h.HomeTypeData).Include(h => h.PeopleData).Include(h => h.SaleTypeData).OrderByDescending(h => h.HomeID).OrderByDescending(h => h.HomeSaleType).Where(h => h.HomePeopleID == userID);
-            homeData = userRank == "4" ? db.HomeData.Include(h => h.ADTypeData).Include(h => h.CarTypeData).Include(h => h.CityTypeData).Include(h => h.HomeTypeData).Include(h => h.PeopleData).Include(h => h.SaleTypeData).OrderByDescending(h => h.HomeID).OrderByDescending(h => h.HomeSaleType) : homeData;
+            var homeData = userRank == "4" ? db.HomeData.Include(h => h.ADTypeData).Include(h => h.CarTypeData).Include(h => h.CityTypeData).Include(h => h.HomeTypeData).Include(h => h.PeopleData).Include(h => h.SaleTypeData).OrderByDescending(h => h.HomeID).OrderByDescending(h => h.HomeSaleType)
+                                       : db.HomeData.Include(h => h.ADTypeData).Include(h => h.CarTypeData).Include(h => h.CityTypeData).Include(h => h.HomeTypeData).Include(h => h.PeopleData).Include(h => h.SaleTypeData).OrderByDescending(h => h.HomeID).OrderByDescending(h => h.HomeSaleType).Where(h => h.HomePeopleID == userID);
             int pagesize = 10;
             var pagedList = homeData.ToPagedList(page, pagesize);
             ViewBag.countyID = db.CityTypeData.ToList();
@@ -48,7 +48,9 @@ namespace HomeBackProject.Controllers
         public ActionResult Index(string SearchFast, string County, string Town, int SquareMeters, int HomeTypeDatas, int CarTypeDatas, int AllMoney, int HomeAge, int HomeFlortDatas, int HomeRoomDatas, bool? HomeSaleDatas, int page = 1)
         {
             string userID = Session["userID"].ToString();
-            var homeData = db.HomeData.Include(h => h.ADTypeData).Include(h => h.CarTypeData).Include(h => h.CityTypeData).Include(h => h.HomeTypeData).Include(h => h.PeopleData).Include(h => h.SaleTypeData).OrderByDescending(h => h.HomeID).OrderByDescending(h => h.HomeID).OrderByDescending(h => h.HomeSaleType).Where(h => h.HomePeopleID == userID);
+            string userRank = Session["userRank"].ToString();
+            var homeData = db.HomeData.Include(h => h.ADTypeData).Include(h => h.CarTypeData).Include(h => h.CityTypeData).Include(h => h.HomeTypeData).Include(h => h.PeopleData).Include(h => h.SaleTypeData).OrderByDescending(h => h.HomeID).OrderByDescending(h => h.HomeID).OrderByDescending(h => h.HomeSaleType).Where(p => p.HomeADLevel >= 0);
+            homeData = userRank == "4" ? homeData : homeData.Where(p => p.HomePeopleID == userID);
 
             searchData.SquareMeters(SquareMeters);//0.1
             searchData.moneyGetData(AllMoney);//2,3
