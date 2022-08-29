@@ -16,7 +16,7 @@
         </div>
         <div class="col-lg-8">
             <div class="row">
-                <div class="col-lg-5  d-lg-flex align-items-lg-center">
+                <div class="col-lg-5  d-flex align-items-center justify-content-center">
                     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" style="max-width:500px">
                         <div class="carousel-inner  rounded-3">
                             @foreach (var photo in @ViewBag.allPhoto)
@@ -108,20 +108,20 @@
             <div class="fs-3">
                 <div class="col-12 d-flex flex-column">
                     <div class=" fw-bolder">
-                        房屋詳細資料
+                        房屋詳細資料 &nbsp&nbsp <a href="https://www.google.com/maps/place/ @Model.CityTypeData.CityTW@Model.HomeTown@Model.HomeStreet" target="_blank"><div class="btn btn-info btn-lg shadow-lg"><i class="bi bi-map-fill"></i></div></a>
                     </div>
-                    <div class="row">
-                        <div class="p-lg-5 pt-3">
-                            <div class="row ps-lg-5 ms-lg-3 mt-2">
-                                <div class="col-md-4 mb-2">
+                    <div class="row ps-4 ps-lg-0">
+                        <div class="pt-3">
+                            <div class="row ms-lg-3 mt-2">
+                                <div class="col-md-5 mb-2">
                                     <div class="fs-4">
                                         @Html.DisplayNameFor(model => model.HomeFloor)
                                     </div>
-                                    <div class="fs-5 ms-3 ps-4 mt-2 mb-2">
+                                    <div class="fs-5  ps-4 ms-3 ps-4 mt-2 mb-2">
                                         @Floor/@Html.DisplayFor(model => model.HomeHighFloor)
                                     </div>
-                                </div>                        
-                                <div class="col-md-4 mb-2">
+                                </div>
+                                <div class="col-md-3 mb-2 ps-lg-5">
                                     <div class="fs-4">
                                         單坪售價(萬)
                                     </div>
@@ -129,28 +129,38 @@
                                         @Html.DisplayFor(model => model.HomeMetersMoney)
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 text-lg-center">
                                     <div class="fs-4">
                                         案件狀態
                                     </div>
-                                    <div class="fs-3 ms-3 mt-2 mb-2 text-danger fw-bolder">
+                                    <div class="fs-3 ps-4 ms-3 mt-2 mb-2 text-danger fw-bolder">
                                         @Sale
                                     </div>
                                 </div>
                             </div>
-                            <div class="row ps-lg-5 ms-lg-3 mt-2 mt-lg-4">
-                                <div class="col-md-4 mb-2 pe-lg-5">
+                            <div class="row ms-lg-3 mt-2 mt-lg-4">
+                                <div class="col-md-5 mb-2">
                                     <div class="fs-4">
                                         房屋格局
                                     </div>
-                                    <div class="fs-5 ms-3 ps-4 mt-2 mb-2">
-                                        @Html.DisplayFor(model => model.HomeRoom) @Html.DisplayNameFor(model => model.HomeRoom) &nbsp&nbsp
-                                        @Html.DisplayFor(model => model.HomeHall) @Html.DisplayNameFor(model => model.HomeHall) &nbsp&nbsp
-                                        @Html.DisplayFor(model => model.HomeBathroom) @Html.DisplayNameFor(model => model.HomeBathroom) &nbsp&nbsp
-                                        @Html.DisplayFor(model => model.HomeBalcony) @Html.DisplayNameFor(model => model.HomeBalcony)
+                                    <div class="fs-5 mt-2 mb-2">
+                                        <div class="row ps-5 ps-lg-0 text-lg-center">
+                                            <div class="col-lg-3">
+                                                @Html.DisplayFor(model => model.HomeRoom) @Html.DisplayNameFor(model => model.HomeRoom)
+                                            </div>
+                                            <div class="col-lg-3">
+                                                @Html.DisplayFor(model => model.HomeHall) @Html.DisplayNameFor(model => model.HomeHall)
+                                            </div>
+                                            <div class="col-lg-3">
+                                                @Html.DisplayFor(model => model.HomeBathroom) @Html.DisplayNameFor(model => model.HomeBathroom)
+                                            </div>
+                                            <div class="col-lg-3">
+                                                @Html.DisplayFor(model => model.HomeBalcony) @Html.DisplayNameFor(model => model.HomeBalcony)
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4 mb-2">
+                                <div class="col-md-3 mb-2 ps-lg-5">
                                     <div class="fs-4">
                                         @Html.DisplayNameFor(model => model.HomeTypeData.HomeTypeName)
                                     </div>
@@ -158,7 +168,7 @@
                                         @Html.DisplayFor(model => model.HomeTypeData.HomeTypeName)
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-4 text-lg-center">
                                     <div class="fs-4">
                                         @Html.DisplayNameFor(model => model.CarTypeData.CarTypeName)
                                     </div>
@@ -183,6 +193,17 @@
                     </div>
                 </div>
             </div>
+            <hr />
+            <div class="fs-3">
+                <div class="col-12 d-flex flex-column">
+                    <div class="  fw-bolder">
+                        本網推薦
+                    </div>
+                    <div class="fs-4">
+                        tts
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="col-lg-2">
             廣告
@@ -190,191 +211,6 @@
     </div>
 </div>
 
-@*<div>
-        <h4>HomeData</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.HomeName)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.HomeName)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.HomeMoney)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.HomeMoney)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.HomeSquareMeters)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.HomeSquareMeters)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.HomeMetersMoney)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.HomeMetersMoney)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.CityTypeData.CityTW)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.CityTypeData.CityTW)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.HomeTown)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.HomeTown)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.HomeStreet)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.HomeStreet)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.HomeFloor)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.HomeFloor)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.HomeHighFloor)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.HomeHighFloor)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.HomeSaleAndLease)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.HomeSaleAndLease)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.HomeAges)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.HomeAges)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.HomeRoom)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.HomeRoom)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.HomeHall)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.HomeHall)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.HomeBathroom)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.HomeBathroom)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.HomeBalcony)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.HomeBalcony)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.HomeFeatures)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.HomeFeatures)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.HomeManageTip)
-            </dt>
-
-            <dd>
-                @string.Format("{0:C0}", @Model.HomeManageTip)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.ADTypeData.ADName)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.ADTypeData.ADName)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.CarTypeData.CarTypeName)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.CarTypeData.CarTypeName)
-            </dd>
-
-
-
-            <dt>
-                @Html.DisplayNameFor(model => model.HomeTypeData.HomeTypeName)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.HomeTypeData.HomeTypeName)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.SaleTypeData.SaleState)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.SaleTypeData.SaleState)
-            </dd>
-
-        </dl>
-    </div>
-
-
-
-
-    <div>
-        @Html.ActionLink("編輯", "Edit", new { id = Model.HomeID }, new { @class = "btn btn-primary" })
-        @Html.ActionLink("刪除", "Delete", new { id = Model.HomeID }, new { @class = "btn btn-danger ms-3" })
-        @Html.ActionLink("回到上一頁", "Index", new { }, new { @class = "btn btn-primary" })
-    </div>*@
 
 @section Script {
     <script>

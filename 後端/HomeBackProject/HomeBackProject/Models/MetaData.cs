@@ -37,7 +37,7 @@ namespace MetaDataHomeBackProject.Models
         [Key]
         [DisplayName("車位代號")]
         public byte CarTypeID { get; set; }
-        [DisplayName("車位名稱")]
+        [DisplayName("車位")]
         [Required(ErrorMessage = "必填欄位")]
         [StringLength(20, ErrorMessage = "最長只能輸入20個字")]
         public string CarTypeName { get; set; }

@@ -8,7 +8,7 @@
 }
 
 
-@using (Html.BeginForm("Create", "HomeDatas", FormMethod.Post, new { enctype = "multipart/form-data", @class = "needs-validation"}))
+@using (Html.BeginForm("Create", "HomeDatas", FormMethod.Post, new { enctype = "multipart/form-data", @class = "needs-validation" }))
 {
     @Html.AntiForgeryToken()
 
@@ -276,7 +276,7 @@
                                             <div class="col-md-6 mb-4 pb-2">
                                                 <div class="form-outline">
                                                     @Html.LabelFor(model => model.HomeManageTip, htmlAttributes: new { @class = "form-label fs-5" })
-                                                    @Html.EditorFor(model => model.HomeManageTip, new { htmlAttributes = new { @class = "form-control form-control-lg", name = "HomeManageTip", id = "HomeManageTip",type="text",  placeholder = "0"} })
+                                                    @Html.EditorFor(model => model.HomeManageTip, new { htmlAttributes = new { @class = "form-control form-control-lg", name = "HomeManageTip", id = "HomeManageTip", type = "text", placeholder = "0" } })
                                                     <div class="invalid-feedback">
                                                         **必填欄位
                                                     </div>
@@ -322,7 +322,10 @@
                                                     <select class="form-select form-select-lg" name="HomeSaleType" id="HomeSaleType" required>
                                                         @foreach (var item in ViewBag.HomeSaleType)
                                                         {
-                                                            <option value="@item.SaleStateID">@item.SaleState</option>
+                                                            if (@item.SaleStateID != 4)
+                                                            {
+                                                                <option value="@item.SaleStateID">@item.SaleState</option>
+                                                            }
                                                         }
                                                     </select>
                                                     <div class="invalid-feedback">
@@ -338,7 +341,7 @@
                                             </button>
 
                                             <div>
-                                                @Html.ActionLink("回到上一頁", "Index","", new { @class = " ms-3 btn btn-outline-primary btn-lg" })
+                                                @Html.ActionLink("回到上一頁", "Index", "", new { @class = " ms-3 btn btn-outline-primary btn-lg" })
                                             </div>
                                         </div>
                                     </div>
