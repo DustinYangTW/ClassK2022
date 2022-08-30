@@ -145,6 +145,7 @@
                                 <button type="button" id="@item.HomeID" value="@item.HomeName" class="btn btn-outline-primary btnDetail" data-bs-toggle="modal" data-bs-target="#houseInfo">
                                     詳細資料
                                 </button>
+                                @Html.ActionLink("刪除", "HomeSaleTypeDelete", new { id = @item.HomeID }, new { @class = "btn btn-outline-danger mr-3" })
                             </td>
                         </tr>
                     }

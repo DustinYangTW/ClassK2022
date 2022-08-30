@@ -383,6 +383,19 @@ namespace HomeBackProject.Controllers
             return View(homeData);
         }
 
+
+        public ActionResult HomeSaleTypeDelete(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            HomeData homeData = db.HomeData.Find(id);
+            homeData.HomeSaleType = 4;
+            db.Entry(homeData).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
         // GET: HomeDatas/Delete/5
         //public ActionResult Delete(string id)
         //{
