@@ -175,6 +175,7 @@
     <Content Include="Global.asax" />
     <Content Include="Js\FindCityData.js" />
     <Content Include="Js\OthersSet.js" />
+    <Content Include="Js\photosShow.js" />
     <Content Include="Js\Validation.js" />
     <Content Include="Models\HomeDataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

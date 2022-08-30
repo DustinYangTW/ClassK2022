@@ -126,9 +126,6 @@ namespace HomeBackProject.Controllers
 
             if (photo.Count() == 0) { photo.Add("../../AllPhoto/unKnow/NoResult.png"); }
             var allphoto = photo.OrderBy(m => m).Skip(photo.Count() - 6).OrderByDescending(m => m).ToList();
-
-            
-
             ViewBag.allPhoto = allphoto;
             //ViewBag.allPhoto = photo;
             ViewBag.allPhotoCount = allphoto.Count();
@@ -154,7 +151,7 @@ namespace HomeBackProject.Controllers
             if (photo.Count() == 0) { photo.Add("../../AllPhoto/unKnow/NoResult.png"); }
             var allphoto = photo.OrderBy(m => m).Skip(photo.Count() - 6).OrderByDescending(m => m).ToList();
 
-            
+
 
             ViewBag.allPhoto = allphoto;
             //ViewBag.allPhoto = photo;
@@ -235,29 +232,54 @@ namespace HomeBackProject.Controllers
         }
 
         // GET: HomeDatas/Edit/5
+        //[LoginCkeck]
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             HomeData homeData = db.HomeData.Find(id);
+            //找照片
+            string autoFile = Server.MapPath("~/AllPhoto/Home" + "/" + id);
+            List<string> photo = searchPhotos.searchPhotos(autoFile, id);
+            if (photo.Count() == 0) { photo.Add("../../AllPhoto/unKnow/NoResult.png"); }
+            var allphoto = photo.OrderBy(m => m).Skip(photo.Count() - 6).OrderByDescending(m => m).ToList();
+
+            ViewBag.allPhoto = allphoto;
+            ViewBag.allPhotoCount = allphoto.Count();
+            //找照片
+
             if (homeData == null)
             {
                 return HttpNotFound();
             }
+
+
             ViewBag.HomeADLevel = new SelectList(db.ADTypeData, "ADID", "ADName", homeData.HomeADLevel);
             ViewBag.HomeCarID = new SelectList(db.CarTypeData, "CarTypeID", "CarTypeName", homeData.HomeCarID);
-            ViewBag.HomeCity = new SelectList(db.CityTypeData, "CityIDTW", "CityTW", homeData.HomeCity);
             ViewBag.HomeType = new SelectList(db.HomeTypeData, "HomeTypeID", "HomeTypeName", homeData.HomeType);
             ViewBag.HomePeopleID = new SelectList(db.PeopleData, "PeopleID", "PeopleName", homeData.HomePeopleID);
             ViewBag.HomeSaleType = new SelectList(db.SaleTypeData, "SaleStateID", "SaleState", homeData.HomeSaleType);
+
+            ViewBag.HomeTypeName = db.HomeTypeData.Find(homeData.HomeType).HomeTypeName;
+            ViewBag.HomeSaleState = db.SaleTypeData.Find(homeData.HomeSaleType).SaleState;
+            ViewBag.HomeCarName = db.CarTypeData.Find(homeData.HomeCarID).CarTypeName;
+
+            ViewBag.HomeADLevel = db.ADTypeData.ToList();
+            ViewBag.HomeCarID = db.CarTypeData.ToList();
+            ViewBag.HomeType = db.HomeTypeData.ToList();
+            ViewBag.HomePeopleID = homeData.HomePeopleID;
+            ViewBag.HomeSaleType = db.SaleTypeData.ToList();
+
             ViewBag.countyID = db.CityTypeData.ToList();
+            var countyTownlast = db.HomeData.Where(p => p.HomeID == id.ToString()).FirstOrDefault();
+            ViewBag.Townlast = countyTownlast.HomeTown;
+            var countyCountylast = db.CityTypeData.Where(p => p.CityIDTW == homeData.HomeCity).FirstOrDefault();
             ViewBag.countyIDlast = homeData.HomeCity;
-            var countyTownlast = db.HomeData.Where(p => p.HomeID == homeData.HomeID).FirstOrDefault();
-            ViewBag.HomeTownlast = countyTownlast.HomeTown;
-            //var countyCountylast = db.CityTypeData.Where(p => p.CityIDTW == homeData.HomeCity).FirstOrDefault();
-            ViewBag.countyTWlast = countyTownlast.HomeCity;
+            ViewBag.countyTWlast = countyCountylast.CityTW;
+
 
             return View(homeData);
         }
@@ -286,7 +308,7 @@ namespace HomeBackProject.Controllers
         }
 
         // GET: HomeDatas/Delete/5
-      
+
         //public ActionResult Delete(string id)
         //{
         //    if (id == null)

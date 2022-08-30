@@ -12,7 +12,7 @@
 {
     @Html.AntiForgeryToken()
 
-    <section class="h-150 h-house gradient-custom-2">
+    <section class="h-150 gradient-custom-2">
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-12">
@@ -21,329 +21,345 @@
                         新增房屋案件
                     </h1>
 
-                    <div class="card card-registration card-registration-2 shadow-lg" style="border-radius: 15px;">
-                        <div class="card-body p-0">
-                            <div class="row g-0">
 
-                                <div class="col-lg-6" style="background-color: #FDD986">
-                                    <div class="p-5">
-                                        <h3 class="fw-normal mb-5 fs-2" style=" text-shadow: 0.1em 0.05em 0.25em ;">個人資料</h3>
+                    <div class="row g-0">
 
-                                        <div class="col-md-12 mb-4 pb-2">
-                                            <div class="form-outline">
-                                                @Html.LabelFor(model => model.HomeName, htmlAttributes: new { @class = "form-label fs-5" })
-                                                @Html.EditorFor(model => model.HomeName, new { htmlAttributes = new { @class = "form-control form-control-lg", name = "PeopleName", type = "text", id = "HomeName", required = "required", style = "max-width:100%" } })
-                                                <div class="invalid-feedback">
-                                                    **必填欄位
-                                                </div>
-                                            </div>
+                        <div class="col-lg-6 d-flex justify-content-center align-items-center row  bg-white">
+                            <div class="p-5 pb-2">
+                                <h3 class="fw-normal mb-5 fs-2" style=" text-shadow: 0.1em 0.05em 0.25em ;">個人資料</h3>
+
+                                <div class="col-md-12 mb-4 pb-2">
+                                    <div class="form-outline">
+                                        @Html.LabelFor(model => model.HomeName, htmlAttributes: new { @class = "form-label fs-5" })
+                                        @Html.EditorFor(model => model.HomeName, new { htmlAttributes = new { @class = "form-control form-control-lg", name = "PeopleName", type = "text", id = "HomeName", required = "required", style = "max-width:100%" } })
+                                        <div class="invalid-feedback">
+                                            **必填欄位
                                         </div>
+                                    </div>
+                                </div>
 
-                                        <div class="row">
-                                            <div class="col-md-6 mb-4 pb-2">
-                                                <div class="form-outline">
-                                                    @Html.LabelFor(model => model.HomeMoney, htmlAttributes: new { @class = "form-label fs-5" })
-                                                    @Html.EditorFor(model => model.HomeMoney, new { htmlAttributes = new { @class = "form-control form-control-lg", name = "HomeMoney", id = "HomeMoney", type = "text", required = "required", placeholder = "單位為「萬元」" } })
-                                                    <div class="invalid-feedback">
-                                                        **必填欄位
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-6 mb-4 pb-2">
-                                                <div class="form-outline">
-                                                    @Html.LabelFor(model => model.HomeSquareMeters, htmlAttributes: new { @class = "form-label fs-5" })
-                                                    @Html.EditorFor(model => model.HomeSquareMeters, new { htmlAttributes = new { @class = "form-control form-control-lg", name = "HomeSquareMeters", id = "HomeSquareMeters", type = "text", required = "required" } })
-                                                    <div class="invalid-feedback">
-                                                        **必填欄位
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="row">
-                                            <div class="col-md-6 mb-4 pb-2">
-                                                <div class="form-outline">
-                                                    <label class="form-label fs-5" for="selectCounty">縣市</label>
-                                                    <select class="form-select form-select-lg" name="HomeCity" id="selectCounty" onchange="mainIdex()" required>
-                                                        <option selected disabled style="display: none" value="">請選擇</option>
-                                                        @foreach (var item in ViewBag.countyID)
-                                                        {
-                                                            <option value="@item.CityIDTW">@item.CityTW</option>
-                                                        }
-                                                    </select>
-                                                    <div class="invalid-feedback">
-                                                        **必填欄位
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-                                            <div class="col-md-6 mb-4 pb-2">
-                                                <div class="form-outline">
-                                                    <label class="form-label fs-5" for="selectCity">鄉鎮區</label>
-                                                    <select class="form-select form-select-lg" name="HomeTown" id="selectCity" required>
-                                                        <option selected disabled style="display: none" value="請先選擇城市">請先選擇縣市</option>
-                                                        <option disabled value="">請先選擇縣市</option>
-                                                    </select>
-                                                    <div class="invalid-feedback">
-                                                        **必填欄位
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-12 mb-4 pb-2">
-                                            @Html.LabelFor(model => model.HomeStreet, htmlAttributes: new { @class = "form-label fs-5" })
-                                            @Html.EditorFor(model => model.HomeStreet, new { htmlAttributes = new { @class = "form-control form-control-lg", name = "HomeStreet", id = "HomeStreet", type = "text", required = "required", placeholder = "xxx路", style = "max-width:100%" } })
+                                <div class="row">
+                                    <div class="col-md-6 mb-4 pb-2">
+                                        <div class="form-outline">
+                                            @Html.LabelFor(model => model.HomeMoney, htmlAttributes: new { @class = "form-label fs-5" })
+                                            @Html.EditorFor(model => model.HomeMoney, new { htmlAttributes = new { @class = "form-control form-control-lg", name = "HomeMoney", id = "HomeMoney", type = "text", required = "required", placeholder = "單位為「萬元」" } })
                                             <div class="invalid-feedback">
                                                 **必填欄位
                                             </div>
                                         </div>
+                                    </div>
 
-                                        <div class="row">
-                                            <div class="col-md-6 mb-4 pb-2">
-                                                <div class="form-outline">
-                                                    @Html.LabelFor(model => model.HomeFloor, htmlAttributes: new { @class = "form-label fs-5" })
-                                                    @Html.EditorFor(model => model.HomeFloor, new { htmlAttributes = new { @class = "form-control form-control-lg", name = "HomeFloor", id = "HomeFloor", type = "text", placeholder = "全屋(整棟)" } })
-                                                    <div class="invalid-feedback">
-                                                        **必填欄位
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-                                            <div class="col-md-6 mb-4 pb-2">
-                                                <div class="form-outline">
-                                                    @Html.LabelFor(model => model.HomeHighFloor, htmlAttributes: new { @class = "form-label fs-5" })
-                                                    @Html.EditorFor(model => model.HomeHighFloor, new { htmlAttributes = new { @class = "form-control form-control-lg", name = "HomeHighFloor", id = "HomeHighFloor", type = "text", required = "required", placeholder = "建物總樓層" } })
-                                                    <div class="invalid-feedback">
-                                                        **必填欄位
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="row">
-
-                                            <div class="col-md-6 mb-4 pb-2">
-                                                <div class="form-outline">
-                                                    @Html.LabelFor(model => model.HomeAges, htmlAttributes: new { @class = "form-label fs-5" })
-                                                    @Html.EditorFor(model => model.HomeAges, new { htmlAttributes = new { @class = "form-control form-control-lg", name = "HomeFloor", id = "HomeFloor", type = "text", required = "required" } })
-                                                    <div class="invalid-feedback">
-                                                        **必填欄位
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-6 mb-4 pb-2">
-                                                <label class="form-label fs-5" for="HomeSaleAndLease">售/租</label>
-                                                <select class="form-select form-select-lg" name="HomeSaleAndLease" id="HomeSaleAndLease" required>
-                                                    <option selected disabled style="display: none" value="">請選擇</option>
-                                                    <option value="true">售</option>
-                                                    <option value="false">租</option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-12">
-                                            <label for="inputGroupFile01" class="form-label fs-5">上傳房屋照片</label>
-                                            <div class="row">
-                                                <div class="col-md-6 pb-2">
-                                                    <input type="file" class="form-control form-control-sm" id="inputGroupFile01" name="photo">
-                                                </div>
-                                                <div class="col-md-6 pb-2">
-                                                    <input type="file" class="form-control form-control-sm" id="inputGroupFile01" name="photo">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="row">
-                                                <div class="col-md-6 pb-2">
-                                                    <input type="file" class="form-control form-control-sm" id="inputGroupFile01" name="photo">
-                                                </div>
-                                                <div class="col-md-6 pb-2">
-                                                    <input type="file" class="form-control form-control-sm" id="inputGroupFile01" name="photo">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="row">
-                                                <div class="col-md-6 pb-2">
-                                                    <input type="file" class="form-control form-control-sm" id="inputGroupFile01" name="photo">
-                                                </div>
-                                                <div class="col-md-6 pb-2">
-                                                    <input type="file" class="form-control form-control-sm" id="inputGroupFile01" name="photo">
-                                                </div>
+                                    <div class="col-md-6 mb-4 pb-2">
+                                        <div class="form-outline">
+                                            @Html.LabelFor(model => model.HomeSquareMeters, htmlAttributes: new { @class = "form-label fs-5" })
+                                            @Html.EditorFor(model => model.HomeSquareMeters, new { htmlAttributes = new { @class = "form-control form-control-lg", name = "HomeSquareMeters", id = "HomeSquareMeters", type = "text", required = "required" } })
+                                            <div class="invalid-feedback">
+                                                **必填欄位
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                @*這邊做分割*@
 
-                                <div class="col-lg-6 bg-white">
-                                    <div class="p-5">
-                                        <h3 class="fw-normal mb-5  fs-2" style="color: #795548; text-shadow: 0.1em 0.05em 0.25em #795548; ">房屋詳細資料</h3>
-
-                                        <div class="row">
-
-                                            <div class="col-md-6 mb-4 pb-2">
-                                                <label class="form-label fs-5" for="HomeRoom">房</label>
-                                                <select class="form-select form-select-lg" name="HomeRoom" id="HomeRoom">
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                    <option value="5">5</option>
-                                                    <option value="6">6</option>
-                                                    <option value="7">7</option>
-                                                    <option value="8">8</option>
-                                                    <option value="9">9</option>
-                                                </select>
-                                            </div>
-
-                                            @*form-white*@
-                                            <div class="col-md-6 mb-4 pb-2">
-                                                <div class="form-outline">
-                                                    <label class="form-label fs-5" for="HomeHall">廳</label>
-                                                    <select class="form-select form-select-lg" name="HomeHall" id="HomeHall">
-                                                        <option value="1">1</option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                        <option value="5">5</option>
-                                                        <option value="6">6</option>
-                                                        <option value="7">7</option>
-                                                        <option value="8">8</option>
-                                                        <option value="9">9</option>
-                                                    </select>
-                                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-4 pb-2">
+                                        <div class="form-outline">
+                                            <label class="form-label fs-5" for="selectCounty">縣市</label>
+                                            <select class="form-select form-select-lg" name="HomeCity" id="selectCounty" onchange="mainIdex()" required>
+                                                <option selected disabled style="display: none" value="">請選擇</option>
+                                                @foreach (var item in ViewBag.countyID)
+                                                {
+                                                    <option value="@item.CityIDTW">@item.CityTW</option>
+                                                }
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                **必填欄位
                                             </div>
                                         </div>
-                                        <div class="row">
-
-                                            <div class="col-md-6 mb-4 pb-2">
-                                                <label class="form-label fs-5" for="HomeBathroom">衛浴</label>
-                                                <select class="form-select form-select-lg" name="HomeBathroom" id="HomeBathroom">
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                    <option value="5">5</option>
-                                                    <option value="6">6</option>
-                                                    <option value="7">7</option>
-                                                    <option value="8">8</option>
-                                                    <option value="9">9</option>
-                                                </select>
-                                            </div>
+                                    </div>
 
 
-                                            <div class="col-md-6 mb-4 pb-2">
-                                                <div class="form-outline">
-                                                    <label class="form-label fs-5" for="HomeBalcony">陽台</label>
-                                                    <select class="form-select form-select-lg" name="HomeBalcony" id="HomeBalcony">
-                                                        <option value="0">0</option>
-                                                        <option value="1">1</option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                        <option value="5">5</option>
-                                                        <option value="6">6</option>
-                                                        <option value="7">7</option>
-                                                        <option value="8">8</option>
-                                                        <option value="9">9</option>
-                                                    </select>
-                                                </div>
+                                    <div class="col-md-6 mb-4 pb-2">
+                                        <div class="form-outline">
+                                            <label class="form-label fs-5" for="selectCity">鄉鎮區</label>
+                                            <select class="form-select form-select-lg" name="HomeTown" id="selectCity" required>
+                                                <option selected disabled style="display: none" value="請先選擇城市">請先選擇縣市</option>
+                                                <option disabled value="">請先選擇縣市</option>
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                **必填欄位
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
 
-                                        <div class="col-md-12 mb-4 pb-2">
-                                            <div class="form-outline">
-                                                <div class="d-flex flex-column">
-                                                    @Html.LabelFor(model => model.HomeFeatures, htmlAttributes: new { @class = "form-label fs-5" })
-                                                    @Html.TextAreaFor(model => model.HomeFeatures, new { @class = "form-control", name = "HomeFeatures", type = "text", id = "HomeFeatures", rows = "10", cols = "100", style = "max-width:100%" })
-                                                    <div class="invalid-feedback">
-                                                        **必填欄位
-                                                    </div>
-                                                </div>
+                                <div class="col-md-12 mb-4 pb-2">
+                                    @Html.LabelFor(model => model.HomeStreet, htmlAttributes: new { @class = "form-label fs-5" })
+                                    @Html.EditorFor(model => model.HomeStreet, new { htmlAttributes = new { @class = "form-control form-control-lg", name = "HomeStreet", id = "HomeStreet", type = "text", required = "required", placeholder = "xxx路", style = "max-width:100%" } })
+                                    <div class="invalid-feedback">
+                                        **必填欄位
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-4 pb-2">
+                                        <div class="form-outline">
+                                            @Html.LabelFor(model => model.HomeFloor, htmlAttributes: new { @class = "form-label fs-5" })
+                                            @Html.EditorFor(model => model.HomeFloor, new { htmlAttributes = new { @class = "form-control form-control-lg", name = "HomeFloor", id = "HomeFloor", type = "text", placeholder = "全屋(整棟)" } })
+                                            <div class="invalid-feedback">
+                                                **必填欄位
                                             </div>
                                         </div>
+                                    </div>
 
-                                        <div class="row">
-                                            <div class="col-md-6 mb-4 pb-2">
-                                                <div class="form-outline">
-                                                    @Html.LabelFor(model => model.HomeManageTip, htmlAttributes: new { @class = "form-label fs-5" })
-                                                    @Html.EditorFor(model => model.HomeManageTip, new { htmlAttributes = new { @class = "form-control form-control-lg", name = "HomeManageTip", id = "HomeManageTip", type = "text", placeholder = "0" } })
-                                                    <div class="invalid-feedback">
-                                                        **必填欄位
-                                                    </div>
-                                                </div>
-                                            </div>
 
-                                            <div class="col-md-6 mb-4 pb-2">
-                                                <div class="form-outline">
-                                                    <label class="form-label fs-5" for="HomeCarID">車位選擇</label>
-                                                    <select class="form-select form-select-lg" name="HomeCarID" id="HomeCarID" required>
-                                                        @foreach (var item in ViewBag.HomeCarID)
-                                                        {
-                                                            <option value="@item.CarTypeID">@item.CarTypeName</option>
-                                                        }
-                                                    </select>
-                                                    <div class="invalid-feedback">
-                                                        **必填欄位
-                                                    </div>
-                                                </div>
+                                    <div class="col-md-6 mb-4 pb-2">
+                                        <div class="form-outline">
+                                            @Html.LabelFor(model => model.HomeHighFloor, htmlAttributes: new { @class = "form-label fs-5" })
+                                            @Html.EditorFor(model => model.HomeHighFloor, new { htmlAttributes = new { @class = "form-control form-control-lg", name = "HomeHighFloor", id = "HomeHighFloor", type = "text", required = "required", placeholder = "建物總樓層" } })
+                                            <div class="invalid-feedback">
+                                                **必填欄位
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
 
-                                        <div class="row">
-                                            <div class="col-md-6 mb-4 pb-2">
-                                                <div class="form-outline">
-                                                    <label class="form-label fs-5" for="HomeType">房屋類型</label>
-                                                    <select class="form-select form-select-lg" name="HomeType" id="HomeType" required>
-                                                        <option disabled style="display: none" selected value="">請選擇</option>
-                                                        @foreach (var item in ViewBag.homeTypeData)
-                                                        {
-                                                            <option value="@item.HomeTypeID">@item.HomeTypeName</option>
-                                                        }
-                                                    </select>
-                                                    <div class="invalid-feedback">
-                                                        **必填欄位
-                                                    </div>
-                                                </div>
-                                            </div>
 
-                                            <div class="col-md-6 mb-4 pb-2">
-                                                <div class="form-outline">
-                                                    <label class="form-label fs-5" for="HomeSaleType">銷售狀態</label>
-                                                    <select class="form-select form-select-lg" name="HomeSaleType" id="HomeSaleType" required>
-                                                        @foreach (var item in ViewBag.HomeSaleType)
-                                                        {
-                                                            if (@item.SaleStateID != 4)
-                                                            {
-                                                                <option value="@item.SaleStateID">@item.SaleState</option>
-                                                            }
-                                                        }
-                                                    </select>
-                                                    <div class="invalid-feedback">
-                                                        **必填欄位
-                                                    </div>
-                                                </div>
+                                <div class="row">
+
+                                    <div class="col-md-6 mb-4 pb-2">
+                                        <div class="form-outline">
+                                            @Html.LabelFor(model => model.HomeAges, htmlAttributes: new { @class = "form-label fs-5" })
+                                            @Html.EditorFor(model => model.HomeAges, new { htmlAttributes = new { @class = "form-control form-control-lg", name = "HomeFloor", id = "HomeFloor", type = "text", required = "required" } })
+                                            <div class="invalid-feedback">
+                                                **必填欄位
                                             </div>
                                         </div>
-                                        <div class="d-flex flex-lg-row justify-content-center justify-content-lg-end">
-                                            <button type="submit" class="btn btn-outline-info btn-lg"
-                                                    data-mdb-ripple-color="dark">
-                                                送出
-                                            </button>
+                                    </div>
 
-                                            <div>
-                                                @Html.ActionLink("回到上一頁", "Index", "", new { @class = " ms-3 btn btn-outline-primary btn-lg" })
+                                    <div class="col-md-6 mb-4 pb-2">
+                                        <label class="form-label fs-5" for="HomeSaleAndLease">售/租</label>
+                                        <select class="form-select form-select-lg" name="HomeSaleAndLease" id="HomeSaleAndLease" required>
+                                            <option selected disabled style="display: none" value="">請選擇</option>
+                                            <option value="true">售</option>
+                                            <option value="false">租</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label for="inputGroupFile01" class="form-label fs-5">上傳房屋照片</label>
+                                    <div class="row">
+                                        <div class="col-md-6 pb-2">
+                                            <input type="file" class="form-control form-control-sm" id="Photo_1" name="photo" onchange="changePhotoNew(1)">
+                                        </div>
+                                        <div class="col-md-6 pb-2">
+                                            <input type="file" class="form-control form-control-sm" id="Photo_2" name="photo" onchange="changePhotoNew(2)">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-6 pb-2">
+                                            <input type="file" class="form-control form-control-sm" id="Photo_3" name="photo" onchange="changePhotoNew(3)">
+                                        </div>
+                                        <div class="col-md-6 pb-2">
+                                            <input type="file" class="form-control form-control-sm" id="Photo_4" name="photo" onchange="changePhotoNew(4)">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-6 pb-2">
+                                            <input type="file" class="form-control form-control-sm" id="Photo_5" name="photo" onchange="changePhotoNew(5)">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="file" class="form-control form-control-sm" id="Photo_6" name="photo" onchange="changePhotoNew(3)">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 pb-3" style="width:250px">
+                                <span class="fs-5" id="ChangePhoto"></span>
+                                <div id="newPhoto" class="carousel slide" data-bs-ride="carousel" style="max-width:500px">
+                                    <div class="carousel-inner  rounded-3" id="ChangeNewPhoto">
+
+                                    </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#newPhoto" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#newPhoto" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        @*這邊做分割*@
+
+                        <div class="col-lg-6"  style="background-color: #FDD986">
+                            <div class="p-5">
+                                <h3 class="fw-normal mb-5  fs-2" style="color: #795548; text-shadow: 0.1em 0.05em 0.25em #795548; ">房屋詳細資料</h3>
+
+                                <div class="row">
+
+                                    <div class="col-md-6 mb-4 pb-2">
+                                        <label class="form-label fs-5" for="HomeRoom">房</label>
+                                        <select class="form-select form-select-lg" name="HomeRoom" id="HomeRoom">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                        </select>
+                                    </div>
+
+                                    @*form-white*@
+                                    <div class="col-md-6 mb-4 pb-2">
+                                        <div class="form-outline">
+                                            <label class="form-label fs-5" for="HomeHall">廳</label>
+                                            <select class="form-select form-select-lg" name="HomeHall" id="HomeHall">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-md-6 mb-4 pb-2">
+                                        <label class="form-label fs-5" for="HomeBathroom">衛浴</label>
+                                        <select class="form-select form-select-lg" name="HomeBathroom" id="HomeBathroom">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                        </select>
+                                    </div>
+
+
+                                    <div class="col-md-6 mb-4 pb-2">
+                                        <div class="form-outline">
+                                            <label class="form-label fs-5" for="HomeBalcony">陽台</label>
+                                            <select class="form-select form-select-lg" name="HomeBalcony" id="HomeBalcony">
+                                                <option value="0">0</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12 mb-4 pb-2">
+                                    <div class="form-outline">
+                                        <div class="d-flex flex-column">
+                                            @Html.LabelFor(model => model.HomeFeatures, htmlAttributes: new { @class = "form-label fs-5" })
+                                            @Html.TextAreaFor(model => model.HomeFeatures, new { @class = "form-control", name = "HomeFeatures", type = "text", id = "HomeFeatures", rows = "10", cols = "100", style = "max-width:100%" })
+                                            <div class="invalid-feedback">
+                                                **必填欄位
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-4 pb-2">
+                                        <div class="form-outline">
+                                            @Html.LabelFor(model => model.HomeManageTip, htmlAttributes: new { @class = "form-label fs-5" })
+                                            @Html.EditorFor(model => model.HomeManageTip, new { htmlAttributes = new { @class = "form-control form-control-lg", name = "HomeManageTip", id = "HomeManageTip", type = "text", placeholder = "0" } })
+                                            <div class="invalid-feedback">
+                                                **必填欄位
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 mb-4 pb-2">
+                                        <div class="form-outline">
+                                            <label class="form-label fs-5" for="HomeCarID">車位選擇</label>
+                                            <select class="form-select form-select-lg" name="HomeCarID" id="HomeCarID" required>
+                                                @foreach (var item in ViewBag.HomeCarID)
+                                                {
+                                                    <option value="@item.CarTypeID">@item.CarTypeName</option>
+                                                }
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                **必填欄位
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-4 pb-2">
+                                        <div class="form-outline">
+                                            <label class="form-label fs-5" for="HomeType">房屋類型</label>
+                                            <select class="form-select form-select-lg" name="HomeType" id="HomeType" required>
+                                                <option disabled style="display: none" selected value="">請選擇</option>
+                                                @foreach (var item in ViewBag.homeTypeData)
+                                                {
+                                                    <option value="@item.HomeTypeID">@item.HomeTypeName</option>
+                                                }
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                **必填欄位
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 mb-4 pb-2">
+                                        <div class="form-outline">
+                                            <label class="form-label fs-5" for="HomeSaleType">銷售狀態</label>
+                                            <select class="form-select form-select-lg" name="HomeSaleType" id="HomeSaleType" required>
+                                                @foreach (var item in ViewBag.HomeSaleType)
+                                                {
+                                                    if (@item.SaleStateID != 4)
+                                                    {
+                                                        <option value="@item.SaleStateID">@item.SaleState</option>
+                                                    }
+                                                }
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                **必填欄位
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-lg-row justify-content-center justify-content-lg-end">
+                                    <button type="submit" class="btn btn-outline-info btn-lg"
+                                            data-mdb-ripple-color="dark">
+                                        送出
+                                    </button>
+
+                                    <div>
+                                        @Html.ActionLink("回到上一頁", "Index", "", new { @class = " ms-3 btn btn-outline-primary btn-lg" })
                                     </div>
                                 </div>
                             </div>
@@ -352,6 +368,7 @@
                 </div>
             </div>
         </div>
+
     </section>
 }
 
@@ -362,5 +379,6 @@
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/Js/FindCityData.js"></script>
     <script src="~/Js/Validation.js"></script>
+    <script src="~/Js/photosShow.js"></script>
 }
 
