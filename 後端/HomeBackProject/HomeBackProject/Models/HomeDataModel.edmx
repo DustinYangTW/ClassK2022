@@ -139,7 +139,7 @@
             <PropertyRef Name="ProgramSerialID" />
           </Key>
           <Property Name="ProgramSerialID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ProgramName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="ProgramName" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="SaleTypeData">
           <Key>
@@ -476,7 +476,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
           <Parameter Name="owner_id" Type="int" Mode="In" />
@@ -789,7 +788,7 @@
             <PropertyRef Name="ProgramSerialID" />
           </Key>
           <Property Name="ProgramSerialID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ProgramName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProgramName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="PeopleData" Relationship="Self.FK_PeopleData_ProgramData" FromRole="ProgramData" ToRole="PeopleData" />
         </EntityType>
         <EntityType Name="SaleTypeData">

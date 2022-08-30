@@ -167,7 +167,7 @@
       <PropertyRef Name="ProgramSerialID" />
     </Key>
     <Property Name="ProgramSerialID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ProgramName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProgramName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="PeopleData" Relationship="Self.FK_PeopleData_ProgramData" FromRole="ProgramData" ToRole="PeopleData" />
   </EntityType>
   <EntityType Name="SaleTypeData">

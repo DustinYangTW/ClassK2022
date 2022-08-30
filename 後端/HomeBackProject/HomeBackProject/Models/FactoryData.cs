@@ -11,7 +11,10 @@ namespace HomeBackProject.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using MetaDataHomeBackProject.Models;
+    [MetadataType(typeof(MetaFactoryData))]
+
     public partial class FactoryData
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]

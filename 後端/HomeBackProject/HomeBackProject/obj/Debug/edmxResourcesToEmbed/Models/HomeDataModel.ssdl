@@ -134,7 +134,7 @@
       <PropertyRef Name="ProgramSerialID" />
     </Key>
     <Property Name="ProgramSerialID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ProgramName" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="ProgramName" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="SaleTypeData">
     <Key>
@@ -471,7 +471,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
   <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
     <Parameter Name="owner_id" Type="int" Mode="In" />
