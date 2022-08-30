@@ -31,7 +31,7 @@ namespace HomeBackProject.Controllers
             string userID = Session["userID"].ToString();
             string userRank = Session["userRank"].ToString();
             var homeData = userRank == "4" ? db.HomeData.Include(h => h.ADTypeData).Include(h => h.CarTypeData).Include(h => h.CityTypeData).Include(h => h.HomeTypeData).Include(h => h.PeopleData).Include(h => h.SaleTypeData).OrderByDescending(h => h.HomeID).OrderByDescending(h => h.HomeSaleType)
-                                       : db.HomeData.Include(h => h.ADTypeData).Include(h => h.CarTypeData).Include(h => h.CityTypeData).Include(h => h.HomeTypeData).Include(h => h.PeopleData).Include(h => h.SaleTypeData).OrderByDescending(h => h.HomeID).OrderByDescending(h => h.HomeSaleType).Where(h => h.HomePeopleID == userID);
+                                       : db.HomeData.Include(h => h.ADTypeData).Include(h => h.CarTypeData).Include(h => h.CityTypeData).Include(h => h.HomeTypeData).Include(h => h.PeopleData).Include(h => h.SaleTypeData).OrderByDescending(h => h.HomeID).OrderByDescending(h => h.HomeSaleType).Where(h => h.HomePeopleID == userID & h.HomeSaleType != 4);
             int pagesize = 10;
             var pagedList = homeData.ToPagedList(page, pagesize);
             ViewBag.countyID = db.CityTypeData.ToList();
@@ -50,7 +50,7 @@ namespace HomeBackProject.Controllers
             string userID = Session["userID"].ToString();
             string userRank = Session["userRank"].ToString();
             var homeData = db.HomeData.Include(h => h.ADTypeData).Include(h => h.CarTypeData).Include(h => h.CityTypeData).Include(h => h.HomeTypeData).Include(h => h.PeopleData).Include(h => h.SaleTypeData).OrderByDescending(h => h.HomeID).OrderByDescending(h => h.HomeID).OrderByDescending(h => h.HomeSaleType).Where(p => p.HomeADLevel >= 0);
-            homeData = userRank == "4" ? homeData : homeData.Where(p => p.HomePeopleID == userID);
+            homeData = userRank == "4" ? homeData : homeData.Where(p => p.HomePeopleID == userID & p.HomeSaleType != 4);
 
             searchData.SquareMeters(SquareMeters);//0.1
             searchData.moneyGetData(AllMoney);//2,3
@@ -126,6 +126,9 @@ namespace HomeBackProject.Controllers
 
             if (photo.Count() == 0) { photo.Add("../../AllPhoto/unKnow/NoResult.png"); }
             var allphoto = photo.OrderBy(m => m).Skip(photo.Count() - 6).OrderByDescending(m => m).ToList();
+
+            
+
             ViewBag.allPhoto = allphoto;
             //ViewBag.allPhoto = photo;
             ViewBag.allPhotoCount = allphoto.Count();
@@ -136,6 +139,33 @@ namespace HomeBackProject.Controllers
             }
             return View(homeData);
         }
+        //// GET: HomeDatas/DetailsModal/H0000000006
+        //public ActionResult DetailsModal(string id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    HomeData homeData = db.HomeData.Find(id);
+
+        //    string autoFile = Server.MapPath("~/AllPhoto/Home" + "/" + id);
+        //    List<string> photo = searchPhotos.searchPhotos(autoFile, id);
+
+        //    if (photo.Count() == 0) { photo.Add("../../AllPhoto/unKnow/NoResult.png"); }
+        //    var allphoto = photo.OrderBy(m => m).Skip(photo.Count() - 6).OrderByDescending(m => m).ToList();
+
+            
+
+        //    ViewBag.allPhoto = allphoto;
+        //    //ViewBag.allPhoto = photo;
+        //    ViewBag.allPhotoCount = allphoto.Count();
+
+        //    if (homeData == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(homeData);
+        //}
         // GET: HomeDatas/DetailsModal/H0000000006
         public ActionResult DetailsModal(string id)
         {
@@ -353,8 +383,20 @@ namespace HomeBackProject.Controllers
             return View(homeData);
         }
 
-        // GET: HomeDatas/Delete/5
 
+        public ActionResult HomeSaleTypeDelete(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            HomeData homeData = db.HomeData.Find(id);
+            homeData.HomeSaleType = 4;
+            db.Entry(homeData).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        // GET: HomeDatas/Delete/5
         //public ActionResult Delete(string id)
         //{
         //    if (id == null)

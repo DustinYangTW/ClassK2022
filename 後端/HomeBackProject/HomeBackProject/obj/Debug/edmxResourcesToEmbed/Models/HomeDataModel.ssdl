@@ -12,21 +12,21 @@
       <PropertyRef Name="ADID" />
     </Key>
     <Property Name="ADID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ADName" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="ADName" Type="nvarchar" MaxLength="100" Nullable="false" />
   </EntityType>
   <EntityType Name="CarTypeData">
     <Key>
       <PropertyRef Name="CarTypeID" />
     </Key>
     <Property Name="CarTypeID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="CarTypeName" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="CarTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="CityTypeData">
     <Key>
       <PropertyRef Name="CityIDTW" />
     </Key>
     <Property Name="CityIDTW" Type="char" MaxLength="1" Nullable="false" />
-    <Property Name="CityTW" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="CityTW" Type="nvarchar" MaxLength="10" Nullable="false" />
   </EntityType>
   <EntityType Name="FactoryadjacentTypeData">
     <Key>
@@ -99,7 +99,7 @@
       <PropertyRef Name="HomeTypeID" />
     </Key>
     <Property Name="HomeTypeID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="HomeTypeName" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="HomeTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="PeopleData">
     <Key>
@@ -127,21 +127,21 @@
       <PropertyRef Name="HomeTSaleStateID" />
     </Key>
     <Property Name="HomeTSaleStateID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="PeopleRank" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="PeopleRank" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="ProgramData">
     <Key>
       <PropertyRef Name="ProgramSerialID" />
     </Key>
     <Property Name="ProgramSerialID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ProgramName" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="ProgramName" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="SaleTypeData">
     <Key>
       <PropertyRef Name="SaleStateID" />
     </Key>
     <Property Name="SaleStateID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="SaleState" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="SaleState" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -185,7 +185,7 @@
       <PropertyRef Name="TerritorySerialID" />
     </Key>
     <Property Name="TerritorySerialID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="TerritoryTypeSelect" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="TerritoryTypeSelect" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <Association Name="FK_FactoryadjacentTypeData_FactoryData">
     <End Role="FactoryData" Type="Self.FactoryData" Multiplicity="1" />
@@ -471,7 +471,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
   <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
     <Parameter Name="owner_id" Type="int" Mode="In" />

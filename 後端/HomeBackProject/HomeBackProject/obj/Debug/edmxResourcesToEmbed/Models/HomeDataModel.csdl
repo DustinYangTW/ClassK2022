@@ -13,7 +13,7 @@
       <PropertyRef Name="ADID" />
     </Key>
     <Property Name="ADID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ADName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ADName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="FactoryData" Relationship="Self.FK_FactoryData_ADTypeData" FromRole="ADTypeData" ToRole="FactoryData" />
     <NavigationProperty Name="HomeData" Relationship="Self.FK_HomeData_ADTypeData" FromRole="ADTypeData" ToRole="HomeData" />
     <NavigationProperty Name="TerritoryData" Relationship="Self.FK_TerritoryData_ADTypeData" FromRole="ADTypeData" ToRole="TerritoryData" />
@@ -23,7 +23,7 @@
       <PropertyRef Name="CarTypeID" />
     </Key>
     <Property Name="CarTypeID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="CarTypeName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CarTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="HomeData" Relationship="Self.FK_HomeData_CarTypeData" FromRole="CarTypeData" ToRole="HomeData" />
   </EntityType>
   <EntityType Name="CityTypeData">
@@ -31,7 +31,7 @@
       <PropertyRef Name="CityIDTW" />
     </Key>
     <Property Name="CityIDTW" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="CityTW" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CityTW" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="FactoryData" Relationship="Self.FK_FactoryData_CityTypeData" FromRole="CityTypeData" ToRole="FactoryData" />
     <NavigationProperty Name="HomeData" Relationship="Self.FK_HomeData_CityTypeData" FromRole="CityTypeData" ToRole="HomeData" />
     <NavigationProperty Name="PeopleData" Relationship="Self.FK_PeopleData_CityTypeData" FromRole="CityTypeData" ToRole="PeopleData" />
@@ -123,7 +123,7 @@
       <PropertyRef Name="HomeTypeID" />
     </Key>
     <Property Name="HomeTypeID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="HomeTypeName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="HomeTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="HomeData" Relationship="Self.FK_HomeData_HomeTypeData" FromRole="HomeTypeData" ToRole="HomeData" />
   </EntityType>
   <EntityType Name="PeopleData">
@@ -159,7 +159,7 @@
       <PropertyRef Name="HomeTSaleStateID" />
     </Key>
     <Property Name="HomeTSaleStateID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="PeopleRank" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PeopleRank" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="PeopleData" Relationship="Self.FK_PeopleData_PeopleRankData" FromRole="PeopleRankData" ToRole="PeopleData" />
   </EntityType>
   <EntityType Name="ProgramData">
@@ -167,7 +167,7 @@
       <PropertyRef Name="ProgramSerialID" />
     </Key>
     <Property Name="ProgramSerialID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ProgramName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProgramName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="PeopleData" Relationship="Self.FK_PeopleData_ProgramData" FromRole="ProgramData" ToRole="PeopleData" />
   </EntityType>
   <EntityType Name="SaleTypeData">
@@ -175,7 +175,7 @@
       <PropertyRef Name="SaleStateID" />
     </Key>
     <Property Name="SaleStateID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="SaleState" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SaleState" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="FactoryData" Relationship="Self.FK_FactoryData_SaleTypeData" FromRole="SaleTypeData" ToRole="FactoryData" />
     <NavigationProperty Name="HomeData" Relationship="Self.FK_HomeData_SaleTypeData" FromRole="SaleTypeData" ToRole="HomeData" />
     <NavigationProperty Name="TerritoryData" Relationship="Self.FK_TerritoryData_SaleTypeData" FromRole="SaleTypeData" ToRole="TerritoryData" />
@@ -229,7 +229,7 @@
       <PropertyRef Name="TerritorySerialID" />
     </Key>
     <Property Name="TerritorySerialID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="TerritoryTypeSelect" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TerritoryTypeSelect" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="FactoryData" Relationship="Self.FK_FactoryData_TerritoryTypeData" FromRole="TerritoryTypeData" ToRole="FactoryData" />
     <NavigationProperty Name="TerritoryData" Relationship="Self.FK_TerritoryData_TerritoryTypeData1" FromRole="TerritoryTypeData" ToRole="TerritoryData" />
   </EntityType>
