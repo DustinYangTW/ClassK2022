@@ -141,14 +141,14 @@
                                 @Html.DisplayFor(modelItem => item.SaleTypeData.SaleState)
                             </td>
                             <td>
-                                @Html.ActionLink("查詢", "Details", new { id = item.HomeID }, new { @class = "btn btn-primary" })
-                                @*<button type="button" title="@item.HomeID" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                        詳細資料
-                    </button>*@
+                                @*@Html.ActionLink("查詢", "Details", new { id = item.HomeID }, new { @class = "btn btn-primary btnDetail" })*@
+                                <button type="button" id="@item.HomeID" value="@item.HomeName" class="btn btn-outline-primary btnDetail" data-bs-toggle="modal" data-bs-target="#houseInfo">
+                                    詳細資料
+                                </button>
                             </td>
                         </tr>
                     }
-                </tbody>                        
+                </tbody>
             </table>
         </div>
         <div class="d-flex justify-content-center mt-1 p-3 rounded-3">
@@ -342,8 +342,39 @@
     </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="houseInfo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="background-color:#FFF2E7">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+                @*<a href="'~/PeopleDatas/Edit/'+id" class="btn btn-outline-danger">修改</a>*@
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
 @section Script {
     <script src="~/Js/FindCityData.js"></script>
+    <script>
+        $('.btnDetail').click(function (evt) {
+            //console.log("/PeopleDatas/Details/" + evt.target.id);
+            $('#houseInfo .modal-body').load("/HomeDatas/DetailsModal/" + evt.target.id);
+            $('#houseInfo #exampleModalLabel').empty();
+            $('#houseInfo #exampleModalLabel').append(`<h3 class="pt-3 ps-3">${evt.target.value} 詳細資料</h1>`);
+            $('#houseInfo .modal-footer').empty();
+            $('#houseInfo .modal-footer').append(`<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>`);
+            $('#houseInfo .modal-footer').append(`<a href="../HomeDatas/Edit/${evt.target.id}" class=" btn btn-outline-danger ms-3">修改</a>`);
+            $('#houseInfo .modal-footer').append(`<a href="../HomeDatas/Details/${evt.target.id}" class=" btn btn-primary ms-3">預覽完整資料</a>`);
+
+        });
+    </script>
 }
