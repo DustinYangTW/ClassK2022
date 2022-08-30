@@ -11,10 +11,7 @@ namespace HomeBackProject.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using MetaDataHomeBackProject.Models;
-    [MetadataType(typeof(MetaADTypeData))]
-
+    
     public partial class ADTypeData
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]

@@ -138,7 +138,7 @@ namespace MetaDataHomeBackProject.Models
         public byte SaleStateID { get; set; }
         [DisplayName("銷售狀態")]
         [Required(ErrorMessage = "必填欄位")]
-        [StringLength(5, ErrorMessage = "最長只能輸入5個字")]
+        [StringLength(50, ErrorMessage = "最長只能輸入50個字")]
         public string SaleState { get; set; }
     }
 

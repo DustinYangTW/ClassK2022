@@ -175,7 +175,7 @@
       <PropertyRef Name="SaleStateID" />
     </Key>
     <Property Name="SaleStateID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="SaleState" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SaleState" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="FactoryData" Relationship="Self.FK_FactoryData_SaleTypeData" FromRole="SaleTypeData" ToRole="FactoryData" />
     <NavigationProperty Name="HomeData" Relationship="Self.FK_HomeData_SaleTypeData" FromRole="SaleTypeData" ToRole="HomeData" />
     <NavigationProperty Name="TerritoryData" Relationship="Self.FK_TerritoryData_SaleTypeData" FromRole="SaleTypeData" ToRole="TerritoryData" />
