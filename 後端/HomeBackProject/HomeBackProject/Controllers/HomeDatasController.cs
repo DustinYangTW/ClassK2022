@@ -232,7 +232,7 @@ namespace HomeBackProject.Controllers
         }
 
         // GET: HomeDatas/Edit/5
-        //[LoginCkeck]
+        [LoginCkeck]
         public ActionResult Edit(string id)
         {
             if (id == null)
@@ -257,11 +257,11 @@ namespace HomeBackProject.Controllers
             }
 
 
-            ViewBag.HomeADLevel = new SelectList(db.ADTypeData, "ADID", "ADName", homeData.HomeADLevel);
-            ViewBag.HomeCarID = new SelectList(db.CarTypeData, "CarTypeID", "CarTypeName", homeData.HomeCarID);
-            ViewBag.HomeType = new SelectList(db.HomeTypeData, "HomeTypeID", "HomeTypeName", homeData.HomeType);
-            ViewBag.HomePeopleID = new SelectList(db.PeopleData, "PeopleID", "PeopleName", homeData.HomePeopleID);
-            ViewBag.HomeSaleType = new SelectList(db.SaleTypeData, "SaleStateID", "SaleState", homeData.HomeSaleType);
+            //ViewBag.HomeADLevel = new SelectList(db.ADTypeData, "ADID", "ADName", homeData.HomeADLevel);
+            //ViewBag.HomeCarID = new SelectList(db.CarTypeData, "CarTypeID", "CarTypeName", homeData.HomeCarID);
+            //ViewBag.HomeType = new SelectList(db.HomeTypeData, "HomeTypeID", "HomeTypeName", homeData.HomeType);
+            //ViewBag.HomePeopleID = new SelectList(db.PeopleData, "PeopleID", "PeopleName", homeData.HomePeopleID);
+            //ViewBag.HomeSaleType = new SelectList(db.SaleTypeData, "SaleStateID", "SaleState", homeData.HomeSaleType);
 
             ViewBag.HomeTypeName = db.HomeTypeData.Find(homeData.HomeType).HomeTypeName;
             ViewBag.HomeSaleState = db.SaleTypeData.Find(homeData.HomeSaleType).SaleState;
@@ -290,20 +290,66 @@ namespace HomeBackProject.Controllers
         [LoginCkeck]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(HomeData homeData)
+        public ActionResult Edit(HomeData homeData, HttpPostedFileBase[] photo)
         {
+            List<HttpPostedFileBase> photoList = new List<HttpPostedFileBase>();
+            string checkdataPhoto = "";
+            if (photo[0] != null)
+            {
+                for (int i = 0; i < photo.Length; i++)
+                {
+                    if (photo[i] == null)
+                    {
+                        break;
+                    }
+                    checkdataPhoto = postPhotos.checkPhoto(photo[i].FileName, photo[i].ContentLength);
+                    if (checkdataPhoto != "OK")
+                    {
+                        ViewBag.countyID = db.CityTypeData.ToList();
+                        ViewBag.SaleStateID = db.PeopleRankData.ToList();
+                        return View();
+                    }
+
+                    photoList.Add(photo[i]);
+                }
+            }
+
             if (ModelState.IsValid)
             {
-                homeData.HomePeopleID = Session["userID"].ToString();
-                //return actiondbController.Edit(db, homeData);
+                db.Entry(homeData).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+
+                string autoFiles = Server.MapPath("~/AllPhoto");
+                actiondbController.SavePhoto(autoFiles, photoList,homeData.HomePeopleID, homeData.HomeID);
+                return RedirectToAction("Index");
             }
-            ViewBag.HomeADLevel = new SelectList(db.ADTypeData, "ADID", "ADName", homeData.HomeADLevel);
-            ViewBag.HomeCarID = new SelectList(db.CarTypeData, "CarTypeID", "CarTypeName", homeData.HomeCarID);
-            ViewBag.HomeCity = new SelectList(db.CityTypeData, "CityIDTW", "CityTW", homeData.HomeCity);
-            ViewBag.HomeType = new SelectList(db.HomeTypeData, "HomeTypeID", "HomeTypeName", homeData.HomeType);
-            ViewBag.HomePeopleID = new SelectList(db.PeopleData, "PeopleID", "PeopleName", homeData.HomePeopleID);
-            ViewBag.HomeSaleType = new SelectList(db.SaleTypeData, "SaleStateID", "SaleState", homeData.HomeSaleType);
+
+            var id = homeData.HomeID;
+
+            string autoFile = Server.MapPath("~/AllPhoto/Home" + "/" + id);
+            List<string> photoOld = searchPhotos.searchPhotos(autoFile, id);
+            if (photoOld.Count() == 0) { photoOld.Add("../../AllPhoto/unKnow/NoResult.png"); }
+            var allphoto = photoOld.OrderBy(m => m).Skip(photoOld.Count() - 6).OrderByDescending(m => m).ToList();
+
+            ViewBag.allPhoto = allphoto;
+            ViewBag.allPhotoCount = allphoto.Count();
+
+            ViewBag.HomeTypeName = db.HomeTypeData.Find(homeData.HomeType).HomeTypeName;
+            ViewBag.HomeSaleState = db.SaleTypeData.Find(homeData.HomeSaleType).SaleState;
+            ViewBag.HomeCarName = db.CarTypeData.Find(homeData.HomeCarID).CarTypeName;
+
+            ViewBag.HomeADLevel = db.ADTypeData.ToList();
+            ViewBag.HomeCarID = db.CarTypeData.ToList();
+            ViewBag.HomeType = db.HomeTypeData.ToList();
+            ViewBag.HomePeopleID = homeData.HomePeopleID;
+            ViewBag.HomeSaleType = db.SaleTypeData.ToList();
+
             ViewBag.countyID = db.CityTypeData.ToList();
+            var countyTownlast = db.HomeData.Where(p => p.HomeID == homeData.HomeID.ToString()).FirstOrDefault();
+            ViewBag.Townlast = countyTownlast.HomeTown;
+            var countyCountylast = db.CityTypeData.Where(p => p.CityIDTW == homeData.HomeCity).FirstOrDefault();
+            ViewBag.countyIDlast = homeData.HomeCity;
+            ViewBag.countyTWlast = countyCountylast.CityTW;
             return View(homeData);
         }
 

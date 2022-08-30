@@ -7,14 +7,16 @@
     else { Layout = "~/Views/Shared/_Layout_admin.cshtml"; }
 
     var sale = @Model.HomeSaleAndLease == true ? "售" : "租";
+    var saleCheck = @Model.HomeSaleAndLease == true ? "true" : "false";
 }
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "HomeDatas", FormMethod.Post, new { enctype = "multipart/form-data", @class = "needs-validation", onsubmit = "return check_select()" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.HomeID)
     @Html.HiddenFor(model => model.HomePeopleID)
+    @Html.HiddenFor(model => model.HomeADLevel)
 
     <section class="container">
         <div class="row">
@@ -198,8 +200,8 @@
                             <div class="form-group">
                                 <label class="form-label fs-5" for="HomeSaleAndLease">售/租</label>
                                 <select class="form-select form-select-lg" name="HomeSaleAndLease" id="HomeSaleAndLease" required>
-                                    <option selected value="@Model.HomeSaleAndLease">@sale</option>
-                                    @if (@sale == "售")
+                                    <option value="@saleCheck">@sale</option>
+                                    @if (@sale != "售")
                                     {
                                         <option value="true">售</option>
                                     }
@@ -279,7 +281,7 @@
                             <div class="form-outline">
                                 <label class="form-label fs-5" for="HomeHall">廳</label>
                                 <select class="form-select form-select-lg" name="HomeHall" id="HomeHall">
-                                    <option value=">@Model.HomeHall">@Model.HomeHall</option>
+                                    <option value="@Model.HomeHall">@Model.HomeHall</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -373,18 +375,16 @@
                         </div>
                         <div class="form-group d-flex justify-content-end">
                             <input type="submit" value="修改" class="btn btn-danger btn-lg" />
-                            <a href="/PeopleDatas/DetailsMyself/@Model.HomeID" class=" btn btn-primary btn-lg ms-4">返回上一頁</a>
+                            <a href="/HomeDatas/DetailsMyself/@Model.HomeID" class=" btn btn-primary btn-lg ms-4">返回上一頁</a>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 }
 
-@*<div>
-        @Html.ActionLink("回到上一頁", "Index", new { }, new { @class = "btn btn-primary" })
-    </div>*@
 
 
 
@@ -392,9 +392,20 @@
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/Js/FindCityData.js"></script>
+    <script src="~/Js/Validation.js"></script>
     <script>mainIdex()</script>
     <script>
         $("#oldPhoto img:nth-child(1)").addClass("active");
     </script>
     <script src="~/Js/photosShow.js"></script>
+
+    <script>
+        function check_select(form) {
+            if (confirm("確定要送出此資料嗎？")) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    </script>
 }
