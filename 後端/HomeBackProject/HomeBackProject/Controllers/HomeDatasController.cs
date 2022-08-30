@@ -139,33 +139,33 @@ namespace HomeBackProject.Controllers
             }
             return View(homeData);
         }
-        // GET: HomeDatas/DetailsModal/H0000000006
-        public ActionResult DetailsModal(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            HomeData homeData = db.HomeData.Find(id);
+        //// GET: HomeDatas/DetailsModal/H0000000006
+        //public ActionResult DetailsModal(string id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    HomeData homeData = db.HomeData.Find(id);
 
-            string autoFile = Server.MapPath("~/AllPhoto/Home" + "/" + id);
-            List<string> photo = searchPhotos.searchPhotos(autoFile, id);
+        //    string autoFile = Server.MapPath("~/AllPhoto/Home" + "/" + id);
+        //    List<string> photo = searchPhotos.searchPhotos(autoFile, id);
 
-            if (photo.Count() == 0) { photo.Add("../../AllPhoto/unKnow/NoResult.png"); }
-            var allphoto = photo.OrderBy(m => m).Skip(photo.Count() - 6).OrderByDescending(m => m).ToList();
+        //    if (photo.Count() == 0) { photo.Add("../../AllPhoto/unKnow/NoResult.png"); }
+        //    var allphoto = photo.OrderBy(m => m).Skip(photo.Count() - 6).OrderByDescending(m => m).ToList();
 
             
 
-            ViewBag.allPhoto = allphoto;
-            //ViewBag.allPhoto = photo;
-            ViewBag.allPhotoCount = allphoto.Count();
+        //    ViewBag.allPhoto = allphoto;
+        //    //ViewBag.allPhoto = photo;
+        //    ViewBag.allPhotoCount = allphoto.Count();
 
-            if (homeData == null)
-            {
-                return HttpNotFound();
-            }
-            return View(homeData);
-        }
+        //    if (homeData == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(homeData);
+        //}
         // GET: HomeDatas/DetailsModal/H0000000006
         public ActionResult DetailsModal(string id)
         {
@@ -384,11 +384,6 @@ namespace HomeBackProject.Controllers
         }
 
         // GET: HomeDatas/Delete/5
-<<<<<<< HEAD
-      
-=======
-
->>>>>>> 21c029d2a19cf12f934bef8e576bef2594f4b9a0
         //public ActionResult Delete(string id)
         //{
         //    if (id == null)
