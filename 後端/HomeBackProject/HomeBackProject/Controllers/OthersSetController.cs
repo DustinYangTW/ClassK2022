@@ -113,9 +113,12 @@ namespace HomeBackProject.Controllers
             }
 
 
-            ViewBag.CheckView = "請在左側選擇要操作的系統";
+            ViewBag.CheckView = "請選擇要操作的系統";
             return View();
         }
+
+
+
 
         [LoginCkeck]
         [LoginCkeckRank]
@@ -124,6 +127,29 @@ namespace HomeBackProject.Controllers
         {
             if (idNmae == "Rank")
             {
+                if (toDBName == "" || toDBName == null)
+                {
+                    VMOthersSet vMOthersSet = new VMOthersSet()
+                    {
+                        PeopleRankData = db.PeopleRankData.ToList()
+                    };
+                    ViewBag.CheckData = idNmae;
+                    ViewBag.CheckView = "會員身份設定";
+                    ViewBag.errorEdit = "**輸入資料有誤，請查明後再輸入";
+                    return View("Index", vMOthersSet);
+                }
+                if (toDBName.Length >= 50)
+                {
+                    VMOthersSet vMOthersSet = new VMOthersSet()
+                    {
+                        PeopleRankData = db.PeopleRankData.ToList()
+                    };
+                    ViewBag.CheckData = idNmae;
+                    ViewBag.CheckView = "會員身份設定";
+                    ViewBag.errorEdit = "**輸入字串長度，只能小於50個字元";
+                    return View("Index", vMOthersSet);
+                }
+
                 PeopleRankData peopleRankData = new PeopleRankData();
                 peopleRankData.PeopleRank = toDBName;
                 if (ModelState.IsValid)
@@ -134,6 +160,29 @@ namespace HomeBackProject.Controllers
             }
             else if (idNmae == "Program")
             {
+                if (toDBName == "" || toDBName == null)
+                {
+                    VMOthersSet vMOthersSet = new VMOthersSet()
+                    {
+                        ProgramData = db.ProgramData.ToList()
+                    };
+                    ViewBag.CheckData = idNmae;
+                    ViewBag.CheckView = "會員身份設定";
+                    ViewBag.errorEdit = "**輸入資料有誤，請查明後再輸入";
+                    return View("Index", vMOthersSet);
+                }
+                if (toDBName.Length >= 50)
+                {
+                    VMOthersSet vMOthersSet = new VMOthersSet()
+                    {
+                        ProgramData = db.ProgramData.ToList()
+                    };
+                    ViewBag.CheckData = idNmae;
+                    ViewBag.CheckView = "會員身份設定";
+                    ViewBag.errorEdit = "**輸入字串長度，只能小於50個字元";
+                    return View("Index", vMOthersSet);
+                }
+
                 ProgramData programData = new ProgramData();
                 programData.ProgramName = toDBName;
                 if (ModelState.IsValid)
@@ -144,6 +193,29 @@ namespace HomeBackProject.Controllers
             }
             else if (idNmae == "Home")
             {
+                if (toDBName == "" || toDBName == null)
+                {
+                    VMOthersSet vMOthersSet = new VMOthersSet()
+                    {
+                        HomeTypeData = db.HomeTypeData.ToList()
+                    };
+                    ViewBag.CheckData = idNmae;
+                    ViewBag.CheckView = "會員身份設定";
+                    ViewBag.errorEdit = "**輸入資料有誤，請查明後再輸入";
+                    return View("Index", vMOthersSet);
+                }
+                if (toDBName.Length >= 50)
+                {
+                    VMOthersSet vMOthersSet = new VMOthersSet()
+                    {
+                        HomeTypeData = db.HomeTypeData.ToList()
+                    };
+                    ViewBag.CheckData = idNmae;
+                    ViewBag.CheckView = "會員身份設定";
+                    ViewBag.errorEdit = "**輸入字串長度，只能小於50個字元";
+                    return View("Index", vMOthersSet);
+                }
+
                 HomeTypeData homeTypeData = new HomeTypeData();
                 homeTypeData.HomeTypeName = toDBName;
                 if (ModelState.IsValid)
@@ -154,6 +226,29 @@ namespace HomeBackProject.Controllers
             }
             else if (idNmae == "Territory")
             {
+                if (toDBName == "" || toDBName == null)
+                {
+                    VMOthersSet vMOthersSet = new VMOthersSet()
+                    {
+                        TerritoryTypeData = db.TerritoryTypeData.ToList()
+                    };
+                    ViewBag.CheckData = idNmae;
+                    ViewBag.CheckView = "會員身份設定";
+                    ViewBag.errorEdit = "**輸入資料有誤，請查明後再輸入";
+                    return View("Index", vMOthersSet);
+                }
+                if (toDBName.Length >= 50)
+                {
+                    VMOthersSet vMOthersSet = new VMOthersSet()
+                    {
+                        TerritoryTypeData = db.TerritoryTypeData.ToList()
+                    };
+                    ViewBag.CheckData = idNmae;
+                    ViewBag.CheckView = "會員身份設定";
+                    ViewBag.errorEdit = "**輸入字串長度，只能小於50個字元";
+                    return View("Index", vMOthersSet);
+                }
+
                 TerritoryTypeData territoryTypeData = new TerritoryTypeData();
                 territoryTypeData.TerritoryTypeSelect = toDBName;
                 if (ModelState.IsValid)
@@ -164,6 +259,30 @@ namespace HomeBackProject.Controllers
             }
             else if (idNmae == "Car")
             {
+                if (toDBName == "" || toDBName == null)
+                {
+                    VMOthersSet vMOthersSet = new VMOthersSet()
+                    {
+                        CarTypeData = db.CarTypeData.ToList()
+                    };
+                    ViewBag.CheckData = idNmae;
+                    ViewBag.CheckView = "會員身份設定";
+                    ViewBag.errorEdit = "**輸入資料有誤，請查明後再輸入";
+                    return View("Index", vMOthersSet);
+                }
+                if (toDBName.Length >= 50)
+                {
+                    VMOthersSet vMOthersSet = new VMOthersSet()
+                    {
+                        CarTypeData = db.CarTypeData.ToList()
+                    };
+                    ViewBag.CheckData = idNmae;
+                    ViewBag.CheckView = "會員身份設定";
+                    ViewBag.errorEdit = "**輸入字串長度，只能小於50個字元";
+                    return View("Index", vMOthersSet);
+                }
+
+
                 CarTypeData carTypeData = new CarTypeData();
                 carTypeData.CarTypeName = toDBName;
                 if (ModelState.IsValid)
@@ -174,6 +293,29 @@ namespace HomeBackProject.Controllers
             }
             else if (idNmae == "Sale")
             {
+                if (toDBName == "" || toDBName == null)
+                {
+                    VMOthersSet vMOthersSet = new VMOthersSet()
+                    {
+                        SaleTypeData = db.SaleTypeData.ToList()
+                    };
+                    ViewBag.CheckData = idNmae;
+                    ViewBag.CheckView = "會員身份設定";
+                    ViewBag.errorEdit = "**輸入資料有誤，請查明後再輸入";
+                    return View("Index", vMOthersSet);
+                }
+                if (toDBName.Length >= 50)
+                {
+                    VMOthersSet vMOthersSet = new VMOthersSet()
+                    {
+                        SaleTypeData = db.SaleTypeData.ToList()
+                    };
+                    ViewBag.CheckData = idNmae;
+                    ViewBag.CheckView = "會員身份設定";
+                    ViewBag.errorEdit = "**輸入字串長度，只能小於50個字元";
+                    return View("Index", vMOthersSet);
+                }
+
                 SaleTypeData saleTypeData = new SaleTypeData();
                 saleTypeData.SaleState = toDBName;
                 if (ModelState.IsValid)
@@ -184,6 +326,30 @@ namespace HomeBackProject.Controllers
             }
             else if (idNmae == "AD")
             {
+                if (toDBName == "" || toDBName == null)
+                {
+                    VMOthersSet vMOthersSet = new VMOthersSet()
+                    {
+                        ADTypeData = db.ADTypeData.ToList()
+                    };
+                    ViewBag.CheckData = idNmae;
+                    ViewBag.CheckView = "會員身份設定";
+                    ViewBag.errorEdit = "**輸入資料有誤，請查明後再輸入";
+                    return View("Index", vMOthersSet);
+                }
+                if (toDBName.Length >= 100)
+                {
+                    VMOthersSet vMOthersSet = new VMOthersSet()
+                    {
+                        ADTypeData = db.ADTypeData.ToList()
+                    };
+                    ViewBag.CheckData = idNmae;
+                    ViewBag.CheckView = "會員身份設定";
+                    ViewBag.errorEdit = "**輸入字串長度，只能小於100個字元";
+                    return View("Index", vMOthersSet);
+                }
+
+
                 ADTypeData aDTypeData = new ADTypeData();
                 aDTypeData.ADName = toDBName;
                 if (ModelState.IsValid)
@@ -193,7 +359,7 @@ namespace HomeBackProject.Controllers
                 }
             }
 
-            return View();
+            return RedirectToAction("Index", new { idNmae = idNmae });
         }
 
         [LoginCkeck]
@@ -207,13 +373,41 @@ namespace HomeBackProject.Controllers
         }
 
         [LoginCkeck]
+        public ActionResult Edit()
+        {
+            return View();
+        }
+
+        [LoginCkeck]
         [LoginCkeckRank]
         [HttpPost]
         public ActionResult Edit(string idNmae, string toDBNameEdit, string id)
         {
-
             if (idNmae == "Rank")
             {
+                if (toDBNameEdit == "" || toDBNameEdit == null)
+                {
+                    VMOthersSet vMOthersSet = new VMOthersSet()
+                    {
+                        PeopleRankData = db.PeopleRankData.ToList()
+                    };
+                    ViewBag.CheckData = idNmae;
+                    ViewBag.CheckView = "會員身份設定";
+                    ViewBag.errorEdit = "**輸入資料有誤，請查明後再輸入";
+                    return View("Index", vMOthersSet);
+                }
+                if (toDBNameEdit.Length >= 50)
+                {
+                    VMOthersSet vMOthersSet = new VMOthersSet()
+                    {
+                        PeopleRankData = db.PeopleRankData.ToList()
+                    };
+                    ViewBag.CheckData = idNmae;
+                    ViewBag.CheckView = "會員身份設定";
+                    ViewBag.errorEdit = "**輸入字串長度，只能小於50個字元";
+                    return View("Index", vMOthersSet);
+                }
+
                 if (id == null)
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -233,6 +427,29 @@ namespace HomeBackProject.Controllers
             }
             else if (idNmae == "Program")
             {
+                if (toDBNameEdit == "" || toDBNameEdit == null)
+                {
+                    VMOthersSet vMOthersSet = new VMOthersSet()
+                    {
+                        ProgramData = db.ProgramData.ToList()
+                    };
+                    ViewBag.CheckData = idNmae;
+                    ViewBag.CheckView = "會員身份設定";
+                    ViewBag.errorEdit = "**輸入資料有誤，請查明後再輸入";
+                    return View("Index", vMOthersSet);
+                }
+                if (toDBNameEdit.Length >= 50)
+                {
+                    VMOthersSet vMOthersSet = new VMOthersSet()
+                    {
+                        ProgramData = db.ProgramData.ToList()
+                    };
+                    ViewBag.CheckData = idNmae;
+                    ViewBag.CheckView = "會員身份設定";
+                    ViewBag.errorEdit = "**輸入字串長度，只能小於50個字元";
+                    return View("Index", vMOthersSet);
+                }
+
                 if (id == null)
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -252,6 +469,29 @@ namespace HomeBackProject.Controllers
             }
             else if (idNmae == "Home")
             {
+                if (toDBNameEdit == "" || toDBNameEdit == null)
+                {
+                    VMOthersSet vMOthersSet = new VMOthersSet()
+                    {
+                        HomeTypeData = db.HomeTypeData.ToList()
+                    };
+                    ViewBag.CheckData = idNmae;
+                    ViewBag.CheckView = "會員身份設定";
+                    ViewBag.errorEdit = "**輸入資料有誤，請查明後再輸入";
+                    return View("Index", vMOthersSet);
+                }
+                if (toDBNameEdit.Length >= 50)
+                {
+                    VMOthersSet vMOthersSet = new VMOthersSet()
+                    {
+                        HomeTypeData = db.HomeTypeData.ToList()
+                    };
+                    ViewBag.CheckData = idNmae;
+                    ViewBag.CheckView = "會員身份設定";
+                    ViewBag.errorEdit = "**輸入字串長度，只能小於50個字元";
+                    return View("Index", vMOthersSet);
+                }
+
                 if (id == null)
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -271,6 +511,29 @@ namespace HomeBackProject.Controllers
             }
             else if (idNmae == "Car")
             {
+                if (toDBNameEdit == "" || toDBNameEdit == null)
+                {
+                    VMOthersSet vMOthersSet = new VMOthersSet()
+                    {
+                        CarTypeData = db.CarTypeData.ToList()
+                    };
+                    ViewBag.CheckData = idNmae;
+                    ViewBag.CheckView = "會員身份設定";
+                    ViewBag.errorEdit = "**輸入資料有誤，請查明後再輸入";
+                    return View("Index", vMOthersSet);
+                }
+                if (toDBNameEdit.Length >= 50)
+                {
+                    VMOthersSet vMOthersSet = new VMOthersSet()
+                    {
+                        CarTypeData = db.CarTypeData.ToList()
+                    };
+                    ViewBag.CheckData = idNmae;
+                    ViewBag.CheckView = "會員身份設定";
+                    ViewBag.errorEdit = "**輸入字串長度，只能小於50個字元";
+                    return View("Index", vMOthersSet);
+                }
+
                 if (id == null)
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -290,6 +553,30 @@ namespace HomeBackProject.Controllers
             }
             else if (idNmae == "Territory")
             {
+                if (toDBNameEdit == "" || toDBNameEdit == null)
+                {
+                    VMOthersSet vMOthersSet = new VMOthersSet()
+                    {
+                        TerritoryTypeData = db.TerritoryTypeData.ToList()
+                    };
+                    ViewBag.CheckData = idNmae;
+                    ViewBag.CheckView = "會員身份設定";
+                    ViewBag.errorEdit = "**輸入資料有誤，請查明後再輸入";
+                    return View("Index", vMOthersSet);
+                }
+                if (toDBNameEdit.Length >= 50)
+                {
+                    VMOthersSet vMOthersSet = new VMOthersSet()
+                    {
+                        TerritoryTypeData = db.TerritoryTypeData.ToList()
+                    };
+                    ViewBag.CheckData = idNmae;
+                    ViewBag.CheckView = "會員身份設定";
+                    ViewBag.errorEdit = "**輸入字串長度，只能小於50個字元";
+                    return View("Index", vMOthersSet);
+                }
+
+
                 if (id == null)
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -309,6 +596,29 @@ namespace HomeBackProject.Controllers
             }
             else if (idNmae == "Sale")
             {
+                if (toDBNameEdit == "" || toDBNameEdit == null)
+                {
+                    VMOthersSet vMOthersSet = new VMOthersSet()
+                    {
+                        SaleTypeData = db.SaleTypeData.ToList()
+                    };
+                    ViewBag.CheckData = idNmae;
+                    ViewBag.CheckView = "會員身份設定";
+                    ViewBag.errorEdit = "**輸入資料有誤，請查明後再輸入";
+                    return View("Index", vMOthersSet);
+                }
+                if (toDBNameEdit.Length >= 50)
+                {
+                    VMOthersSet vMOthersSet = new VMOthersSet()
+                    {
+                        SaleTypeData = db.SaleTypeData.ToList()
+                    };
+                    ViewBag.CheckData = idNmae;
+                    ViewBag.CheckView = "會員身份設定";
+                    ViewBag.errorEdit = "**輸入字串長度，只能小於50個字元";
+                    return View("Index", vMOthersSet);
+                }
+
                 if (id == null)
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -328,6 +638,29 @@ namespace HomeBackProject.Controllers
             }
             else if (idNmae == "AD")
             {
+                if (toDBNameEdit == "" || toDBNameEdit == null)
+                {
+                    VMOthersSet vMOthersSet = new VMOthersSet()
+                    {
+                        ADTypeData = db.ADTypeData.ToList()
+                    };
+                    ViewBag.CheckData = idNmae;
+                    ViewBag.CheckView = "會員身份設定";
+                    ViewBag.errorEdit = "**輸入資料有誤，請查明後再輸入";
+                    return View("Index", vMOthersSet);
+                }
+                if (toDBNameEdit.Length >= 100)
+                {
+                    VMOthersSet vMOthersSet = new VMOthersSet()
+                    {
+                        ADTypeData = db.ADTypeData.ToList()
+                    };
+                    ViewBag.CheckData = idNmae;
+                    ViewBag.CheckView = "會員身份設定";
+                    ViewBag.errorEdit = "**輸入字串長度，只能小於100個字元";
+                    return View("Index", vMOthersSet);
+                }
+
                 if (id == null)
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -345,7 +678,7 @@ namespace HomeBackProject.Controllers
                     return RedirectToAction("Index", new { idNmae = idNmae });
                 }
             }
-            return View();
+            return RedirectToAction("Index", new { idNmae = idNmae });
         }
 
     }

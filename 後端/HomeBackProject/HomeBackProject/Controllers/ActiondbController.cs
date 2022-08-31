@@ -178,11 +178,11 @@ namespace HomeBackProject.Controllers
             //後面是做抓取最後一筆相片的編號!!!
 
             int getData;
-            for (int i = lastPhotoNumber; i < photo.Count; i++)
+            for (int i = 0; i < photo.Count; i++)
             {
-                getData = lastPhotoNumber == 0 ? i :i-1;
-                checkid = photo[getData].FileName.Substring(photo[getData].FileName.IndexOf("."));
-                photo[getData].SaveAs(filename + string.Concat(i, checkid));
+                getData = lastPhotoNumber+i;
+                checkid = photo[i].FileName.Substring(photo[i].FileName.IndexOf("."));
+                photo[i].SaveAs(filename + string.Concat(getData, checkid));
             }
 
             return RedirectToAction("Index");

@@ -9,8 +9,8 @@
 }
 
 
-<div class="container p-4">
-    <div class="row">
+<div class="container p-4 mt-3 mt-lg-0">
+    <div class="row pt-lg-5 ">
         <div class="col-lg-2 d-lg-flex align-items-lg-center justify-content-lg-center">
             <div class="list-group"  style="width:100%">
                 <a class="list-group-item list-group-item-primary active disabled text-center p-3 fs-4" aria-current="true">
@@ -28,9 +28,11 @@
         </div>
         <div class="col-lg-10">
             @*href="/OthersSet/Create?idNmae=@ViewBag.CheckData"*@
+            <div class="d-flex justify-content-center">
+                <span class="text-danger fs-4"> @ViewBag.errorEdit</span>
+            </div>          
 
-
-            @if (@ViewBag.CheckView != "請在左側選擇要操作的系統")
+            @if (@ViewBag.CheckView != "請選擇要操作的系統")
             {
                 <h3 class="text-black fs-3 d-flex justify-content-center bg-opacity-75 fw-bolder rounded-3 m-2 p-2 mt-4 mt-lg-2">@ViewBag.CheckView</h3>
 

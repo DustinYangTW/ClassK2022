@@ -26,8 +26,8 @@
 
 </head>
 <body>
-    <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
-        <div class="container-fluid">
+    <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top"  style="background-color: #F5ECE4;">
+        <div class="container-fluid ps-4 pe-4">
             <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
                 <span></span>
                 <span></span>
@@ -64,21 +64,32 @@
                         </div>
                     </li>
 
-                    @*<li class="nav-item">
-                            <a class="nav-link" href="#">關於我們</a>
-                        </li>*@
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="~/OthersSet/Index" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">商品購買</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="/PeopleBuySomething/index">會員點數</a>
+                            @*<a class="dropdown-item" href="/OthersSet/index?idNmae=Program">會員方案設定</a>*@
+                            @*<a class="dropdown-item" href="/OthersSet/index?idNmae=City">縣市設定</a>*@
+                        </div>
+                    </li>
+
+
 
                     @*<li class="nav-item">
-                            <a class="nav-link " href="property-grid.html">Property</a>
-                        </li>
+            <a class="nav-link" href="#">關於我們</a>
+        </li>*@
 
-                        <li class="nav-item">
-                            <a class="nav-link " href="blog-grid.html">Blog</a>
-                        </li>
+                    @*<li class="nav-item">
+            <a class="nav-link " href="property-grid.html">Property</a>
+        </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link " href="contact.html">Contact</a>
-                        </li>*@
+        <li class="nav-item">
+            <a class="nav-link " href="blog-grid.html">Blog</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link " href="contact.html">Contact</a>
+        </li>*@
                 </ul>
                 <div class="d-flex text-center justify-content-center align-items-center">
                     <div class="me-4 d-lg-none d-xl-none">您好! @Session["userNmae"]</div>
@@ -94,7 +105,7 @@
     </nav>
 
 
-    <section class="container-fluid body-content mt-5 intro-single">
+    <section class="container-fluid body-content mt-5 pt-5 intro-single">
         @RenderBody()
     </section>
 

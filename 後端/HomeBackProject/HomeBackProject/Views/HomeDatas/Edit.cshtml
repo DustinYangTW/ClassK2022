@@ -337,7 +337,18 @@
 
                     <div class="row">
 
-                        <div class="col-md-3 mb-4 pb-2">
+                        <div class="col-md-4 mb-4 pb-2">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.HomeManageTip, htmlAttributes: new { @class = "form-label fs-5" })
+                                @Html.EditorFor(model => model.HomeManageTip, new { htmlAttributes = new { @class = "form-control form-control-lg", name = "HomeManageTip", id = "HomeManageTip", required = "required", type = "text" } })
+                                @Html.ValidationMessageFor(model => model.HomeManageTip, "", new { @class = "text-danger" })
+                                <div class="invalid-feedback">
+                                    **必填欄位
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 mb-4 pb-2">
                             <div class="form-group">
                                 <label class="form-label fs-5" for="selectCounty">縣市</label>
                                 <select class="form-select form-select-lg" name="HomeCity" id="selectCounty" onchange="mainIdex()">
@@ -351,7 +362,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-3 mb-4 pb-2">
+                        <div class="col-md-4 mb-4 pb-2">
                             <div class="form-group">
                                 <label class="form-label fs-5" for="selectCity">鄉鎮</label>
                                 <select class="form-select form-select-lg" name="HomeTown" id="selectCity">
@@ -361,22 +372,23 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6 mb-4 pb-2">
-                            <div class="form-group">
 
-                                @Html.LabelFor(model => model.HomeStreet, htmlAttributes: new { @class = "form-label fs-5" })
-                                @Html.EditorFor(model => model.HomeStreet, new { htmlAttributes = new { @class = "form-control form-control-lg", name = "HomeStreet", type = "text", id = "HomeStreet", required = "required" } })
-                                @Html.ValidationMessageFor(model => model.HomeStreet, "", new { @class = "text-danger" })
-                                <div class="invalid-feedback">
-                                    **必填欄位
-                                </div>
+                    </div>
+                    <div class="col-md-12 mb-4 pb-2">
+                        <div class="form-group">
 
+                            @Html.LabelFor(model => model.HomeStreet, htmlAttributes: new { @class = "form-label fs-5" })
+                            @Html.EditorFor(model => model.HomeStreet, new { htmlAttributes = new { @class = "form-control form-control-lg", name = "HomeStreet", type = "text", id = "HomeStreet", required = "required" } })
+                            @Html.ValidationMessageFor(model => model.HomeStreet, "", new { @class = "text-danger" })
+                            <div class="invalid-feedback">
+                                **必填欄位
                             </div>
+
                         </div>
-                        <div class="form-group d-flex justify-content-end">
-                            <input type="submit" value="修改" class="btn btn-danger btn-lg" onclick = "return confirm('請問您是否要修改嗎?')" />
-                            <a href="/HomeDatas/index/@Model.HomeID" class=" btn btn-primary btn-lg ms-4">返回上一頁</a>
-                        </div>
+                    </div>
+                    <div class="form-group d-flex justify-content-end">
+                        <input type="submit" value="修改" class="btn btn-danger btn-lg" onclick="return confirm('請問您是否要修改嗎?')" />
+                        <a href="/HomeDatas/index/@Model.HomeID" class=" btn btn-primary btn-lg ms-4">返回上一頁</a>
                     </div>
                 </div>
 
