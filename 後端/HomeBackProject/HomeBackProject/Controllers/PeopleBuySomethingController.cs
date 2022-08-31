@@ -1,4 +1,5 @@
 ﻿using HomeBackProject.Models;
+using HomeBackProject.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -37,10 +38,18 @@ namespace HomeBackProject.Controllers
             return View("buyPoints");
         }
 
+
         [LoginCkeck]
-        public ActionResult buyADForHome()
+        public ActionResult buyADForHome(string id)
         {
-            return View(db.ADTypeData.ToList());
+            List<HomeData> homeData = new List<HomeData>();
+            homeData.Add(db.HomeData.Find(id));
+            VMHouseAD vMHouseAD = new VMHouseAD()
+            {
+                ADTypeData = db.ADTypeData.ToList(),
+                HomeData = homeData
+            };
+            return View(vMHouseAD);
         }
 
         [LoginCkeck]
