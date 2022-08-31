@@ -356,6 +356,7 @@
     <Content Include="Views\PeopleDatas\DetailsMyself.cshtml" />
     <Content Include="Views\HomeDatas\DetailsModal.cshtml" />
     <Content Include="Views\PeopleBuySomething\buyPoints.cshtml" />
+    <Content Include="Views\PeopleBuySomething\buyADForHome.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

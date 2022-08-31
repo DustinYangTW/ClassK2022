@@ -1,0 +1,70 @@
+﻿@model IEnumerable<HomeBackProject.Models.ADTypeData>
+
+@{
+    ViewBag.Title = "buyADForHome";
+    Layout = "~/Views/Shared/_Layout_LogInOut.cshtml";
+}
+
+
+<div class="container mt-5 pt-3">
+    <div class="d-flex justify-content-center mb-5">
+        <span class="text-danger fs-1">@ViewBag.Win</span>
+    </div>
+    <div class="row">
+        <div class="col  d-flex justify-content-center align-items-center">
+            @using (Html.BeginForm("buyADForHouse", "PeopleBuySomething", FormMethod.Post, new { enctype = "multipart/form-data", @class = "needs-validation" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="card" style="width: 18rem;">
+                    <img src="https://storage.googleapis.com/p-gashmall-resource/Charge/SA00843100.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <input id="point" type="hidden" name="point" value="100" />
+                        <input id="id" type="hidden" name="id" value="@Session["userID"].ToString()" />
+                        <h5 class="card-title">100點</h5>
+                        <p class="card-text">購買此點數，可以想買廣告</p>
+                        <button class="btn btn-primary" type="submit">點我購買</button>
+                    </div>
+                </div>
+
+            }
+        </div>
+        <div class="col  d-flex justify-content-center align-items-center">
+            @using (Html.BeginForm("buyADForHouse", "PeopleBuySomething", FormMethod.Post, new { enctype = "multipart/form-data", @class = "needs-validation" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="card" style="width: 18rem;">
+                    <img src="https://storage.googleapis.com/p-gashmall-resource/Charge/SA00845300.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <input id="point" type="hidden" name="point" value="300" />
+                        <input id="id" type="hidden" name="id" value="@Session["userID"].ToString()" />
+                        <h5 class="card-title">300點</h5>
+                        <p class="card-text">購買此點數，可以想買廣告</p>
+                        <button class="btn btn-primary" type="submit">點我購買</button>
+                    </div>
+                </div>
+
+            }
+        </div>
+        <div class="col  d-flex justify-content-center align-items-center">
+            @using (Html.BeginForm("buyADForHouse", "PeopleBuySomething", FormMethod.Post, new { enctype = "multipart/form-data", @class = "needs-validation" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="card" style="width: 18rem;">
+                    <img src="https://storage.googleapis.com/p-gashmall-resource/Charge/SA007571000.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <input id="point" type="hidden" name="point" value="1000" />
+                        <input id="id" type="hidden" name="id" value="@Session["userID"].ToString()" />
+                        <h5 class="card-title">1000點</h5>
+                        <p class="card-text">購買此點數，可以想買廣告</p>
+                        <button class="btn btn-primary" type="submit">點我購買</button>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+</div>
+
