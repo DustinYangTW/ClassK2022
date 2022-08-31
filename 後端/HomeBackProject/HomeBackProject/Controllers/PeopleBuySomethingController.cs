@@ -14,7 +14,7 @@ namespace HomeBackProject.Controllers
         private HomeDataEntities db = new HomeDataEntities();
         // GET: PeopleBuySomething
         [LoginCkeck]
-        public ActionResult Index()
+        public ActionResult buyPoints()
         {
             return View();
         }
@@ -22,7 +22,7 @@ namespace HomeBackProject.Controllers
         [LoginCkeck]
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public ActionResult HomeSaleTypeDelete(string id,int point)
+        public ActionResult buyPoints(string id,int point)
         {
             if (id == null)
             {
@@ -32,8 +32,8 @@ namespace HomeBackProject.Controllers
             peopleData.PeopleCash = peopleData.PeopleCash + point;
             db.Entry(peopleData).State = EntityState.Modified;
             db.SaveChanges();
-            ViewBag.Win = "購買成功!! 儲值" + point + " 點 " + " 您目前共有 : " + Math.Round((double)peopleData.PeopleCash,0)+" 點";
-            return View("index");
+            ViewBag.Win = "購買成功!! 儲值 " + point + " 點 " + " ， 您目前共有 : " + Math.Round((double)peopleData.PeopleCash,0)+" 點";
+            return View("buyPoints");
         }
     }
 }

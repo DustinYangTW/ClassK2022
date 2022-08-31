@@ -123,11 +123,6 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Css\assets\css\style.css" />
-    <Content Include="Css\assets\img\about-1.jpg" />
-    <Content Include="Css\assets\img\about-2.jpg" />
-    <Content Include="Css\assets\img\agent-1.jpg" />
-    <Content Include="Css\assets\img\agent-2.jpg" />
-    <Content Include="Css\assets\img\agent-3.jpg" />
     <Content Include="Css\assets\img\agent-4.jpg" />
     <Content Include="Css\assets\img\agent-5.jpg" />
     <Content Include="Css\assets\img\agent-6.jpg" />
@@ -360,7 +355,7 @@
     <Content Include="Views\Shared\_Layout_admin.cshtml" />
     <Content Include="Views\PeopleDatas\DetailsMyself.cshtml" />
     <Content Include="Views\HomeDatas\DetailsModal.cshtml" />
-    <Content Include="Views\PeopleBuySomething\Index.cshtml" />
+    <Content Include="Views\PeopleBuySomething\buyPoints.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
