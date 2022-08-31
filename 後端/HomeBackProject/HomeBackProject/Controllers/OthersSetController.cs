@@ -138,7 +138,7 @@ namespace HomeBackProject.Controllers
                     ViewBag.errorEdit = "**輸入資料有誤，請查明後再輸入";
                     return View("Index", vMOthersSet);
                 }
-                if (toDBName.Length <= 50)
+                if (toDBName.Length >= 50)
                 {
                     VMOthersSet vMOthersSet = new VMOthersSet()
                     {
@@ -171,7 +171,7 @@ namespace HomeBackProject.Controllers
                     ViewBag.errorEdit = "**輸入資料有誤，請查明後再輸入";
                     return View("Index", vMOthersSet);
                 }
-                if (toDBName.Length <= 50)
+                if (toDBName.Length >= 50)
                 {
                     VMOthersSet vMOthersSet = new VMOthersSet()
                     {
@@ -204,7 +204,7 @@ namespace HomeBackProject.Controllers
                     ViewBag.errorEdit = "**輸入資料有誤，請查明後再輸入";
                     return View("Index", vMOthersSet);
                 }
-                if (toDBName.Length <= 50)
+                if (toDBName.Length >= 50)
                 {
                     VMOthersSet vMOthersSet = new VMOthersSet()
                     {
@@ -237,7 +237,7 @@ namespace HomeBackProject.Controllers
                     ViewBag.errorEdit = "**輸入資料有誤，請查明後再輸入";
                     return View("Index", vMOthersSet);
                 }
-                if (toDBName.Length <= 50)
+                if (toDBName.Length >= 50)
                 {
                     VMOthersSet vMOthersSet = new VMOthersSet()
                     {
@@ -270,7 +270,7 @@ namespace HomeBackProject.Controllers
                     ViewBag.errorEdit = "**輸入資料有誤，請查明後再輸入";
                     return View("Index", vMOthersSet);
                 }
-                if (toDBName.Length <= 50)
+                if (toDBName.Length >= 50)
                 {
                     VMOthersSet vMOthersSet = new VMOthersSet()
                     {
@@ -304,7 +304,7 @@ namespace HomeBackProject.Controllers
                     ViewBag.errorEdit = "**輸入資料有誤，請查明後再輸入";
                     return View("Index", vMOthersSet);
                 }
-                if (toDBName.Length <= 50)
+                if (toDBName.Length >= 50)
                 {
                     VMOthersSet vMOthersSet = new VMOthersSet()
                     {
@@ -337,7 +337,7 @@ namespace HomeBackProject.Controllers
                     ViewBag.errorEdit = "**輸入資料有誤，請查明後再輸入";
                     return View("Index", vMOthersSet);
                 }
-                if (toDBName.Length <= 100)
+                if (toDBName.Length >= 100)
                 {
                     VMOthersSet vMOthersSet = new VMOthersSet()
                     {
@@ -396,7 +396,7 @@ namespace HomeBackProject.Controllers
                     ViewBag.errorEdit = "**輸入資料有誤，請查明後再輸入";
                     return View("Index", vMOthersSet);
                 }
-                if (toDBNameEdit.Length <= 50)
+                if (toDBNameEdit.Length >= 50)
                 {
                     VMOthersSet vMOthersSet = new VMOthersSet()
                     {
@@ -438,7 +438,7 @@ namespace HomeBackProject.Controllers
                     ViewBag.errorEdit = "**輸入資料有誤，請查明後再輸入";
                     return View("Index", vMOthersSet);
                 }
-                if (toDBNameEdit.Length <= 50)
+                if (toDBNameEdit.Length >= 50)
                 {
                     VMOthersSet vMOthersSet = new VMOthersSet()
                     {
@@ -480,7 +480,7 @@ namespace HomeBackProject.Controllers
                     ViewBag.errorEdit = "**輸入資料有誤，請查明後再輸入";
                     return View("Index", vMOthersSet);
                 }
-                if (toDBNameEdit.Length <= 50)
+                if (toDBNameEdit.Length >= 50)
                 {
                     VMOthersSet vMOthersSet = new VMOthersSet()
                     {
@@ -522,7 +522,7 @@ namespace HomeBackProject.Controllers
                     ViewBag.errorEdit = "**輸入資料有誤，請查明後再輸入";
                     return View("Index", vMOthersSet);
                 }
-                if (toDBNameEdit.Length <= 50)
+                if (toDBNameEdit.Length >= 50)
                 {
                     VMOthersSet vMOthersSet = new VMOthersSet()
                     {
@@ -564,7 +564,7 @@ namespace HomeBackProject.Controllers
                     ViewBag.errorEdit = "**輸入資料有誤，請查明後再輸入";
                     return View("Index", vMOthersSet);
                 }
-                if (toDBNameEdit.Length <= 50)
+                if (toDBNameEdit.Length >= 50)
                 {
                     VMOthersSet vMOthersSet = new VMOthersSet()
                     {
@@ -607,7 +607,7 @@ namespace HomeBackProject.Controllers
                     ViewBag.errorEdit = "**輸入資料有誤，請查明後再輸入";
                     return View("Index", vMOthersSet);
                 }
-                if (toDBNameEdit.Length <= 50)
+                if (toDBNameEdit.Length >= 50)
                 {
                     VMOthersSet vMOthersSet = new VMOthersSet()
                     {
@@ -649,7 +649,7 @@ namespace HomeBackProject.Controllers
                     ViewBag.errorEdit = "**輸入資料有誤，請查明後再輸入";
                     return View("Index", vMOthersSet);
                 }
-                if (toDBNameEdit.Length <= 100)
+                if (toDBNameEdit.Length >= 100)
                 {
                     VMOthersSet vMOthersSet = new VMOthersSet()
                     {
