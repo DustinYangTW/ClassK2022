@@ -28,7 +28,9 @@
         </div>
         <div class="col-lg-10">
             @*href="/OthersSet/Create?idNmae=@ViewBag.CheckData"*@
-
+            <div class="d-flex justify-content-center">
+                <span class="text-danger fs-4"> @ViewBag.errorEdit</span>
+            </div>          
 
             @if (@ViewBag.CheckView != "請在左側選擇要操作的系統")
             {

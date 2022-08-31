@@ -22,7 +22,7 @@ function chageformEdit(evt) {
     console.log(Create_id_text);
     $(`#${Create_id}`).empty();
     $(`#${Edit_id}`).empty();
-    console.log(Edit_id);
+   // console.log(Edit_id);
     var form = `<form action="/OthersSet/Edit?idNmae=${idNmae}" method="post">
                             <input id="id" type="hidden" name="id" value="${id}"/>
                               <div class="d-flex justify-content-around align-items-center">
@@ -48,3 +48,4 @@ function resetEdit(evt) {
     $(`#${Edit_id}`).empty();
     $(`#${Edit_id}`).append(`<button type="button" class="btn btn-outline-primary" id="${id}" onclick="chageformEdit(event)">修改</button>`);
 }
+
