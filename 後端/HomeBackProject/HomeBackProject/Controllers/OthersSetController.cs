@@ -113,7 +113,7 @@ namespace HomeBackProject.Controllers
             }
 
 
-            ViewBag.CheckView = "請在左側選擇要操作的系統";
+            ViewBag.CheckView = "請選擇要操作的系統";
             return View();
         }
 

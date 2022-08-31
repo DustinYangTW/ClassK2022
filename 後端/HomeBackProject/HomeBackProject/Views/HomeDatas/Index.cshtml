@@ -373,8 +373,8 @@
             $('#houseInfo #exampleModalLabel').append(`<h3 class="pt-3 ps-3">${evt.target.value} 詳細資料</h1>`);
             $('#houseInfo .modal-footer').empty();
             $('#houseInfo .modal-footer').append(`<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>`);
-            $('#houseInfo .modal-footer').append(`<a href="../Edit/${evt.target.id}" class=" btn btn-outline-danger ms-3">修改</a>`);
-            $('#houseInfo .modal-footer').append(`<a href="../Details/${evt.target.id}" class=" btn btn-primary ms-3">顯示完整資料</a>`);
+            $('#houseInfo .modal-footer').append(`<a href="/HomeDatas/Edit/${evt.target.id}" class=" btn btn-outline-danger ms-3">修改</a>`);
+            $('#houseInfo .modal-footer').append(`<a href="/HomeDatas/Details/${evt.target.id}" class=" btn btn-primary ms-3">顯示完整資料</a>`);
 
         });
     </script>

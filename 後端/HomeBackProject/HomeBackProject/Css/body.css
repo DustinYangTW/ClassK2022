@@ -8,10 +8,27 @@ td {
 
 @media (min-width: 1025px) {
     .h-custom {
-        height: 125vh !important;
+        height: 145vh !important;
     }   
     .h-house {
         height: 180vh !important;
+    }
+    .h-indexLogen {
+        height: 58vh !important;
+    }   
+}
+
+@media (max-width: 1025px) {
+    .h-custom {
+        height: 125vh !important;
+    }
+
+    .h-house {
+        height: 180vh !important;
+    }
+
+    .h-Logenin {
+        height: 45vh !important;
     }
 }
 
