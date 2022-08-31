@@ -67,10 +67,17 @@ namespace HomeBackProject.Controllers
 
             
             homeData.HomeADLevel = (short)ADNumber;
+            homeData.HomeManageTip = (int)homeData.HomeManageTip;
             peopleData.PeopleCash = Session["userRank"].ToString() == "4" ? peopleData.PeopleCash : peopleData.PeopleCash - (decimal)point;
             db.Entry(peopleData).State = EntityState.Modified;
             db.Entry(homeData).State = EntityState.Modified;
-            db.SaveChanges();
+            try
+            {
+                db.SaveChanges();
+            }catch(Exception ex)
+            {
+                throw;
+            }
             //ViewBag.Win = "購買成功!! 儲值方案為 " + ADName + " ， 您點數剩餘 : " + Math.Round((double)peopleData.PeopleCash, 0) + " 點";
             return RedirectToAction("Index", "HomeDatas");
         }
