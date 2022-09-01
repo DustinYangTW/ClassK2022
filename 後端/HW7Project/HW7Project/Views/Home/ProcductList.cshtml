@@ -29,6 +29,7 @@
 @section scripts{
     <script>
 
+
         var cart = [];
 
         if (localStorage.getItem("cart")) {
@@ -36,36 +37,46 @@
         }
 
 
+
+
         $('.addCart').click(function () {
 
             let product = $(this).closest('.card');
+            let foundItem = cart.find((item) => item.PID == newPID);
+            if (foundItem === undefined) {
+                setCart(product);
+            }
+            else {
+                foundItem.Amount += 1;
+                localStorage.setItem("cart", JSON.stringify(cart));
+                alert('商品數量已更新');
+            }
 
-            let newPID = product.find(".PID").val();
+
+            //下面程式太冗長了!!改成上面的寫法
             //let pName = product.find(".PName").text();
             //let price = product.find(".Price").attr("title");
             //let amount = 1;
 
+            //if (cart.length > 0) {
 
-            if (cart.length > 0) {
+            //    for (let index in cart) {
 
-                for (let index in cart) {
+            //        if (newPID == cart[index]["PID"]) {
+            //            cart[index]["Amount"] += 1;
+            //            localStorage.setItem("cart", JSON.stringify(cart));
+            //            alert('商品數量已更新');
+            //            break;
+            //        }
+            //        else if (cart.length - 1 == index) {
+            //            setCart(product);
+            //        }
+            //    }
 
-                    if (newPID == cart[index]["PID"]) {
-                        cart[index]["Amount"] += 1;
-                        localStorage.setItem("cart", JSON.stringify(cart));
-                        alert('商品數量已更新');
-                        break;
-                    }
-                    else if (cart.length - 1 == index) {
-                        setCart(product);
-                    }
-                }
-
-            }
-            else {
-                setCart(product);
-            }
-
+            //}
+            //else {
+            //    setCart(product);
+            //}
 
         });
 
