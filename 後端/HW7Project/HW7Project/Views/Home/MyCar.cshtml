@@ -13,38 +13,36 @@
 
 @section scripts{
     <script>
-    var cart = [];
+        var cart = [];
 
-    if (localStorage.getItem("cart")) {
-        cart = JSON.parse(localStorage.getItem("cart"));
-    }
+        if (localStorage.getItem("cart")) {
+            cart = JSON.parse(localStorage.getItem("cart"));
+        }
 
-    let cartList = "";
-    let pPrice = 0;
-    for (let i = 0; i < cart.length; i++) {
+        let cartList = "";
+        let pPrice = 0;
+        for (let i = 0; i < cart.length; i++) {
 
-        console.log(cart[i]["PName"]);
-        pPrice = Number(cart[i]["Price"]) * Number(cart[i]["Amount"]);
+            console.log(cart[i]["PName"]);
+            let pPrice = Number(cart[i]["Price"]) * Number(cart[i]["Amount"]);
 
-        cartList += `
-                <div class="media">
-                    <img src="..." class="mr-3" alt="...">
-                    <div class="media-body">
-                        <h6 class="mt-0">${cart[i]["PName"]}</h6>
-                        <p>
-                            單價:${cart[i]["Price"]}
-                            數量:${cart[i]["Amount"]}
-                            <h5>${pPrice}</h5>
-                        </p>
-                    </div>
-                </div>
+            let img =
+                cartList += `
+                        <div class="media">
+                            <img src="/Products/GetImage/${cart[i]["PID"]}" class="mr-3" width="150" alt="...">
+                            <div class="media-body">
+                                <h5 class="mt-0">${cart[i]["PName"]}</h5>
+                                <p>
+                                    <h5 class="text-right">單價:${cart[i]["Price"]}
+                                    數量:${cart[i]["Amount"]}
+                                    小計:<span class="text-danger">${pPrice}<span></h5>
+                                </p>
+                            </div>
+                        </div>
+                    `
+        }
 
-            `
 
-    }
-
-
-    $('#MyCart').html(cartList);
+        $('#MyCart').html(cartList);
     </script>
 }
-

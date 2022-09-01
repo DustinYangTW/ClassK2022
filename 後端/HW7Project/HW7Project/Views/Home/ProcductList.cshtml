@@ -22,13 +22,12 @@
         </div>
     }
 </div>
-
-
-
+<span style="position:fixed;right:30px;bottom:30px; width:80px; height:80px; border-radius:50%" class="shadow bg-info text-white">
+    <span class="badge badge-light"></span> <i class="bi bi-cart4" style="font-size: 4rem;"></i>
+</span>
 
 @section scripts{
     <script>
-
 
         var cart = [];
 
@@ -36,13 +35,16 @@
             cart = JSON.parse(localStorage.getItem("cart"));
         }
 
+        $('.badge-light').text(cart.length);
 
 
 
         $('.addCart').click(function () {
 
             let product = $(this).closest('.card');
-            let newPID = product.find(".PID").val();
+            let newPID = product.find('.PID').text();
+
+
             let foundItem = cart.find((item) => item.PID == newPID);
             if (foundItem === undefined) {
                 setCart(product);
@@ -93,6 +95,8 @@
 
             localStorage.setItem("cart", JSON.stringify(cart));
             alert('已加入購物車');
+
+            $('.badge-light').text(cart.length);
         }
 
 
