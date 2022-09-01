@@ -71,15 +71,13 @@ namespace HomeBackProject.Controllers
             ViewBag.Highphotos = Highphotos;
 
             ViewBag.Midphotos = Midphotos;
+            ViewBag.MidhomeDatasCount = MidhomeDatas.Count();
+            ViewBag.MidhCity = MidhCity;
+            ViewBag.MidhomeDatas = MidhomeDatas;
             ViewBag.MidhCity = MidhCity;
 
-            VMIndex vMIndex = new VMIndex()
-            {
-                HomeDatas = MidhomeDatas,
-                PeopleDatas = db.PeopleData.ToList()
-            };
 
-            return View(vMIndex);
+            return View();
         }
     }
 }
