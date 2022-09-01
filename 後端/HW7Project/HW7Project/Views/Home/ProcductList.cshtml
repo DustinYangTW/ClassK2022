@@ -25,7 +25,7 @@
 
 <span style="position:fixed;right:30px;bottom:60px;">
     <span class="badge badge-light bg-danger text-white" style="font-size:1.3rem"></span>
-    <a href="@Url.Action("MyCar")"><span style="font-size: 4rem;text-shadow:0px 0px 10px #b6ff00" class=" bi bi-cart4"></span></a>
+    <a href="@Url.Action("MyCart")"><span style="font-size: 4rem;text-shadow:0px 0px 10px #b6ff00" class=" bi bi-cart4"></span></a>
 </span>
 
 
@@ -45,7 +45,7 @@
         $('.addCart').click(function () {
 
             let product = $(this).closest('.card');
-            let newPID = product.find('.PID').text();
+            let newPID = product.find('.PID').val();
 
 
             let foundItem = cart.find((item) => item.PID == newPID);
