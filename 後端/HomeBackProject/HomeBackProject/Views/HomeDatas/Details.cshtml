@@ -188,7 +188,14 @@
                         @Html.DisplayNameFor(model => model.HomeFeatures)
                     </div>
                     <div class="fs-4 mt-2">
-                        @Html.Raw(@Model.HomeFeatures.ToString().Replace("\n", "<br />"))
+                        @if (@Model.HomeFeatures != null)
+                        {
+                            @Html.Raw(@Model.HomeFeatures.ToString().Replace("\n", "<br />"))
+                        }
+                        else
+                        {
+
+                        }
                     </div>
                 </div>
             </div>
@@ -196,10 +203,10 @@
             <div class="fs-3">
                 <div class="col-12 d-flex flex-column">
                     <div class="  fw-bolder">
-                        
+
                     </div>
                     <div class="fs-4">
-                        
+
                     </div>
                 </div>
             </div>

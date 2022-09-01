@@ -71,13 +71,13 @@ namespace HomeBackProject.Controllers
             peopleData.PeopleCash = Session["userRank"].ToString() == "4" ? peopleData.PeopleCash : peopleData.PeopleCash - (decimal)point;
             db.Entry(peopleData).State = EntityState.Modified;
             db.Entry(homeData).State = EntityState.Modified;
-            try
-            {
+            //try
+            //{
                 db.SaveChanges();
-            }catch(Exception ex)
-            {
-                throw;
-            }
+            //}catch(Exception ex)
+            //{
+            //    throw;
+            //}
             //ViewBag.Win = "購買成功!! 儲值方案為 " + ADName + " ， 您點數剩餘 : " + Math.Round((double)peopleData.PeopleCash, 0) + " 點";
             return RedirectToAction("Index", "HomeDatas");
         }
