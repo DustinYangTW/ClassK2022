@@ -42,6 +42,7 @@
         $('.addCart').click(function () {
 
             let product = $(this).closest('.card');
+            let newPID = product.find(".PID").val();
             let foundItem = cart.find((item) => item.PID == newPID);
             if (foundItem === undefined) {
                 setCart(product);

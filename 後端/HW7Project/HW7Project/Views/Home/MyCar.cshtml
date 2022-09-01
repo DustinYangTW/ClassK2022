@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "我的購物車";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="rounded shadow text-center border-info p-4 text-info mb-4">我的購物車</h2>
+
+<div id="MyCart">
+
+
+</div>
+
+@section scripts{
+    <script>
+    var cart = [];
+
+    if (localStorage.getItem("cart")) {
+        cart = JSON.parse(localStorage.getItem("cart"));
+    }
+
+    let cartList = "";
+    let pPrice = 0;
+    for (let i = 0; i < cart.length; i++) {
+
+        console.log(cart[i]["PName"]);
+        pPrice = Number(cart[i]["Price"]) * Number(cart[i]["Amount"]);
+
+        cartList += `
+                <div class="media">
+                    <img src="..." class="mr-3" alt="...">
+                    <div class="media-body">
+                        <h6 class="mt-0">${cart[i]["PName"]}</h6>
+                        <p>
+                            單價:${cart[i]["Price"]}
+                            數量:${cart[i]["Amount"]}
+                            <h5>${pPrice}</h5>
+                        </p>
+                    </div>
+                </div>
+
+            `
+
+    }
+
+
+    $('#MyCart').html(cartList);
+    </script>
+}
+
