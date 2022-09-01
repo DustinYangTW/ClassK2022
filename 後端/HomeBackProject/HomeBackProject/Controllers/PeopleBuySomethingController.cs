@@ -61,7 +61,7 @@ namespace HomeBackProject.Controllers
 
             if (cash < point)
             {
-                ViewBag.Win = "點數不足，點選旁邊按鈕購買點數!!!";
+                ViewBag.Win = "點數不足 "+ (point-cash)+" 點，點選購買點數!!! 您目前共有: " + Math.Round((double)peopleData.PeopleCash,0)+" 點";
                 return View("buyPoints");
             }
 
