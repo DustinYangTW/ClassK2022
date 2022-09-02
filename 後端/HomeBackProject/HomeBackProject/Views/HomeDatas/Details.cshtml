@@ -106,8 +106,12 @@
             <hr />
             <div class="fs-3">
                 <div class="col-12 d-flex flex-column">
-                    <div class=" fw-bolder">
-                        房屋詳細資料 &nbsp&nbsp <a href="https://www.google.com/maps/place/ @Model.CityTypeData.CityTW@Model.HomeTown@Model.HomeStreet" target="_blank"><div class="btn btn-info btn-lg shadow-lg"><i class="bi bi-map-fill"></i></div></a>
+                    <div class="row section-t3">
+                        <div class="col-sm-12">
+                            <div class="title-box-d">
+                                <h3 class="title-d"> 房屋詳細資料 &nbsp&nbsp <a href="https://www.google.com/maps/place/ @Model.CityTypeData.CityTW@Model.HomeTown@Model.HomeStreet" target="_blank"><span class="btn btn-info btn-lg shadow-lg"><i class="bi bi-map-fill"></i></span></a></h3>
+                            </div>
+                        </div>
                     </div>
                     <div class="row ps-4 ps-lg-0">
                         <div class="pt-3">
@@ -183,8 +187,12 @@
             <hr />
             <div class="fs-3">
                 <div class="col-12 d-flex flex-column">
-                    <div class="  fw-bolder">
-                        @Html.DisplayNameFor(model => model.HomeFeatures)
+                    <div class="row section-t3">
+                        <div class="col-sm-12">
+                            <div class="title-box-d">
+                                <h3 class="title-d">@Html.DisplayNameFor(model => model.HomeFeatures)</h3>
+                            </div>
+                        </div>
                     </div>
                     <div class="fs-4 mt-2">
                         @if (@Model.HomeFeatures != null)
@@ -209,12 +217,99 @@
                     </div>
                 </div>
             </div>
+
+
+            <div class="col-md-12">
+                <div class="row section-t3">
+                    <div class="col-sm-12">
+                        <div class="title-box-d">
+                            <h3 class="title-d">預約看房</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="row d-flex align-items-center">
+                    <div class="col-md-6 col-lg-4">
+                        <img src="@ViewBag.Peoplephoto" alt="" class="img-fluid">
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="property-agent">
+                            <h4 class="title-agent">@ViewBag.People.PeopleName</h4>
+                            <p class="color-text-a">
+                                如果有喜歡看的房屋
+                                <br />
+                                請跟我預約看房
+                                <br />
+                                如果有要找優惠也是找我
+                            </p>
+                            <ul class="list-unstyled">
+                                <li class="d-flex justify-content-between">
+                                    <strong>手機號碼:</strong>
+                                    <span class="color-text-a">@ViewBag.People.PhoneNumber</span>
+                                </li>
+                                <li class="d-flex justify-content-between">
+                                    <strong>電子信箱:</strong>
+                                    <span class="color-text-a">@ViewBag.People.EMail</span>
+                                </li>
+                            </ul>
+                            <div class="socials-a">
+                                <ul class="list-inline">
+                                    <li class="list-inline-item">
+                                        <a href="#">
+                                            <i class="bi bi-facebook" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a href="#">
+                                            <i class="bi bi-twitter" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a href="#">
+                                            <i class="bi bi-instagram" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a href="#">
+                                            <i class="bi bi-linkedin" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-4">
+                        <div class="property-contact">
+                            <form class="form-a">
+                                <div class="row">
+                                    <div class="col-md-12 mb-1">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control form-control-lg form-control-a" id="inputName" placeholder="姓名 *" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-1">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control form-control-lg form-control-a" id="inputEmail1" placeholder="電話 *" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mt-3">
+                                        <button type="button" class="btn btn-a">預約看房</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
         <div class="col-lg-2 d-flex justify-content-center fs-1">
             廣告
         </div>
     </div>
 </div>
+
+
 
 
 @section Script {

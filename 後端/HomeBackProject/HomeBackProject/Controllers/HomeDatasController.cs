@@ -30,8 +30,8 @@ namespace HomeBackProject.Controllers
         {
             string userID = Session["userID"].ToString();
             string userRank = Session["userRank"].ToString();
-            var homeData = userRank == "4" ? db.HomeData.Include(h => h.ADTypeData).Include(h => h.CarTypeData).Include(h => h.CityTypeData).Include(h => h.HomeTypeData).Include(h => h.PeopleData).Include(h => h.SaleTypeData).OrderByDescending(h => h.HomeID).OrderByDescending(h => h.HomeSaleType)
-                                       : db.HomeData.Include(h => h.ADTypeData).Include(h => h.CarTypeData).Include(h => h.CityTypeData).Include(h => h.HomeTypeData).Include(h => h.PeopleData).Include(h => h.SaleTypeData).OrderByDescending(h => h.HomeID).OrderByDescending(h => h.HomeSaleType).Where(h => h.HomePeopleID == userID & h.HomeSaleType != 4);
+            var homeData = userRank == "4" ? db.HomeData.Include(h => h.ADTypeData).Include(h => h.CarTypeData).Include(h => h.CityTypeData).Include(h => h.HomeTypeData).Include(h => h.PeopleData).Include(h => h.SaleTypeData).OrderByDescending(h => h.HomeSaleType).OrderByDescending(h => h.HomeID)
+                                       : db.HomeData.Include(h => h.ADTypeData).Include(h => h.CarTypeData).Include(h => h.CityTypeData).Include(h => h.HomeTypeData).Include(h => h.PeopleData).Include(h => h.SaleTypeData).OrderByDescending(h => h.HomeSaleType).OrderByDescending(h => h.HomeID).Where(h => h.HomePeopleID == userID & h.HomeSaleType != 4);
             int pagesize = 10;
             var pagedList = homeData.ToPagedList(page, pagesize);
             ViewBag.countyID = db.CityTypeData.ToList();
@@ -127,7 +127,14 @@ namespace HomeBackProject.Controllers
             if (photo.Count() == 0) { photo.Add("../../AllPhoto/unKnow/NoResult.png"); }
             var allphoto = photo.OrderBy(m => m).Skip(photo.Count() - 6).OrderByDescending(m => m).ToList();
 
-            
+
+            PeopleData peopleData= db.PeopleData.Find(homeData.HomePeopleID);
+            string PeopelautoFile = Server.MapPath("~/AllPhoto/PeopleImage" + "/" + peopleData.PeopleID);
+            List<string> Peoplephoto = searchPhotos.searchPhotos(PeopelautoFile, id);
+            if (Peoplephoto.Count() == 0) { Peoplephoto.Add("../../AllPhoto/unKnow/NoResult.png"); }
+            ViewBag.Peoplephoto = Peoplephoto[0];
+            ViewBag.People = peopleData;
+
 
             ViewBag.allPhoto = allphoto;
             //ViewBag.allPhoto = photo;
