@@ -1,18 +1,23 @@
-﻿using HomeBackProject.library;
-using HomeBackProject.Models;
-using HomeBackProject.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using HomeBackProject.library;
+using HomeBackProject.Models;
+using System.IO;
+using System.Web.UI;
+using PagedList;
 
 
 namespace HomeBackProject.Controllers
 {
     public class HomeController : Controller
     {
-        private HomeDataEntities db = new HomeDataEntities(); 
+        private HomeDataEntities db = new HomeDataEntities();
         private SearchPhotos searchPhotos = new SearchPhotos();
 
         // GET: HomeManager
@@ -29,9 +34,9 @@ namespace HomeBackProject.Controllers
             //                           where (h.HomeADLevel > 1) 
             //                           select).ToList();
 
-            ViewBag.People = db.PeopleData.OrderByDescending(m => m.PeopleCash).Where(p=> p.SaleStateID != 4).Take(3);
+            ViewBag.People = db.PeopleData.OrderByDescending(m => m.PeopleCash).Where(p => p.SaleStateID != 4).Take(3);
 
-            List < HomeData > HomeDatas = db.HomeData.Where(h => h.HomeADLevel > 1).ToList();
+            List<HomeData> HomeDatas = db.HomeData.Where(h => h.HomeADLevel > 1).ToList();
 
             List<string> Highphotos = new List<string>();
             List<HomeData> HighhomeDatas = new List<HomeData>();
@@ -44,7 +49,7 @@ namespace HomeBackProject.Controllers
             List<PeopleData> peopleDatas = new List<PeopleData>();
             List<string> peoplePhotoss = new List<string>();
 
-            foreach(var peoplePhoto in ViewBag.People)
+            foreach (var peoplePhoto in ViewBag.People)
             {
                 string autoFile = Server.MapPath("~/AllPhoto/PeopleImage" + "/" + peoplePhoto.PeopleID);
                 List<string> peopelePhotos = searchPhotos.searchPhotos(autoFile, peoplePhoto.PeopleID);
@@ -64,7 +69,7 @@ namespace HomeBackProject.Controllers
                     HighCity.Add(City.Find(ADHomeID.HomeCity).CityTW);
                     ADHomeID.HomeMoney = Math.Round(ADHomeID.HomeMoney, 2);
                     HighhomeDatas.Add(ADHomeID);
-                }     
+                }
                 if (ADHomeID.HomeADLevel > 2)
                 {
                     string autoFile = Server.MapPath("~/AllPhoto/Home" + "/" + ADHomeID.HomeID);
@@ -96,5 +101,43 @@ namespace HomeBackProject.Controllers
 
             return View();
         }
+
+
+        public ActionResult houseIndex(int page = 1)
+        {
+
+            var homeData = db.HomeData.Where(h => h.HomeADLevel > 1).OrderByDescending(h => h.HomeADLevel);
+            var City = db.CityTypeData;
+
+            List<string> Midphotos = new List<string>();
+            List<HomeData> MidhomeDatas = new List<HomeData>();
+            List<string> MidhCity = new List<string>();
+
+            foreach (var ADHomeID in homeData)
+            {
+                string autoFile = Server.MapPath("~/AllPhoto/Home" + "/" + ADHomeID.HomeID);
+                List<string> Midphoto = searchPhotos.searchPhotos(autoFile, ADHomeID.HomeID);
+                if (Midphoto.Count() == 0) { Midphoto.Add("../../AllPhoto/unKnow/NoResult.png"); }
+                Midphotos.Add(Midphoto.OrderBy(m => m).FirstOrDefault());
+                ADHomeID.HomeMoney = Math.Round(ADHomeID.HomeMoney, 2);
+                MidhCity.Add(City.Find(ADHomeID.HomeCity).CityTW);
+                MidhomeDatas.Add(ADHomeID);
+            }
+
+            ViewBag.MidhomeDatas = MidhomeDatas;
+            ViewBag.MidhomeDatasCount = MidhomeDatas.Count();
+            ViewBag.MidhCity = MidhCity;
+            ViewBag.Midphotos = Midphotos;
+
+            int pagesize = 10;
+            var pagedList = homeData.ToPagedList(page, pagesize);
+            ViewBag.countyID = db.CityTypeData.ToList();
+            ViewBag.HomeTypeData = db.HomeTypeData.ToList();
+            ViewBag.CarTypeData = db.CarTypeData.ToList();
+            ViewBag.HomeSaleType = db.SaleTypeData.ToList();
+
+            return View(pagedList);
+        }
+
     }
 }
