@@ -29,6 +29,7 @@ namespace HomeBackProject.Controllers
             //                           where (h.HomeADLevel > 1) 
             //                           select).ToList();
 
+            ViewBag.People = db.PeopleData.OrderByDescending(m => m.PeopleCash).Take(3);
 
             List < HomeData > HomeDatas = db.HomeData.Where(h => h.HomeADLevel > 1).ToList();
 
@@ -39,6 +40,18 @@ namespace HomeBackProject.Controllers
             List<string> Midphotos = new List<string>();
             List<HomeData> MidhomeDatas = new List<HomeData>();
             List<string> MidhCity = new List<string>();
+
+            List<PeopleData> peopleDatas = new List<PeopleData>();
+            List<string> peoplePhotoss = new List<string>();
+
+            foreach(var peoplePhoto in ViewBag.People)
+            {
+                string autoFile = Server.MapPath("~/AllPhoto/PeopleImage" + "/" + peoplePhoto.PeopleID);
+                List<string> peopelePhotos = searchPhotos.searchPhotos(autoFile, peoplePhoto.PeopleID);
+                peoplePhotoss.Add(peopelePhotos.OrderBy(m => m).FirstOrDefault());
+                if (peopelePhotos.Count() == 0) { peoplePhotoss.Add("../../AllPhoto/unKnow/NoResult.png"); }
+                peopleDatas.Add(peoplePhoto);
+            }
 
             foreach (var ADHomeID in HomeDatas)
             {
@@ -76,6 +89,10 @@ namespace HomeBackProject.Controllers
             ViewBag.MidhomeDatas = MidhomeDatas;
             ViewBag.MidhCity = MidhCity;
 
+
+            ViewBag.peopleDatas = peopleDatas;
+            ViewBag.peopleDatasCount = peopleDatas.Count();
+            ViewBag.peoplePhotoss = peoplePhotoss;
 
             return View();
         }
