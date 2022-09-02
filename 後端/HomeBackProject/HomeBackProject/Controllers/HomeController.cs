@@ -139,5 +139,44 @@ namespace HomeBackProject.Controllers
             return View(pagedList);
         }
 
+        //[HttpPost]
+        public ActionResult searchhouseIndex(string cityid,int page = 1)
+        {
+
+            var homeData = db.HomeData.Where(h => h.HomeCity == cityid).OrderByDescending(h => h.HomeADLevel);
+
+            var City = db.CityTypeData;
+            ViewBag.titleCity = City.Find(cityid).CityTW;
+
+            List<string> Midphotos = new List<string>();
+            List<HomeData> MidhomeDatas = new List<HomeData>();
+            List<string> MidhCity = new List<string>();
+
+            foreach (var ADHomeID in homeData)
+            {
+                string autoFile = Server.MapPath("~/AllPhoto/Home" + "/" + ADHomeID.HomeID);
+                List<string> Midphoto = searchPhotos.searchPhotos(autoFile, ADHomeID.HomeID);
+                if (Midphoto.Count() == 0) { Midphoto.Add("../../AllPhoto/unKnow/NoResult.png"); }
+                Midphotos.Add(Midphoto.OrderBy(m => m).FirstOrDefault());
+                ADHomeID.HomeMoney = Math.Round(ADHomeID.HomeMoney, 2);
+                MidhCity.Add(City.Find(ADHomeID.HomeCity).CityTW);
+                MidhomeDatas.Add(ADHomeID);
+            }
+
+            ViewBag.MidhomeDatas = MidhomeDatas;
+            ViewBag.MidhomeDatasCount = MidhomeDatas.Count();
+            ViewBag.MidhCity = MidhCity;
+            ViewBag.Midphotos = Midphotos;
+
+            int pagesize = 10;
+            var pagedList = homeData.ToPagedList(page, pagesize);
+            ViewBag.countyID = db.CityTypeData.ToList();
+            ViewBag.HomeTypeData = db.HomeTypeData.ToList();
+            ViewBag.CarTypeData = db.CarTypeData.ToList();
+            ViewBag.HomeSaleType = db.SaleTypeData.ToList();
+
+            return View(pagedList);
+        }
+
     }
 }

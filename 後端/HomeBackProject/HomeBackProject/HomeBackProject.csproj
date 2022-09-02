@@ -359,6 +359,7 @@
     <Content Include="Views\PeopleBuySomething\buyPoints.cshtml" />
     <Content Include="Views\PeopleBuySomething\buyADForHome.cshtml" />
     <Content Include="Views\Home\houseIndex.cshtml" />
+    <Content Include="Views\Home\searchhouseIndex.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
