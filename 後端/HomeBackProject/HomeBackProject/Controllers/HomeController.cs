@@ -29,7 +29,7 @@ namespace HomeBackProject.Controllers
             //                           where (h.HomeADLevel > 1) 
             //                           select).ToList();
 
-            ViewBag.People = db.PeopleData.OrderByDescending(m => m.PeopleCash).Take(3);
+            ViewBag.People = db.PeopleData.OrderByDescending(m => m.PeopleCash).Where(p=> p.SaleStateID != 4).Take(3);
 
             List < HomeData > HomeDatas = db.HomeData.Where(h => h.HomeADLevel > 1).ToList();
 
