@@ -234,9 +234,9 @@
 
                             @for (int i = 0; i < @ViewBag.peopleDatasCount; i++)
                             {
-                                <div class="col-md-4">
+                                <div class="col-lg">
                                     <div class="card-box-d">
-                                        <div class="card-img-d">
+                                        <div class="card-img-d d-flex justify-content-center">
                                             <img src="@ViewBag.peoplePhotoss[i]" alt="" class="img-d img-fluid">
                                         </div>
                                         <div class="card-overlay card-overlay-hover">
@@ -244,22 +244,21 @@
                                                 <div class="card-title-d align-self-center">
                                                     <h3 class="title-d">
                                                         <a href="#" class="link-two">
-                                                            Margaret Sotillo
-                                                            <br> Escala
+                                                            @ViewBag.peopleDatas[i].PeopleName
                                                         </a>
                                                     </h3>
                                                 </div>
                                             </div>
                                             <div class="card-body-d">
-                                                <p class="content-d color-text-a">
+                                                @*<p class="content-d color-text-a">
                                                     Sed porttitor lectus nibh, Cras ultricies ligula sed magna dictum porta two.
-                                                </p>
+                                                </p>*@
                                                 <div class="info-agents color-a">
                                                     <p>
-                                                        <strong>Phone: </strong> +54 356 945234
+                                                        <strong>電話: </strong> @ViewBag.peopleDatas[i].PhoneNumber
                                                     </p>
                                                     <p>
-                                                        <strong>Email: </strong> agents@example.com
+                                                        <strong>Email: </strong> @ViewBag.peopleDatas[i].EMail
                                                     </p>
                                                 </div>
                                             </div>
