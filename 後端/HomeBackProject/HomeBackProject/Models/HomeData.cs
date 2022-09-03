@@ -17,12 +17,6 @@ namespace HomeBackProject.Models
 
     public partial class HomeData
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public HomeData()
-        {
-            this.HomeadjacentTypeData = new HashSet<HomeadjacentTypeData>();
-        }
-    
         public string HomeID { get; set; }
         public string HomeName { get; set; }
         public decimal HomeMoney { get; set; }
@@ -50,8 +44,6 @@ namespace HomeBackProject.Models
         public virtual ADTypeData ADTypeData { get; set; }
         public virtual CarTypeData CarTypeData { get; set; }
         public virtual CityTypeData CityTypeData { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HomeadjacentTypeData> HomeadjacentTypeData { get; set; }
         public virtual HomeTypeData HomeTypeData { get; set; }
         public virtual PeopleData PeopleData { get; set; }
         public virtual SaleTypeData SaleTypeData { get; set; }

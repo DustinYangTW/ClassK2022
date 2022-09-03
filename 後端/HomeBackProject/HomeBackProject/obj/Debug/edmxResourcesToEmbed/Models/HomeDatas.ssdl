@@ -1,0 +1,295 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HomeDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AccountData">
+    <Key>
+      <PropertyRef Name="EmailAccount" />
+    </Key>
+    <Property Name="EmailAccount" Type="nvarchar" MaxLength="64" Nullable="false" />
+    <Property Name="PassWord" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ADTypeData">
+    <Key>
+      <PropertyRef Name="ADID" />
+    </Key>
+    <Property Name="ADID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ADName" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CarTypeData">
+    <Key>
+      <PropertyRef Name="CarTypeID" />
+    </Key>
+    <Property Name="CarTypeID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CarTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CityTypeData">
+    <Key>
+      <PropertyRef Name="CityIDTW" />
+    </Key>
+    <Property Name="CityIDTW" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="CityTW" Type="nvarchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HomeData">
+    <Key>
+      <PropertyRef Name="HomeID" />
+    </Key>
+    <Property Name="HomeID" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="HomeName" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="HomeMoney" Type="numeric" Precision="10" Scale="3" Nullable="false" />
+    <Property Name="HomeSquareMeters" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="HomeMetersMoney" Type="numeric" Precision="23" Scale="14" StoreGeneratedPattern="Computed" />
+    <Property Name="HomeCity" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="HomeTown" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="HomeStreet" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="HomeFloor" Type="tinyint" />
+    <Property Name="HomeHighFloor" Type="tinyint" />
+    <Property Name="HomeSaleAndLease" Type="bit" Nullable="false" />
+    <Property Name="HomeAges" Type="tinyint" Nullable="false" />
+    <Property Name="HomeRoom" Type="tinyint" Nullable="false" />
+    <Property Name="HomeHall" Type="tinyint" Nullable="false" />
+    <Property Name="HomeBathroom" Type="tinyint" Nullable="false" />
+    <Property Name="HomeBalcony" Type="tinyint" Nullable="false" />
+    <Property Name="HomeFeatures" Type="nvarchar" MaxLength="1000" />
+    <Property Name="HomeManageTip" Type="money" />
+    <Property Name="HomeCarID" Type="tinyint" Nullable="false" />
+    <Property Name="HomeSaleType" Type="tinyint" Nullable="false" />
+    <Property Name="HomeType" Type="tinyint" Nullable="false" />
+    <Property Name="HomePeopleID" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="HomeADLevel" Type="smallint" />
+  </EntityType>
+  <EntityType Name="HomeTypeData">
+    <Key>
+      <PropertyRef Name="HomeTypeID" />
+    </Key>
+    <Property Name="HomeTypeID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HomeTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PeopleData">
+    <Key>
+      <PropertyRef Name="PeopleID" />
+    </Key>
+    <Property Name="PeopleID" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="PeopleName" Type="nvarchar" MaxLength="55" Nullable="false" />
+    <Property Name="IdebtityNumber" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Birthday" Type="datetime" Nullable="false" />
+    <Property Name="Gender" Type="bit" Nullable="false" />
+    <Property Name="PhoneNumber" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="EMail" Type="nvarchar" MaxLength="64" Nullable="false" />
+    <Property Name="County" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Town" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="RoadAndNumber" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="CompanyName" Type="nvarchar" MaxLength="20" />
+    <Property Name="PeopleAge" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Computed" />
+    <Property Name="PeopleCash" Type="smallmoney" />
+    <Property Name="AuthorizationTime" Type="datetime" />
+    <Property Name="SaleStateID" Type="tinyint" Nullable="false" />
+    <Property Name="SchemeName" Type="smallint" />
+  </EntityType>
+  <EntityType Name="PeopleRankData">
+    <Key>
+      <PropertyRef Name="HomeTSaleStateID" />
+    </Key>
+    <Property Name="HomeTSaleStateID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PeopleRank" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProgramData">
+    <Key>
+      <PropertyRef Name="ProgramSerialID" />
+    </Key>
+    <Property Name="ProgramSerialID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProgramName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SaleTypeData">
+    <Key>
+      <PropertyRef Name="SaleStateID" />
+    </Key>
+    <Property Name="SaleStateID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SaleState" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_HomeData_ADTypeData">
+    <End Role="ADTypeData" Type="Self.ADTypeData" Multiplicity="0..1" />
+    <End Role="HomeData" Type="Self.HomeData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ADTypeData">
+        <PropertyRef Name="ADID" />
+      </Principal>
+      <Dependent Role="HomeData">
+        <PropertyRef Name="HomeADLevel" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HomeData_CarTypeData">
+    <End Role="CarTypeData" Type="Self.CarTypeData" Multiplicity="1" />
+    <End Role="HomeData" Type="Self.HomeData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CarTypeData">
+        <PropertyRef Name="CarTypeID" />
+      </Principal>
+      <Dependent Role="HomeData">
+        <PropertyRef Name="HomeCarID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HomeData_CityTypeData">
+    <End Role="CityTypeData" Type="Self.CityTypeData" Multiplicity="1" />
+    <End Role="HomeData" Type="Self.HomeData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CityTypeData">
+        <PropertyRef Name="CityIDTW" />
+      </Principal>
+      <Dependent Role="HomeData">
+        <PropertyRef Name="HomeCity" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HomeData_HomeTypeData">
+    <End Role="HomeTypeData" Type="Self.HomeTypeData" Multiplicity="1" />
+    <End Role="HomeData" Type="Self.HomeData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HomeTypeData">
+        <PropertyRef Name="HomeTypeID" />
+      </Principal>
+      <Dependent Role="HomeData">
+        <PropertyRef Name="HomeType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HomeData_PeopleData">
+    <End Role="PeopleData" Type="Self.PeopleData" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="HomeData" Type="Self.HomeData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PeopleData">
+        <PropertyRef Name="PeopleID" />
+      </Principal>
+      <Dependent Role="HomeData">
+        <PropertyRef Name="HomePeopleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HomeData_SaleTypeData">
+    <End Role="SaleTypeData" Type="Self.SaleTypeData" Multiplicity="1" />
+    <End Role="HomeData" Type="Self.HomeData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SaleTypeData">
+        <PropertyRef Name="SaleStateID" />
+      </Principal>
+      <Dependent Role="HomeData">
+        <PropertyRef Name="HomeSaleType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PeopleData_AccountData">
+    <End Role="AccountData" Type="Self.AccountData" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PeopleData" Type="Self.PeopleData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AccountData">
+        <PropertyRef Name="EmailAccount" />
+      </Principal>
+      <Dependent Role="PeopleData">
+        <PropertyRef Name="EMail" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PeopleData_CityTypeData">
+    <End Role="CityTypeData" Type="Self.CityTypeData" Multiplicity="1" />
+    <End Role="PeopleData" Type="Self.PeopleData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CityTypeData">
+        <PropertyRef Name="CityIDTW" />
+      </Principal>
+      <Dependent Role="PeopleData">
+        <PropertyRef Name="County" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PeopleData_PeopleRankData">
+    <End Role="PeopleRankData" Type="Self.PeopleRankData" Multiplicity="1" />
+    <End Role="PeopleData" Type="Self.PeopleData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PeopleRankData">
+        <PropertyRef Name="HomeTSaleStateID" />
+      </Principal>
+      <Dependent Role="PeopleData">
+        <PropertyRef Name="SaleStateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PeopleData_ProgramData">
+    <End Role="ProgramData" Type="Self.ProgramData" Multiplicity="0..1" />
+    <End Role="PeopleData" Type="Self.PeopleData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProgramData">
+        <PropertyRef Name="ProgramSerialID" />
+      </Principal>
+      <Dependent Role="PeopleData">
+        <PropertyRef Name="SchemeName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HomeDataModelStoreContainer">
+    <EntitySet Name="AccountData" EntityType="Self.AccountData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ADTypeData" EntityType="Self.ADTypeData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CarTypeData" EntityType="Self.CarTypeData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CityTypeData" EntityType="Self.CityTypeData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HomeData" EntityType="Self.HomeData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HomeTypeData" EntityType="Self.HomeTypeData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PeopleData" EntityType="Self.PeopleData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PeopleRankData" EntityType="Self.PeopleRankData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProgramData" EntityType="Self.ProgramData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SaleTypeData" EntityType="Self.SaleTypeData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_HomeData_ADTypeData" Association="Self.FK_HomeData_ADTypeData">
+      <End Role="ADTypeData" EntitySet="ADTypeData" />
+      <End Role="HomeData" EntitySet="HomeData" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HomeData_CarTypeData" Association="Self.FK_HomeData_CarTypeData">
+      <End Role="CarTypeData" EntitySet="CarTypeData" />
+      <End Role="HomeData" EntitySet="HomeData" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HomeData_CityTypeData" Association="Self.FK_HomeData_CityTypeData">
+      <End Role="CityTypeData" EntitySet="CityTypeData" />
+      <End Role="HomeData" EntitySet="HomeData" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HomeData_HomeTypeData" Association="Self.FK_HomeData_HomeTypeData">
+      <End Role="HomeTypeData" EntitySet="HomeTypeData" />
+      <End Role="HomeData" EntitySet="HomeData" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HomeData_PeopleData" Association="Self.FK_HomeData_PeopleData">
+      <End Role="PeopleData" EntitySet="PeopleData" />
+      <End Role="HomeData" EntitySet="HomeData" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HomeData_SaleTypeData" Association="Self.FK_HomeData_SaleTypeData">
+      <End Role="SaleTypeData" EntitySet="SaleTypeData" />
+      <End Role="HomeData" EntitySet="HomeData" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PeopleData_AccountData" Association="Self.FK_PeopleData_AccountData">
+      <End Role="AccountData" EntitySet="AccountData" />
+      <End Role="PeopleData" EntitySet="PeopleData" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PeopleData_CityTypeData" Association="Self.FK_PeopleData_CityTypeData">
+      <End Role="CityTypeData" EntitySet="CityTypeData" />
+      <End Role="PeopleData" EntitySet="PeopleData" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PeopleData_PeopleRankData" Association="Self.FK_PeopleData_PeopleRankData">
+      <End Role="PeopleRankData" EntitySet="PeopleRankData" />
+      <End Role="PeopleData" EntitySet="PeopleData" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PeopleData_ProgramData" Association="Self.FK_PeopleData_ProgramData">
+      <End Role="ProgramData" EntitySet="ProgramData" />
+      <End Role="PeopleData" EntitySet="PeopleData" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

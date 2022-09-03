@@ -20,22 +20,16 @@ namespace HomeBackProject.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CityTypeData()
         {
-            this.FactoryData = new HashSet<FactoryData>();
             this.HomeData = new HashSet<HomeData>();
             this.PeopleData = new HashSet<PeopleData>();
-            this.TerritoryData = new HashSet<TerritoryData>();
         }
     
         public string CityIDTW { get; set; }
         public string CityTW { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FactoryData> FactoryData { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HomeData> HomeData { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PeopleData> PeopleData { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TerritoryData> TerritoryData { get; set; }
     }
 }

@@ -19,7 +19,6 @@
                 <a class="list-group-item list-group-item-action list-group-item-light text-center p-3" href="/OthersSet/index?idNmae=Rank">會員身份設定</a>
                 <a class="list-group-item list-group-item-action list-group-item-secondary text-center p-3" href="/OthersSet/index?idNmae=Program">會員方案設定</a>
                 <a class="list-group-item list-group-item-action list-group-item-light text-center p-3" href="/OthersSet/index?idNmae=Home">房屋類型設定</a>
-                <a class="list-group-item list-group-item-action list-group-item-secondary text-center p-3" href="/OthersSet/index?idNmae=Territory">土地類型設定</a>
                 <a class="list-group-item list-group-item-action list-group-item-light text-center p-3" href="/OthersSet/index?idNmae=Car">車位類型設定</a>
                 <a class="list-group-item list-group-item-action list-group-item-secondary text-center p-3" href="/OthersSet/index?idNmae=Sale">銷售類型設定</a>
                 <a class="list-group-item list-group-item-action list-group-item-light text-center p-3" href="/OthersSet/index?idNmae=AD">廣告設定</a>
@@ -176,40 +175,6 @@
                                     </td>
                                     <td id="Edit_@item.CarTypeID">
                                         <button type="button" class="btn btn-outline-primary" id="@item.CarTypeID" onclick="chageformEdit(event)">修改</button>
-                                    </td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-                </div>
-            }
-            else if (@ViewBag.CheckData == "Territory")
-            {
-                <div class="table-responsive shadow border border-dark rounded-start">
-                    <table class="table text-center table-striped table-hover" overflow="auto">
-                        <thead>
-                            <tr>
-                                <th class="col-lg-2">
-                                    編號
-                                </th>
-                                <th class="col-lg-6">
-                                    名稱
-                                </th>
-                                <th>詳細資料</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model.TerritoryTypeData)
-                            {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.TerritorySerialID)
-                                    </td>
-                                    <td id="Create_@item.TerritorySerialID">
-                                        @Html.DisplayFor(modelItem => item.TerritoryTypeSelect)
-                                    </td>
-                                    <td id="Edit_@item.TerritorySerialID">
-                                        <button type="button" class="btn btn-outline-primary" id="@item.TerritorySerialID" onclick="chageformEdit(event)">修改</button>
                                     </td>
                                 </tr>
                             }

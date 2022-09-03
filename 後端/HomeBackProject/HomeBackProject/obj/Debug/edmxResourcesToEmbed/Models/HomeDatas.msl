@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HomeDataModelStoreContainer" CdmEntityContainer="HomeDataEntities">
+    <EntitySetMapping Name="AccountData">
+      <EntityTypeMapping TypeName="HomeDataModel.AccountData">
+        <MappingFragment StoreEntitySet="AccountData">
+          <ScalarProperty Name="EmailAccount" ColumnName="EmailAccount" />
+          <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ADTypeData">
+      <EntityTypeMapping TypeName="HomeDataModel.ADTypeData">
+        <MappingFragment StoreEntitySet="ADTypeData">
+          <ScalarProperty Name="ADID" ColumnName="ADID" />
+          <ScalarProperty Name="ADName" ColumnName="ADName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CarTypeData">
+      <EntityTypeMapping TypeName="HomeDataModel.CarTypeData">
+        <MappingFragment StoreEntitySet="CarTypeData">
+          <ScalarProperty Name="CarTypeID" ColumnName="CarTypeID" />
+          <ScalarProperty Name="CarTypeName" ColumnName="CarTypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CityTypeData">
+      <EntityTypeMapping TypeName="HomeDataModel.CityTypeData">
+        <MappingFragment StoreEntitySet="CityTypeData">
+          <ScalarProperty Name="CityIDTW" ColumnName="CityIDTW" />
+          <ScalarProperty Name="CityTW" ColumnName="CityTW" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HomeData">
+      <EntityTypeMapping TypeName="HomeDataModel.HomeData">
+        <MappingFragment StoreEntitySet="HomeData">
+          <ScalarProperty Name="HomeID" ColumnName="HomeID" />
+          <ScalarProperty Name="HomeName" ColumnName="HomeName" />
+          <ScalarProperty Name="HomeMoney" ColumnName="HomeMoney" />
+          <ScalarProperty Name="HomeSquareMeters" ColumnName="HomeSquareMeters" />
+          <ScalarProperty Name="HomeMetersMoney" ColumnName="HomeMetersMoney" />
+          <ScalarProperty Name="HomeCity" ColumnName="HomeCity" />
+          <ScalarProperty Name="HomeTown" ColumnName="HomeTown" />
+          <ScalarProperty Name="HomeStreet" ColumnName="HomeStreet" />
+          <ScalarProperty Name="HomeFloor" ColumnName="HomeFloor" />
+          <ScalarProperty Name="HomeHighFloor" ColumnName="HomeHighFloor" />
+          <ScalarProperty Name="HomeSaleAndLease" ColumnName="HomeSaleAndLease" />
+          <ScalarProperty Name="HomeAges" ColumnName="HomeAges" />
+          <ScalarProperty Name="HomeRoom" ColumnName="HomeRoom" />
+          <ScalarProperty Name="HomeHall" ColumnName="HomeHall" />
+          <ScalarProperty Name="HomeBathroom" ColumnName="HomeBathroom" />
+          <ScalarProperty Name="HomeBalcony" ColumnName="HomeBalcony" />
+          <ScalarProperty Name="HomeFeatures" ColumnName="HomeFeatures" />
+          <ScalarProperty Name="HomeManageTip" ColumnName="HomeManageTip" />
+          <ScalarProperty Name="HomeCarID" ColumnName="HomeCarID" />
+          <ScalarProperty Name="HomeSaleType" ColumnName="HomeSaleType" />
+          <ScalarProperty Name="HomeType" ColumnName="HomeType" />
+          <ScalarProperty Name="HomePeopleID" ColumnName="HomePeopleID" />
+          <ScalarProperty Name="HomeADLevel" ColumnName="HomeADLevel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HomeTypeData">
+      <EntityTypeMapping TypeName="HomeDataModel.HomeTypeData">
+        <MappingFragment StoreEntitySet="HomeTypeData">
+          <ScalarProperty Name="HomeTypeID" ColumnName="HomeTypeID" />
+          <ScalarProperty Name="HomeTypeName" ColumnName="HomeTypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PeopleData">
+      <EntityTypeMapping TypeName="HomeDataModel.PeopleData">
+        <MappingFragment StoreEntitySet="PeopleData">
+          <ScalarProperty Name="PeopleID" ColumnName="PeopleID" />
+          <ScalarProperty Name="PeopleName" ColumnName="PeopleName" />
+          <ScalarProperty Name="IdebtityNumber" ColumnName="IdebtityNumber" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="EMail" ColumnName="EMail" />
+          <ScalarProperty Name="County" ColumnName="County" />
+          <ScalarProperty Name="Town" ColumnName="Town" />
+          <ScalarProperty Name="RoadAndNumber" ColumnName="RoadAndNumber" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="PeopleAge" ColumnName="PeopleAge" />
+          <ScalarProperty Name="PeopleCash" ColumnName="PeopleCash" />
+          <ScalarProperty Name="AuthorizationTime" ColumnName="AuthorizationTime" />
+          <ScalarProperty Name="SaleStateID" ColumnName="SaleStateID" />
+          <ScalarProperty Name="SchemeName" ColumnName="SchemeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PeopleRankData">
+      <EntityTypeMapping TypeName="HomeDataModel.PeopleRankData">
+        <MappingFragment StoreEntitySet="PeopleRankData">
+          <ScalarProperty Name="HomeTSaleStateID" ColumnName="HomeTSaleStateID" />
+          <ScalarProperty Name="PeopleRank" ColumnName="PeopleRank" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProgramData">
+      <EntityTypeMapping TypeName="HomeDataModel.ProgramData">
+        <MappingFragment StoreEntitySet="ProgramData">
+          <ScalarProperty Name="ProgramSerialID" ColumnName="ProgramSerialID" />
+          <ScalarProperty Name="ProgramName" ColumnName="ProgramName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SaleTypeData">
+      <EntityTypeMapping TypeName="HomeDataModel.SaleTypeData">
+        <MappingFragment StoreEntitySet="SaleTypeData">
+          <ScalarProperty Name="SaleStateID" ColumnName="SaleStateID" />
+          <ScalarProperty Name="SaleState" ColumnName="SaleState" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="HomeDataModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

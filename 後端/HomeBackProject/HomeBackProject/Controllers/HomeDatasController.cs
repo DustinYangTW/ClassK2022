@@ -129,8 +129,8 @@ namespace HomeBackProject.Controllers
 
 
             PeopleData peopleData= db.PeopleData.Find(homeData.HomePeopleID);
-            string PeopelautoFile = Server.MapPath("~/AllPhoto/PeopleImage" + "/" + peopleData.PeopleID);
-            List<string> Peoplephoto = searchPhotos.searchPhotos(PeopelautoFile, id);
+            string PeopelautoFile = Server.MapPath("~/AllPhoto/PeopleImage" + "/" + homeData.HomePeopleID);
+            List<string> Peoplephoto = searchPhotos.searchPhotos(PeopelautoFile, homeData.HomePeopleID);
             if (Peoplephoto.Count() == 0) { Peoplephoto.Add("../../AllPhoto/unKnow/NoResult.png"); }
             ViewBag.Peoplephoto = Peoplephoto[0];
             ViewBag.People = peopleData;
