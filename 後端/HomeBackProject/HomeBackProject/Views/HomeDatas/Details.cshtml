@@ -11,7 +11,7 @@
 
 <div class="container-fluid">
     <div class="col-md-12 mb-2 pb-2 mt-5 pt-5">
-        <div class="fs-1 fw-bold text-center text-black">
+        <div class="fs-1 fw-bold text-center text-black" id="HomeName">
             @Html.DisplayFor(model => model.HomeName)
         </div>
     </div>
@@ -248,7 +248,7 @@
                                 </li>
                                 <li class="d-flex justify-content-between">
                                     <strong>電子信箱:</strong>
-                                    <span class="color-text-a">@ViewBag.People.EMail</span>
+                                    <span class="color-text-a" id="EMail">@ViewBag.People.EMail</span>
                                 </li>
                             </ul>
                             <div class="socials-a">
@@ -279,16 +279,16 @@
                     </div>
                     <div class="col-md-12 col-lg-4">
                         <div class="property-contact">
-                            <form class="form-a">
+                            <form class="form-a" id="userAddFrom">
                                 <div class="row">
                                     <div class="col-md-12 mb-1">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control form-control-lg form-control-a" id="inputName" placeholder="姓名 *" required>
+                                        <div class="form-group" id="userName">
+                                            <input type="text" class="form-control form-control-lg form-control-a" id="name" name="name" placeholder="姓名 *" required>
                                         </div>
                                     </div>
-                                    <div class="col-md-12 mb-1">
+                                    <div class="col-md-12 mb-1" id="userphone">
                                         <div class="form-group">
-                                            <input type="text" class="form-control form-control-lg form-control-a" id="inputEmail1" placeholder="電話 *" required>
+                                            <input type="text" class="form-control form-control-lg form-control-a" id="phone" name="phone" placeholder="電話 *" required>
                                         </div>
                                     </div>
                                     <div class="col-md-12 mt-3">

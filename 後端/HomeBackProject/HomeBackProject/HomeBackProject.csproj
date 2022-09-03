@@ -319,7 +319,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\VMCreatePeople.cs" />
     <Compile Include="ViewModel\VMHouseAD.cs" />
-    <Compile Include="ViewModel\VMIndex.cs" />
     <Compile Include="ViewModel\VMLogin.cs" />
     <Compile Include="ViewModel\VMOthersSet.cs" />
   </ItemGroup>
