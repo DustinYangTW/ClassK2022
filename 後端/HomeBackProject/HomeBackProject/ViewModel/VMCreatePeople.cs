@@ -44,7 +44,7 @@ namespace HomeBackProject.ViewModel
 
         [DisplayName("身份證字號")]
         [Required(ErrorMessage = "必填欄位")]
-        [RegularExpression("[A-Z][1-2][0-9]{8}", ErrorMessage = "身份證字號第一碼要大寫")]
+        [RegularExpression("[A-Z][1-2][0-9]{9}", ErrorMessage = "身份證字號第一碼要大寫")]
         [ChechIDName(ErrorMessage = "不合法的身分字號")]
         public string IdebtityNumber { get; set; }
 

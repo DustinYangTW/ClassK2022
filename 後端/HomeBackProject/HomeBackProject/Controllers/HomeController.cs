@@ -54,7 +54,7 @@ namespace HomeBackProject.Controllers
             {
                 string autoFile = Server.MapPath("~/AllPhoto/PeopleImage" + "/" + peoplePhoto.PeopleID);
                 List<string> peopelePhotos = searchPhotos.searchPhotos(autoFile, peoplePhoto.PeopleID);
-                peoplePhotoss.Add(peopelePhotos.OrderBy(m => m).FirstOrDefault());
+                peoplePhotoss.Add(peopelePhotos.OrderByDescending(m => m).FirstOrDefault());
                 if (peopelePhotos.Count() == 0) { peoplePhotoss.Add("../../AllPhoto/unKnow/NoResult.png"); }
                 peopleDatas.Add(peoplePhoto);
             }
@@ -66,7 +66,7 @@ namespace HomeBackProject.Controllers
                     string autoFile = Server.MapPath("~/AllPhoto/Home" + "/" + ADHomeID.HomeID);
                     List<string> Highphoto = searchPhotos.searchPhotos(autoFile, ADHomeID.HomeID);
                     if (Highphoto.Count() == 0) { Highphoto.Add("../../AllPhoto/unKnow/NoResult.png"); }
-                    Highphotos.Add(Highphoto.OrderBy(m => m).FirstOrDefault());
+                    Highphotos.Add(Highphoto.OrderByDescending(m => m).FirstOrDefault());
                     HighCity.Add(City.Find(ADHomeID.HomeCity).CityTW);
                     ADHomeID.HomeMoney = Math.Round(ADHomeID.HomeMoney, 2);
                     HighhomeDatas.Add(ADHomeID);
@@ -76,7 +76,7 @@ namespace HomeBackProject.Controllers
                     string autoFile = Server.MapPath("~/AllPhoto/Home" + "/" + ADHomeID.HomeID);
                     List<string> Midphoto = searchPhotos.searchPhotos(autoFile, ADHomeID.HomeID);
                     if (Midphoto.Count() == 0) { Midphoto.Add("../../AllPhoto/unKnow/NoResult.png"); }
-                    Midphotos.Add(Midphoto.OrderBy(m => m).FirstOrDefault());
+                    Midphotos.Add(Midphoto.OrderByDescending(m => m).FirstOrDefault());
                     MidhCity.Add(City.Find(ADHomeID.HomeCity).CityTW);
                     ADHomeID.HomeMoney = Math.Round(ADHomeID.HomeMoney, 2);
                     MidhomeDatas.Add(ADHomeID);
@@ -119,7 +119,7 @@ namespace HomeBackProject.Controllers
                 string autoFile = Server.MapPath("~/AllPhoto/Home" + "/" + ADHomeID.HomeID);
                 List<string> Midphoto = searchPhotos.searchPhotos(autoFile, ADHomeID.HomeID);
                 if (Midphoto.Count() == 0) { Midphoto.Add("../../AllPhoto/unKnow/NoResult.png"); }
-                Midphotos.Add(Midphoto.OrderBy(m => m).FirstOrDefault());
+                Midphotos.Add(Midphoto.OrderByDescending(m => m).FirstOrDefault());
                 ADHomeID.HomeMoney = Math.Round(ADHomeID.HomeMoney, 2);
                 MidhCity.Add(City.Find(ADHomeID.HomeCity).CityTW);
                 MidhomeDatas.Add(ADHomeID);
@@ -177,7 +177,7 @@ namespace HomeBackProject.Controllers
                 string autoFile = Server.MapPath("~/AllPhoto/Home" + "/" + ADHomeID.HomeID);
                 List<string> Midphoto = searchPhotos.searchPhotos(autoFile, ADHomeID.HomeID);
                 if (Midphoto.Count() == 0) { Midphoto.Add("../../AllPhoto/unKnow/NoResult.png"); }
-                Midphotos.Add(Midphoto.OrderBy(m => m).FirstOrDefault());
+                Midphotos.Add(Midphoto.OrderByDescending(m => m).FirstOrDefault());
                 ADHomeID.HomeMoney = Math.Round(ADHomeID.HomeMoney, 2);
                 MidhCity.Add(City.Find(ADHomeID.HomeCity).CityTW);
                 MidhomeDatas.Add(ADHomeID);
@@ -189,7 +189,7 @@ namespace HomeBackProject.Controllers
             ViewBag.MidhCity = MidhCity;
             ViewBag.Midphotos = Midphotos;
 
-            int pagesize = 10;
+            int pagesize = 6;
             var pagedList = homeData.ToPagedList(page, pagesize);
             ViewBag.countyID = db.CityTypeData.ToList();
             ViewBag.HomeTypeData = db.HomeTypeData.ToList();
@@ -267,7 +267,7 @@ namespace HomeBackProject.Controllers
                 string autoFile = Server.MapPath("~/AllPhoto/Home" + "/" + ADHomeID.HomeID);
                 List<string> Midphoto = searchPhotos.searchPhotos(autoFile, ADHomeID.HomeID);
                 if (Midphoto.Count() == 0) { Midphoto.Add("../../AllPhoto/unKnow/NoResult.png"); }
-                Midphotos.Add(Midphoto.OrderBy(m => m).FirstOrDefault());
+                Midphotos.Add(Midphoto.OrderByDescending(m => m).FirstOrDefault());
                 ADHomeID.HomeMoney = Math.Round(ADHomeID.HomeMoney, 2);
                 MidhCity.Add(City.Find(ADHomeID.HomeCity).CityTW);
                 MidhomeDatas.Add(ADHomeID);
@@ -282,7 +282,7 @@ namespace HomeBackProject.Controllers
 
 
 
-            int pagesize = 10;
+            int pagesize = 6;
             var pagedList = homeData.ToPagedList(page, pagesize);
             ViewBag.countyID = db.CityTypeData.ToList();
             ViewBag.HomeTypeData = db.HomeTypeData.ToList();

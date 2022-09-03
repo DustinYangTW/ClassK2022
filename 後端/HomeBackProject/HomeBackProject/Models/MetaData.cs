@@ -364,7 +364,7 @@ namespace MetaDataHomeBackProject.Models
         public string HomeFeatures { get; set; }
         [DisplayName("管理費")]
         [RegularExpression("^[0-9]*$", ErrorMessage = "格式錯誤")]
-        //[DisplayFormat(DataFormatString = "{0:0}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:0}", ApplyFormatInEditMode = true)]
         public Nullable<int> HomeManageTip { get; set; }
         [DisplayName("車位類型")]
         [Required(ErrorMessage = "必填欄位")]
