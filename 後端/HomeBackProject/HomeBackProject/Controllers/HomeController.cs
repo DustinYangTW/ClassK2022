@@ -19,6 +19,7 @@ namespace HomeBackProject.Controllers
     {
         private HomeDataEntities db = new HomeDataEntities();
         private SearchPhotos searchPhotos = new SearchPhotos();
+        private searchData searchData = new searchData();
 
         // GET: HomeManager
         public ActionResult Index()
@@ -140,13 +141,32 @@ namespace HomeBackProject.Controllers
         }
 
         //[HttpPost]
-        public ActionResult searchhouseIndex(string cityid,int page = 1)
+        public ActionResult searchhouseIndex(string cityid, int page = 1)
         {
-
-            var homeData = db.HomeData.Where(h => h.HomeCity == cityid).OrderByDescending(h => h.HomeADLevel);
-
+            ViewBag.cityid = cityid;
             var City = db.CityTypeData;
-            ViewBag.titleCity = City.Find(cityid).CityTW;
+            var homeData = db.HomeData.OrderByDescending(h => h.HomeADLevel).Where(h => h.HomeADLevel >= 1);
+            if (cityid == "top")
+            {
+                homeData = homeData.Where(h => h.HomeCity == "A" || h.HomeCity == "C" || h.HomeCity == "F" || h.HomeCity == "J" || h.HomeCity == "K" || h.HomeCity == "O");
+                ViewBag.titleCity = "北部";
+            }
+            else if (cityid == "mid")
+            {
+                homeData = homeData.Where(h => h.HomeCity == "B" || h.HomeCity == "I" || h.HomeCity == "M" || h.HomeCity == "N" || h.HomeCity == "Q");
+                ViewBag.titleCity = "中部";
+            }
+            else if (cityid == "south")
+            {
+                homeData = homeData.Where(h => h.HomeCity == "D" || h.HomeCity == "E" || h.HomeCity == "M" || h.HomeCity == "T" | h.HomeCity == "P");
+                ViewBag.titleCity = "南部";
+            }
+            else if (cityid == "eath")
+            {
+                homeData = homeData.Where(h => h.HomeCity == "G" || h.HomeCity == "U" || h.HomeCity == "V");
+                ViewBag.titleCity = "東部";
+            }
+
 
             List<string> Midphotos = new List<string>();
             List<HomeData> MidhomeDatas = new List<HomeData>();
@@ -161,6 +181,7 @@ namespace HomeBackProject.Controllers
                 ADHomeID.HomeMoney = Math.Round(ADHomeID.HomeMoney, 2);
                 MidhCity.Add(City.Find(ADHomeID.HomeCity).CityTW);
                 MidhomeDatas.Add(ADHomeID);
+
             }
 
             ViewBag.MidhomeDatas = MidhomeDatas;
@@ -178,5 +199,96 @@ namespace HomeBackProject.Controllers
             return View(pagedList);
         }
 
+
+        [HttpPost]
+        public ActionResult searchhouseIndex(string cityid,string SearchFast, string County, string Town, int SquareMeters, int HomeTypeDatas, int CarTypeDatas, int AllMoney, int HomeAge, int HomeFlortDatas, int HomeRoomDatas, bool? HomeSaleDatas, int page = 1)
+        {
+            ViewBag.cityid = cityid;
+            var City = db.CityTypeData;
+            var homeData = db.HomeData.Include(h => h.ADTypeData).Include(h => h.CarTypeData).Include(h => h.CityTypeData).Include(h => h.HomeTypeData).Include(h => h.PeopleData).Include(h => h.SaleTypeData).OrderByDescending(h => h.HomeID).OrderByDescending(h => h.HomeID).OrderByDescending(h => h.HomeSaleType).Where(p => p.HomeADLevel >= 0);
+            
+            searchData.SquareMeters(SquareMeters);//0.1
+            searchData.moneyGetData(AllMoney);//2,3
+            searchData.ageHome(HomeAge);//4,5
+
+            List<int> changeInt = searchData.Flort(HomeFlortDatas);//6,7
+
+
+            var SquareMetersLow = changeInt[0];
+            var SquareMetersHigh = changeInt[1];
+            var AllMoneyLow = changeInt[2];
+            var AllMoneyHigh = changeInt[3];
+            var HomeAgeLow = changeInt[4];
+            var HomeAgeHigh = changeInt[5];
+            var HomeFlortDatasLow = changeInt[6];
+            var HomeFlortDatasHigh = changeInt[7];
+
+            if (SearchFast != "")
+            {
+                homeData = homeData.Where(p => p.HomeName.Contains(SearchFast) || p.HomeStreet.Contains(SearchFast));
+            }
+            homeData = HomeSaleDatas != null ? homeData.Where(p => p.HomeSaleAndLease == HomeSaleDatas) : homeData;
+            ViewBag.HomeSaleDatas = homeData.ToList();
+            homeData = HomeTypeDatas != 0 ? homeData.Where(p => p.HomeType == HomeTypeDatas) : homeData;
+            ViewBag.HomeHomeType = homeData.ToList();
+            homeData = CarTypeDatas != 0 ? homeData.Where(p => p.HomeCarID == CarTypeDatas) : homeData;
+            ViewBag.HomeHomeCarID = homeData.ToList();
+            homeData = County != null ? homeData.Where(p => p.HomeCity == County) : homeData;
+            ViewBag.HomeHomeCity = homeData.ToList();
+
+            homeData = County != null && Town != "" ? homeData.Where(p => p.HomeTown == Town) : homeData;
+
+            homeData = County == null && Town != null ? homeData.Where(p => p.HomeTown == Town) : homeData;
+
+            ViewBag.HomeHomeTown = homeData.ToList();
+            homeData = homeData.Where(p => p.HomeAges >= HomeAgeLow && p.HomeAges < HomeAgeHigh);
+            ViewBag.HomeHomeAges = homeData.ToList();
+            homeData = HomeFlortDatas < 6 ? homeData.Where(p => p.HomeFloor >= HomeFlortDatasLow && p.HomeFloor <= HomeFlortDatasHigh) : homeData;
+            ViewBag.HomeHomeFloors = homeData.ToList();
+            homeData = homeData.Where(p => p.HomeHighFloor >= HomeFlortDatasLow && p.HomeHighFloor <= HomeFlortDatasHigh);
+            ViewBag.HomeHomeHighFloor = homeData.ToList();
+            homeData = HomeRoomDatas != 0 ? homeData.Where(p => p.HomeRoom == HomeRoomDatas) : homeData;//沒有選的時候
+            ViewBag.HomeHomeRoom01 = homeData.ToList();
+            homeData = HomeRoomDatas >= 5 ? homeData.Where(p => p.HomeRoom >= HomeRoomDatas) : homeData;//大於等於5層樓
+            ViewBag.HomeHomeRoom = homeData.ToList();
+            homeData = homeData.Where(p => p.HomeSquareMeters >= SquareMetersLow && p.HomeSquareMeters < SquareMetersHigh);
+            ViewBag.HomeHomeSquareMeters = homeData.ToList();
+            homeData = homeData.Where(p => p.HomeMoney >= AllMoneyLow && p.HomeMoney < AllMoneyHigh);
+            ViewBag.HomeHomeMoney = homeData.ToList();
+
+            ViewBag.Errorr = homeData.ToList().Count() == 0 ? "查無資料，請重新查詢" : "";
+
+            List<string> Midphotos = new List<string>();
+            List<HomeData> MidhomeDatas = new List<HomeData>();
+            List<string> MidhCity = new List<string>();
+
+            foreach (var ADHomeID in homeData)
+            {
+                string autoFile = Server.MapPath("~/AllPhoto/Home" + "/" + ADHomeID.HomeID);
+                List<string> Midphoto = searchPhotos.searchPhotos(autoFile, ADHomeID.HomeID);
+                if (Midphoto.Count() == 0) { Midphoto.Add("../../AllPhoto/unKnow/NoResult.png"); }
+                Midphotos.Add(Midphoto.OrderBy(m => m).FirstOrDefault());
+                ADHomeID.HomeMoney = Math.Round(ADHomeID.HomeMoney, 2);
+                MidhCity.Add(City.Find(ADHomeID.HomeCity).CityTW);
+                MidhomeDatas.Add(ADHomeID);
+
+            }
+
+            ViewBag.MidhomeDatas = MidhomeDatas;
+            ViewBag.MidhomeDatasCount = MidhomeDatas.Count();
+            ViewBag.MidhCity = MidhCity;
+            ViewBag.Midphotos = Midphotos;
+
+
+
+
+            int pagesize = 10;
+            var pagedList = homeData.ToPagedList(page, pagesize);
+            ViewBag.countyID = db.CityTypeData.ToList();
+            ViewBag.HomeTypeData = db.HomeTypeData.ToList();
+            ViewBag.CarTypeData = db.CarTypeData.ToList();
+            ViewBag.HomeSaleType = db.SaleTypeData.ToList();
+            return View(pagedList);
+        }
     }
 }
