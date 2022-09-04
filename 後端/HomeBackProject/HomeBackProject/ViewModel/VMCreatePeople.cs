@@ -44,7 +44,9 @@ namespace HomeBackProject.ViewModel
 
         [DisplayName("身份證字號")]
         [Required(ErrorMessage = "必填欄位")]
-        [RegularExpression("[A-Z][1-2][0-9]{9}", ErrorMessage = "身份證字號第一碼要大寫")]
+        [MinLength(10, ErrorMessage = "身分字號最少要10碼")]
+        [MaxLength(10, ErrorMessage = "身分字號最多10碼")]
+        [RegularExpression("[A-Z][1-2][0-9]{8}", ErrorMessage = "**第一碼要大寫or格式錯誤")]
         [ChechIDName(ErrorMessage = "不合法的身分字號")]
         public string IdebtityNumber { get; set; }
 
@@ -58,6 +60,8 @@ namespace HomeBackProject.ViewModel
 
         [DisplayName("手機號碼")]
         [Required(ErrorMessage = "必填欄位")]
+        [MinLength(10, ErrorMessage = "手機號碼最少要10碼")]
+        [MaxLength(10, ErrorMessage = "手機號碼最多10碼")]
         [RegularExpression("[0][9][0-9]{8}", ErrorMessage = "電話號碼輸入錯誤")]
         public string PhoneNumber { get; set; }
 

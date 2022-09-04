@@ -103,6 +103,7 @@
                                                 @Html.LabelFor(model => model.IdebtityNumber, htmlAttributes: new { @class = "form-label fs-5" })
                                                 <div class="col-md-12">
                                                     @Html.EditorFor(model => model.IdebtityNumber, new { htmlAttributes = new { @class = "form-control form-control-lg", required = "required" } })
+                                                    @Html.ValidationMessageFor(model => model.IdebtityNumber, "", new { @class = "text-danger" })
                                                 </div>
                                                 <div class="invalid-feedback">
                                                     **必填欄位
