@@ -218,6 +218,7 @@ namespace HomeBackProject.Controllers
         //    return View(homeData);
         //}
         // GET: HomeDatas/DetailsModal/H0000000006
+
         [ChildActionOnly]
         [LoginCkeck]
         public ActionResult DetailsModal(string id)
