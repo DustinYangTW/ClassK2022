@@ -73,9 +73,15 @@ namespace HomeBackProject.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index", "Home");
+                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             PeopleData peopleData = db.PeopleData.Find(id);
+            if (peopleData == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             //找照片
             string autoFile = Server.MapPath("~/AllPhoto/PeopleImage/" + id);
             List<string> photo = searchPhotos.searchPhotos(autoFile, id);
@@ -86,7 +92,8 @@ namespace HomeBackProject.Controllers
 
             if (peopleData == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index", "Home");
+                //return HttpNotFound();
             }
             return PartialView(peopleData);
         }     
@@ -95,9 +102,15 @@ namespace HomeBackProject.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index", "Home");
+                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             PeopleData peopleData = db.PeopleData.Find(id);
+            if (peopleData == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             //找照片
             string autoFile = Server.MapPath("~/AllPhoto/PeopleImage/" + id);
             List<string> photo = searchPhotos.searchPhotos(autoFile, id);
@@ -193,7 +206,8 @@ namespace HomeBackProject.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index", "Home");
+                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             PeopleData peopleData = db.PeopleData.Find(id);
             //找照片
@@ -202,11 +216,14 @@ namespace HomeBackProject.Controllers
             ViewBag.photoHeadShot = photo.Count() > 0 ? photo[0] : "../../AllPhoto/PeopleImage/all/people.jpg";
             //找照片
 
-
             if (peopleData == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index", "Home");
             }
+            //if (peopleData == null)
+            //{
+            //    return HttpNotFound();
+            //}
 
             string adnimID = Session["userID"].ToString();
             ViewBag.BirthDay = peopleData.Birthday;

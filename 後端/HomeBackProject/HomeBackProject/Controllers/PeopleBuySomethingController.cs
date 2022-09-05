@@ -27,9 +27,14 @@ namespace HomeBackProject.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index", "Home");
+                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             PeopleData peopleData = db.PeopleData.Find(id);
+            if (peopleData == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             peopleData.PeopleCash = peopleData.PeopleCash + point;
             db.Entry(peopleData).State = EntityState.Modified;
             db.SaveChanges();
@@ -52,9 +57,15 @@ namespace HomeBackProject.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index", "Home");
+                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             HomeData homeData = db.HomeData.Find(id);
+            if (homeData == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             PeopleData peopleData = db.PeopleData.Find(homeData.HomePeopleID);
 
             int cash = Session["userRank"].ToString() == "4"? 500000 : (int)peopleData.PeopleCash;

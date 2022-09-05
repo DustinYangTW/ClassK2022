@@ -117,9 +117,14 @@ namespace HomeBackProject.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                    return RedirectToAction("Index", "Home");
+                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             HomeData homeData = db.HomeData.Find(id);
+            if (homeData == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
 
             string autoFile = Server.MapPath("~/AllPhoto/Home" + "/" + id);
             List<string> photo = searchPhotos.searchPhotos(autoFile, id);
@@ -181,7 +186,7 @@ namespace HomeBackProject.Controllers
 
             if (homeData == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index", "Home");
             }
             return View(homeData);
         }
@@ -217,9 +222,14 @@ namespace HomeBackProject.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index", "Home");
+                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             HomeData homeData = db.HomeData.Find(id);
+            if (homeData == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
 
             string autoFile = Server.MapPath("~/AllPhoto/Home" + "/" + id);
             List<string> photo = searchPhotos.searchPhotos(autoFile, id);
@@ -320,6 +330,11 @@ namespace HomeBackProject.Controllers
             }
 
             HomeData homeData = db.HomeData.Find(id);
+            if (homeData == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             //找照片
             string autoFile = Server.MapPath("~/AllPhoto/Home" + "/" + id);
             List<string> photo = searchPhotos.searchPhotos(autoFile, id);
@@ -330,11 +345,14 @@ namespace HomeBackProject.Controllers
             ViewBag.allPhotoCount = allphoto.Count();
             //找照片
 
+            //if (homeData == null)
+            //{
+            //    return HttpNotFound();
+            //}
             if (homeData == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index", "Home");
             }
-
 
             //ViewBag.HomeADLevel = new SelectList(db.ADTypeData, "ADID", "ADName", homeData.HomeADLevel);
             //ViewBag.HomeCarID = new SelectList(db.CarTypeData, "CarTypeID", "CarTypeName", homeData.HomeCarID);
@@ -437,9 +455,14 @@ namespace HomeBackProject.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index", "Home");
+                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             HomeData homeData = db.HomeData.Find(id);
+            if (homeData == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             homeData.HomeSaleType = 4;
             db.Entry(homeData).State = EntityState.Modified;
             db.SaveChanges();
