@@ -10,8 +10,6 @@ namespace HomeBackProject.ViewModel
 {
     public class VMOthersSet
     {
-        //土地類型
-        public List<TerritoryTypeData> TerritoryTypeData { get; set; }
         //銷售狀態
         public List<SaleTypeData> SaleTypeData { get; set; }
         //會員方案

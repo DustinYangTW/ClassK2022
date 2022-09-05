@@ -144,6 +144,7 @@ namespace HomeBackProject.Controllers
                     {
                         ViewBag.countyID = db.CityTypeData.ToList();
                         ViewBag.SaleStateID = db.PeopleRankData.ToList();
+                        ViewBag.checkdataPhoto = "**"+checkdataPhoto;
                         return View();
                     }
                     
@@ -152,6 +153,7 @@ namespace HomeBackProject.Controllers
             }
 
             var account = db.AccountData.Find(peopleData.EMail);
+
             if (account != null)
             {
                 ViewBag.countyID = db.CityTypeData.ToList();
@@ -160,8 +162,10 @@ namespace HomeBackProject.Controllers
                 return View();
             }
 
+
             if (ModelState.IsValid)
             {
+
                 accountData.EmailAccount = peopleData.EMail;
                 accountData.PassWord = PassWord;
                 actiondbController.Create(db, db.AccountData, accountData);

@@ -172,15 +172,15 @@
     <Content Include="Js\OthersSet.js" />
     <Content Include="Js\photosShow.js" />
     <Content Include="Js\Validation.js" />
-    <Content Include="Models\HomeDataModel.Context.tt">
+    <Content Include="Models\HomeDatas.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>HomeDataModel.edmx</DependentUpon>
-      <LastGenOutput>HomeDataModel.Context.cs</LastGenOutput>
+      <DependentUpon>HomeDatas.edmx</DependentUpon>
+      <LastGenOutput>HomeDatas.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\HomeDataModel.tt">
+    <Content Include="Models\HomeDatas.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>HomeDataModel.edmx</DependentUpon>
-      <LastGenOutput>HomeDataModel.cs</LastGenOutput>
+      <DependentUpon>HomeDatas.edmx</DependentUpon>
+      <LastGenOutput>HomeDatas.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -204,12 +204,12 @@
     <Content Include="Content\bootstrap-grid.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
-    <EntityDeploy Include="Models\HomeDataModel.edmx">
+    <EntityDeploy Include="Models\HomeDatas.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>HomeDataModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>HomeDatas.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\HomeDataModel.edmx.diagram">
-      <DependentUpon>HomeDataModel.edmx</DependentUpon>
+    <Content Include="Models\HomeDatas.edmx.diagram">
+      <DependentUpon>HomeDatas.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.0.js" />
@@ -243,83 +243,58 @@
     <Compile Include="library\Search.cs" />
     <Compile Include="library\SearchPhoto.cs" />
     <Compile Include="Models\AccountData.cs">
-      <DependentUpon>HomeDataModel.tt</DependentUpon>
+      <DependentUpon>HomeDatas.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ADTypeData.cs">
-      <DependentUpon>HomeDataModel.tt</DependentUpon>
+      <DependentUpon>HomeDatas.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CarTypeData.cs">
-      <DependentUpon>HomeDataModel.tt</DependentUpon>
+      <DependentUpon>HomeDatas.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CheckDataFromDB.cs" />
     <Compile Include="Models\CityTypeData.cs">
-      <DependentUpon>HomeDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\FactoryadjacentTypeData.cs">
-      <DependentUpon>HomeDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\FactoryData.cs">
-      <DependentUpon>HomeDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\HomeadjacentTypeData.cs">
-      <DependentUpon>HomeDataModel.tt</DependentUpon>
+      <DependentUpon>HomeDatas.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HomeData.cs">
-      <DependentUpon>HomeDataModel.tt</DependentUpon>
+      <DependentUpon>HomeDatas.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\HomeDataModel.Context.cs">
+    <Compile Include="Models\HomeDatas.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>HomeDataModel.Context.tt</DependentUpon>
+      <DependentUpon>HomeDatas.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\HomeDataModel.cs">
+    <Compile Include="Models\HomeDatas.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>HomeDataModel.tt</DependentUpon>
+      <DependentUpon>HomeDatas.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\HomeDataModel.Designer.cs">
+    <Compile Include="Models\HomeDatas.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>HomeDataModel.edmx</DependentUpon>
+      <DependentUpon>HomeDatas.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\HomeTypeData.cs">
-      <DependentUpon>HomeDataModel.tt</DependentUpon>
+      <DependentUpon>HomeDatas.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MetaData.cs" />
     <Compile Include="Models\PeopleData.cs">
-      <DependentUpon>HomeDataModel.tt</DependentUpon>
+      <DependentUpon>HomeDatas.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PeopleRankData.cs">
-      <DependentUpon>HomeDataModel.tt</DependentUpon>
+      <DependentUpon>HomeDatas.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ProgramData.cs">
-      <DependentUpon>HomeDataModel.tt</DependentUpon>
+      <DependentUpon>HomeDatas.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SaleTypeData.cs">
-      <DependentUpon>HomeDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>HomeDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sp_helpdiagrams_Result.cs">
-      <DependentUpon>HomeDataModel.tt</DependentUpon>
+      <DependentUpon>HomeDatas.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>HomeDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TerritoryadjacentTypeData.cs">
-      <DependentUpon>HomeDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TerritoryData.cs">
-      <DependentUpon>HomeDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TerritoryTypeData.cs">
-      <DependentUpon>HomeDataModel.tt</DependentUpon>
+      <DependentUpon>HomeDatas.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\VMCreatePeople.cs" />
     <Compile Include="ViewModel\VMHouseAD.cs" />
-    <Compile Include="ViewModel\VMIndex.cs" />
     <Compile Include="ViewModel\VMLogin.cs" />
     <Compile Include="ViewModel\VMOthersSet.cs" />
   </ItemGroup>
@@ -350,7 +325,6 @@
     <Content Include="Views\PeopleDatas\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_Layout_LogInOut.cshtml" />
-    <Content Include="Views\Shared\_Layout_LogInOutLast.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\OthersSet\Index.cshtml" />
     <Content Include="Views\Shared\_Layout_admin.cshtml" />

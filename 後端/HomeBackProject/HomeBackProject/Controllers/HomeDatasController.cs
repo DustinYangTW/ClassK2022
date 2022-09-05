@@ -129,16 +129,55 @@ namespace HomeBackProject.Controllers
 
 
             PeopleData peopleData= db.PeopleData.Find(homeData.HomePeopleID);
-            string PeopelautoFile = Server.MapPath("~/AllPhoto/PeopleImage" + "/" + peopleData.PeopleID);
-            List<string> Peoplephoto = searchPhotos.searchPhotos(PeopelautoFile, id);
+            string PeopelautoFile = Server.MapPath("~/AllPhoto/PeopleImage" + "/" + homeData.HomePeopleID);
+            List<string> Peoplephoto = searchPhotos.searchPhotos(PeopelautoFile, homeData.HomePeopleID);
             if (Peoplephoto.Count() == 0) { Peoplephoto.Add("../../AllPhoto/unKnow/NoResult.png"); }
             ViewBag.Peoplephoto = Peoplephoto[0];
             ViewBag.People = peopleData;
 
-
             ViewBag.allPhoto = allphoto;
             //ViewBag.allPhoto = photo;
             ViewBag.allPhotoCount = allphoto.Count();
+
+            var homedataRamdom = db.HomeData.Where(h=>h.HomeCity == homeData.HomeCity);
+
+            var homedataRamdomList = homedataRamdom.ToList();
+            List<string> homedataRamdomIDList = new List<string>();
+            foreach (var Ramdoncount in homedataRamdomList)
+            {
+                homedataRamdomIDList.Add(Ramdoncount.HomeID);
+            }
+
+            ViewBag.homedataRamdom = homedataRamdom.ToList();
+            var homedataRamdomall = db.HomeData;
+            Random random = new Random();
+            List<string> randinAllNum = new List<string>();           
+            randinAllNum.Add(homedataRamdomIDList[random.Next(0, homedataRamdomIDList.Count())]);
+            randinAllNum.Add(homedataRamdomIDList[random.Next(0, homedataRamdomIDList.Count())]);
+            randinAllNum.Add(homedataRamdomIDList[random.Next(0, homedataRamdomIDList.Count())]);
+            randinAllNum.Add(homedataRamdomIDList[random.Next(0, homedataRamdomIDList.Count())]);
+
+            var City = db.CityTypeData;
+
+            List<string> Midphotos = new List<string>();
+            List<HomeData> MidhomeDatas = new List<HomeData>();
+            List<string> MidhCity = new List<string>();
+            for(int i = 0;i< randinAllNum.Count(); i++)
+            {
+                var homedataRamdomID = homedataRamdomall.Find(randinAllNum[i]);
+                string autoFileRamdom = Server.MapPath("~/AllPhoto/Home" + "/" + randinAllNum[i]);
+                List<string> Midphoto = searchPhotos.searchPhotos(autoFileRamdom, randinAllNum[i]);
+                if (Midphoto.Count() == 0) { Midphoto.Add("../../AllPhoto/unKnow/NoResult.png"); }
+                Midphotos.Add(Midphoto.OrderByDescending(m => m).FirstOrDefault());
+                homedataRamdomID.HomeMoney = Math.Round(homedataRamdomID.HomeMoney, 2);
+                MidhCity.Add(City.Find(homedataRamdomID.HomeCity).CityTW);
+                MidhomeDatas.Add(homedataRamdomID);
+            }
+            ViewBag.MidhomeDatas = MidhomeDatas;
+            ViewBag.MidhomeDatasCount = MidhomeDatas.Count();
+            ViewBag.MidhCity = MidhCity;
+            ViewBag.Midphotos = Midphotos;
+
 
             if (homeData == null)
             {
@@ -187,12 +226,11 @@ namespace HomeBackProject.Controllers
 
             if (photo.Count() == 0) { photo.Add("../../AllPhoto/unKnow/NoResult.png"); }
             var allphoto = photo.OrderBy(m => m).Skip(photo.Count() - 6).OrderByDescending(m => m).ToList();
-
-
-
             ViewBag.allPhoto = allphoto;
             //ViewBag.allPhoto = photo;
             ViewBag.allPhotoCount = allphoto.Count();
+
+
 
             if (homeData == null)
             {
@@ -200,6 +238,10 @@ namespace HomeBackProject.Controllers
             }
             return View(homeData);
         }
+
+
+
+
 
         // GET: HomeDatas/Create
         [LoginCkeck]

@@ -57,17 +57,6 @@ namespace HomeBackProject.Controllers
                 return View(vMOthersSet);
             }
 
-            else if (idNmae == "Territory")
-            {
-                VMOthersSet vMOthersSet = new VMOthersSet()
-                {
-                    TerritoryTypeData = db.TerritoryTypeData.ToList()
-                };
-                ViewBag.CheckData = idNmae;
-                ViewBag.CheckView = "土地類型設定";
-                return View(vMOthersSet);
-            }
-
             else if (idNmae == "Car")
             {
                 VMOthersSet vMOthersSet = new VMOthersSet()
@@ -224,39 +213,7 @@ namespace HomeBackProject.Controllers
                     return RedirectToAction("Index", new { idNmae = idNmae });
                 }
             }
-            else if (idNmae == "Territory")
-            {
-                if (toDBName == "" || toDBName == null)
-                {
-                    VMOthersSet vMOthersSet = new VMOthersSet()
-                    {
-                        TerritoryTypeData = db.TerritoryTypeData.ToList()
-                    };
-                    ViewBag.CheckData = idNmae;
-                    ViewBag.CheckView = "會員身份設定";
-                    ViewBag.errorEdit = "**輸入資料有誤，請查明後再輸入";
-                    return View("Index", vMOthersSet);
-                }
-                if (toDBName.Length >= 50)
-                {
-                    VMOthersSet vMOthersSet = new VMOthersSet()
-                    {
-                        TerritoryTypeData = db.TerritoryTypeData.ToList()
-                    };
-                    ViewBag.CheckData = idNmae;
-                    ViewBag.CheckView = "會員身份設定";
-                    ViewBag.errorEdit = "**輸入字串長度，只能小於50個字元";
-                    return View("Index", vMOthersSet);
-                }
-
-                TerritoryTypeData territoryTypeData = new TerritoryTypeData();
-                territoryTypeData.TerritoryTypeSelect = toDBName;
-                if (ModelState.IsValid)
-                {
-                    actiondbController.Create(db, db.TerritoryTypeData, territoryTypeData);
-                    return RedirectToAction("Index", new { idNmae = idNmae });
-                }
-            }
+           
             else if (idNmae == "Car")
             {
                 if (toDBName == "" || toDBName == null)
@@ -551,49 +508,7 @@ namespace HomeBackProject.Controllers
                     return RedirectToAction("Index", new { idNmae = idNmae });
                 }
             }
-            else if (idNmae == "Territory")
-            {
-                if (toDBNameEdit == "" || toDBNameEdit == null)
-                {
-                    VMOthersSet vMOthersSet = new VMOthersSet()
-                    {
-                        TerritoryTypeData = db.TerritoryTypeData.ToList()
-                    };
-                    ViewBag.CheckData = idNmae;
-                    ViewBag.CheckView = "會員身份設定";
-                    ViewBag.errorEdit = "**輸入資料有誤，請查明後再輸入";
-                    return View("Index", vMOthersSet);
-                }
-                if (toDBNameEdit.Length >= 50)
-                {
-                    VMOthersSet vMOthersSet = new VMOthersSet()
-                    {
-                        TerritoryTypeData = db.TerritoryTypeData.ToList()
-                    };
-                    ViewBag.CheckData = idNmae;
-                    ViewBag.CheckView = "會員身份設定";
-                    ViewBag.errorEdit = "**輸入字串長度，只能小於50個字元";
-                    return View("Index", vMOthersSet);
-                }
-
-
-                if (id == null)
-                {
-                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                }
-                TerritoryTypeData territoryTypeData = db.TerritoryTypeData.Find(Int16.Parse(id));
-                if (territoryTypeData == null)
-                {
-                    return HttpNotFound();
-                }
-                territoryTypeData.TerritoryTypeSelect = toDBNameEdit;
-                if (ModelState.IsValid)
-                {
-                    db.Entry(territoryTypeData).State = EntityState.Modified;
-                    db.SaveChanges();
-                    return RedirectToAction("Index", new { idNmae = idNmae });
-                }
-            }
+           
             else if (idNmae == "Sale")
             {
                 if (toDBNameEdit == "" || toDBNameEdit == null)
