@@ -10,6 +10,7 @@ namespace HomeBackProject.Controllers
     {
         void LoginState(HttpContext context)
         {
+
             if (context.Session["userID"] == null)
             {
                 context.Response.Redirect("/Home/Index");
@@ -28,7 +29,11 @@ namespace HomeBackProject.Controllers
     {
         void LoginRankState(HttpContext context)
         {
-            if (context.Session["userRank"].ToString() != "4")
+            if (context.Session["userRank"] == null)
+            {
+                context.Response.Redirect("/Home/Index");
+            }
+            else if (context.Session["userRank"].ToString() != "4")
             {
                 context.Response.Redirect("/LogInOut/Index");
             }

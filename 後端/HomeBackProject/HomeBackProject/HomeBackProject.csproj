@@ -239,6 +239,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="library\ChangIDAuto.cs" />
+    <Compile Include="library\HashPassword.cs" />
     <Compile Include="library\PostPhoto.cs" />
     <Compile Include="library\Search.cs" />
     <Compile Include="library\SearchPhoto.cs" />
@@ -294,6 +295,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\VMCreatePeople.cs" />
+    <Compile Include="ViewModel\VMForgetPassWord.cs" />
     <Compile Include="ViewModel\VMHouseAD.cs" />
     <Compile Include="ViewModel\VMLogin.cs" />
     <Compile Include="ViewModel\VMOthersSet.cs" />
@@ -334,6 +336,7 @@
     <Content Include="Views\PeopleBuySomething\buyADForHome.cshtml" />
     <Content Include="Views\Home\houseIndex.cshtml" />
     <Content Include="Views\Home\searchhouseIndex.cshtml" />
+    <Content Include="Views\LogInOut\ForgetPW.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

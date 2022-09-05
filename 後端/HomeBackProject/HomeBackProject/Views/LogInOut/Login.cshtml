@@ -22,7 +22,7 @@
                             <form style="width: 23rem;" action="~/LogInOut/Login" method="post">
 
                                 <h3 class="fw-normal mb-3 pb-3 mb-xl-3 pb-xl-3" style="letter-spacing: 1px;">會員登入</h3>
-
+                                <span class="text-danger mb-3">@TempData["Loginsusses"]</span>
                                 <div class="form-outline mb-4">
                                     <label class="form-label" for="form2Example18">會員帳號(Email)</label>
                                     <input type="email" id="form2Example18" class="form-control form-control-lg" name="EmailAccount" placeholder="abc@gmail.com"/>
@@ -41,7 +41,7 @@
                                     @ViewBag.ErrMsg
                                 </div>
 
-                                <p class="small mb-5 pb-lg-2"><a class="text-muted" href="#!">忘記密碼?</a></p>
+                                <p class="small mb-5 pb-lg-2"><a class="text-muted" href="/LogInOut/ForgetPW">忘記密碼?</a></p>
                                 <p>您沒有帳號嗎? <a href="~/PeopleDatas/Create" class="link-info">加入會員</a></p>
 
                             </form>
