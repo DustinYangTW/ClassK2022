@@ -81,9 +81,7 @@ namespace HomeBackProject.Controllers
             homeData = County != null ? homeData.Where(p => p.HomeCity == County) : homeData;
             ViewBag.HomeHomeCity = homeData.ToList();
 
-            homeData = County != null && Town != "" ? homeData.Where(p => p.HomeTown == Town) : homeData;
-
-            homeData = County == null && Town != null ? homeData.Where(p => p.HomeTown == Town) : homeData;
+            homeData = County != null && Town != "" && Town != null ? homeData.Where(p => p.HomeTown == Town) : homeData;
 
             ViewBag.HomeHomeTown = homeData.ToList();
             homeData = homeData.Where(p => p.HomeAges >= HomeAgeLow && p.HomeAges < HomeAgeHigh);
