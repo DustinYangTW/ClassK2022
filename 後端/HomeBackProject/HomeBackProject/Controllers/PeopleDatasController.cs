@@ -69,6 +69,7 @@ namespace HomeBackProject.Controllers
 
         // GET: PeopleDatas/Details/5
         [LoginCkeck]
+        [ChildActionOnly]
         public ActionResult Details(string id)
         {
             if (id == null)

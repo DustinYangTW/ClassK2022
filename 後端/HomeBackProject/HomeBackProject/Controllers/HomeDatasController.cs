@@ -205,7 +205,7 @@ namespace HomeBackProject.Controllers
         //    if (photo.Count() == 0) { photo.Add("../../AllPhoto/unKnow/NoResult.png"); }
         //    var allphoto = photo.OrderBy(m => m).Skip(photo.Count() - 6).OrderByDescending(m => m).ToList();
 
-            
+
 
         //    ViewBag.allPhoto = allphoto;
         //    //ViewBag.allPhoto = photo;
@@ -218,6 +218,8 @@ namespace HomeBackProject.Controllers
         //    return View(homeData);
         //}
         // GET: HomeDatas/DetailsModal/H0000000006
+        [ChildActionOnly]
+        [LoginCkeck]
         public ActionResult DetailsModal(string id)
         {
             if (id == null)
