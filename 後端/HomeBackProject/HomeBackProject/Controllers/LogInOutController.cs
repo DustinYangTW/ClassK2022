@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using HomeBackProject.library;
 using HomeBackProject.Models;
 using HomeBackProject.ViewModel;
 
@@ -27,7 +28,8 @@ namespace HomeBackProject.Controllers
         public ActionResult Login(VMLogin vMLogin)
         {
             //selece * from Employee where account=@account and password=@password
-            var user = db.AccountData.Where(userEmailFind => userEmailFind.EmailAccount == vMLogin.EmailAccount && userEmailFind.PassWord == vMLogin.PassWord).FirstOrDefault();
+            var password = HashPassword.getHashPassword(vMLogin.PassWord);
+            var user = db.AccountData.Where(userEmailFind => userEmailFind.EmailAccount == vMLogin.EmailAccount && userEmailFind.PassWord == password).FirstOrDefault();
 
 
             if (user == null)
@@ -70,7 +72,7 @@ namespace HomeBackProject.Controllers
             if (ModelState.IsValid)
             {
                 //修改密碼
-                accountData.PassWord = vMForgetPassWord.PassWord;
+                accountData.PassWord = HashPassword.getHashPassword( vMForgetPassWord.PassWord);
                 //存入資料庫
                 db.Entry(accountData).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
