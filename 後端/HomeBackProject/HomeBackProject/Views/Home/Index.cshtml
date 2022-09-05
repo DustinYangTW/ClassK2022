@@ -9,9 +9,9 @@
     <!-- ======= Intro Section ======= -->
     <div class="intro intro-carousel swiper position-relative">
         <div class="swiper-wrapper">
-            @for (int i = 0; i < @ViewBag.HighhomeDatasCount; i++)
+            @for (int i = 0; i < @ViewBag.ALLList[2]; i++)
             {
-                <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url(@ViewBag.Highphotos[i])">
+                <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url(@ViewBag.ALLList[0][i])">
 
                     <div class="overlay overlay-a"></div>
                     <div class="intro-content display-table">
@@ -21,14 +21,14 @@
                                     <div class="col-lg-8">
                                         <div class="intro-body">
                                             <p class="intro-title-top">
-                                                @ViewBag.HighCity[i] , @ViewBag.HighhomeDatas[i].HomeTown
+                                                @ViewBag.ALLList[3][i] , @ViewBag.ALLList[1][i].HomeTown
                                             </p>
                                             <h1 class="intro-title mb-4 ">
                                                 <span class="color-b">黃金熱搜</span>
-                                                <br> @ViewBag.HighhomeDatas[i].HomeName
+                                                <br> @ViewBag.ALLList[1][i].HomeName
                                             </h1>
                                             <p class="intro-subtitle intro-price">
-                                                <a href="/HomeDatas/Details/@ViewBag.HighhomeDatas[i].HomeID" target=_blank><span class="price-a">售價 | $ @ViewBag.HighhomeDatas[i].HomeMoney 萬起</span></a>
+                                                <a href="/HomeDatas/Details/@ViewBag.ALLList[1][i].HomeID" target=_blank><span class="price-a">售價 | $ @ViewBag.ALLList[1][i].HomeMoney 萬起</span></a>
                                             </p>
                                         </div>
                                     </div>
@@ -152,28 +152,28 @@
                         <div id="property-carousel" class="swiper">
                             <div class="swiper-wrapper d-flex align-items-center">
 
-                                @for (int i = 0; i < @ViewBag.MidhomeDatasCount; i++)
+                                @for (int i = 0; i < @ViewBag.ALLList[6]; i++)
                                 {
                                     <div class="carousel-item-b swiper-slide">
                                         <div class="card-box-a card-shadow">
                                             <div class="img-box-a">
-                                                <img src="@ViewBag.Midphotos[i]" alt="" class="img-a img-fluid">
+                                                <img src="@ViewBag.ALLList[4][i]" alt="" class="img-a img-fluid">
                                             </div>
                                             <div class="card-overlay">
                                                 <div class="card-overlay-a-content">
                                                     <div class="card-header-a">
                                                         <h2 class="card-title-a">
-                                                            <a href="/HomeDatas/Details/@ViewBag.MidhomeDatas[i].HomeID" target=_blank>
-                                                                @ViewBag.MidhCity[i] , @ViewBag.MidhomeDatas[i].HomeTown
-                                                                <br />  @ViewBag.MidhomeDatas[i].HomeName
+                                                            <a href="/HomeDatas/Details/@ViewBag.ALLList[5][i].HomeID" target=_blank>
+                                                                @ViewBag.ALLList[7][i] , @ViewBag.ALLList[5][i].HomeTown
+                                                                <br />  @ViewBag.ALLList[5][i].HomeName
                                                             </a>
                                                         </h2>
                                                     </div>
                                                     <div class="card-body-a">
                                                         <div class="price-box d-flex">
-                                                            <span class="price-a">售價 | $ @ViewBag.MidhomeDatas[i].HomeMoney 萬起</span>
+                                                            <span class="price-a">售價 | $ @ViewBag.ALLList[5][i].HomeMoney 萬起</span>
                                                         </div>
-                                                        <a href="/HomeDatas/Details/@ViewBag.MidhomeDatas[i].HomeID" class="link-a" target=_blank>
+                                                        <a href="/HomeDatas/Details/@ViewBag.ALLList[5][i].HomeID" class="link-a" target=_blank>
                                                             點我看詳細資料
                                                             <span class="bi bi-chevron-right"></span>
                                                         </a>
@@ -183,21 +183,21 @@
                                                             <li>
                                                                 <h4 class="card-info-title">面積</h4>
                                                                 <span>
-                                                                    @ViewBag.MidhomeDatas[i].HomeSquareMeters 坪
+                                                                    @ViewBag.ALLList[5][i].HomeSquareMeters 坪
                                                                     @*<sup>2</sup>*@
                                                                 </span>
                                                             </li>
                                                             <li>
                                                                 <h4 class="card-info-title">房間</h4>
-                                                                <span>@ViewBag.MidhomeDatas[i].HomeRoom</span>
+                                                                <span>@ViewBag.ALLList[5][i].HomeRoom</span>
                                                             </li>
                                                             <li>
                                                                 <h4 class="card-info-title">廳</h4>
-                                                                <span>@ViewBag.MidhomeDatas[i].HomeHall</span>
+                                                                <span>@ViewBag.ALLList[5][i].HomeHall</span>
                                                             </li>
                                                             <li>
                                                                 <h4 class="card-info-title">衛浴</h4>
-                                                                <span>@ViewBag.MidhomeDatas[i].HomeBathroom</span>
+                                                                <span>@ViewBag.ALLList[5][i].HomeBathroom</span>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -267,19 +267,19 @@
                         </div>
                         <div class="row d-flex justify-content-center align-items-center">
 
-                            @for (int i = 0; i < @ViewBag.peopleDatasCount; i++)
+                            @for (int i = 0; i < @ViewBag.ALLList[9]; i++)
                             {
                                 <div class="col-lg">
                                     <div class="card-box-d">
                                         <div class="card-img-d d-flex justify-content-center align-items-center">
-                                            <img src="@ViewBag.peoplePhotoss[i]" alt="" class="img-d img-fluid">
+                                            <img src="@ViewBag.ALLList[10][i]" alt="" class="img-d img-fluid">
                                         </div>
                                         <div class="card-overlay card-overlay-hover">
                                             <div class="card-header-d">
                                                 <div class="card-title-d align-self-center">
                                                     <h3 class="title-d">
                                                         <a href="#" class="link-two">
-                                                            @ViewBag.peopleDatas[i].PeopleName
+                                                            @ViewBag.ALLList[8][i].PeopleName
                                                         </a>
                                                     </h3>
                                                 </div>
@@ -290,10 +290,10 @@
                                         </p>*@
                                                 <div class="info-agents color-a">
                                                     <p>
-                                                        <strong>電話: </strong> @ViewBag.peopleDatas[i].PhoneNumber
+                                                        <strong>電話: </strong> @ViewBag.ALLList[8][i].PhoneNumber
                                                     </p>
                                                     <p>
-                                                        <strong>Email: </strong> @ViewBag.peopleDatas[i].EMail
+                                                        <strong>Email: </strong> @ViewBag.ALLList[8][i].EMail
                                                     </p>
                                                 </div>
                                             </div>

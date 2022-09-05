@@ -239,6 +239,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="library\ChangIDAuto.cs" />
+    <Compile Include="library\getPhotoToView.cs" />
     <Compile Include="library\HashPassword.cs" />
     <Compile Include="library\PostPhoto.cs" />
     <Compile Include="library\Search.cs" />

@@ -7,6 +7,7 @@
 @{
     ViewBag.Title = "精選房屋資訊";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var cityData = @ViewBag.cityid;
 }
 
 <main id="main">
@@ -35,7 +36,7 @@
                         <button class="d-flex justify-content-center align-items-center mt-2 mt-lg-0 mb-4 mb-lg-0 me-lg-3 p-1 ps-3 pe-3 btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#SearchBtn">
                             <i class="bi bi-search"></i>
                         </button>
-                        <a class="btn btn-outline-info mb-4 mb-lg-0 me-lg-3" href="~/Home/houseIndex?cityid=@ViewBag.cityid">清除</a>
+                        <a class="btn btn-outline-info mb-4 mb-lg-0 me-lg-3" href="~/Home/searchhouseIndex?cityid=@cityData">清除</a>
                     </nav>
                 </div>
             </div>
@@ -72,28 +73,28 @@
                             </form>
                         </div>
                     </div>*@
-                @for (int i = 0; i < @ViewBag.MidhomeDatasCount; i++)
+                @for (int i = 0; i < @ViewBag.ALLList[2]; i++)
                 {
                     <div class="col-md-4">
                         <div class="card-box-a card-shadow">
                             <div class="img-box-a d-flex justify-content-center align-items-center">
-                                <img src="@ViewBag.Midphotos[i]" alt="" class="img-a img-fluid">
+                                <img src="@ViewBag.ALLList[0][i]" alt="" class="img-a img-fluid">
                             </div>
                             <div class="card-overlay">
                                 <div class="card-overlay-a-content">
                                     <div class="card-header-a">
                                         <h2 class="card-title-a">
-                                            <a href="/HomeDatas/Details/@ViewBag.MidhomeDatas[i].HomeID">
-                                                @ViewBag.MidhCity[i] , @ViewBag.MidhomeDatas[i].HomeTown
-                                                <br />  @ViewBag.MidhomeDatas[i].HomeName
+                                            <a href="/HomeDatas/Details/@ViewBag.ALLList[1][i].HomeID">
+                                                @ViewBag.ALLList[3][i] , @ViewBag.ALLList[1][i].HomeTown
+                                                <br />  @ViewBag.ALLList[1][i].HomeName
                                             </a>
                                         </h2>
                                     </div>
                                     <div class="card-body-a">
                                         <div class="price-box d-flex">
-                                            <span class="price-a">售價 | $ @ViewBag.MidhomeDatas[i].HomeMoney 萬起</span>
+                                            <span class="price-a">售價 | $ @ViewBag.ALLList[1][i].HomeMoney 萬起</span>
                                         </div>
-                                        <a href="/HomeDatas/Details/@ViewBag.MidhomeDatas[i].HomeID" class="link-a" target=_blank>
+                                        <a href="/HomeDatas/Details/@ViewBag.ALLList[1][i].HomeID" class="link-a" target=_blank>
                                             點我看詳細資料
                                             <span class="bi bi-chevron-right"></span>
                                         </a>
@@ -103,21 +104,21 @@
                                             <li>
                                                 <h4 class="card-info-title">面積</h4>
                                                 <span>
-                                                    @ViewBag.MidhomeDatas[i].HomeSquareMeters 坪
+                                                    @ViewBag.ALLList[1][i].HomeSquareMeters 坪
                                                     @*<sup>2</sup>*@
                                                 </span>
                                             </li>
                                             <li>
                                                 <h4 class="card-info-title">房間</h4>
-                                                <span>@ViewBag.MidhomeDatas[i].HomeRoom</span>
+                                                <span>@ViewBag.ALLList[1][i].HomeRoom</span>
                                             </li>
                                             <li>
                                                 <h4 class="card-info-title">廳</h4>
-                                                <span>@ViewBag.MidhomeDatas[i].HomeHall</span>
+                                                <span>@ViewBag.ALLList[1][i].HomeHall</span>
                                             </li>
                                             <li>
                                                 <h4 class="card-info-title">衛浴</h4>
-                                                <span>@ViewBag.MidhomeDatas[i].HomeBathroom</span>
+                                                <span>@ViewBag.ALLList[1][i].HomeBathroom</span>
                                             </li>
                                         </ul>
                                     </div>
@@ -128,7 +129,7 @@
                 }
             </div>
             <div class="d-flex justify-content-center">
-                @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                @Html.PagedListPager(Model, page => Url.Action("searchhouseIndex", "Home", new { cityid = cityData, page }))
             </div>
 
         </div>
