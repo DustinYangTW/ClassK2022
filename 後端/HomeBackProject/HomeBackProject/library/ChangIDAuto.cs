@@ -2,8 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
+using System.Web.UI;
 
 namespace HomeBackProject.library
 {
@@ -22,6 +25,36 @@ namespace HomeBackProject.library
             string CheckID = idIn[0] + id.ToString().PadLeft(9, '0');
 
             return CheckID;
+        }
+
+
+        public static List<int> AutoPage(int allCount,int pagesize,int page)
+        {
+            List<int> pageList = new List<int>();
+            int first, last;
+            if (allCount < 6)
+            {
+                first = 0;
+                last = allCount;
+                pageList.Add(first);
+                pageList.Add(last);
+            }
+            else if (allCount > 6 && page == 1)
+            {
+                first = 0;
+                last = pagesize;
+                pageList.Add(first);
+                pageList.Add(last);
+            }
+            else
+            {
+                first = ((page - 1) * pagesize);
+                last = first + pagesize < allCount ? first + pagesize+1 : allCount;
+                pageList.Add(first);
+                pageList.Add(last);
+            }
+
+            return pageList;
         }
     }
 }

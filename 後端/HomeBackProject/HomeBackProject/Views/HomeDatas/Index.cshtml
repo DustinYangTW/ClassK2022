@@ -24,7 +24,7 @@
             <a class="btn btn-outline-info mb-4 mb-lg-0 me-lg-3" href="~/HomeDatas/Index">清除</a>
             @Html.ActionLink("建立新房屋案件", "Create", new { }, new { @class = "btn btn-outline-primary me-lg-3 mb-2 mb-lg-0 text-center" })
         </div>
-
+        <span class="text-danger mt-2 mb-2">@TempData["Win"]</span>
         <div class="table-responsive mt-3 mt-lg-5 shadow border border-dark rounded-start">
             <table class="table text-center table-striped table-hover" overflow="auto">
                 <thead>
