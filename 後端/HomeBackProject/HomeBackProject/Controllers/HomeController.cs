@@ -142,6 +142,11 @@ namespace HomeBackProject.Controllers
             //ViewBag.Midphotos = Midphotos;
 
             int pagesize = 6;
+            // ViewBag.pagesize = ViewBag.ALLList[2] > 6 ? ViewBag.ALLList[2] - (page*6) : pagesize - ViewBag.ALLList[2];
+            int allCount = ViewBag.ALLList[2];
+            ViewBag.pagesize = ChangIDAuto.AutoPage(allCount, pagesize, page);
+
+
             var pagedList = homeData.ToPagedList(page, pagesize);
             ViewBag.countyID = db.CityTypeData.ToList();
             ViewBag.HomeTypeData = db.HomeTypeData.ToList();
@@ -204,6 +209,11 @@ namespace HomeBackProject.Controllers
             //ViewBag.Midphotos = Midphotos;
 
             int pagesize = 6;
+            // ViewBag.pagesize = ViewBag.ALLList[2] > 6 ? ViewBag.ALLList[2] - (page*6) : pagesize - ViewBag.ALLList[2];
+            int allCount = ViewBag.ALLList[2];
+            ViewBag.pagesize = ChangIDAuto.AutoPage(allCount, pagesize,page);
+
+
             var pagedList = homeData.ToPagedList(page, pagesize);
             ViewBag.countyID = db.CityTypeData.ToList();
             ViewBag.HomeTypeData = db.HomeTypeData.ToList();
