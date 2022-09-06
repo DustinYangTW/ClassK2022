@@ -11,7 +11,7 @@
         <span class="text-danger fs-1">@ViewBag.Win</span>
     </div>
     <div class="row">
-
+        <span class="text-danger text-center fs-3 mt-2 mb-2">@TempData["Win"]</span>
         @foreach (var item in Model)
         {
             if (Session["userRank"].ToString() != "4")

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Drawing;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -38,15 +39,26 @@ namespace HomeBackProject.Controllers
             peopleData.PeopleCash = peopleData.PeopleCash + point;
             db.Entry(peopleData).State = EntityState.Modified;
             db.SaveChanges();
-            ViewBag.Win = "購買成功!! 儲值 " + point + " 點 " + " ， 您目前共有 : " + Math.Round((double)peopleData.PeopleCash,0)+" 點";
+            TempData["Win"] = "購買成功!! 儲值 " + point + " 點 " + " ， 您目前共有 : " + Math.Round((double)peopleData.PeopleCash,0)+" 點";
             return View("buyPoints");
         }
 
-        //[LoginCkeck]
+        [LoginCkeck]
         public ActionResult buyADForHome(string id)
         {
+            if (id == null)
+            {
+                return RedirectToAction("Index", "Home");
+                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
             var homeData = db.HomeData.Find(id);
+            if (homeData == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            var peopleDataCash = db.PeopleData.Find(homeData.HomePeopleID).PeopleCash;
             ViewBag.HomeID = homeData.HomeID;
+            TempData["Win"] = "您目前共有 : " + Math.Round((double)peopleDataCash, 0) + " 點";
             return View(db.ADTypeData.ToList());
         }
 
@@ -72,7 +84,7 @@ namespace HomeBackProject.Controllers
 
             if (cash < point)
             {
-                ViewBag.Win = "點數不足 "+ (point-cash)+" 點，點選購買點數!!! 您目前共有: " + Math.Round((double)peopleData.PeopleCash,0)+" 點";
+                TempData["Win"] = "點數不足 "+ (point-cash)+" 點，點選購買點數!!! 您目前共有: " + Math.Round((double)peopleData.PeopleCash,0)+" 點";
                 return View("buyPoints");
             }
 
@@ -84,7 +96,9 @@ namespace HomeBackProject.Controllers
             db.Entry(homeData).State = EntityState.Modified;
             //try
             //{
-                db.SaveChanges();
+            db.SaveChanges();
+
+            TempData["Win"] = "購買成功!! 儲值 " + point + " 點 " + " ， 您目前共有 : " + Math.Round((double)peopleData.PeopleCash, 0) + " 點";
             //}catch(Exception ex)
             //{
             //    throw;
