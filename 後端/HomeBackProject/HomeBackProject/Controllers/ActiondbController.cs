@@ -121,7 +121,10 @@ namespace HomeBackProject.Controllers
             else
             {
                 this.searchPhotosName = searchPhotos.searchPhotos(filename);
-                searchPhotos.DeletePhoto(filename, this.searchPhotosName[0], "A000000001");
+                if (this.searchPhotosName.Count() != 0)
+                {
+                    searchPhotos.DeletePhoto(filename, this.searchPhotosName[0], peopleID);
+                }
             }
 
             filename = autoFile + "/" + "PeopleImage" + "/" + peopleID + "/";

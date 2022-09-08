@@ -110,6 +110,7 @@
     <script>
         $('.btnDetail').click(function (evt) {
             //console.log("/PeopleDatas/Details/" + evt.target.id);
+            $('#exampleModal .modal-body').empty();
             $('#exampleModal .modal-body').load("/PeopleDatas/Details/" + evt.target.id);
             $('#exampleModalLabel').empty();
             $('#exampleModalLabel').append(`<h3 class="pt-3 ps-3">${evt.target.value} 詳細資料</h1>`);
