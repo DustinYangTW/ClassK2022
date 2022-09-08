@@ -99,7 +99,7 @@ namespace HomeBackProject.Controllers
             homeData = homeData.Where(p => p.HomeMoney >= AllMoneyLow && p.HomeMoney < AllMoneyHigh);
             ViewBag.HomeHomeMoney = homeData.ToList();
 
-            ViewBag.Errorr = homeData.ToList().Count() == 0 ? "查無資料，請重新查詢" : "";
+            TempData["Win"] = homeData.ToList().Count() == 0 ? "查無資料，請重新查詢" : "";
 
             int pagesize = 10;
             var pagedList = homeData.ToPagedList(page, pagesize);
@@ -217,7 +217,7 @@ namespace HomeBackProject.Controllers
         //}
         // GET: HomeDatas/DetailsModal/H0000000006
 
-        [ChildActionOnly]
+        //[ChildActionOnly]
         [LoginCkeck]
         public ActionResult DetailsModal(string id)
         {
@@ -419,6 +419,8 @@ namespace HomeBackProject.Controllers
 
                 string autoFiles = Server.MapPath("~/AllPhoto");
                 actiondbController.SavePhoto(autoFiles, photoList,homeData.HomePeopleID, homeData.HomeID);
+
+                TempData["Win"] = homeData.HomeName+"  修改成功";
                 return RedirectToAction("Index");
             }
 
@@ -465,8 +467,16 @@ namespace HomeBackProject.Controllers
                 return RedirectToAction("Index", "Home");
             }
             homeData.HomeSaleType = 4;
+            homeData.HomeManageTip = homeData.HomeManageTip > 0 ? homeData.HomeManageTip : 0;
             db.Entry(homeData).State = EntityState.Modified;
-            db.SaveChanges();
+            //try
+            //{
+                db.SaveChanges();
+            //}
+            ////catch(Exception ex)
+            //{
+            //    throw;
+            //}
             return RedirectToAction("Index");
         }
         // GET: HomeDatas/Delete/5

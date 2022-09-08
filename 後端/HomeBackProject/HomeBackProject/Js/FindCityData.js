@@ -43,10 +43,10 @@ function mainIdex() {
                 //console.log(arr.indexOf("市"));
                 console.log(selecttwValue);
 
-                if (arr.indexOf("縣") == -1 && arr.indexOf("市") == -1) {
+                //if (arr.indexOf("縣") == -1 && arr.indexOf("市") == -1) {
                     cityadd = `<option value="${cityid}">${cityid}</option>`;
                     $('#selectCity').append(cityadd);
-                }
+                //}
             }
         }
     });
