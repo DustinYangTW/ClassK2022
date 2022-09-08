@@ -40,6 +40,9 @@
                     </nav>
                 </div>
             </div>
+            <div class="d-flex justify-content-center">
+                <span class="text-danger mt-2 text-center fs-2">@TempData["Win"]</span>
+            </div>
             <div class="row mt-4">
                 <div class="col-lg mb-2 d-flex justify-content-center">
                     <a class="btn btn-info btn-lg" href="~/Home/searchhouseIndex?cityid=top">&nbsp;&nbsp;&nbsp;&nbsp;北部&nbsp;&nbsp;&nbsp;&nbsp;</a>
@@ -85,7 +88,7 @@
                                 <div class="card-overlay-a-content">
                                     <div class="card-header-a">
                                         <h2 class="card-title-a">
-                                            <a href="/HomeDatas/Details/@ViewBag.ALLList[1][i].HomeID">
+                                            <a href="/House/@ViewBag.ALLList[1][i].HomeID">
                                                 @ViewBag.ALLList[3][i] , @ViewBag.ALLList[1][i].HomeTown
                                                 <br />  @ViewBag.ALLList[1][i].HomeName
                                             </a>
@@ -95,7 +98,7 @@
                                         <div class="price-box d-flex">
                                             <span class="price-a">售價 | $ @ViewBag.ALLList[1][i].HomeMoney 萬起</span>
                                         </div>
-                                        <a href="/HomeDatas/Details/@ViewBag.ALLList[1][i].HomeID" class="link-a" target=_blank>
+                                        <a href="/House/@ViewBag.ALLList[1][i].HomeID" class="link-a" target=_blank>
                                             點我看詳細資料
                                             <span class="bi bi-chevron-right"></span>
                                         </a>

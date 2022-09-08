@@ -98,7 +98,7 @@ namespace HomeBackProject.Controllers
             //{
             db.SaveChanges();
 
-            TempData["Win"] = "購買成功!! 儲值 " + point + " 點 " + " ， 您目前共有 : " + Math.Round((double)peopleData.PeopleCash, 0) + " 點";
+            TempData["Win"] = "購買成功!! 花費 " + point + " 點 " + " ， 您目前共有 : " + Math.Round((double)peopleData.PeopleCash, 0) + " 點";
             //}catch(Exception ex)
             //{
             //    throw;
