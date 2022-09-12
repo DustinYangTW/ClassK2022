@@ -1,0 +1,67 @@
+﻿@model IEnumerable<HomeBackProject.Models.ADTypeData>
+
+@{
+    ViewBag.Title = "buyADForHome";
+    Layout = "";
+}
+
+
+<div class="container  mb-5">
+    <div class="d-flex justify-content-center">
+        <span class="text-danger fs-1">@ViewBag.Win</span>
+    </div>
+    <div class="row">
+        <span class="text-danger text-center fs-3 mt-2 mb-2">@TempData["Win"]</span>
+        @foreach (var item in Model)
+        {
+            if (Session["userRank"].ToString() != "4")
+            {
+                if (item.ADID != 1)
+                {
+                    <div class="col  d-flex justify-content-center align-items-center">
+                        @using (Html.BeginForm("buyADForHouse", "PeopleBuySomething", FormMethod.Post, new { enctype = "multipart/form-data", @class = "needs-validation" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="card mt-3" style="width: 18rem;">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTlhfOEoAyikZ2GfQIkkv9kyAv_jEUE9J4iQ&usqp=CAU" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <input id="ADNumber" type="hidden" name="ADNumber" value="@item.ADID" />
+                                    <input id="id" type="hidden" name="id" value="@ViewBag.HomeID" />
+                                    <input id="point" type="hidden" name="point" value="@(item.ADID * 250)" />
+                                    <h5 class="card-title">@item.ADName</h5>
+                                    <p class="card-text">@(item.ADID * 250)點</p>
+                                    <button class="btn btn-primary" type="submit">點我購買</button>
+                                </div>
+                            </div>
+
+                        }
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="col  d-flex justify-content-center align-items-center">
+                    @using (Html.BeginForm("buyADForHouse", "PeopleBuySomething", FormMethod.Post, new { enctype = "multipart/form-data", @class = "needs-validation" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="card mt-3" style="width: 18rem;">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTlhfOEoAyikZ2GfQIkkv9kyAv_jEUE9J4iQ&usqp=CAU" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <input id="ADNumber" type="hidden" name="ADNumber" value="@item.ADID" />
+                                <input id="id" type="hidden" name="id" value="@ViewBag.HomeID" />
+                                <input id="point" type="hidden" name="point" value="@(item.ADID * 250)" />
+                                <h5 class="card-title">@item.ADName</h5>
+                                <p class="card-text">@(item.ADID * 250)點</p>
+                                <button class="btn btn-primary" type="submit">點我購買</button>
+                            </div>
+                        </div>
+
+                    }
+                </div>
+            }
+        }
+    </div>
+</div>
+
