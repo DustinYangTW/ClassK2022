@@ -62,6 +62,7 @@ namespace HomeBackProject.Controllers
             {
                 var peopleData = db.PeopleData.Include(p => p.AccountData).Include(p => p.CityTypeData).Include(p => p.PeopleRankData).Include(p => p.ProgramData).OrderByDescending(p => p.PeopleID).Where(p => p.PeopleName.Contains(name));
                 var pagedList = peopleData.ToPagedList(page, pagesize);
+                TempData["Null"] = "**查無資料，請確認後再查訊，謝謝配合。";
                 return View(pagedList);
             }
 
@@ -161,7 +162,7 @@ namespace HomeBackProject.Controllers
                     {
                         ViewBag.countyID = db.CityTypeData.ToList();
                         ViewBag.SaleStateID = db.PeopleRankData.ToList();
-                        ViewBag.checkdataPhoto = "**"+checkdataPhoto;
+                        TempData["PhotoVULl"] = "**"+checkdataPhoto;
                         return View();
                     }
                     
@@ -179,6 +180,13 @@ namespace HomeBackProject.Controllers
                 return View();
             }
 
+            if (peopleData.IdebtityNumber.Length != 10)
+            {
+                ViewBag.countyID = db.CityTypeData.ToList();
+                ViewBag.SaleStateID = db.PeopleRankData.ToList();
+                ViewBag.IdErrorMessage = "**身分證長度有問題";
+                return View();
+            }
 
             if (ModelState.IsValid)
             {

@@ -130,6 +130,7 @@
                                                         @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
                                                         <div class="invalid-feedback">
                                                             **必填欄位
+                                                            @ViewBag.IdErrorMessage
                                                         </div>
                                                     </div>
                                                 </div>
@@ -139,7 +140,7 @@
                                                         <label for="inputGroupFile01" class="form-label fs-5">上傳會員照片</label>
                                                         <input type="file" class="form-control form-control-lg" id="Photo01" name="photo" style="max-width: 100%">
                                                     </div>
-                                                    <span class="text-danger">@ViewBag.checkdataPhoto</span>
+                                                    <span class="text-danger">@TempData["PhotoVULl"]</span>
                                                     <div class="d-flex justify-content-center mt-4">
                                                         <img width="200" id="NewPhoto01" class="rounded-3 shadow-lg"/>
                                                     </div>

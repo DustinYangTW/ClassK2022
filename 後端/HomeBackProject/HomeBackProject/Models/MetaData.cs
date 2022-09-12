@@ -175,6 +175,7 @@ namespace MetaDataHomeBackProject.Models
         [Required(ErrorMessage = "必填欄位")]
         [StringLength(55, ErrorMessage = "最長只能輸入55個字")]
         public string PeopleName { get; set; }
+
         [DisplayName("身份證字號")]
         [Required(ErrorMessage = "必填欄位")]
         [MinLength(10, ErrorMessage = "身分字號最少要10碼")]
@@ -182,6 +183,7 @@ namespace MetaDataHomeBackProject.Models
         [RegularExpression("[A-Z][1-2][0-9]{8}", ErrorMessage = "**第一碼要大寫or格式錯誤")]
         [ChechIDName(ErrorMessage = "不合法的身分字號")]
         public string IdebtityNumber { get; set; }
+
         [DisplayName("生日")]
         [Required(ErrorMessage = "必填欄位")]
         [DataType(DataType.Date)]
