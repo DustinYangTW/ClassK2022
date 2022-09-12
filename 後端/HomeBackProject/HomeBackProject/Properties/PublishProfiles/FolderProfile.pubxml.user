@@ -5,14 +5,15 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>E:\Git2\後端\HomeBackProject\HomeBackProject\bin\app.publish\</_PublishTargetUrl>
-    <History>True|2022-09-12T03:40:48.4742689Z;</History>
+    <History>True|2022-09-12T23:36:09.1166900Z;True|2022-09-12T11:40:48.4742689+08:00;</History>
+    <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>09/12/2022 21:36:21</publishTime>
+      <publishTime>09/13/2022 07:36:06</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>09/12/2022 21:36:21</publishTime>
+      <publishTime>09/13/2022 07:36:06</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>04/17/2020 04:38:42</publishTime>
@@ -21,10 +22,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>04/17/2020 04:38:56</publishTime>
     </File>
     <File Include="bin/HomeBackProject.dll">
-      <publishTime>09/12/2022 21:36:11</publishTime>
+      <publishTime>09/13/2022 07:35:57</publishTime>
     </File>
     <File Include="bin/HomeBackProject.pdb">
-      <publishTime>09/12/2022 21:36:11</publishTime>
+      <publishTime>09/13/2022 07:35:57</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>07/09/2020 05:52:58</publishTime>
@@ -423,7 +424,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>09/03/2022 12:05:35</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>09/12/2022 21:36:12</publishTime>
+      <publishTime>09/13/2022 07:35:59</publishTime>
     </File>
     <File Include="Scripts/bootstrap.bundle.js">
       <publishTime>08/19/2022 05:40:58</publishTime>
@@ -579,7 +580,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/19/2022 15:46:26</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>09/12/2022 14:01:44</publishTime>
+      <publishTime>09/13/2022 07:35:58</publishTime>
     </File>
   </ItemGroup>
 </Project>
