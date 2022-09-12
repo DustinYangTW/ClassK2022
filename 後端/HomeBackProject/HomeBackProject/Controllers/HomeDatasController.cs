@@ -115,13 +115,14 @@ namespace HomeBackProject.Controllers
         {
             if (id == null)
             {
-                    return RedirectToAction("Index", "Home");
-                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                    //return RedirectToAction("Index", "Home");
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             HomeData homeData = db.HomeData.Find(id);
             if (homeData == null)
             {
-                return RedirectToAction("Index", "Home");
+                return HttpNotFound();
+                //return RedirectToAction("Index", "Home");
             }
 
             string autoFile = Server.MapPath("~/AllPhoto/Home" + "/" + id);
@@ -184,7 +185,8 @@ namespace HomeBackProject.Controllers
 
             if (homeData == null)
             {
-                return RedirectToAction("Index", "Home");
+                return HttpNotFound();
+                //return RedirectToAction("Index", "Home");
             }
             return View(homeData);
         }
@@ -223,13 +225,14 @@ namespace HomeBackProject.Controllers
         {
             if (id == null)
             {
-                return RedirectToAction("Index", "Home");
-                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                //return RedirectToAction("Index", "Home");
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             HomeData homeData = db.HomeData.Find(id);
             if (homeData == null)
             {
-                return RedirectToAction("Index", "Home");
+                return HttpNotFound();
+                //return RedirectToAction("Index", "Home");
             }
 
             string autoFile = Server.MapPath("~/AllPhoto/Home" + "/" + id);
@@ -246,6 +249,7 @@ namespace HomeBackProject.Controllers
             if (homeData == null)
             {
                 return HttpNotFound();
+                //return HttpNotFound();
             }
             return View(homeData);
         }
@@ -333,7 +337,8 @@ namespace HomeBackProject.Controllers
             HomeData homeData = db.HomeData.Find(id);
             if (homeData == null)
             {
-                return RedirectToAction("Index", "Home");
+                return HttpNotFound();
+                //return RedirectToAction("Index", "Home");
             }
 
             //找照片
@@ -352,7 +357,8 @@ namespace HomeBackProject.Controllers
             //}
             if (homeData == null)
             {
-                return RedirectToAction("Index", "Home");
+                return HttpNotFound();
+                //return RedirectToAction("Index", "Home");
             }
 
             //ViewBag.HomeADLevel = new SelectList(db.ADTypeData, "ADID", "ADName", homeData.HomeADLevel);
@@ -458,13 +464,14 @@ namespace HomeBackProject.Controllers
         {
             if (id == null)
             {
-                return RedirectToAction("Index", "Home");
-                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                //return RedirectToAction("Index", "Home");
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             HomeData homeData = db.HomeData.Find(id);
             if (homeData == null)
             {
-                return RedirectToAction("Index", "Home");
+                //return RedirectToAction("Index", "Home");
+                return HttpNotFound();
             }
             homeData.HomeSaleType = 4;
             homeData.HomeManageTip = homeData.HomeManageTip > 0 ? homeData.HomeManageTip : 0;

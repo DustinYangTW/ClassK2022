@@ -74,13 +74,14 @@ namespace HomeBackProject.Controllers
         {
             if (id == null)
             {
-                return RedirectToAction("Index", "Home");
-                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                //return RedirectToAction("Index", "Home");
+               return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             PeopleData peopleData = db.PeopleData.Find(id);
             if (peopleData == null)
             {
-                return RedirectToAction("Index", "Home");
+                return HttpNotFound();
+                //return RedirectToAction("Index", "Home");
             }
 
             //找照片
@@ -93,8 +94,8 @@ namespace HomeBackProject.Controllers
 
             if (peopleData == null)
             {
-                return RedirectToAction("Index", "Home");
-                //return HttpNotFound();
+                //return RedirectToAction("Index", "Home");
+                return HttpNotFound();
             }
             return PartialView(peopleData);
         }     
@@ -103,13 +104,14 @@ namespace HomeBackProject.Controllers
         {
             if (id == null)
             {
-                return RedirectToAction("Index", "Home");
-                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                //return RedirectToAction("Index", "Home");
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             PeopleData peopleData = db.PeopleData.Find(id);
             if (peopleData == null)
             {
-                return RedirectToAction("Index", "Home");
+                return HttpNotFound();
+                //return RedirectToAction("Index", "Home");
             }
 
             //找照片
@@ -207,8 +209,8 @@ namespace HomeBackProject.Controllers
         {
             if (id == null)
             {
-                return RedirectToAction("Index", "Home");
-                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                //return RedirectToAction("Index", "Home");
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             PeopleData peopleData = db.PeopleData.Find(id);
             //找照片
@@ -219,7 +221,8 @@ namespace HomeBackProject.Controllers
 
             if (peopleData == null)
             {
-                return RedirectToAction("Index", "Home");
+                return HttpNotFound();
+                //return RedirectToAction("Index", "Home");
             }
             //if (peopleData == null)
             //{

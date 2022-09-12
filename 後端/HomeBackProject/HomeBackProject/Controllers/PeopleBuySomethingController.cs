@@ -28,13 +28,14 @@ namespace HomeBackProject.Controllers
         {
             if (id == null)
             {
-                return RedirectToAction("Index", "Home");
-                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                //return RedirectToAction("Index", "Home");
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             PeopleData peopleData = db.PeopleData.Find(id);
             if (peopleData == null)
             {
-                return RedirectToAction("Index", "Home");
+                return HttpNotFound();
+                //return RedirectToAction("Index", "Home");
             }
             peopleData.PeopleCash = peopleData.PeopleCash + point;
             db.Entry(peopleData).State = EntityState.Modified;
@@ -48,13 +49,14 @@ namespace HomeBackProject.Controllers
         {
             if (id == null)
             {
-                return RedirectToAction("Index", "Home");
-                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                //return RedirectToAction("Index", "Home");
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             var homeData = db.HomeData.Find(id);
             if (homeData == null)
             {
-                return RedirectToAction("Index", "Home");
+                return HttpNotFound();
+                //return RedirectToAction("Index", "Home");
             }
             var peopleDataCash = db.PeopleData.Find(homeData.HomePeopleID).PeopleCash;
             ViewBag.HomeID = homeData.HomeID;
@@ -69,13 +71,14 @@ namespace HomeBackProject.Controllers
         {
             if (id == null)
             {
-                return RedirectToAction("Index", "Home");
-                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                //return RedirectToAction("Index", "Home");
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             HomeData homeData = db.HomeData.Find(id);
             if (homeData == null)
             {
-                return RedirectToAction("Index", "Home");
+                return HttpNotFound();
+                //return RedirectToAction("Index", "Home");
             }
 
             PeopleData peopleData = db.PeopleData.Find(homeData.HomePeopleID);

@@ -167,6 +167,7 @@
     <Content Include="Css\assets\vendor\swiper\swiper-bundle.min.js" />
     <Content Include="Css\body.css" />
     <Content Include="Css\PagedListMyStyle.css" />
+    <Content Include="ErrorPage.html" />
     <Content Include="Global.asax" />
     <Content Include="Js\FindCityData.js" />
     <Content Include="Js\OthersSet.js" />
