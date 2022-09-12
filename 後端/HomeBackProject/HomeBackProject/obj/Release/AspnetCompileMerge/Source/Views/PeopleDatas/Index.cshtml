@@ -82,6 +82,9 @@
             </table>
 
         </div>
+        <div class="text-danger text-center d-flex justify-content-center mt-3 fs-1">
+            @TempData["Null"]
+        </div>
         <div class="d-flex justify-content-center">
             @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
         </div>
