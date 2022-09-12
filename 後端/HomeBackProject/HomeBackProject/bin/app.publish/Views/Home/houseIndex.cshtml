@@ -1,0 +1,117 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+
+@*@model IEnumerable<HomeBackProject.Models.HomeData>*@
+@model IPagedList<HomeBackProject.Models.HomeData>
+
+@{
+    ViewBag.Title = "精選房屋資訊";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main id="main">
+
+
+    <!-- ======= Intro Single ======= -->
+    <section class="intro-single">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-8">
+                    <div class="title-single-box">
+                        <h1 class="title-single">精選房屋</h1>
+                        <span class="color-text-a">由專業人士評比出來的房屋</span>
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-4">
+                    <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="/Home/Index">首頁</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">
+                                精選房屋
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section><!-- End Intro Single-->
+
+    <section class="property-grid grid">
+        <div class="container">
+            <div class="row d-flex justify-content-center align-items-center">
+                @*<div class="col-sm-12">
+                        <div class="grid-option">
+                            <form>
+                                <select class="custom-select">
+                                    <option selected>All</option>
+                                    <option value="1">New to Old</option>
+                                    <option value="2">For Rent</option>
+                                    <option value="3">For Sale</option>
+                                </select>
+                            </form>
+                        </div>
+                    </div>*@
+                @for (int i = @ViewBag.pagesize[0]; i < @ViewBag.pagesize[1]; i++)
+                {
+                    <div class="col-md-4">
+                        <div class="card-box-a card-shadow">
+                            <div class="img-box-a d-flex justify-content-center align-items-center">
+                                <img src="@ViewBag.ALLList[0][i]" alt="" class="img-a img-fluid">
+                            </div>
+                            <div class="card-overlay">
+                                <div class="card-overlay-a-content">
+                                    <div class="card-header-a">
+                                        <h2 class="card-title-a">
+                                            <a href="/House/@ViewBag.ALLList[1][i].HomeID">
+                                                @ViewBag.ALLList[3][i] , @ViewBag.ALLList[1][i].HomeTown
+                                                <br />  @ViewBag.ALLList[1][i].HomeName
+                                            </a>
+                                        </h2>
+                                    </div>
+                                    <div class="card-body-a">
+                                        <div class="price-box d-flex">
+                                            <span class="price-a">售價 | $ @ViewBag.ALLList[1][i].HomeMoney 萬起</span>
+                                        </div>
+                                        <a href="/House/@ViewBag.ALLList[1][i].HomeID" class="link-a" target=_blank>
+                                            點我看詳細資料
+                                            <span class="bi bi-chevron-right"></span>
+                                        </a>
+                                    </div>
+                                    <div class="card-footer-a">
+                                        <ul class="card-info d-flex justify-content-around">
+                                            <li>
+                                                <h4 class="card-info-title">面積</h4>
+                                                <span>
+                                                    @ViewBag.ALLList[1][i].HomeSquareMeters 坪
+                                                    @*<sup>2</sup>*@
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <h4 class="card-info-title">房間</h4>
+                                                <span>@ViewBag.ALLList[1][i].HomeRoom</span>
+                                            </li>
+                                            <li>
+                                                <h4 class="card-info-title">廳</h4>
+                                                <span>@ViewBag.ALLList[1][i].HomeHall</span>
+                                            </li>
+                                            <li>
+                                                <h4 class="card-info-title">衛浴</h4>
+                                                <span>@ViewBag.ALLList[1][i].HomeBathroom</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="d-flex justify-content-center">
+                @Html.PagedListPager(Model, page => Url.Action("houseIndex", "Home", new { page }))
+            </div>
+
+        </div>
+    </section>
+</main>

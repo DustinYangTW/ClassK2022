@@ -305,6 +305,9 @@ namespace HomeBackProject.Controllers
 
 
             int pagesize = 6;
+            int allCount = ViewBag.ALLList[2];
+            ViewBag.pagesize = ChangIDAuto.AutoPage(allCount, pagesize, page);
+
             var pagedList = homeData.ToPagedList(page, pagesize);
             ViewBag.countyID = db.CityTypeData.ToList();
             ViewBag.HomeTypeData = db.HomeTypeData.ToList();

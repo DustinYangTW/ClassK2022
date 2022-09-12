@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="71c7144ffb1d42ea99393d7125ffef73" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="HomeDataModel.AccountData" Width="1.5" PointX="3.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomeDataModel.ADTypeData" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomeDataModel.CarTypeData" Width="1.5" PointX="0.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomeDataModel.CityTypeData" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomeDataModel.HomeData" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomeDataModel.HomeTypeData" Width="1.5" PointX="0.75" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomeDataModel.PeopleData" Width="1.5" PointX="6" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomeDataModel.PeopleRankData" Width="1.5" PointX="3.75" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomeDataModel.ProgramData" Width="1.5" PointX="3.75" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomeDataModel.SaleTypeData" Width="1.5" PointX="0.75" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomeDataModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="HomeDataModel.FK_PeopleData_AccountData" ManuallyRouted="false" />
+        <AssociationConnector Association="HomeDataModel.FK_HomeData_ADTypeData" ManuallyRouted="false" />
+        <AssociationConnector Association="HomeDataModel.FK_HomeData_CarTypeData" ManuallyRouted="false" />
+        <AssociationConnector Association="HomeDataModel.FK_HomeData_CityTypeData" ManuallyRouted="false" />
+        <AssociationConnector Association="HomeDataModel.FK_PeopleData_CityTypeData" ManuallyRouted="false" />
+        <AssociationConnector Association="HomeDataModel.FK_HomeData_HomeTypeData" ManuallyRouted="false" />
+        <AssociationConnector Association="HomeDataModel.FK_HomeData_PeopleData" ManuallyRouted="false" />
+        <AssociationConnector Association="HomeDataModel.FK_HomeData_SaleTypeData" ManuallyRouted="false" />
+        <AssociationConnector Association="HomeDataModel.FK_PeopleData_PeopleRankData" ManuallyRouted="false" />
+        <AssociationConnector Association="HomeDataModel.FK_PeopleData_ProgramData" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
