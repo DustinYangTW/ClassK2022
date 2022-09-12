@@ -14,9 +14,9 @@ namespace HomeBackProject.library
             {
                 return "檔案不正確，只能上傳JPG,JPEG,GIF,PNG檔案";
             }
-            else if (contentLength > 10485760)
+            else if (contentLength > 20971520)
             {
-                return "檔案只能上傳小於10MB的檔案";
+                return "檔案只能上傳小於20MB的檔案";
             }
             return "OK";
         }
