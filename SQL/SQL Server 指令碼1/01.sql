@@ -1,1 +1,0 @@
-Select 100 as score
