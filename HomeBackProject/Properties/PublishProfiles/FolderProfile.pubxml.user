@@ -4,583 +4,583 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 -->
 <Project>
   <PropertyGroup>
-    <_PublishTargetUrl>E:\Git2\後端\HomeBackProject\HomeBackProject\bin\app.publish\</_PublishTargetUrl>
-    <History>True|2022-09-13T23:28:39.0438823Z;True|2022-09-13T07:36:09.1166900+08:00;True|2022-09-12T11:40:48.4742689+08:00;</History>
+    <_PublishTargetUrl>E:\Git2\HomeBackProject\bin\app.publish\</_PublishTargetUrl>
+    <History>True|2022-09-15T14:05:57.9096965Z;True|2022-09-14T07:28:39.0438823+08:00;True|2022-09-13T07:36:09.1166900+08:00;True|2022-09-12T11:40:48.4742689+08:00;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>09/14/2022 07:28:36</publishTime>
+      <publishTime>09/15/2022 22:05:52</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>09/14/2022 07:28:36</publishTime>
+      <publishTime>09/15/2022 22:05:52</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
-      <publishTime>04/17/2020 04:38:42</publishTime>
+      <publishTime>09/15/2022 22:04:10</publishTime>
     </File>
     <File Include="bin/EntityFramework.SqlServer.dll">
-      <publishTime>04/17/2020 04:38:56</publishTime>
+      <publishTime>09/15/2022 22:04:10</publishTime>
     </File>
     <File Include="bin/HomeBackProject.dll">
-      <publishTime>09/14/2022 07:28:28</publishTime>
+      <publishTime>09/15/2022 22:05:42</publishTime>
     </File>
     <File Include="bin/HomeBackProject.pdb">
-      <publishTime>09/14/2022 07:28:28</publishTime>
+      <publishTime>09/15/2022 22:05:42</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
-      <publishTime>07/09/2020 05:52:58</publishTime>
+      <publishTime>09/15/2022 22:04:10</publishTime>
     </File>
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
-      <publishTime>05/27/2022 23:39:10</publishTime>
+      <publishTime>09/15/2022 22:04:11</publishTime>
     </File>
     <File Include="bin/PagedList.dll">
-      <publishTime>10/01/2013 01:36:38</publishTime>
+      <publishTime>09/15/2022 22:04:11</publishTime>
     </File>
     <File Include="bin/PagedList.Mvc.dll">
-      <publishTime>10/01/2013 02:15:20</publishTime>
+      <publishTime>09/15/2022 22:04:11</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
-      <publishTime>05/19/2020 09:51:56</publishTime>
+      <publishTime>09/15/2022 22:04:11</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe.config">
-      <publishTime>05/19/2020 09:51:56</publishTime>
+      <publishTime>09/15/2022 22:04:11</publishTime>
     </File>
     <File Include="bin/roslyn/csc.rsp">
-      <publishTime>05/19/2020 09:40:20</publishTime>
+      <publishTime>09/15/2022 22:04:11</publishTime>
     </File>
     <File Include="bin/roslyn/csi.exe">
-      <publishTime>05/19/2020 09:52:16</publishTime>
+      <publishTime>09/15/2022 22:04:11</publishTime>
     </File>
     <File Include="bin/roslyn/csi.exe.config">
-      <publishTime>05/19/2020 09:52:16</publishTime>
+      <publishTime>09/15/2022 22:04:11</publishTime>
     </File>
     <File Include="bin/roslyn/csi.rsp">
-      <publishTime>05/19/2020 09:40:40</publishTime>
+      <publishTime>09/15/2022 22:04:11</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll">
-      <publishTime>05/19/2020 09:47:18</publishTime>
+      <publishTime>09/15/2022 22:04:10</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll">
-      <publishTime>05/19/2020 09:51:40</publishTime>
+      <publishTime>09/15/2022 22:04:11</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.Scripting.dll">
-      <publishTime>05/19/2020 09:51:58</publishTime>
+      <publishTime>09/15/2022 22:04:10</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.dll">
-      <publishTime>05/19/2020 09:49:16</publishTime>
+      <publishTime>09/15/2022 22:04:11</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.Scripting.dll">
-      <publishTime>05/19/2020 09:49:32</publishTime>
+      <publishTime>09/15/2022 22:04:11</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll">
-      <publishTime>05/19/2020 09:50:04</publishTime>
+      <publishTime>09/15/2022 22:04:11</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CSharp.Core.targets">
-      <publishTime>05/19/2020 09:40:20</publishTime>
+      <publishTime>09/15/2022 22:04:10</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.amd64.dll">
-      <publishTime>12/05/2017 09:36:44</publishTime>
+      <publishTime>09/15/2022 22:04:11</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.x86.dll">
-      <publishTime>12/05/2017 09:36:44</publishTime>
+      <publishTime>09/15/2022 22:04:11</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.Managed.Core.targets">
-      <publishTime>05/19/2020 09:40:20</publishTime>
+      <publishTime>09/15/2022 22:04:11</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.VisualBasic.Core.targets">
-      <publishTime>05/19/2020 09:40:20</publishTime>
+      <publishTime>09/15/2022 22:04:11</publishTime>
     </File>
     <File Include="bin/roslyn/System.Buffers.dll">
-      <publishTime>07/20/2017 01:01:28</publishTime>
+      <publishTime>09/15/2022 22:04:11</publishTime>
     </File>
     <File Include="bin/roslyn/System.Collections.Immutable.dll">
-      <publishTime>05/16/2018 04:29:34</publishTime>
+      <publishTime>09/15/2022 22:04:11</publishTime>
     </File>
     <File Include="bin/roslyn/System.Memory.dll">
-      <publishTime>04/18/2019 07:24:34</publishTime>
+      <publishTime>09/15/2022 22:04:11</publishTime>
     </File>
     <File Include="bin/roslyn/System.Numerics.Vectors.dll">
-      <publishTime>07/20/2017 01:01:36</publishTime>
+      <publishTime>09/15/2022 22:04:11</publishTime>
     </File>
     <File Include="bin/roslyn/System.Reflection.Metadata.dll">
-      <publishTime>05/16/2018 04:29:44</publishTime>
+      <publishTime>09/15/2022 22:04:11</publishTime>
     </File>
     <File Include="bin/roslyn/System.Runtime.CompilerServices.Unsafe.dll">
-      <publishTime>11/16/2019 00:37:58</publishTime>
+      <publishTime>09/15/2022 22:04:11</publishTime>
     </File>
     <File Include="bin/roslyn/System.Text.Encoding.CodePages.dll">
-      <publishTime>11/30/2018 07:39:18</publishTime>
+      <publishTime>09/15/2022 22:04:11</publishTime>
     </File>
     <File Include="bin/roslyn/System.Threading.Tasks.Extensions.dll">
-      <publishTime>06/19/2019 03:08:48</publishTime>
+      <publishTime>09/15/2022 22:04:11</publishTime>
     </File>
     <File Include="bin/roslyn/vbc.exe">
-      <publishTime>05/19/2020 09:50:06</publishTime>
+      <publishTime>09/15/2022 22:04:11</publishTime>
     </File>
     <File Include="bin/roslyn/vbc.exe.config">
-      <publishTime>05/19/2020 09:50:06</publishTime>
+      <publishTime>09/15/2022 22:04:11</publishTime>
     </File>
     <File Include="bin/roslyn/vbc.rsp">
-      <publishTime>05/19/2020 09:40:26</publishTime>
+      <publishTime>09/15/2022 22:04:11</publishTime>
     </File>
     <File Include="bin/roslyn/VBCSCompiler.exe">
-      <publishTime>05/19/2020 09:52:02</publishTime>
+      <publishTime>09/15/2022 22:04:11</publishTime>
     </File>
     <File Include="bin/roslyn/VBCSCompiler.exe.config">
-      <publishTime>05/19/2020 09:52:02</publishTime>
+      <publishTime>09/15/2022 22:04:11</publishTime>
     </File>
     <File Include="bin/System.Web.Helpers.dll">
-      <publishTime>05/27/2022 23:41:54</publishTime>
+      <publishTime>09/15/2022 22:04:10</publishTime>
     </File>
     <File Include="bin/System.Web.Mvc.dll">
-      <publishTime>05/27/2022 23:42:20</publishTime>
+      <publishTime>09/15/2022 22:04:10</publishTime>
     </File>
     <File Include="bin/System.Web.Razor.dll">
-      <publishTime>05/27/2022 23:42:06</publishTime>
+      <publishTime>09/15/2022 22:04:10</publishTime>
     </File>
     <File Include="bin/System.Web.Webpages.Deployment.dll">
-      <publishTime>05/27/2022 23:42:46</publishTime>
+      <publishTime>09/15/2022 22:04:10</publishTime>
     </File>
     <File Include="bin/System.Web.Webpages.dll">
-      <publishTime>05/27/2022 23:42:16</publishTime>
+      <publishTime>09/15/2022 22:04:10</publishTime>
     </File>
     <File Include="bin/System.Web.Webpages.Razor.dll">
-      <publishTime>05/27/2022 23:42:50</publishTime>
+      <publishTime>09/15/2022 22:04:10</publishTime>
     </File>
     <File Include="bin/Validate.dll">
-      <publishTime>09/04/2016 09:18:48</publishTime>
+      <publishTime>09/15/2022 22:04:11</publishTime>
     </File>
     <File Include="bin/zh-Hant/System.Web.Helpers.resources.dll">
-      <publishTime>05/28/2022 07:34:04</publishTime>
+      <publishTime>09/15/2022 22:04:10</publishTime>
     </File>
     <File Include="bin/zh-Hant/System.Web.Mvc.resources.dll">
-      <publishTime>05/28/2022 07:34:58</publishTime>
+      <publishTime>09/15/2022 22:04:10</publishTime>
     </File>
     <File Include="bin/zh-Hant/System.Web.Razor.resources.dll">
-      <publishTime>05/28/2022 07:34:34</publishTime>
+      <publishTime>09/15/2022 22:04:10</publishTime>
     </File>
     <File Include="bin/zh-Hant/System.Web.Webpages.Deployment.resources.dll">
-      <publishTime>05/28/2022 07:34:14</publishTime>
+      <publishTime>09/15/2022 22:04:10</publishTime>
     </File>
     <File Include="bin/zh-Hant/System.Web.Webpages.Razor.resources.dll">
-      <publishTime>05/28/2022 07:35:06</publishTime>
+      <publishTime>09/15/2022 22:04:10</publishTime>
     </File>
     <File Include="bin/zh-Hant/System.Web.Webpages.resources.dll">
-      <publishTime>05/28/2022 07:34:14</publishTime>
+      <publishTime>09/15/2022 22:04:10</publishTime>
     </File>
     <File Include="Content/bootstrap-grid.css">
-      <publishTime>08/19/2022 05:41:06</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Content/bootstrap-grid.css.map">
-      <publishTime>08/19/2022 05:41:06</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Content/bootstrap-grid.min.css">
-      <publishTime>08/19/2022 05:41:06</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Content/bootstrap-grid.min.css.map">
-      <publishTime>08/19/2022 05:41:05</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Content/bootstrap-grid.rtl.css">
-      <publishTime>08/19/2022 05:41:05</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Content/bootstrap-grid.rtl.css.map">
-      <publishTime>08/19/2022 05:41:04</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Content/bootstrap-grid.rtl.min.css">
-      <publishTime>08/19/2022 05:41:04</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Content/bootstrap-grid.rtl.min.css.map">
-      <publishTime>08/19/2022 05:41:04</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Content/bootstrap-reboot.css">
-      <publishTime>08/19/2022 05:41:04</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Content/bootstrap-reboot.css.map">
-      <publishTime>08/19/2022 05:41:03</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Content/bootstrap-reboot.min.css">
-      <publishTime>08/19/2022 05:41:03</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Content/bootstrap-reboot.min.css.map">
-      <publishTime>08/19/2022 05:41:03</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Content/bootstrap-reboot.rtl.css">
-      <publishTime>08/19/2022 05:41:03</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Content/bootstrap-reboot.rtl.css.map">
-      <publishTime>08/19/2022 05:41:03</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Content/bootstrap-reboot.rtl.min.css">
-      <publishTime>08/19/2022 05:41:03</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Content/bootstrap-reboot.rtl.min.css.map">
-      <publishTime>08/19/2022 05:41:03</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Content/bootstrap-utilities.css">
-      <publishTime>08/19/2022 05:41:02</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Content/bootstrap-utilities.css.map">
-      <publishTime>08/19/2022 05:41:02</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Content/bootstrap-utilities.min.css">
-      <publishTime>08/19/2022 05:41:02</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Content/bootstrap-utilities.min.css.map">
-      <publishTime>08/19/2022 05:41:01</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Content/bootstrap-utilities.rtl.css">
-      <publishTime>08/19/2022 05:41:01</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Content/bootstrap-utilities.rtl.css.map">
-      <publishTime>08/19/2022 05:41:01</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Content/bootstrap-utilities.rtl.min.css">
-      <publishTime>08/19/2022 05:41:01</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Content/bootstrap-utilities.rtl.min.css.map">
-      <publishTime>08/19/2022 05:41:00</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Content/bootstrap.css">
-      <publishTime>08/19/2022 05:41:00</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Content/bootstrap.css.map">
-      <publishTime>08/19/2022 05:41:00</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Content/bootstrap.min.css">
-      <publishTime>08/19/2022 05:41:00</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Content/bootstrap.min.css.map">
-      <publishTime>08/19/2022 05:41:00</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Content/bootstrap.rtl.css">
-      <publishTime>08/19/2022 05:40:59</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Content/bootstrap.rtl.css.map">
-      <publishTime>08/19/2022 05:40:59</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Content/bootstrap.rtl.min.css">
-      <publishTime>08/19/2022 05:40:58</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Content/bootstrap.rtl.min.css.map">
-      <publishTime>08/19/2022 05:40:58</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Content/PagedList.css">
-      <publishTime>08/19/2022 05:44:52</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Css/assets/css/style.css">
-      <publishTime>08/31/2022 14:07:52</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Css/assets/img/agent-4.jpg">
-      <publishTime>07/20/2022 14:04:06</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Css/assets/img/agent-5.jpg">
-      <publishTime>07/20/2022 14:04:06</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Css/assets/img/agent-6.jpg">
-      <publishTime>07/20/2022 14:04:06</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Css/assets/img/agent-7.jpg">
-      <publishTime>07/20/2022 14:04:06</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Css/assets/img/apple-touch-icon.png">
-      <publishTime>07/20/2022 14:04:06</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Css/assets/img/author-1.jpg">
-      <publishTime>07/20/2022 14:04:06</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Css/assets/img/author-2.jpg">
-      <publishTime>07/20/2022 14:04:06</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Css/assets/img/favicon.png">
-      <publishTime>07/20/2022 14:04:06</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Css/assets/img/mini-testimonial-1.jpg">
-      <publishTime>07/20/2022 14:04:06</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Css/assets/img/mini-testimonial-2.jpg">
-      <publishTime>07/20/2022 14:04:06</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Css/assets/img/plan2.jpg">
-      <publishTime>07/20/2022 14:04:06</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Css/assets/img/post-1.jpg">
-      <publishTime>07/20/2022 14:04:06</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Css/assets/img/post-2.jpg">
-      <publishTime>07/20/2022 14:04:06</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Css/assets/img/post-3.jpg">
-      <publishTime>07/20/2022 14:04:06</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Css/assets/img/post-4.jpg">
-      <publishTime>07/20/2022 14:04:06</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Css/assets/img/post-5.jpg">
-      <publishTime>07/20/2022 14:04:06</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Css/assets/img/post-6.jpg">
-      <publishTime>07/20/2022 14:04:06</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Css/assets/img/post-7.jpg">
-      <publishTime>07/20/2022 14:04:06</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Css/assets/img/post-single-1.jpg">
-      <publishTime>07/20/2022 14:04:06</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Css/assets/img/post-single-2.jpg">
-      <publishTime>07/20/2022 14:04:06</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Css/assets/img/property-1.jpg">
-      <publishTime>07/20/2022 14:04:06</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Css/assets/img/property-10.jpg">
-      <publishTime>07/20/2022 14:04:06</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Css/assets/img/property-2.jpg">
-      <publishTime>07/20/2022 14:04:06</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Css/assets/img/property-3.jpg">
-      <publishTime>07/20/2022 14:04:06</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Css/assets/img/property-4.jpg">
-      <publishTime>07/20/2022 14:04:06</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Css/assets/img/property-5.jpg">
-      <publishTime>07/20/2022 14:04:06</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Css/assets/img/property-6.jpg">
-      <publishTime>07/20/2022 14:04:06</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Css/assets/img/property-7.jpg">
-      <publishTime>07/20/2022 14:04:06</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Css/assets/img/property-8.jpg">
-      <publishTime>07/20/2022 14:04:06</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Css/assets/img/property-9.jpg">
-      <publishTime>07/20/2022 14:04:06</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Css/assets/img/slide-1.jpg">
-      <publishTime>07/20/2022 14:04:06</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Css/assets/img/slide-2.jpg">
-      <publishTime>07/20/2022 14:04:06</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Css/assets/img/slide-3.jpg">
-      <publishTime>07/20/2022 14:04:06</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Css/assets/img/slide-about-1.jpg">
-      <publishTime>07/20/2022 14:04:06</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Css/assets/img/testimonial-1.jpg">
-      <publishTime>07/20/2022 14:04:06</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Css/assets/img/testimonial-2.jpg">
-      <publishTime>07/20/2022 14:04:06</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Css/assets/js/main.js">
-      <publishTime>08/16/2022 16:23:34</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Css/assets/vendor/animate.css/animate.compat.css">
-      <publishTime>07/20/2022 14:04:06</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Css/assets/vendor/animate.css/animate.css">
-      <publishTime>07/20/2022 14:04:06</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Css/assets/vendor/animate.css/animate.min.css">
-      <publishTime>07/20/2022 14:04:06</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Css/assets/vendor/swiper/swiper-bundle.min.css">
-      <publishTime>07/20/2022 14:04:06</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Css/assets/vendor/swiper/swiper-bundle.min.js">
-      <publishTime>07/20/2022 14:04:06</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Css/body.css">
-      <publishTime>08/31/2022 12:27:19</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Css/PagedListMyStyle.css">
-      <publishTime>08/18/2022 11:04:40</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="ErrorPage.html">
-      <publishTime>09/12/2022 10:51:10</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Global.asax">
       <publishTime>08/19/2022 05:37:01</publishTime>
     </File>
     <File Include="Js/FindCityData.js">
-      <publishTime>09/08/2022 20:15:23</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Js/OthersSet.js">
-      <publishTime>08/31/2022 08:25:34</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Js/photosShow.js">
-      <publishTime>08/30/2022 20:19:47</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Js/Validation.js">
-      <publishTime>08/15/2022 08:00:44</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Models/HomeDatas.edmx.diagram">
-      <publishTime>09/03/2022 12:05:35</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>09/14/2022 07:28:29</publishTime>
+      <publishTime>09/15/2022 22:05:44</publishTime>
     </File>
     <File Include="Scripts/bootstrap.bundle.js">
-      <publishTime>08/19/2022 05:40:58</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Scripts/bootstrap.bundle.js.map">
-      <publishTime>08/19/2022 05:40:58</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Scripts/bootstrap.bundle.min.js">
-      <publishTime>08/19/2022 05:40:58</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Scripts/bootstrap.bundle.min.js.map">
-      <publishTime>08/19/2022 05:40:58</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Scripts/bootstrap.esm.js">
-      <publishTime>08/19/2022 05:40:58</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Scripts/bootstrap.esm.js.map">
-      <publishTime>08/19/2022 05:40:58</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Scripts/bootstrap.esm.min.js">
-      <publishTime>08/19/2022 05:40:58</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Scripts/bootstrap.esm.min.js.map">
-      <publishTime>08/19/2022 05:40:58</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
-      <publishTime>08/19/2022 05:40:58</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js.map">
-      <publishTime>08/19/2022 05:40:57</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Scripts/bootstrap.min.js">
-      <publishTime>08/19/2022 05:40:56</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Scripts/bootstrap.min.js.map">
-      <publishTime>08/19/2022 05:40:55</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Scripts/jquery-3.6.0.js">
-      <publishTime>08/19/2022 05:45:51</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Scripts/jquery-3.6.0.min.js">
-      <publishTime>08/19/2022 05:45:51</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Scripts/jquery-3.6.0.min.map">
-      <publishTime>08/19/2022 05:45:51</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Scripts/jquery-3.6.0.slim.js">
-      <publishTime>08/19/2022 05:45:51</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Scripts/jquery-3.6.0.slim.min.js">
-      <publishTime>08/19/2022 05:45:51</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Scripts/jquery-3.6.0.slim.min.map">
-      <publishTime>08/19/2022 05:45:51</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Scripts/jquery.validate.js">
-      <publishTime>08/19/2022 05:45:52</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Scripts/jquery.validate.min.js">
-      <publishTime>08/19/2022 05:45:52</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Scripts/jquery.validate.unobtrusive.bootstrap.js">
-      <publishTime>08/19/2022 05:44:21</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Scripts/jquery.validate.unobtrusive.bootstrap.min.js">
-      <publishTime>08/19/2022 05:44:21</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Scripts/jquery.validate.unobtrusive.bootstrap.min.js.map">
-      <publishTime>08/19/2022 05:44:21</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Scripts/jquery.validate.unobtrusive.js">
-      <publishTime>08/19/2022 05:46:00</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Scripts/jquery.validate.unobtrusive.min.js">
-      <publishTime>08/19/2022 05:46:00</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Views/Home/houseIndex.cshtml">
-      <publishTime>09/12/2022 21:30:58</publishTime>
+      <publishTime>09/15/2022 22:05:09</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>09/12/2022 11:16:55</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Views/Home/searchhouseIndex.cshtml">
-      <publishTime>09/12/2022 21:31:26</publishTime>
+      <publishTime>09/15/2022 22:05:09</publishTime>
     </File>
     <File Include="Views/HomeDatas/Create.cshtml">
-      <publishTime>08/30/2022 22:28:34</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Views/HomeDatas/DeleteX.cshtml">
-      <publishTime>08/27/2022 22:23:26</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Views/HomeDatas/Details.cshtml">
-      <publishTime>09/03/2022 22:17:08</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Views/HomeDatas/DetailsModal.cshtml">
-      <publishTime>08/29/2022 23:16:33</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Views/HomeDatas/Edit.cshtml">
-      <publishTime>09/14/2022 07:26:00</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Views/HomeDatas/Index.cshtml">
-      <publishTime>09/08/2022 20:15:23</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Views/LogInOut/ForgetPW.cshtml">
-      <publishTime>09/05/2022 20:46:21</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Views/LogInOut/Index.cshtml">
-      <publishTime>09/12/2022 11:09:11</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Views/LogInOut/Login.cshtml">
-      <publishTime>09/05/2022 20:46:21</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Views/OthersSet/Index.cshtml">
-      <publishTime>09/03/2022 12:07:34</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Views/PeopleBuySomething/buyADForHome.cshtml">
-      <publishTime>09/07/2022 07:15:06</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Views/PeopleBuySomething/buyPoints.cshtml">
-      <publishTime>09/07/2022 07:15:06</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Views/PeopleDatas/Create.cshtml">
-      <publishTime>09/12/2022 20:22:16</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Views/PeopleDatas/Delete.cshtml">
-      <publishTime>08/27/2022 22:23:27</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Views/PeopleDatas/Details.cshtml">
-      <publishTime>08/27/2022 22:20:30</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Views/PeopleDatas/DetailsMyself.cshtml">
-      <publishTime>08/31/2022 15:55:57</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Views/PeopleDatas/Edit.cshtml">
-      <publishTime>08/31/2022 12:26:58</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Views/PeopleDatas/Index.cshtml">
-      <publishTime>09/12/2022 21:33:22</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>09/12/2022 17:59:32</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Views/Shared/_Layout_admin.cshtml">
-      <publishTime>09/12/2022 18:00:27</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Views/Shared/_Layout_LogInOut.cshtml">
-      <publishTime>09/12/2022 18:00:33</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Views/web.config">
-      <publishTime>07/13/2022 14:07:23</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Views/_ViewStart.cshtml">
-      <publishTime>07/19/2022 15:46:26</publishTime>
+      <publishTime>09/15/2022 22:04:07</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>09/13/2022 07:35:58</publishTime>
+      <publishTime>09/15/2022 22:05:43</publishTime>
     </File>
   </ItemGroup>
 </Project>
