@@ -475,7 +475,7 @@ namespace HomeBackProject.Controllers
                 //return HttpNotFound();
             }
             homeData.HomeSaleType = 4;
-            homeData.HomeManageTip = homeData.HomeManageTip > 0 ? homeData.HomeManageTip : 0;
+            homeData.HomeManageTip = homeData.HomeManageTip > 0 ? ((Int16)homeData.HomeManageTip) : 0;
             db.Entry(homeData).State = EntityState.Modified;
             //try
             //{
