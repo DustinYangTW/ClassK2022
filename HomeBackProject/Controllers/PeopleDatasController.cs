@@ -62,7 +62,10 @@ namespace HomeBackProject.Controllers
             {
                 var peopleData = db.PeopleData.Include(p => p.AccountData).Include(p => p.CityTypeData).Include(p => p.PeopleRankData).Include(p => p.ProgramData).OrderByDescending(p => p.PeopleID).Where(p => p.PeopleName.Contains(name));
                 var pagedList = peopleData.ToPagedList(page, pagesize);
-                TempData["Null"] = "**查無資料，請確認後再查訊，謝謝配合。";
+                if (peopleData == null)
+                {
+                    TempData["Null"] = "**查無資料，請確認後再查訊，謝謝配合。";
+                }
                 return View(pagedList);
             }
 
