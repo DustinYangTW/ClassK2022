@@ -61,8 +61,9 @@ namespace HomeBackProject.Controllers
             else
             {
                 var peopleData = db.PeopleData.Include(p => p.AccountData).Include(p => p.CityTypeData).Include(p => p.PeopleRankData).Include(p => p.ProgramData).OrderByDescending(p => p.PeopleID).Where(p => p.PeopleName.Contains(name));
+                var peopleList = peopleData.ToList();
                 var pagedList = peopleData.ToPagedList(page, pagesize);
-                if (peopleData == null)
+                if (peopleList.Count() == 0)
                 {
                     TempData["Null"] = "**查無資料，請確認後再查訊，謝謝配合。";
                 }
