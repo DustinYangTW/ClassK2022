@@ -1,7 +1,7 @@
 # 綠園屋網專題
 
 ### 【測試帳號密碼】 
-### <a href="https://www.housetopic.somee.com/">點我看專題網站</a></br>
+### <a href="http://www.housetopic.somee.com/">點我看專題網站</a></br>
 帳號 : admin@gmail.com </br>
 密碼 : 12345678 </br>
 
